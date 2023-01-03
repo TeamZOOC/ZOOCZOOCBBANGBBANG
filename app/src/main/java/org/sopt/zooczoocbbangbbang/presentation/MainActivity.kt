@@ -1,15 +1,7 @@
 package org.sopt.zooczoocbbangbbang.presentation
 
-import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
+import org.sopt.zooczoocbbangbbang.R
 import org.sopt.zooczoocbbangbbang.databinding.ActivityMainBinding
+import org.sopt.zooczoocbbangbbang.presentation.base.BindingActivity
 
-class MainActivity : AppCompatActivity() {
-    private lateinit var binding: ActivityMainBinding
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        binding = ActivityMainBinding.inflate(layoutInflater)
-        setContentView(binding.root)
-    }
-}
+class MainActivity : BindingActivity<ActivityMainBinding>(R.layout.activity_main)
