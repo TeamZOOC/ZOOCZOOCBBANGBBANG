@@ -6,12 +6,12 @@ plugins {
 
 android {
     namespace 'org.sopt.zooczoocbbangbbang'
-    compileSdk 32
+    compileSdk 33
 
     defaultConfig {
         applicationId "org.sopt.zooczoocbbangbbang"
         minSdk 21
-        targetSdk 32
+        targetSdk 33
         versionCode 1
         versionName "1.0"
 
