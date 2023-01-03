@@ -1,5 +1,5 @@
 # ZOOC
-프로덕트 설명<br/><br/>
+가족이 기록한 반려동물과의 순간들을 쭉- 추억하는 서비스, ZOOC<br/><br/>
 
 ### CONTRIBUTORS
 * [권용민](https://github.com/briandr97)<br/>
