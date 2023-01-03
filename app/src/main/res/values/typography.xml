@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="Typography" parent="Theme.ZOOCZOOCBBANGBBANG" />
+
+    <style name="Typography.S28">
+        <item name="android:fontFamily">@font/pretendard_semibold</item>
+        <item name="android:textSize">28dp</item>
+    </style>
+
+    <style name="Typography.S24">
+        <item name="android:fontFamily">@font/pretendard_semibold</item>
+        <item name="android:textSize">24dp</item>
+    </style>
+
+    <style name="Typography.S20">
+        <item name="android:fontFamily">@font/pretendard_semibold</item>
+        <item name="android:textSize">20dp</item>
+    </style>
+
+    <style name="Typography.S18">
+        <item name="android:fontFamily">@font/pretendard_semibold</item>
+        <item name="android:textSize">18dp</item>
+    </style>
+
+    <style name="Typography.S16">
+        <item name="android:fontFamily">@font/pretendard_semibold</item>
+        <item name="android:textSize">16dp</item>
+    </style>
+
+    <style name="Typography.M16">
+        <item name="android:fontFamily">@font/pretendard_medium</item>
+        <item name="android:textSize">16dp</item>
+    </style>
+
+    <style name="Typography.M14">
+        <item name="android:fontFamily">@font/pretendard_medium</item>
+        <item name="android:textSize">14dp</item>
+    </style>
+
+    <style name="Typography.M12">
+        <item name="android:fontFamily">@font/pretendard_medium</item>
+        <item name="android:textSize">12dp</item>
+    </style>
+
+    <style name="Typography.M10">
+        <item name="android:fontFamily">@font/pretendard_medium</item>
+        <item name="android:textSize">10dp</item>
+    </style>
+</resources>
