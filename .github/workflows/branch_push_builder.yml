@@ -2,7 +2,7 @@ name: ZOOC PR Branch Push
 
 on:
   pull_request:
-    branches: [ develop, master ]
+    branches: [ develop, main ]
 
 permissions:
   contents: read
