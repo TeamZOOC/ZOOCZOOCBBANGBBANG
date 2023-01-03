@@ -1,15 +1,360 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
 
     </data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:context=".presentation.main.mypage.MyPageFragment">
+        android:layout_height="match_parent">
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/cl_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#F0F2EF"
+            tools:context=".presentation.main.mypage.MyPageFragment">
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/imageView"
+                android:layout_width="72dp"
+                android:layout_height="0dp"
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="50dp"
+                android:scaleType="centerCrop"
+                app:layout_constraintDimensionRatio="1:1"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:shapeAppearanceOverlay="@style/Style.CircleImageView.Half"
+                tools:srcCompat="@tools:sample/avatars" />
+
+
+            <TextView
+                android:id="@+id/tv_nickname"
+                style="@style/Zooc20SemiBold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:text="복실맘"
+                android:textColor="#333333"
+                app:layout_constraintBottom_toBottomOf="@+id/imageView"
+                app:layout_constraintStart_toEndOf="@+id/imageView"
+                app:layout_constraintTop_toTopOf="@+id/imageView" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/constraintLayout"
+                android:layout_width="match_parent"
+                android:layout_height="155dp"
+                android:layout_marginHorizontal="30dp"
+                android:layout_marginTop="42dp"
+                android:background="@drawable/myprofile_bg_profile"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/imageView">
+
+                <TextView
+                    android:id="@+id/tv_title_member"
+                    style="@style/Zooc16SemiBold"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="26dp"
+                    android:layout_marginTop="20dp"
+                    android:text="멤버"
+                    android:textColor="#4F4F4F"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/tv_btn_invite"
+                    style="@style/Zooc12Medium"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="26dp"
+                    android:text="초대하기"
+                    android:textColor="#828282"
+                    app:layout_constraintBottom_toBottomOf="@+id/tv_title_member"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/tv_title_member" />
+
+                <View
+                    android:layout_width="41dp"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="2dp"
+                    app:layout_constraintEnd_toEndOf="@+id/tv_btn_invite"
+                    app:layout_constraintStart_toStartOf="@+id/tv_btn_invite"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_btn_invite" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rv_members"
+                    android:layout_width="match_parent"
+                    android:layout_height="81dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="10dp"
+                    android:orientation="horizontal"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintDimensionRatio="300:81"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_title_member"
+                    tools:listitem="@layout/item_mypage_recycler_members" />
+
+                <TextView
+                    android:id="@+id/textView"
+                    style="@style/Zooc12Medium"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="4dp"
+                    android:text="5"
+                    android:textColor="#68D49A"
+                    app:layout_constraintBottom_toBottomOf="@+id/tv_title_member"
+                    app:layout_constraintStart_toEndOf="@+id/tv_title_member"
+                    app:layout_constraintTop_toTopOf="@+id/tv_title_member" />
+
+                <TextView
+                    android:id="@+id/textView2"
+                    style="@style/Zooc12Medium"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="/8"
+                    app:layout_constraintBottom_toBottomOf="@+id/textView"
+                    app:layout_constraintStart_toEndOf="@+id/textView"
+                    app:layout_constraintTop_toTopOf="@+id/textView" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/cl_member"
+                android:layout_width="match_parent"
+                android:layout_height="127dp"
+                android:layout_marginHorizontal="30dp"
+                android:layout_marginTop="12dp"
+                android:background="@drawable/myprofile_bg_profile"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.504"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/constraintLayout">
+
+                <TextView
+                    android:id="@+id/tv_title_pet"
+                    style="@style/Zooc16SemiBold"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="26dp"
+                    android:layout_marginTop="20dp"
+                    android:text="반려동물"
+                    android:textColor="#4F4F4F"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rev_pets"
+                    android:layout_width="match_parent"
+                    android:layout_height="81dp"
+                    android:layout_marginStart="21dp"
+                    android:layout_marginTop="17dp"
+                    android:orientation="horizontal"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintDimensionRatio="300:81"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_title_pet"
+                    tools:listitem="@layout/item_mypage_recycler_pets" />
+
+                <TextView
+                    android:id="@+id/count_pet"
+                    style="@style/Zooc12Medium"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="4dp"
+                    android:text="2"
+                    android:textColor="#68D49A"
+                    app:layout_constraintBottom_toBottomOf="@+id/tv_title_pet"
+                    app:layout_constraintStart_toEndOf="@+id/tv_title_pet"
+                    app:layout_constraintTop_toTopOf="@+id/tv_title_pet" />
+
+                <TextView
+                    android:id="@+id/total_pet"
+                    style="@style/Zooc12Medium"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="/4"
+                    app:layout_constraintBottom_toBottomOf="@+id/count_pet"
+                    app:layout_constraintStart_toEndOf="@+id/count_pet"
+                    app:layout_constraintTop_toTopOf="@+id/count_pet" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <TextView
+                android:id="@+id/tv_btn_set_alarm"
+                style="@style/Zooc16SemiBold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="40dp"
+                android:layout_marginTop="30dp"
+                android:text="알림 설정"
+                android:textAppearance="@style/Zooc16SemiBold"
+                android:textColor="#555555"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/cl_member" />
+
+            <View
+                android:id="@+id/view_divider1"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginHorizontal="30dp"
+                android:layout_marginTop="19dp"
+                android:background="#DAE0D6"
+                app:layout_constraintTop_toBottomOf="@+id/tv_btn_set_alarm" />
+
+            <TextView
+                android:id="@+id/tv_btn_inform"
+                style="@style/Zooc16SemiBold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="40dp"
+                android:layout_marginTop="19dp"
+                android:text="공지사항"
+                android:textColor="#555555"
+                android:textSize="16sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/view_divider1" />
+
+            <View
+                android:id="@+id/view_divider2"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginHorizontal="30dp"
+                android:layout_marginTop="19dp"
+                android:background="#DAE0D6"
+                app:layout_constraintTop_toBottomOf="@+id/tv_btn_inform" />
+
+            <TextView
+                android:id="@+id/tv_btn_ask"
+                style="@style/Zooc16SemiBold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="40dp"
+                android:layout_marginTop="19dp"
+                android:text="문의 하기"
+                android:textColor="#555555"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/view_divider2" />
+
+            <View
+                android:id="@+id/view_divider3"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginHorizontal="30dp"
+                android:layout_marginTop="18dp"
+                android:background="#DAE0D6"
+                app:layout_constraintTop_toBottomOf="@+id/tv_btn_ask" />
+
+            <TextView
+                android:id="@+id/tv_btn_suggest_mission"
+                style="@style/Zooc16SemiBold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="40dp"
+                android:layout_marginTop="19dp"
+                android:text="미션 제안하기"
+                android:textColor="#555555"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/view_divider3" />
+
+            <View
+                android:id="@+id/view_divider4"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginHorizontal="30dp"
+                android:layout_marginTop="19dp"
+                android:background="#DAE0D6"
+                app:layout_constraintTop_toBottomOf="@+id/tv_btn_suggest_mission" />
+
+            <TextView
+                android:id="@+id/tv_btn_app_info"
+                style="@style/Zooc16SemiBold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="40dp"
+                android:layout_marginTop="19dp"
+                android:text="앱 정보"
+                android:textColor="#555555"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/view_divider4" />
+
+            <View
+                android:id="@+id/view_divider5"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginHorizontal="30dp"
+                android:layout_marginTop="19dp"
+                android:background="#DAE0D6"
+                app:layout_constraintTop_toBottomOf="@+id/tv_btn_app_info" />
+
+            <TextView
+                android:id="@+id/tv_btn_logout"
+                style="@style/Zooc16SemiBold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="40dp"
+                android:layout_marginTop="19dp"
+                android:text="로그아웃"
+                android:textColor="#EB5B4E"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/view_divider5" />
+
+            <TextView
+                android:id="@+id/tv_btn_quit"
+                style="@style/Zooc12Medium"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="31dp"
+                android:text="회원탈퇴"
+                android:textColor="#888C86"
+                app:layout_constraintStart_toStartOf="@+id/tv_btn_logout"
+                app:layout_constraintTop_toBottomOf="@+id/tv_btn_logout"
+                app:layout_constraintVertical_bias="1.0" />
+
+            <View
+                android:layout_width="42dp"
+                android:layout_height="1dp"
+                android:layout_marginTop="2dp"
+                android:layout_marginBottom="49dp"
+                app:layout_constraintBottom_toBottomOf="@+id/cl_container"
+                app:layout_constraintEnd_toEndOf="@+id/tv_btn_quit"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toStartOf="@+id/tv_btn_quit"
+                app:layout_constraintTop_toBottomOf="@+id/tv_btn_quit" />
+
+            <TextView
+                android:id="@+id/textView5"
+                style="@style/Zooc12Medium"
+                android:layout_width="45dp"
+                android:layout_height="24dp"
+                android:layout_marginEnd="21dp"
+                android:background="@drawable/myprofile_bg_btn_edit"
+                android:gravity="center"
+                android:text="편집"
+                android:textColor=" #828282"
+                app:layout_constraintBottom_toBottomOf="@+id/tv_nickname"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/tv_nickname" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideline2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_begin="20dp" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideline3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintGuide_begin="20dp" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
 </layout>
