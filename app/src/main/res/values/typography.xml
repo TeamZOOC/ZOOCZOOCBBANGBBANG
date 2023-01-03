@@ -33,6 +33,11 @@
         <item name="android:textSize">16dp</item>
     </style>
 
+    <style name="Typography.M15">
+        <item name="android:fontFamily">@font/pretendard_medium</item>
+        <item name="android:textSize">15dp</item>
+    </style>
+
     <style name="Typography.M14">
         <item name="android:fontFamily">@font/pretendard_medium</item>
         <item name="android:textSize">14dp</item>
