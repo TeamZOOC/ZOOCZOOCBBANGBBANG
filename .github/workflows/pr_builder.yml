@@ -61,7 +61,7 @@ jobs:
         uses: rtCamp/action-slack-notify@v2
         env:
           SLACK_COLOR: '#53A551'
-          SLACK_ICON: https://user-images.githubusercontent.com/59532818/197379133-676094c1-d544-4784-b582-60e061f69d31.png?size=48
+          SLACK_ICON: https://avatars.githubusercontent.com/u/121013139?s=200&v=4
           SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
           SLACK_TITLE: 'ZOOC Android CI checks have passed ✅'
           MSG_MINIMAL: true
@@ -73,7 +73,7 @@ jobs:
         uses: rtCamp/action-slack-notify@v2
         env:
           SLACK_COLOR: '#ff0000'
-          SLACK_ICON: https://user-images.githubusercontent.com/59532818/197379133-676094c1-d544-4784-b582-60e061f69d31.png?size=48
+          SLACK_ICON: https://avatars.githubusercontent.com/u/121013139?s=200&v=4
           SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
           SLACK_TITLE: 'ZOOC Android CI checks have failed 🚫'
           MSG_MINIMAL: true
