@@ -9,7 +9,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.Fragment
 
-class BindingFragment<T : ViewDataBinding>(@LayoutRes private val layoutResId: Int) :
+abstract class BindingFragment<T : ViewDataBinding>(@LayoutRes private val layoutResId: Int) :
     Fragment() {
     private var _binding: T? = null
     val binding: T get() = requireNotNull(_binding) { "${this::class.java.simpleName}에서 바인딩 초기화 에러가 발생했습니다." }
