@@ -11,7 +11,7 @@ import org.sopt.zooczoocbbangbbang.databinding.FragmentRecordBinding
 
 class RecordFragment : Fragment() {
     private var _binding: FragmentRecordBinding? = null
-    private val binding get() = requireNotNull(_binding) { }
+    private val binding get() = requireNotNull(_binding) { "바인딩 객체 생성하고 쓰자"  }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
