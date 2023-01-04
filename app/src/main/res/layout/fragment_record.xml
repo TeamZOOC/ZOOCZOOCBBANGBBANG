@@ -13,7 +13,7 @@
         android:layout_height="477dp"
         android:layout_marginStart="31dp"
         android:layout_marginEnd="30dp"
-        android:layout_marginTop="44dp"
+        android:elevation="10dp"
         android:background="@drawable/shape_record_white_radius_24"
         android:backgroundTint="@color/white"
         app:layout_constraintDimensionRatio="314:477"
@@ -25,7 +25,7 @@
             android:id="@+id/cv_record_photo"
             android:layout_width="0dp"
             android:layout_height="212dp"
-            android:layout_marginHorizontal="12dp"
+            android:layout_marginHorizontal="18dp"
             android:layout_marginTop="13dp"
             android:backgroundTint="#F5F5F5"
             app:cardCornerRadius="20dp"
@@ -55,6 +55,29 @@
                 android:scaleType="centerCrop" />
 
         </androidx.cardview.widget.CardView>
+
+<!--        <androidx.appcompat.widget.AppCompatEditText-->
+<!--            android:id="@+id/edt_record"-->
+<!--            android:layout_width="0dp"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginHorizontal="12dp"-->
+<!--            android:layout_marginTop="12dp"-->
+<!--            android:paddingVertical="95dp"-->
+<!--            android:background="@drawable/shape_record_white_radius_15"-->
+<!--            android:ems="10"-->
+<!--            android:hint="@string/record_edt_hint"-->
+<!--            android:ellipsize="start"-->
+<!--            android:inputType="textMultiLine"-->
+<!--            android:maxLength="80"-->
+<!--            android:gravity="top"-->
+<!--            android:scrollHorizontally="true"-->
+<!--            android:textColorHint="@color/grey_bd"-->
+<!--            android:textSize="14sp"-->
+<!--            android:textAppearance="@style/Zooc14Medium"-->
+<!--            app:layout_constraintEnd_toEndOf="parent"-->
+<!--            app:layout_constraintStart_toStartOf="parent"-->
+<!--            app:layout_constraintTop_toBottomOf="@+id/cv_record_photo"-->
+<!--            tools:ignore="TouchTargetSizeCheck" />-->
 
         <EditText
             android:id="@+id/edt_record"
