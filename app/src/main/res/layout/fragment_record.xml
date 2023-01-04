@@ -25,15 +25,15 @@
             android:id="@+id/cv_record_photo"
             android:layout_width="0dp"
             android:layout_height="212dp"
-            android:layout_marginHorizontal="12dp"
             android:layout_marginTop="13dp"
+            android:layout_marginHorizontal="18dp"
             android:backgroundTint="#F5F5F5"
             app:cardCornerRadius="20dp"
             app:cardElevation="0dp"
             app:layout_constraintDimensionRatio="289:212"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            app:layout_constraintEnd_toEndOf="@+id/cl_record_bgwhite"
+            app:layout_constraintStart_toStartOf="@+id/cl_record_bgwhite"
+            app:layout_constraintTop_toTopOf="@+id/cl_record_bgwhite">
 
             <ImageView
                 android:id="@+id/iv_record_imgbtn"
@@ -52,27 +52,32 @@
                 android:id="@+id/iv_record_bgimg"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:scaleType="centerCrop" />
+                android:scaleType="fitXY" />
 
         </androidx.cardview.widget.CardView>
 
         <EditText
             android:id="@+id/edt_record"
-            android:layout_width="0dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="35dp"
-            android:layout_marginTop="23dp"
-            android:background="@drawable/shape_record_white_radius_15"
+            android:layout_marginHorizontal="18dp"
+            android:layout_marginTop="12dp"
+            android:layout_marginBottom="18dp"
+            android:background="@drawable/shape_record_white2_radius_12"
             android:ems="10"
             android:hint="@string/record_edt_hint"
             android:inputType="textMultiLine"
-            android:maxLength="80"
+            android:maxLength="70"
+            android:paddingHorizontal="18dp"
+            android:paddingTop="18dp"
+            android:paddingBottom="180dp"
             android:scrollHorizontally="true"
+            android:textAppearance="@style/Zooc14Medium"
             android:textColorHint="#9C9898"
             android:textSize="14sp"
-            android:textAppearance="@style/Zooc14Medium"
+            app:layout_constraintBottom_toBottomOf="@+id/cl_record_bgwhite"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/cl_record_bgwhite"
             app:layout_constraintTop_toBottomOf="@+id/cv_record_photo"
             tools:ignore="TouchTargetSizeCheck" />
 
