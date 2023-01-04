@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">ZOOCZOOCBBANGBBANG</string>
+
+    <!--home-->
+    <string name="home_mission">미션</string>
+
 </resources>
