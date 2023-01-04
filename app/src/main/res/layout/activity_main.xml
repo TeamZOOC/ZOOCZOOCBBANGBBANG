@@ -18,7 +18,7 @@
             android:layout_height="match_parent">
 
             <com.google.android.material.bottomnavigation.BottomNavigationView
-                android:id="@+id/bottomNavigationView"
+                android:id="@+id/bnv_main"
                 android:layout_width="match_parent"
                 android:layout_height="90dp"
                 android:background="@drawable/rect_radius_24_top"
@@ -31,7 +31,7 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/constraintLayout"
+            android:id="@+id/cl_main_fab_container"
             android:layout_width="71dp"
             android:layout_height="71dp"
             android:layout_gravity="bottom|center"
@@ -40,7 +40,7 @@
             android:backgroundTint="@color/white">
 
             <com.google.android.material.floatingactionbutton.FloatingActionButton
-                android:id="@+id/floatingActionButton"
+                android:id="@+id/fab_main"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:backgroundTint="@color/green_42c87f"
