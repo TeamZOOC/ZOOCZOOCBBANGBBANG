@@ -57,7 +57,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/record_write"
-                    android:textAppearance="@style/Zooc18SemiBold"
+                    android:textAppearance="@style/Typography.S18"
                     android:textColor="#000000" />
 
                 <TextView
@@ -66,7 +66,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="24dp"
                     android:text="@string/record_mission"
-                    android:textAppearance="@style/Zooc18SemiBold"
+                    android:textAppearance="@style/Typography.S18"
                     android:textColor="#BDBDBD" />
 
             </androidx.appcompat.widget.LinearLayoutCompat>
