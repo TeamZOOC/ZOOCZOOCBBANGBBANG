@@ -3,7 +3,7 @@
     <style name="Theme.ZOOCZOOCBBANGBBANG" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <!-- Primary brand color. -->
         <item name="colorPrimary">@color/purple_500</item>
-        <item name="colorPrimaryVariant">@color/green_5ecb90</item>
+        <item name="colorPrimaryVariant">@color/green_42c87f</item>
         <item name="colorOnPrimary">@color/white</item>
         <!-- Secondary brand color. -->
         <item name="colorSecondary">@color/teal_200</item>
@@ -13,6 +13,7 @@
         <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
         <item name="android:includeFontPadding">false</item>
         <!-- Customize your theme here. -->
+        <item name="colorAccent">@color/white</item>
     </style>
 
     <style name="Zooc28SemiBold">
