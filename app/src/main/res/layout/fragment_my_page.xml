@@ -18,18 +18,24 @@
             android:background="#F0F2EF"
             tools:context=".presentation.main.mypage.MyPageFragment">
 
-            <com.google.android.material.imageview.ShapeableImageView
-                android:id="@+id/imageView"
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cv_profile"
                 android:layout_width="72dp"
                 android:layout_height="0dp"
-                android:layout_marginStart="32dp"
-                android:layout_marginTop="50dp"
-                android:scaleType="centerCrop"
+                android:layout_marginStart="36dp"
+                android:layout_marginTop="56dp"
+                app:cardCornerRadius="50dp"
                 app:layout_constraintDimensionRatio="1:1"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:shapeAppearanceOverlay="@style/Style.CircleImageView.Half"
-                tools:srcCompat="@tools:sample/avatars" />
+                app:strokeColor="#DAE0D6"
+                app:strokeWidth="2dp">
+
+                <ImageView
+                    android:layout_width="72dp"
+                    android:layout_height="72dp"
+                    android:src="@drawable/img_myprofile" />
+            </com.google.android.material.card.MaterialCardView>
 
 
             <TextView
@@ -40,12 +46,12 @@
                 android:layout_marginStart="16dp"
                 android:text="복실맘"
                 android:textColor="#333333"
-                app:layout_constraintBottom_toBottomOf="@+id/imageView"
-                app:layout_constraintStart_toEndOf="@+id/imageView"
-                app:layout_constraintTop_toTopOf="@+id/imageView" />
+                app:layout_constraintBottom_toBottomOf="@+id/cv_profile"
+                app:layout_constraintStart_toEndOf="@+id/cv_profile"
+                app:layout_constraintTop_toTopOf="@+id/cv_profile" />
 
             <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/constraintLayout"
+                android:id="@+id/cl_member"
                 android:layout_width="match_parent"
                 android:layout_height="155dp"
                 android:layout_marginHorizontal="30dp"
@@ -53,7 +59,7 @@
                 android:background="@drawable/myprofile_bg_profile"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/imageView">
+                app:layout_constraintTop_toBottomOf="@+id/cv_profile">
 
                 <TextView
                     android:id="@+id/tv_title_member"
@@ -83,6 +89,7 @@
                     android:layout_width="41dp"
                     android:layout_height="1dp"
                     android:layout_marginTop="2dp"
+                    android:backgroundTint="#828282"
                     app:layout_constraintEnd_toEndOf="@+id/tv_btn_invite"
                     app:layout_constraintStart_toStartOf="@+id/tv_btn_invite"
                     app:layout_constraintTop_toBottomOf="@+id/tv_btn_invite" />
@@ -91,9 +98,13 @@
                     android:id="@+id/rv_members"
                     android:layout_width="match_parent"
                     android:layout_height="81dp"
-                    android:layout_marginStart="16dp"
+                    android:layout_marginStart="1dp"
                     android:layout_marginTop="10dp"
+                    android:layout_marginEnd="1dp"
+                    android:clipToPadding="false"
                     android:orientation="horizontal"
+                    android:paddingStart="26dp"
+                    android:paddingEnd="10dp"
                     app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintDimensionRatio="300:81"
@@ -102,7 +113,7 @@
                     tools:listitem="@layout/item_mypage_recycler_members" />
 
                 <TextView
-                    android:id="@+id/textView"
+                    android:id="@+id/tv_member_num"
                     style="@style/Zooc12Medium"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -119,13 +130,13 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="/8"
-                    app:layout_constraintBottom_toBottomOf="@+id/textView"
-                    app:layout_constraintStart_toEndOf="@+id/textView"
-                    app:layout_constraintTop_toTopOf="@+id/textView" />
+                    app:layout_constraintBottom_toBottomOf="@+id/tv_member_num"
+                    app:layout_constraintStart_toEndOf="@+id/tv_member_num"
+                    app:layout_constraintTop_toTopOf="@+id/tv_member_num" />
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/cl_member"
+                android:id="@+id/cl_pet"
                 android:layout_width="match_parent"
                 android:layout_height="127dp"
                 android:layout_marginHorizontal="30dp"
@@ -134,7 +145,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.504"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/constraintLayout">
+                app:layout_constraintTop_toBottomOf="@+id/cl_member">
 
                 <TextView
                     android:id="@+id/tv_title_pet"
@@ -149,12 +160,16 @@
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/rev_pets"
+                    android:id="@+id/rv_pets"
                     android:layout_width="match_parent"
                     android:layout_height="81dp"
-                    android:layout_marginStart="21dp"
+                    android:layout_marginStart="1dp"
                     android:layout_marginTop="17dp"
+                    android:layout_marginEnd="1dp"
+                    android:clipToPadding="false"
                     android:orientation="horizontal"
+                    android:paddingStart="26dp"
+                    android:paddingEnd="16dp"
                     app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintDimensionRatio="300:81"
@@ -163,7 +178,7 @@
                     tools:listitem="@layout/item_mypage_recycler_pets" />
 
                 <TextView
-                    android:id="@+id/count_pet"
+                    android:id="@+id/tv_count_pet"
                     style="@style/Zooc12Medium"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -180,9 +195,9 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="/4"
-                    app:layout_constraintBottom_toBottomOf="@+id/count_pet"
-                    app:layout_constraintStart_toEndOf="@+id/count_pet"
-                    app:layout_constraintTop_toTopOf="@+id/count_pet" />
+                    app:layout_constraintBottom_toBottomOf="@+id/tv_count_pet"
+                    app:layout_constraintStart_toEndOf="@+id/tv_count_pet"
+                    app:layout_constraintTop_toTopOf="@+id/tv_count_pet" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -197,7 +212,7 @@
                 android:textAppearance="@style/Zooc16SemiBold"
                 android:textColor="#555555"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/cl_member" />
+                app:layout_constraintTop_toBottomOf="@+id/cl_pet" />
 
             <View
                 android:id="@+id/view_divider1"
@@ -321,7 +336,7 @@
                 android:layout_width="42dp"
                 android:layout_height="1dp"
                 android:layout_marginTop="2dp"
-                android:layout_marginBottom="49dp"
+                android:layout_marginBottom="69dp"
                 app:layout_constraintBottom_toBottomOf="@+id/cl_container"
                 app:layout_constraintEnd_toEndOf="@+id/tv_btn_quit"
                 app:layout_constraintHorizontal_bias="1.0"
@@ -329,7 +344,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/tv_btn_quit" />
 
             <TextView
-                android:id="@+id/textView5"
+                android:id="@+id/tv_btn_edit"
                 style="@style/Zooc12Medium"
                 android:layout_width="45dp"
                 android:layout_height="24dp"
@@ -341,20 +356,6 @@
                 app:layout_constraintBottom_toBottomOf="@+id/tv_nickname"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="@+id/tv_nickname" />
-
-            <androidx.constraintlayout.widget.Guideline
-                android:id="@+id/guideline2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                app:layout_constraintGuide_begin="20dp" />
-
-            <androidx.constraintlayout.widget.Guideline
-                android:id="@+id/guideline3"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                app:layout_constraintGuide_begin="20dp" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
 </layout>
