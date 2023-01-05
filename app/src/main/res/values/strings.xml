@@ -14,8 +14,10 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
     <!-- 반려동물 선택 뷰-->
-    <string name="choosePet_header1">반려동물 선택</string>
-    <string name="choosePet_header2">어디에 기록을 남길까요?</string>
-    <string name="choosePet_btn">등록</string>
+    <string name="choose2Pet_header1">반려동물 선택</string>
+    <string name="choose2Pet_header2">어디에 기록을 남길까요?</string>
+    <string name="choose2Pet_btn">등록</string>
+    <string name="choosePet_name">토리</string>
+
 
 </resources>

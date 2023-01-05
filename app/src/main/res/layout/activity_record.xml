@@ -82,6 +82,15 @@
             android:layout_marginTop="101dp"
             tools:layout="@layout/fragment_record" />
 
+<!--        <androidx.fragment.app.FragmentContainerView-->
+<!--            android:id="@+id/fcv_choosePet2_view"-->
+<!--            android:name="org.sopt.zooczoocbbangbbang.presentation.main.record.Choose2PetFragment"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="match_parent"-->
+<!--            android:layout_marginTop="101dp"-->
+<!--            tools:layout = "@layout/fragment_choose_2_pet"/>-->
+
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </layout>
