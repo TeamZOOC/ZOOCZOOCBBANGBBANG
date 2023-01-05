@@ -72,7 +72,7 @@
             android:paddingTop="18dp"
             android:paddingBottom="180dp"
             android:scrollHorizontally="true"
-            android:textAppearance="@style/Zooc14Medium"
+            android:textAppearance="@style/Typography.M14"
             android:textColorHint="#9C9898"
             android:textSize="14sp"
             app:layout_constraintBottom_toBottomOf="@+id/cl_record_bgwhite"
@@ -95,7 +95,7 @@
         android:padding="10dp"
         android:text="@string/record_button_text"
         android:textColor="@color/white"
-        android:textAppearance="@style/Zooc20SemiBold"
+        android:textAppearance="@style/Typography.S20"
 
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
