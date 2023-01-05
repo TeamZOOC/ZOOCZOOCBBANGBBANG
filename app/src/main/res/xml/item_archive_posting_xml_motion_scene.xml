@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<MotionScene xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:motion="http://schemas.android.com/apk/res-auto">
+
+    <Transition
+        motion:constraintSetEnd="@+id/end"
+        motion:constraintSetStart="@id/start"
+        motion:duration="400">
+        <KeyFrameSet></KeyFrameSet>
+    </Transition>
+
+    <ConstraintSet android:id="@+id/start">
+        <Constraint
+            android:id="@+id/iv_archive_pet_image"
+            motion:layout_constraintEnd_toEndOf="parent"
+            android:layout_width="60dp"
+            android:layout_height="263dp"
+            motion:layout_constraintTop_toTopOf="parent"
+            motion:layout_constraintStart_toStartOf="parent" />
+        <Constraint
+            android:id="@+id/cv_archive_uploader_profile"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_marginBottom="11dp"
+            android:layout_marginTop="60dp"
+            motion:layout_constraintEnd_toEndOf="parent"
+            motion:layout_constraintBottom_toTopOf="@id/tv_archive_date"
+            motion:layout_constraintTop_toBottomOf="@id/iv_archive_pet_image"
+            motion:layout_constraintStart_toStartOf="parent" />
+        <Constraint
+            android:id="@+id/tv_archive_content"
+            motion:layout_constraintEnd_toEndOf="@id/iv_archive_pet_image"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:alpha="0.0"
+            motion:layout_constraintTop_toBottomOf="@id/iv_archive_pet_image"
+            motion:layout_constraintStart_toStartOf="@id/iv_archive_pet_image"
+            android:layout_marginTop="12dp" />
+        <Constraint
+            android:id="@+id/tv_archive_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="24dp"
+            motion:layout_constraintStart_toStartOf="parent"
+            motion:layout_constraintEnd_toEndOf="parent"
+            motion:layout_constraintBottom_toBottomOf="parent" />
+        <Constraint
+            android:id="@+id/tv_archive_editor"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:alpha="0.0"
+            android:layout_marginStart="7dp"
+            motion:layout_constraintStart_toEndOf="@id/cv_archive_uploader_profile"
+            motion:layout_constraintBottom_toBottomOf="@id/cv_archive_uploader_profile"
+            motion:layout_constraintTop_toTopOf="@id/cv_archive_uploader_profile" />
+    </ConstraintSet>
+
+    <ConstraintSet android:id="@+id/end">
+        <Constraint
+            android:id="@+id/iv_archive_pet_image"
+            motion:layout_constraintEnd_toEndOf="parent"
+            android:layout_width="191dp"
+            android:layout_height="263dp"
+            motion:layout_constraintTop_toTopOf="parent"
+            motion:layout_constraintStart_toStartOf="parent" />
+        <Constraint
+            android:id="@+id/cv_archive_uploader_profile"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_marginStart="19dp"
+            android:layout_marginBottom="19dp"
+            android:layout_marginTop="18dp"
+            motion:layout_constraintBottom_toBottomOf="parent"
+            motion:layout_constraintTop_toBottomOf="@+id/tv_archive_content"
+            motion:layout_constraintStart_toStartOf="parent" />
+        <Constraint
+            android:id="@+id/tv_archive_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="19dp"
+            motion:layout_constraintTop_toTopOf="@+id/cv_archive_uploader_profile"
+            motion:layout_constraintBottom_toBottomOf="@+id/cv_archive_uploader_profile"
+            motion:layout_constraintEnd_toEndOf="parent" />
+        <Constraint
+            android:id="@+id/tv_archive_content"
+            android:layout_width="0dp"
+            android:layout_height="60dp"
+            android:layout_marginStart="19dp"
+            android:layout_marginEnd="19dp"
+            android:layout_marginTop="12dp"
+            android:alpha="1.0"
+            motion:layout_constraintEnd_toEndOf="@id/iv_archive_pet_image"
+            motion:layout_constraintTop_toBottomOf="@id/iv_archive_pet_image"
+            motion:layout_constraintStart_toStartOf="@id/iv_archive_pet_image" />
+        <Constraint
+            android:id="@+id/tv_archive_editor"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="7dp"
+            android:alpha="1.0"
+            motion:layout_constraintStart_toEndOf="@id/cv_archive_uploader_profile"
+            motion:layout_constraintBottom_toBottomOf="@id/cv_archive_uploader_profile"
+            motion:layout_constraintTop_toTopOf="@id/cv_archive_uploader_profile" />
+    </ConstraintSet>
+</MotionScene>
