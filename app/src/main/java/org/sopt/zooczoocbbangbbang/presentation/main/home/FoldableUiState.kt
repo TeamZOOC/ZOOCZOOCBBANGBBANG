@@ -1,6 +1,6 @@
 package org.sopt.zooczoocbbangbbang.presentation.main.home
 
-enum class PetUiState {
+enum class FoldableUiState {
     FOLD,
-    EXPAND
+    EXPAND;
 }

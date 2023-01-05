@@ -19,15 +19,15 @@ class PetAdapter : RecyclerView.Adapter<PetAdapter.PetViewHolder>() {
             binding.tvPetItemName.text = data.name
             binding.ivHomePetProfile.load(data.image)
             when (data.isSelected) {
-                true -> updateUi(PetUiState.EXPAND)
-                false -> updateUi(PetUiState.FOLD)
+                true -> updateUi(FoldableUiState.EXPAND)
+                false -> updateUi(FoldableUiState.FOLD)
             }
         }
 
-        fun updateUi(petUiState: PetUiState) {
+        fun updateUi(petUiState: FoldableUiState) {
             when (petUiState) {
-                PetUiState.FOLD -> foldItem()
-                PetUiState.EXPAND -> expandItem()
+                FoldableUiState.FOLD -> foldItem()
+                FoldableUiState.EXPAND -> expandItem()
             }
         }
 
@@ -50,7 +50,7 @@ class PetAdapter : RecyclerView.Adapter<PetAdapter.PetViewHolder>() {
         holder.itemView.setOnClickListener {
             previousIndex = currentIndex
             currentIndex = position
-            holder.updateUi(PetUiState.EXPAND)
+            holder.updateUi(FoldableUiState.EXPAND)
             pets[previousIndex].isSelected = false
             pets[currentIndex].isSelected = true
             notifyItemChanged(previousIndex)
