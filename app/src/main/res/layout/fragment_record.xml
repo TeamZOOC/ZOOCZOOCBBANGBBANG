@@ -13,7 +13,6 @@
         android:layout_height="477dp"
         android:layout_marginStart="31dp"
         android:layout_marginEnd="30dp"
-        android:layout_marginTop="44dp"
         android:background="@drawable/shape_record_white_radius_24"
         android:backgroundTint="@color/white"
         app:layout_constraintDimensionRatio="314:477"

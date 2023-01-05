@@ -79,9 +79,8 @@
             android:name="org.sopt.zooczoocbbangbbang.presentation.main.record.RecordFragment"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            tools:layout="@layout/fragment_record"
-            tools:layout_editor_absoluteY="103dp"
-            tools:layout_editor_absoluteX="0dp" />
+            android:layout_marginTop="101dp"
+            tools:layout="@layout/fragment_record" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
