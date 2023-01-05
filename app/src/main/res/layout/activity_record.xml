@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
@@ -83,13 +82,6 @@
             android:layout_marginTop="101dp"
             tools:layout="@layout/fragment_record" />
 
-<!--        <androidx.fragment.app.FragmentContainerView-->
-<!--            android:id="@+id/fcv_choosePet2_view"-->
-<!--            android:name="org.sopt.zooczoocbbangbbang.presentation.main.record.Choose2PetFragment"-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="match_parent"-->
-<!--            android:layout_marginTop="101dp"-->
-<!--            tools:layout = "@layout/fragment_choose_2_pet"/>-->
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

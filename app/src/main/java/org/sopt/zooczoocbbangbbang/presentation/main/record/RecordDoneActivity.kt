@@ -2,7 +2,6 @@ package org.sopt.zooczoocbbangbbang.presentation.main.record
 
 import android.os.Bundle
 import org.sopt.zooczoocbbangbbang.R
-import org.sopt.zooczoocbbangbbang.databinding.ActivityRecordBinding
 import org.sopt.zooczoocbbangbbang.databinding.ActivityRecordDoneBinding
 import org.sopt.zooczoocbbangbbang.presentation.base.BindingActivity
 
