@@ -4,4 +4,8 @@
     <!--home-->
     <string name="home_mission">미션</string>
 
+    <string name="record_write">기록</string>
+    <string name="record_mission">미션</string>
+    <string name="record_edt_hint">오늘 어떤일이 있었는지 공유해보세요</string>
+    <string name="record_button_text">다음</string>
 </resources>
