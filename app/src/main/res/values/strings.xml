@@ -10,5 +10,12 @@
     <string name="recordDone_header1">등록 완료!</string>
     <string name="recordDone_header2">가족들에게 게시글 알림을 보냈어요</string>
     <string name="recordDone_btn">아카이브 보러가기</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <!-- 반려동물 선택 뷰-->
+    <string name="choosePet_header1">반려동물 선택</string>
+    <string name="choosePet_header2">어디에 기록을 남길까요?</string>
+    <string name="choosePet_btn">등록</string>
 
 </resources>
