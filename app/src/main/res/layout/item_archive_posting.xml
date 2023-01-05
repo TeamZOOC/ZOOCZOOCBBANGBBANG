@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="data"
+            type="org.sopt.zooczoocbbangbbang.domain.ArchivePostingData" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingEnd="10dp">
+
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:cardCornerRadius="12dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:strokeColor="@color/grey_e0"
+            app:strokeWidth="2dp">
+
+            <androidx.constraintlayout.motion.widget.MotionLayout
+                android:id="@+id/ml_archive_posting"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layoutDescription="@xml/item_archive_posting_xml_motion_scene">
+
+                <ImageView
+                    android:id="@+id/iv_archive_pet_image"
+                    android:layout_width="60dp"
+                    android:layout_height="263dp"
+                    android:scaleType="centerCrop"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    tools:srcCompat="@tools:sample/avatars" />
+
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/cv_archive_uploader_profile"
+                    android:layout_width="24dp"
+                    app:cardCornerRadius="12dp"
+                    app:layout_constraintTop_toBottomOf="@id/iv_archive_pet_image"
+                    android:layout_marginTop="60dp"
+                    android:layout_marginBottom="11dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintBottom_toTopOf="@id/tv_archive_date"
+                    android:layout_height="24dp">
+
+                    <ImageView
+                        android:id="@+id/iv_archive_uploader_profile"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:scaleType="centerCrop"
+                        tools:src="@tools:sample/avatars" />
+
+                </com.google.android.material.card.MaterialCardView>
+
+                <TextView
+                    android:id="@+id/tv_archive_date"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="24dp"
+                    style="@style/Typography.M12"
+                    android:textColor="@color/grey_82"
+                    android:text="@{data.date}"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    tools:text="12/17" />
+
+                <TextView
+                    android:id="@+id/tv_archive_content"
+                    style="@style/Typography.M14"
+                    android:textColor="@color/grey_4f"
+                    android:text="@{data.content}"
+                    android:maxLines="3"
+                    android:minLines="3"
+                    tools:text="오늘 복실이 사진 찍었다! 다들 댓글 남겨줘! 오늘 복실이 사진 찍었다! 다들 댓글 남겨"
+                    app:layout_constraintStart_toStartOf="@id/iv_archive_pet_image"
+                    app:layout_constraintEnd_toEndOf="@id/iv_archive_pet_image"
+                    app:layout_constraintTop_toBottomOf="@id/iv_archive_pet_image"
+                    android:layout_marginTop="12dp"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp" />
+
+                <TextView
+                    tools:text="엄마"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    style="@style/Typography.M14"
+                    android:textColor="@color/grey_82"
+                    android:text="@{data.editor}"
+                    app:layout_constraintTop_toTopOf="@id/cv_archive_uploader_profile"
+                    app:layout_constraintBottom_toBottomOf="@id/cv_archive_uploader_profile"
+                    app:layout_constraintStart_toEndOf="@id/cv_archive_uploader_profile"
+                    android:layout_marginStart="7dp"
+                    android:paddingHorizontal="7dp"
+                    android:paddingVertical="4dp"
+                    android:background="@drawable/rect_radius_5"
+                    android:backgroundTint="@color/white_f2"
+                    android:id="@+id/tv_archive_editor" />
+            </androidx.constraintlayout.motion.widget.MotionLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
