@@ -4,4 +4,12 @@
     <string name="record_mission">미션</string>
     <string name="record_edt_hint">오늘 어떤일이 있었는지 공유해보세요</string>
     <string name="record_button_text">다음</string>
+
+    <string name="customDialog_title">페이지를 나가시겠어요?</string>
+    <string name="customDialog_subtitle">지금 떠나면 내용이 저장되지 않아요</string>
+    <string name="customDialog_relaywrite">이어쓰기</string>
+    <string name="customDialog_quit">나가기</string>
+
+
+
 </resources>
