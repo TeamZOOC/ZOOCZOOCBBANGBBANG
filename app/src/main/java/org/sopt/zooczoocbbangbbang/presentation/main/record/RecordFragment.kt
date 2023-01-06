@@ -26,8 +26,12 @@ class RecordFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentRecordBinding.inflate(inflater, container, false)
+        binding.lifecycleOwner = viewLifecycleOwner
+        binding.viewmodel = recordViewModel // 꼭 넣어주기 !!!!!!!!!!!!!
+
         clickImageBtn()
         clickNextBtn()
+        observe()
         return binding.root
     }
 
@@ -36,6 +40,7 @@ class RecordFragment : Fragment() {
         val launcher = registerForActivityResult(ActivityResultContracts.GetContent()) {
             binding.ivRecordBgimg.load(it) {
                 transformations()
+                recordViewModel.image.value = it
             }
         }
         binding.ivRecordImgbtn.setOnClickListener {
@@ -46,6 +51,18 @@ class RecordFragment : Fragment() {
     private fun clickNextBtn() {
         binding.btnRecordBottom.setOnClickListener() {
             Log.d("RecordFragment", "반려동물 선택 뷰로 이동하는 로직 필요!")
+        }
+    }
+
+    private fun observe() {
+        recordViewModel.image.observe(viewLifecycleOwner) {
+            Log.d("observe", "image:::${recordViewModel.image.value}")
+        }
+        recordViewModel.recordText.observe(viewLifecycleOwner) {
+            Log.d("observe", "Recordtext:::$it")
+        }
+        recordViewModel.buttonValidation.observe(viewLifecycleOwner) {
+            Log.d("observe", "validation:::$it")
         }
     }
 
