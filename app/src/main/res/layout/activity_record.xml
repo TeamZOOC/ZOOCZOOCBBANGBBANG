@@ -31,7 +31,7 @@
             app:layout_constraintTop_toTopOf="parent">
 
             <ImageButton
-                android:id="@+id/imgbtn_record_back"
+                android:id="@+id/imgbtn_record_close"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@null"
@@ -47,10 +47,10 @@
                 android:layout_marginStart="219dp"
                 android:layout_marginEnd="29dp"
                 android:orientation="horizontal"
-                app:layout_constraintBottom_toBottomOf="@+id/imgbtn_record_back"
+                app:layout_constraintBottom_toBottomOf="@+id/imgbtn_record_close"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/imgbtn_record_back"
-                app:layout_constraintTop_toTopOf="@+id/imgbtn_record_back">
+                app:layout_constraintStart_toEndOf="@+id/imgbtn_record_close"
+                app:layout_constraintTop_toTopOf="@+id/imgbtn_record_close">
 
                 <TextView
                     android:id="@+id/tv_record_write"
@@ -81,6 +81,7 @@
             android:layout_height="match_parent"
             android:layout_marginTop="101dp"
             tools:layout="@layout/fragment_record" />
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
