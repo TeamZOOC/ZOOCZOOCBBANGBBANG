@@ -7,10 +7,93 @@
 
     </data>
 
+
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/cl_record_background"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@color/green_f0f2ef"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
         tools:context=".presentation.main.record.RecordActivity">
 
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/cl_record_header"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="31dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginEnd="30dp"
+            android:layout_marginTop="30dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageButton
+                android:id="@+id/imgbtn_record_back"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@null"
+                android:src="@drawable/ic_close"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:id="@+id/ll_record_header"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="219dp"
+                android:layout_marginEnd="29dp"
+                android:orientation="horizontal"
+                app:layout_constraintBottom_toBottomOf="@+id/imgbtn_record_back"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/imgbtn_record_back"
+                app:layout_constraintTop_toTopOf="@+id/imgbtn_record_back">
+
+                <TextView
+                    android:id="@+id/tv_record_write"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/record_write"
+                    android:textAppearance="@style/Typography.S18"
+                    android:textColor="#000000" />
+
+                <TextView
+                    android:id="@+id/tv_record_mission"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="24dp"
+                    android:text="@string/record_mission"
+                    android:textAppearance="@style/Typography.S18"
+                    android:textColor="#BDBDBD" />
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+<!--        <androidx.fragment.app.FragmentContainerView-->
+<!--            android:id="@+id/fcv_record_view"-->
+<!--            android:name="org.sopt.zooczoocbbangbbang.presentation.main.record.RecordFragment"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="match_parent"-->
+<!--            android:layout_marginTop="101dp"-->
+<!--            tools:layout="@layout/fragment_record" />-->
+        <androidx.fragment.app.FragmentContainerView
+            android:id="@+id/fcv_record_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:name="org.sopt.zooczoocbbangbbang.presentation.main.record.MissionFragment"
+            android:layout_marginTop="101dp"
+            tools:layout="@layout/fragment_mission"
+            />
+
+
+
+
+
     </androidx.constraintlayout.widget.ConstraintLayout>
+
 </layout>

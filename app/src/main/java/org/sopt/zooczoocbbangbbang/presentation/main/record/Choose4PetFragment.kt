@@ -1,12 +1,12 @@
-package org.sopt.zooczoocbbangbbang.presentation.main.record
-
 import android.os.Bundle
 import android.view.View
 import org.sopt.zooczoocbbangbbang.R
-import org.sopt.zooczoocbbangbbang.databinding.FragmentMissionBinding
+import org.sopt.zooczoocbbangbbang.databinding.FragmentChoose4PetBinding
 import org.sopt.zooczoocbbangbbang.presentation.base.BindingFragment
 
-class MissionFragment : BindingFragment<FragmentMissionBinding>(R.layout.fragment_mission) {
+class Choose4PetFragment :
+    BindingFragment<FragmentChoose4PetBinding>(R.layout.fragment_four_selector_pet) {
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
     }
