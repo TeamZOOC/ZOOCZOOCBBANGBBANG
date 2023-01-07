@@ -21,6 +21,17 @@ class RecordActivity : BindingActivity<ActivityRecordBinding>(R.layout.activity_
     private fun clickCloseBtn() {
         binding.imgbtnRecordClose.setOnClickListener() {
             Log.d("RecordActivity", "dialog 뜨는 로직 필요!")
+            /*
+            btnSample.setOnClickListener {
+            SampleFragmentDialog().show(
+                    supportFragmentManager, "SampleDialog"
+            )
+        }
+             */
+            val dialog: CustomDialogFragment = CustomDialogFragment.newInstance()
+            // dialog.show(
+            //     supportFragmentManager, "CustomDialog"
+            // )
         }
     }
 }

@@ -28,7 +28,6 @@ class RecordFragment : Fragment() {
         _binding = FragmentRecordBinding.inflate(inflater, container, false)
         binding.lifecycleOwner = viewLifecycleOwner
         binding.viewmodel = recordViewModel // 꼭 넣어주기 !!!!!!!!!!!!!
-
         clickImageBtn()
         clickNextBtn()
         observe()
