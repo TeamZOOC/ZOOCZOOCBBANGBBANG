@@ -1,7 +1,23 @@
 <resources>
+
     <string name="app_name">ZOOCZOOCBBANGBBANG</string>
+    <!-- 기록하기 메인뷰-->
     <string name="record_write">기록</string>
     <string name="record_mission">미션</string>
     <string name="record_edt_hint">오늘 어떤일이 있었는지 공유해보세요</string>
     <string name="record_button_text">다음</string>
+    <!-- 등록완료 뷰-->
+    <string name="recordDone_header1">등록 완료!</string>
+    <string name="recordDone_header2">가족들에게 게시글 알림을 보냈어요</string>
+    <string name="recordDone_btn">아카이브 보러가기</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <!-- 반려동물 선택 뷰-->
+    <string name="choose2Pet_header1">반려동물 선택</string>
+    <string name="choose2Pet_header2">어디에 기록을 남길까요?</string>
+    <string name="choose2Pet_btn">등록</string>
+    <string name="choosePet_name">토리</string>
+
+
 </resources>

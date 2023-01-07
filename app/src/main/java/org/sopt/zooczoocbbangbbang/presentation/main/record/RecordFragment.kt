@@ -1,30 +1,18 @@
 package org.sopt.zooczoocbbangbbang.presentation.main.record
 
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import androidx.activity.result.contract.ActivityResultContracts
-import androidx.fragment.app.Fragment
 import coil.load
+import org.sopt.zooczoocbbangbbang.R
 import org.sopt.zooczoocbbangbbang.databinding.FragmentRecordBinding
+import org.sopt.zooczoocbbangbbang.presentation.base.BindingFragment
 
-class RecordFragment : Fragment() {
-    private var _binding: FragmentRecordBinding? = null
-    private val binding get() = requireNotNull(_binding) { }
+class RecordFragment : BindingFragment<FragmentRecordBinding>(R.layout.fragment_record) {
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-    }
-
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
-        _binding = FragmentRecordBinding.inflate(inflater, container, false)
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
         clickImageBtn()
-        return binding.root
     }
 
     // 사진을 불러오는 함수
