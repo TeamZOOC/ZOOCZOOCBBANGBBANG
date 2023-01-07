@@ -163,7 +163,7 @@
             android:layout_marginHorizontal="30dp"
             android:layout_marginTop="63dp"
             android:layout_marginBottom="44dp"
-            android:background="@drawable/shape_green_radius_20"
+            android:background="@drawable/shape_green_radius_47"
             android:elevation="10dp"
             android:padding="10dp"
             android:text="@string/choose2Pet_btn"
