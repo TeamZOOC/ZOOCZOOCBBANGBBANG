@@ -16,14 +16,13 @@
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_archive_posting"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
             android:layout_marginTop="30dp"
             android:paddingStart="30dp"
             android:clipToPadding="false"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            android:orientation="horizontal"
             app:layout_constraintTop_toBottomOf="@id/rv_home_pet"
-            tools:listitem="@layout/item_archive_posting"/>
+            tools:listitem="@layout/item_linear_archive_posting" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_home_pet"
@@ -32,30 +31,75 @@
             android:layout_marginStart="30dp"
             android:orientation="horizontal"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            app:layout_constraintBottom_toBottomOf="@+id/iv_main_linear"
-            app:layout_constraintEnd_toStartOf="@+id/iv_main_linear"
+            app:layout_constraintBottom_toBottomOf="@+id/cl_main_linear"
+            app:layout_constraintEnd_toStartOf="@+id/cl_main_linear"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/iv_main_linear"
+            app:layout_constraintTop_toTopOf="@+id/cl_main_linear"
             tools:listitem="@layout/item_pet" />
 
-        <ImageView
-            android:id="@+id/iv_main_linear"
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/cl_main_linear"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:layout_constraintBottom_toBottomOf="@+id/iv_main_grid"
-            app:layout_constraintEnd_toStartOf="@+id/iv_main_grid"
-            app:layout_constraintTop_toTopOf="@+id/iv_main_grid"
-            app:srcCompat="@drawable/ic_linear" />
+            app:layout_constraintBottom_toBottomOf="@+id/cl_main_grid"
+            app:layout_constraintEnd_toStartOf="@+id/cl_main_grid"
+            app:layout_constraintTop_toTopOf="@+id/cl_main_grid">
 
-        <ImageView
-            android:id="@+id/iv_main_grid"
+            <ImageView
+                android:id="@+id/iv_main_linear_unselected"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:srcCompat="@drawable/ic_linear"
+                android:visibility="invisible"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent" />
+
+            <ImageView
+                android:id="@+id/iv_main_linear_selected"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:srcCompat="@drawable/ic_linear_selected"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/cl_main_grid"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="15dp"
             android:layout_marginEnd="21dp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/cl_home_top"
-            app:srcCompat="@drawable/ic_grid" />
+            app:layout_constraintTop_toBottomOf="@+id/cl_home_top">
+
+            <ImageView
+                android:id="@+id/iv_main_grid_unselected"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:srcCompat="@drawable/ic_grid" />
+
+            <ImageView
+                android:id="@+id/iv_main_grid_selected"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:visibility="invisible"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:srcCompat="@drawable/ic_grid_selected" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/cl_home_top"
