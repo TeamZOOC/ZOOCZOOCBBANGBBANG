@@ -6,6 +6,7 @@
 
     <application
         android:allowBackup="true"
+        android:name=".App"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
         android:icon="@mipmap/ic_launcher"
@@ -21,6 +22,9 @@
             android:windowSoftInputMode="adjustPan"
             android:exported="true">
         </activity>
+        <activity
+            android:name=".presentation.main.onboarding.ProfileCreateActivity"
+            android:exported="true" />
         <activity
             android:name=".presentation.main.record.RecordDoneActivity"
             android:exported="false">
