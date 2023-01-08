@@ -13,7 +13,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/cl_mission_basebg"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="match_parent">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/cl_mission_bgwhite"
@@ -81,7 +81,7 @@
                 android:layout_marginHorizontal="18dp"
                 android:layout_marginTop="12dp"
                 android:layout_marginBottom="18dp"
-                android:text=""
+                android:text="@={viewmodel.missionText}"
                 android:background="@drawable/shape_rec_white2_radius_12"
                 android:hint="@string/mission_hintText"
                 android:inputType="textMultiLine"
@@ -89,6 +89,7 @@
                 android:paddingTop="18dp"
                 android:paddingBottom="18dp"
                 android:gravity="top"
+                android:maxLength="70"
                 android:textAppearance="@style/Typography.M14"
                 android:textColorHint="#9C9898"
                 android:lineSpacingExtra="5sp"

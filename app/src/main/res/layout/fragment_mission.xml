@@ -19,11 +19,14 @@
         android:layout_height="wrap_content"
         tools:context=".presentation.main.record.MissionFragment">
 
-        <androidx.fragment.app.FragmentContainerView
+        <androidx.viewpager2.widget.ViewPager2
             android:id="@+id/fcv_mission_view"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:name="org.sopt.zooczoocbbangbbang.presentation.main.record.MissionViewPagerFragment" />
+            android:name="org.sopt.zooczoocbbangbbang.presentation.main.record.MissionViewPagerFragment"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btn_mission_bottom"

@@ -14,25 +14,13 @@ class MissionFragment : BindingFragment<FragmentMissionBinding>(R.layout.fragmen
         super.onViewCreated(view, savedInstanceState)
         binding.lifecycleOwner = viewLifecycleOwner
         binding.viewmodel = missionViewModel
+
         clickNextBtn()
-        observe()
     }
 
     private fun clickNextBtn() {
         binding.btnMissionBottom.setOnClickListener() {
             Log.d("MissionFragment", "반려동물 선택 뷰로 이동하는 로직 필요!")
-        }
-    }
-
-    private fun observe() {
-        missionViewModel.image.observe(viewLifecycleOwner) {
-            Log.d("MissionFragment", "image:::${missionViewModel.image.value}")
-        }
-        missionViewModel.missionText.observe(viewLifecycleOwner) {
-            Log.d("MissionFragment", "Recordtext:::$it")
-        }
-        missionViewModel.buttonValidation.observe(viewLifecycleOwner) {
-            Log.d("MissionFragment", "validation:::$it")
         }
     }
 
