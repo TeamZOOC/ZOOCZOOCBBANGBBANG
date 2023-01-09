@@ -25,7 +25,7 @@ class HomeFragment : BindingFragment<FragmentHomeBinding>(R.layout.fragment_home
         super.onViewCreated(view, savedInstanceState)
         initPetAdapter()
         initArchiveAdapter()
-        initList()
+        initPets()
         initArchiveList()
         clickLinearButton()
         clickGridButton()
@@ -58,7 +58,7 @@ class HomeFragment : BindingFragment<FragmentHomeBinding>(R.layout.fragment_home
         }
     }
 
-    private fun initList() {
+    private fun initPets() {
         val pets = listOf(
             PetData(R.drawable.ym1, "용민", true),
             PetData(R.drawable.ym2, "진수", false),
