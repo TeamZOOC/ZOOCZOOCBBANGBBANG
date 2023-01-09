@@ -1,6 +1,5 @@
 package org.sopt.zooczoocbbangbbang.presentation.main.home
 
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -35,8 +34,7 @@ class ArchivePostingAdapter :
         } else {
             holder.onBind(archives[position]) {}
         }
-        holder.onBind(archives[position])
-        Log.d("asdf", "onBindViewHolder position : $position / isSelected ${archives[position].isSelected} / date ${archives[position].date}")
+        holder.setIsRecyclable(false)
     }
 
     private fun clickItem(position: Int) {
@@ -49,6 +47,10 @@ class ArchivePostingAdapter :
     }
 
     override fun getItemCount(): Int = archives.size
+
+    override fun getItemViewType(position: Int): Int {
+        return position
+    }
 
     fun initArchives(items: List<ArchivePostingData>) {
         archives.addAll(items)
