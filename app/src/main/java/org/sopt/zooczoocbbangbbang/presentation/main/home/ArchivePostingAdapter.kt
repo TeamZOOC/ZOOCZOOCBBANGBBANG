@@ -31,21 +31,21 @@ class ArchivePostingAdapter :
 
     override fun onBindViewHolder(holder: ArchivePostingViewHolder, position: Int) {
         if (holder is ArchivePostingLinearViewHolder) {
-            bindLinearViewHolder(holder, position)
+            holder.onBind(archives[position]) { clickItem(position) }
+        } else {
+            holder.onBind(archives[position]) {}
         }
         holder.onBind(archives[position])
         Log.d("asdf", "onBindViewHolder position : $position / isSelected ${archives[position].isSelected} / date ${archives[position].date}")
     }
 
-    private fun bindLinearViewHolder(holder: ArchivePostingLinearViewHolder, position: Int) {
-        holder.itemView.setOnClickListener {
-            previousIndex = currentIndex
-            currentIndex = position
-            holder.updateUi(FoldableUiState.EXPAND)
-            archives[previousIndex].isSelected = false
-            archives[currentIndex].isSelected = true
-            notifyItemChanged(previousIndex)
-        }
+    private fun clickItem(position: Int) {
+        previousIndex = currentIndex
+        currentIndex = position
+        archives[previousIndex].isSelected = false
+        archives[currentIndex].isSelected = true
+        notifyItemChanged(currentIndex)
+        notifyItemChanged(previousIndex)
     }
 
     override fun getItemCount(): Int = archives.size
