@@ -1,6 +1,10 @@
 <resources>
 
     <string name="app_name">ZOOCZOOCBBANGBBANG</string>
+
+    <!--home-->
+    <string name="home_mission">미션</string>
+
     <!-- 기록하기 메인뷰-->
     <string name="record_write">기록</string>
     <string name="record_mission">미션</string>
