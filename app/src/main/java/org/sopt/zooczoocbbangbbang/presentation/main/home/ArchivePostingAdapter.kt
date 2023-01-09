@@ -20,12 +20,10 @@ class ArchivePostingAdapter :
         return when (layoutManagerType) {
             LayoutManagerType.LINEAR -> {
                 val binding = ItemLinearArchivePostingBinding.inflate(layoutInflater, parent, false)
-                Log.d("asdf", "리니어 크리에이트")
                 ArchivePostingLinearViewHolder(binding)
             }
             LayoutManagerType.GRID -> {
                 val binding = ItemGridArchivePostingBinding.inflate(layoutInflater, parent, false)
-                Log.d("asdf", "그리드 크리에이트")
                 ArchivePostingGridViewHolder(binding)
             }
         }
