@@ -22,7 +22,6 @@ class MissionViewPagerFragment :
         observe()
     }
 
-    // 사진을 불러오는 함수
     private fun clickImageBtn() {
         val launcher = registerForActivityResult(ActivityResultContracts.GetContent()) {
             binding.ivMissionBgimg.load(it) {

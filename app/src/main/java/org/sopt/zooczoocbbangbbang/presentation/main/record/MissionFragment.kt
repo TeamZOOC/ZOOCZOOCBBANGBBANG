@@ -18,9 +18,9 @@ class MissionFragment : BindingFragment<FragmentMissionBinding>(R.layout.fragmen
         val pagerAdapter = MissionFragmentStateAdapter(requireActivity())
 
         // fragment add
-        pagerAdapter.addFragment(MissionFragment())
-        pagerAdapter.addFragment(MissionFragment())
-        pagerAdapter.addFragment(MissionFragment())
+        pagerAdapter.addFragment(MissionViewPagerFragment())
+        pagerAdapter.addFragment(MissionViewPagerFragment())
+        pagerAdapter.addFragment(MissionViewPagerFragment())
 
         binding.fcvMissionView.adapter = pagerAdapter
         binding.fcvMissionView.registerOnPageChangeCallback(object :

@@ -22,7 +22,9 @@
         <androidx.viewpager2.widget.ViewPager2
             android:id="@+id/fcv_mission_view"
             android:layout_width="match_parent"
-            android:layout_height="0dp"
+            android:layout_height="wrap_content"
+
+            android:layout_marginBottom="69dp"
             android:name="org.sopt.zooczoocbbangbbang.presentation.main.record.MissionViewPagerFragment"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -41,9 +43,9 @@
             android:text="@string/button_next"
             android:textColor="@color/white"
             android:textAppearance="@style/Typography.S20"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent" />
+            app:layout_constraintEnd_toEndOf="@+id/cl_mission_bg"
+            app:layout_constraintStart_toStartOf="@+id/cl_mission_bg"
+            app:layout_constraintBottom_toBottomOf="@+id/cl_mission_bg" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
