@@ -54,4 +54,11 @@ class ArchivePostingAdapter :
         archives.addAll(items)
         notifyDataSetChanged()
     }
+
+    fun foldItem() {
+        archives[currentIndex].isSelected = false
+        notifyItemChanged(currentIndex)
+        currentIndex = 0
+        previousIndex = -1
+    }
 }

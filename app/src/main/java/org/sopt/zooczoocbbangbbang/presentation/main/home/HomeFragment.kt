@@ -27,6 +27,7 @@ class HomeFragment : BindingFragment<FragmentHomeBinding>(R.layout.fragment_home
         initArchiveList()
         clickLinearButton()
         clickGridButton()
+        clickOutside()
     }
 
     private fun initPetAdapter() {
@@ -79,6 +80,12 @@ class HomeFragment : BindingFragment<FragmentHomeBinding>(R.layout.fragment_home
                 return@setOnClickListener
             }
             convertLayoutManager()
+        }
+    }
+
+    private fun clickOutside() {
+        binding.clHome.setOnClickListener {
+            archivePostingAdapter.foldItem()
         }
     }
 
