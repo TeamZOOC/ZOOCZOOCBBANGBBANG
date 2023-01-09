@@ -1,10 +1,12 @@
 package org.sopt.zooczoocbbangbbang.presentation.main.home
 
 import android.os.Bundle
-import android.util.Log
 import android.view.View
+import android.view.ViewGroup.LayoutParams.WRAP_CONTENT
+import androidx.constraintlayout.widget.ConstraintSet
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.SimpleItemAnimator
 import org.sopt.zooczoocbbangbbang.R
 import org.sopt.zooczoocbbangbbang.databinding.FragmentHomeBinding
@@ -33,10 +35,7 @@ class HomeFragment : BindingFragment<FragmentHomeBinding>(R.layout.fragment_home
     private fun initPetAdapter() {
         petAdapter = PetAdapter()
         binding.rvHomePet.adapter = petAdapter
-        val animator = binding.rvHomePet?.itemAnimator
-        if (animator is SimpleItemAnimator) {
-            animator.supportsChangeAnimations = false
-        }
+        removeRecyclerViewAnimator(binding.rvHomePet)
     }
 
     private fun initArchiveAdapter() {
@@ -48,8 +47,12 @@ class HomeFragment : BindingFragment<FragmentHomeBinding>(R.layout.fragment_home
         binding.rvArchivePosting.layoutManager = linearLayoutManager
         archivePostingAdapter = ArchivePostingAdapter()
         binding.rvArchivePosting.adapter = archivePostingAdapter
+        binding.rvArchivePosting.addItemDecoration(ArchiveItemDecorator(requireContext(), 10, 0))
+        removeRecyclerViewAnimator(binding.rvArchivePosting)
+    }
 
-        val animator = binding.rvArchivePosting?.itemAnimator
+    private fun removeRecyclerViewAnimator(rv: RecyclerView) {
+        val animator = rv?.itemAnimator
         if (animator is SimpleItemAnimator) {
             animator.supportsChangeAnimations = false
         }
@@ -90,17 +93,18 @@ class HomeFragment : BindingFragment<FragmentHomeBinding>(R.layout.fragment_home
     }
 
     private fun convertLayoutManager() {
+        var position = 0
         when (archivePostingAdapter.layoutManagerType) {
             LayoutManagerType.LINEAR -> {
                 showGridButton()
-                var position = 0
                 if (binding.rvArchivePosting.layoutManager != null) {
                     position =
-                        (binding.rvArchivePosting.layoutManager as GridLayoutManager).findFirstCompletelyVisibleItemPosition()
+                        (binding.rvArchivePosting.layoutManager as LinearLayoutManager).findFirstCompletelyVisibleItemPosition()
                 }
                 binding.rvArchivePosting.layoutManager = gridLayoutManager
                 archivePostingAdapter.layoutManagerType = LayoutManagerType.GRID
                 binding.rvArchivePosting.adapter = archivePostingAdapter
+                setArchivePostingPadding(listOf(30, 0, 20, 72))
                 binding.rvArchivePosting.removeItemDecorationAt(0)
                 binding.rvArchivePosting
                     .addItemDecoration(ArchiveItemDecorator(requireContext(), 10, 10))
@@ -108,20 +112,52 @@ class HomeFragment : BindingFragment<FragmentHomeBinding>(R.layout.fragment_home
             }
             LayoutManagerType.GRID -> {
                 showLinearButton()
-                var position = 0
                 if (binding.rvArchivePosting.layoutManager != null) {
                     position =
-                        (binding.rvArchivePosting.layoutManager as LinearLayoutManager).findFirstCompletelyVisibleItemPosition()
+                        (binding.rvArchivePosting.layoutManager as GridLayoutManager).findFirstCompletelyVisibleItemPosition()
                 }
                 binding.rvArchivePosting.layoutManager = linearLayoutManager
                 archivePostingAdapter.layoutManagerType = LayoutManagerType.LINEAR
                 binding.rvArchivePosting.adapter = archivePostingAdapter
+                setArchivePostingPadding(listOf(30, 0, 0, 0))
                 binding.rvArchivePosting.removeItemDecorationAt(0)
                 binding.rvArchivePosting
                     .addItemDecoration(ArchiveItemDecorator(requireContext(), 10, 0))
                 convertConstraint(LayoutManagerType.LINEAR)
             }
         }
+        binding.rvArchivePosting.scrollToPosition(position)
+    }
+
+    private fun setArchivePostingPadding(paddingValues: List<Int>) {
+        val temp = paddingValues.map { dpToPx(requireContext(), it) }
+        binding.rvArchivePosting.setPadding(temp[0], temp[1], temp[2], temp[3])
+    }
+
+    private fun convertConstraint(
+        typeToConvert: LayoutManagerType
+    ) {
+        when (typeToConvert) {
+            LayoutManagerType.LINEAR -> binding.rvArchivePosting.layoutParams.height = WRAP_CONTENT
+            LayoutManagerType.GRID -> binding.rvArchivePosting.layoutParams.height = 0
+        }
+        val constraintLayout = binding.clHome
+        val constraintSet = ConstraintSet()
+        constraintSet.clone(constraintLayout)
+        when (typeToConvert) {
+            LayoutManagerType.LINEAR ->
+                constraintSet.clear(binding.rvArchivePosting.id, ConstraintSet.BOTTOM)
+            LayoutManagerType.GRID ->
+                constraintSet.connect(
+                    binding.rvArchivePosting.id,
+                    ConstraintSet.BOTTOM,
+                    binding.clHome.id,
+                    ConstraintSet.BOTTOM,
+                    0
+                )
+        }
+        constraintSet.applyTo(constraintLayout)
+        binding.rvArchivePosting.requestLayout()
     }
 
     private fun showLinearButton() {
@@ -172,7 +208,8 @@ class HomeFragment : BindingFragment<FragmentHomeBinding>(R.layout.fragment_home
                 "01/09",
                 listOf(
                     ArchivePostingData.Commenter(R.drawable.ym2),
-                    ArchivePostingData.Commenter(R.drawable.ym3)
+                    ArchivePostingData.Commenter(R.drawable.ym3),
+                    ArchivePostingData.Commenter(R.drawable.ym4)
                 )
             ),
             ArchivePostingData(
