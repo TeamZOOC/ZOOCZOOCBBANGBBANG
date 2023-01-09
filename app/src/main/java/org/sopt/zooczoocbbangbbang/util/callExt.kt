@@ -7,7 +7,7 @@ import timber.log.Timber
 
 fun <ResponseType> Call<ResponseType>.enqueueUtil(
     onSuccess: (ResponseType) -> Unit,
-    onError: ((stateCode: Int) -> Unit)? = null,
+    onError: ((stateCode: Int) -> Unit)? = null
 ) {
     this.enqueue(object : Callback<ResponseType> {
         override fun onResponse(call: Call<ResponseType>, response: Response<ResponseType>) {

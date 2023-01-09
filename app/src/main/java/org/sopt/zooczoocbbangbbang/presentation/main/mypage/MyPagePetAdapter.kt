@@ -4,9 +4,8 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import coil.load
 import org.sopt.zooczoocbbangbbang.databinding.ItemMypageRecyclerBtnPetsAddBinding
-import org.sopt.zooczoocbbangbbang.databinding.ItemMypageRecyclerBtnPetsAddBinding.*
+import org.sopt.zooczoocbbangbbang.databinding.ItemMypageRecyclerBtnPetsAddBinding.inflate
 import org.sopt.zooczoocbbangbbang.databinding.ItemMypageRecyclerPetsBinding
 
 class MyPagePetAdapter(context: Context) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
@@ -28,26 +27,26 @@ class MyPagePetAdapter(context: Context) : RecyclerView.Adapter<RecyclerView.Vie
 
     class addPetViewHolder(
         private val binding: ItemMypageRecyclerBtnPetsAddBinding
-        ) : RecyclerView.ViewHolder(binding.root)
+    ) : RecyclerView.ViewHolder(binding.root)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
-        return when(viewType) {
-            1->{
-                val binding = ItemMypageRecyclerPetsBinding.inflate(inflater,parent,false)
+        return when (viewType) {
+            1 -> {
+                val binding = ItemMypageRecyclerPetsBinding.inflate(inflater, parent, false)
                 petViewHolder(binding)
             }
             else -> {
-                val binding = inflate(inflater,parent,false)
+                val binding = inflate(inflater, parent, false)
                 addPetViewHolder(binding)
             }
         }
     }
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-        when(petList[position].viewtype){
-             1->{
-                 holder as petViewHolder
-                 holder.onBind(petList[position])
+        when (petList[position].viewtype) {
+            1 -> {
+                holder as petViewHolder
+                holder.onBind(petList[position])
             }
             else -> {
                 holder as addPetViewHolder

@@ -7,7 +7,8 @@ import coil.load
 import org.sopt.zooczoocbbangbbang.databinding.ItemCommentersBinding
 import org.sopt.zooczoocbbangbbang.domain.ArchivePostingData
 
-class CommentersAdapter(private val commenters: List<ArchivePostingData.Commenter>) : RecyclerView.Adapter<CommentersAdapter.CommentersViewHolder>() {
+class CommentersAdapter(private val commenters: List<ArchivePostingData.Commenter>) :
+    RecyclerView.Adapter<CommentersAdapter.CommentersViewHolder>() {
 
     class CommentersViewHolder(private val binding: ItemCommentersBinding) :
         RecyclerView.ViewHolder(binding.root) {

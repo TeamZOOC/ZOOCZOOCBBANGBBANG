@@ -1,6 +1,5 @@
 package org.sopt.zooczoocbbangbbang.data.remote.entity.mypage
 
-
 import com.google.gson.annotations.SerializedName
 
 data class ResponseMembersDto(

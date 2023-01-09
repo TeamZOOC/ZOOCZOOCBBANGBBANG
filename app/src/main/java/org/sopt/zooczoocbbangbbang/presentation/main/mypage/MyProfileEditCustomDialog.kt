@@ -5,12 +5,12 @@ import android.content.Context
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
-import android.widget.Button
 import org.sopt.zooczoocbbangbbang.R
 
-class MyProfileEditCustomDialog(context: Context,
-    MyCustomDialogInterface: MyCustomDialogInterface)
-    : Dialog(context) {
+class MyProfileEditCustomDialog(
+    context: Context,
+    MyCustomDialogInterface: MyCustomDialogInterface
+) : Dialog(context) {
     private var myCustomDialogInterface: MyCustomDialogInterface? = null
 
     // 인터페이스 연결
@@ -25,6 +25,5 @@ class MyProfileEditCustomDialog(context: Context,
 
         // 배경 투명
         window!!.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
-
     }
 }

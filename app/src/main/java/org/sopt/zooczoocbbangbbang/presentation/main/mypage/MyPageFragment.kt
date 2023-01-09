@@ -8,7 +8,7 @@ import org.sopt.zooczoocbbangbbang.R
 import org.sopt.zooczoocbbangbbang.databinding.FragmentMyPageBinding
 import org.sopt.zooczoocbbangbbang.presentation.base.BindingFragment
 
-class MyPageFragment : BindingFragment<FragmentMyPageBinding>(R.layout.fragment_my_page){
+class MyPageFragment : BindingFragment<FragmentMyPageBinding>(R.layout.fragment_my_page) {
     private lateinit var MyPageMemberAdapter: MyPageMemberAdapter
     private lateinit var MyPagePetAdapter: MyPagePetAdapter
     private val memberviewModel: MemberTestViewModel by viewModels()
@@ -18,18 +18,19 @@ class MyPageFragment : BindingFragment<FragmentMyPageBinding>(R.layout.fragment_
         initAdapter()
         addMember()
         addPet()
-        binding.tvBtnEdit.setOnClickListener{
+        binding.tvBtnEdit.setOnClickListener {
             requireActivity().startActivity(Intent(activity, MyPofileEdityActivity::class.java))
         }
     }
 
     private fun initAdapter() {
-        MyPageMemberAdapter=MyPageMemberAdapter(requireContext())
-        binding.rvMembers.adapter=MyPageMemberAdapter
+        MyPageMemberAdapter = MyPageMemberAdapter(requireContext())
+        binding.rvMembers.adapter = MyPageMemberAdapter
 
-        MyPagePetAdapter=MyPagePetAdapter(requireContext())
-        binding.rvPets.adapter=MyPagePetAdapter
+        MyPagePetAdapter = MyPagePetAdapter(requireContext())
+        binding.rvPets.adapter = MyPagePetAdapter
     }
+
     private fun addMember() {
 //        viewModel.memberData.observe(viewLifecycleOwner) { member ->
 //            if (member != null)
@@ -38,12 +39,11 @@ class MyPageFragment : BindingFragment<FragmentMyPageBinding>(R.layout.fragment_
 //                binding.tvMemberNum.text= MyPageMemberAdapter.memberList.size.toString()
 //        }
         MyPageMemberAdapter.setMemberlist(memberviewModel.exampleList)
-        binding.tvMemberNum.text= MyPageMemberAdapter.memberList.size.toString()
+        binding.tvMemberNum.text = MyPageMemberAdapter.memberList.size.toString()
     }
-
 
     private fun addPet() {
         MyPagePetAdapter.setPetlist(petviewModel.exampleList)
-        binding.tvCountPet.text= (MyPagePetAdapter.petList.size-1).toString()
+        binding.tvCountPet.text = (MyPagePetAdapter.petList.size - 1).toString()
     }
 }

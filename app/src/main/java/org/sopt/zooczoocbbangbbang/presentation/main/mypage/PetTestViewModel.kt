@@ -3,7 +3,7 @@ package org.sopt.zooczoocbbangbbang.presentation.main.mypage
 import androidx.lifecycle.ViewModel
 import org.sopt.zooczoocbbangbbang.R
 
-class PetTestViewModel : ViewModel(){
+class PetTestViewModel : ViewModel() {
     val exampleList = listOf<PetInfo>(
         PetInfo(
             image = R.drawable.img_mypet,
@@ -24,6 +24,6 @@ class PetTestViewModel : ViewModel(){
             image = null,
             name = null,
             viewtype = 2
-        ),
+        )
     )
 }

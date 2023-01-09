@@ -5,5 +5,4 @@ interface MyCustomDialogInterface {
     fun changePhotoBtnClicked()
     fun deletePhotoBtnClicked()
     fun cancelBtnClicked()
-
 }
