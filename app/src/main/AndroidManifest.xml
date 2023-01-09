@@ -27,6 +27,12 @@
             android:name=".presentation.main.mypage.MyPofileEdityActivity"
             android:exported="false" />
         <activity
+            android:name=".presentation.main.mypage.MyprofileAppInfoActivity"
+            android:exported="false" />
+        <activity
+            android:name=".presentation.main.mypage.MyprofileSetAlarmActivity"
+            android:exported="false" />
+        <activity
             android:name=".presentation.main.MainActivity"
             android:exported="true">
             <intent-filter>

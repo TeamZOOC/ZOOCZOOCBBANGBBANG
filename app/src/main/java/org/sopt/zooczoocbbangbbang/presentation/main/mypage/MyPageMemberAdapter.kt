@@ -10,15 +10,15 @@ import org.sopt.zooczoocbbangbbang.databinding.ItemMypageRecyclerMembersBinding
 class MyPageMemberAdapter(context: Context) :
     RecyclerView.Adapter<MyPageMemberAdapter.memberViewHolder>() {
     private val inflater by lazy { LayoutInflater.from(context) }
-    var memberList: List<MemberInfo> = emptyList()
+    var memberList: List<ResponseMembersDto.Data.FamilyMember> = emptyList()
     lateinit var membersBinding: ItemMypageRecyclerMembersBinding
 
     class memberViewHolder(
         private val binding: ItemMypageRecyclerMembersBinding
     ) : RecyclerView.ViewHolder(binding.root) {
-        fun onBind(data: MemberInfo) {
-            binding.imgMembers.load(data.image)
-            binding.tvMembers.text = data.name
+        fun onBind(data: ResponseMembersDto.Data.FamilyMember) {
+            binding.imgMembers.load(data.photo)
+            binding.tvMembers.text = data.nickName
         }
     }
 
@@ -33,7 +33,8 @@ class MyPageMemberAdapter(context: Context) :
 
     override fun getItemCount() = memberList.size
 
-    fun setMemberlist(memberlist: List<MemberInfo>) {
+    fun setMemberlist(memberlist: List<ResponseMembersDto.Data.FamilyMember>) {
         this.memberList = memberlist.toList()
+        notifyItemInserted(memberList.lastIndex)
     }
 }

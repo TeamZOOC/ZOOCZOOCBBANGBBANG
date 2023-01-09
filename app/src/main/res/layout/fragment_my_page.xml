@@ -32,11 +32,11 @@
                 app:strokeWidth="2dp">
 
                 <ImageView
+                    android:id="@+id/iv_myprofile"
                     android:layout_width="72dp"
                     android:layout_height="72dp"
-                    android:src="@drawable/img_myprofile" />
+                    tools:src="@drawable/img_myprofile" />
             </com.google.android.material.card.MaterialCardView>
-
 
             <TextView
                 android:id="@+id/tv_nickname"

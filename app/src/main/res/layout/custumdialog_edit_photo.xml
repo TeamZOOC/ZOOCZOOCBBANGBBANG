@@ -11,7 +11,7 @@
         android:background="@drawable/ic_round_radius_18"
         android:layout_marginBottom="13dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toTopOf="@+id/constraintLayout"
+        app:layout_constraintBottom_toTopOf="@+id/cl_cancel"
         android:id="@+id/constraintLayout2">
 
         <View
@@ -28,8 +28,9 @@
             style="@style/Zooc16SemiBold"
             android:text="사진 보관함"
             android:textColor="@color/grey_4f"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="315dp"
+            android:layout_height="55dp"
+            android:gravity="center"
             android:id="@+id/tv_photo"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -40,8 +41,9 @@
 
             android:text="사진 삭제"
             android:textColor="#EF4914"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="315dp"
+            android:layout_height="55dp"
+            android:gravity="center"
             android:id="@+id/tv_delete_photo"
             style="@style/Zooc16SemiBold"
             app:layout_constraintStart_toStartOf="parent"
@@ -60,15 +62,16 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:id="@+id/constraintLayout">
+        android:id="@+id/cl_cancel">
 
         <TextView
             android:text="취소"
             android:textColor="@color/grey_4f"
             style="@style/Zooc16SemiBold"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="315dp"
+            android:layout_height="55dp"
             android:id="@+id/tv_cancel"
+            android:gravity="center"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"

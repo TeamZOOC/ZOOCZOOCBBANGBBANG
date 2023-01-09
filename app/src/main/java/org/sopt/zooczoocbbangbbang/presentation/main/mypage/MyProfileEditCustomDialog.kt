@@ -5,12 +5,13 @@ import android.content.Context
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
-import org.sopt.zooczoocbbangbbang.R
+import org.sopt.zooczoocbbangbbang.databinding.CustumdialogEditPhotoBinding
 
-class MyProfileEditCustomDialog(
-    context: Context,
-    MyCustomDialogInterface: MyCustomDialogInterface
-) : Dialog(context) {
+class MyProfileEditCustomDialog(context: Context,
+    MyCustomDialogInterface: MyCustomDialogInterface)
+    : Dialog(context) {
+    private var mBinding : CustumdialogEditPhotoBinding? = null
+    private val binding get() = mBinding!!
     private var myCustomDialogInterface: MyCustomDialogInterface? = null
 
     // 인터페이스 연결
@@ -20,10 +21,23 @@ class MyProfileEditCustomDialog(
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
-        setContentView(R.layout.custumdialog_edit_photo)
+        mBinding = CustumdialogEditPhotoBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
         // 배경 투명
         window!!.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+
+        //커스텀 다이얼로그 외부 영역 클릭 시 꺼짐 현상 방지
+        setCanceledOnTouchOutside(false)
+
+        binding.tvPhoto.setOnClickListener{
+            this.myCustomDialogInterface?.changePhotoBtnClicked()
+        }
+        binding.tvDeletePhoto.setOnClickListener{
+            this.myCustomDialogInterface?.deletePhotoBtnClicked()
+        }
+        binding.clCancel.setOnClickListener{
+            this.myCustomDialogInterface?.cancelBtnClicked()
+        }
     }
 }
