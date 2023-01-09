@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="299dp"
+        android:layout_height="0dp"
+        android:elevation="25dp"
+        app:layout_constraintDimensionRatio="299:174"
+        app:layout_constraintStart_toStartOf="parent"
+        android:background="@drawable/ic_rectangle_radius_14"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:id="@+id/constraintLayout2"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintVertical_bias="0.499">
+
+        <TextView
+            android:text="페이지를 나가시겠어요?"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/textView12"
+            app:layout_constraintStart_toStartOf="parent"
+            style="@style/Zooc18SemiBold"
+            android:textColor="@color/grey_4f"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="41dp" />
+
+        <TextView
+            android:text="지금 나가면 내용이 저장되지 않아요"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/textView13"
+            style="@style/Zooc14Medium"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView12"
+            android:layout_marginTop="6dp" />
+
+        <TextView
+            android:text="이어 쓰기"
+            android:textColor="#FFFFFF"
+            style="@style/Zooc16SemiBold"
+            android:gravity="center"
+            android:background="@drawable/bg_rewrite"
+            android:layout_width="179dp"
+            android:layout_height="54dp"
+            android:id="@+id/tv_rewrite"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent" />
+
+        <TextView
+            android:text="나가기"
+            android:background="@drawable/bg_exit"
+            android:layout_width="120dp"
+            android:layout_height="54dp"
+            style="@style/Zooc16SemiBold"
+            android:textColor="#333333"
+            android:id="@+id/tv_exit"
+            android:gravity="center"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

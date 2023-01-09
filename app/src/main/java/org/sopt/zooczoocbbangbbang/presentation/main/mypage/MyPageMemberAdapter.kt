@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
+import org.sopt.zooczoocbbangbbang.data.remote.entity.mypage.ResponseMembersDto
 import org.sopt.zooczoocbbangbbang.databinding.ItemMypageRecyclerMembersBinding
 
 class MyPageMemberAdapter(context: Context) :
