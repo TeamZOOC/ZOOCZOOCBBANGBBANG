@@ -24,7 +24,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:strokeColor="@color/grey_e0"
-            app:strokeWidth="2dp">
+            app:strokeWidth="1dp">
 
             <androidx.constraintlayout.motion.widget.MotionLayout
                 android:id="@+id/ml_archive_posting"
