@@ -101,14 +101,10 @@ class HomeFragment : BindingFragment<FragmentHomeBinding>(R.layout.fragment_home
                 binding.rvArchivePosting.layoutManager = gridLayoutManager
                 archivePostingAdapter.layoutManagerType = LayoutManagerType.GRID
                 binding.rvArchivePosting.adapter = archivePostingAdapter
-                binding.rvArchivePosting.scrollToPosition(position)
-                binding.rvArchivePosting.setPadding(
-                    dpToPx(requireContext(), 30),
-                    0,
-                    dpToPx(requireContext(), 30),
-                    dpToPx(requireContext(), 72)
-                )
-                Log.d("asdf", "그리드")
+                binding.rvArchivePosting.removeItemDecorationAt(0)
+                binding.rvArchivePosting
+                    .addItemDecoration(ArchiveItemDecorator(requireContext(), 10, 10))
+                convertConstraint(LayoutManagerType.GRID)
             }
             LayoutManagerType.GRID -> {
                 showLinearButton()
@@ -120,14 +116,10 @@ class HomeFragment : BindingFragment<FragmentHomeBinding>(R.layout.fragment_home
                 binding.rvArchivePosting.layoutManager = linearLayoutManager
                 archivePostingAdapter.layoutManagerType = LayoutManagerType.LINEAR
                 binding.rvArchivePosting.adapter = archivePostingAdapter
-                binding.rvArchivePosting.scrollToPosition(position)
-                binding.rvArchivePosting.setPadding(
-                    dpToPx(requireContext(), 30),
-                    0,
-                    dpToPx(requireContext(), 0),
-                    0
-                )
-                Log.d("asdf", "리니어")
+                binding.rvArchivePosting.removeItemDecorationAt(0)
+                binding.rvArchivePosting
+                    .addItemDecoration(ArchiveItemDecorator(requireContext(), 10, 0))
+                convertConstraint(LayoutManagerType.LINEAR)
             }
         }
     }
