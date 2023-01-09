@@ -20,6 +20,10 @@
     <string name="choose2Pet_header2">어디에 기록을 남길까요?</string>
     <string name="choose2Pet_btn">등록</string>
     <string name="choosePet_name">토리</string>
+    <string name="role_input_title_text">가족에서\n 어떤 역할을 맡고 있나요?</string>
+    <string name="tv_role_input_sub_title_text">우리 가족에서 저는</string>
+    <string name="role_input_edit_text_hint">엄마, 아빠, 첫째딸, 둘째딸 (10자 이내)</string>
+    <string name="role_input_complete_button_text">이렇게 불러주세요</string>
 
     <!--상세 뷰-->
     <string name="detail_input_comment">댓글을 입력해보세요</string>
