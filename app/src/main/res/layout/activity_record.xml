@@ -12,7 +12,7 @@
         android:id="@+id/cl_record_background"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#E5E5E5"
+        android:background="@color/green_f0f2ef"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -35,7 +35,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@null"
-                android:src="@drawable/ic_record_close_24"
+                android:src="@drawable/ic_close"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
@@ -57,7 +57,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/record_write"
-                    android:textAppearance="@style/Zooc18SemiBold"
+                    android:textAppearance="@style/Typography.S18"
                     android:textColor="#000000" />
 
                 <TextView
@@ -66,7 +66,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="24dp"
                     android:text="@string/record_mission"
-                    android:textAppearance="@style/Zooc18SemiBold"
+                    android:textAppearance="@style/Typography.S18"
                     android:textColor="#BDBDBD" />
 
             </androidx.appcompat.widget.LinearLayoutCompat>
@@ -81,6 +81,8 @@
             android:layout_height="match_parent"
             android:layout_marginTop="101dp"
             tools:layout="@layout/fragment_record" />
+
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
