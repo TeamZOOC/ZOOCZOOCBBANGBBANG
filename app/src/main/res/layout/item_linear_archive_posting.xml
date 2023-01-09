@@ -29,17 +29,32 @@
                 android:id="@+id/ml_archive_posting"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
                 app:layoutDescription="@xml/item_archive_posting_xml_motion_scene">
 
                 <ImageView
                     android:id="@+id/iv_archive_pet_image"
-                    android:layout_width="60dp"
+                    android:layout_width="62dp"
                     android:layout_height="263dp"
                     android:scaleType="centerCrop"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     tools:srcCompat="@tools:sample/avatars" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rv_commenters"
+                    android:layout_width="1dp"
+                    android:layout_height="1dp"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="21dp"
+                    android:layout_marginStart="15dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"/>
 
                 <com.google.android.material.card.MaterialCardView
                     android:id="@+id/cv_archive_uploader_profile"
