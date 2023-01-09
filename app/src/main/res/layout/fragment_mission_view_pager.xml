@@ -4,21 +4,17 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".presentation.main.record.MissionViewPagerFragment">
     <data>
-        <import type="androidx.core.content.ContextCompat" />
 
         <variable
             name="viewmodel"
             type="org.sopt.zooczoocbbangbbang.presentation.main.record.MissionViewModel" />
     </data>
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/cl_mission_basebg"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/cl_mission_bgwhite"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:layout_marginHorizontal="30dp"
             android:background="@drawable/shape_record_white_radius_24"
             android:backgroundTint="@color/white"
@@ -103,7 +99,5 @@
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </layout>

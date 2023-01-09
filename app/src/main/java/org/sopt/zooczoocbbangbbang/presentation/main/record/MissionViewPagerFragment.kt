@@ -5,35 +5,19 @@ import android.util.Log
 import android.view.View
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.fragment.app.viewModels
-import androidx.viewpager2.widget.ViewPager2
 import coil.load
 import org.sopt.zooczoocbbangbbang.R
-import org.sopt.zooczoocbbangbbang.databinding.FragmentMissionBinding
 import org.sopt.zooczoocbbangbbang.databinding.FragmentMissionViewPagerBinding
 import org.sopt.zooczoocbbangbbang.presentation.base.BindingFragment
 
 class MissionViewPagerFragment :
     BindingFragment<FragmentMissionViewPagerBinding>(R.layout.fragment_mission_view_pager) {
     private val missionViewModel: MissionViewModel by viewModels()
-    private lateinit var missionFragmentBinding: FragmentMissionBinding
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.lifecycleOwner = viewLifecycleOwner
         binding.viewmodel = missionViewModel
-        val pagerAdapter = MissionFragmentStateAdapter(requireActivity())
-        // fragment add
-        pagerAdapter.addFragment(MissionFragment())
-        pagerAdapter.addFragment(MissionFragment())
-        pagerAdapter.addFragment(MissionFragment())
-
-        missionFragmentBinding.fcvMissionView.adapter = pagerAdapter
-        missionFragmentBinding.fcvMissionView.registerOnPageChangeCallback(object :
-                ViewPager2.OnPageChangeCallback() {
-                override fun onPageSelected(position: Int) {
-                    super.onPageSelected(position)
-                    Log.e("MissionFragment", "Page::: ${position + 1}")
-                }
-            })
+        Log.d("Mission", "MissionViewPagerFragment 20")
         clickImageBtn()
         observe()
     }

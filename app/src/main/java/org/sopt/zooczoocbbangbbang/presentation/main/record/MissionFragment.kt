@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View
 import androidx.fragment.app.viewModels
+import androidx.viewpager2.widget.ViewPager2
 import org.sopt.zooczoocbbangbbang.R
 import org.sopt.zooczoocbbangbbang.databinding.FragmentMissionBinding
 import org.sopt.zooczoocbbangbbang.presentation.base.BindingFragment
@@ -14,7 +15,21 @@ class MissionFragment : BindingFragment<FragmentMissionBinding>(R.layout.fragmen
         super.onViewCreated(view, savedInstanceState)
         binding.lifecycleOwner = viewLifecycleOwner
         binding.viewmodel = missionViewModel
+        val pagerAdapter = MissionFragmentStateAdapter(requireActivity())
 
+        // fragment add
+        pagerAdapter.addFragment(MissionFragment())
+        pagerAdapter.addFragment(MissionFragment())
+        pagerAdapter.addFragment(MissionFragment())
+
+        binding.fcvMissionView.adapter = pagerAdapter
+        binding.fcvMissionView.registerOnPageChangeCallback(object :
+                ViewPager2.OnPageChangeCallback() {
+                override fun onPageSelected(position: Int) {
+                    super.onPageSelected(position)
+                    Log.e("MissionFragment", "Page::: ${position + 1}")
+                }
+            })
         clickNextBtn()
     }
 
