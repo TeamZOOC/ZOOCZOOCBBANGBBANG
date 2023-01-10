@@ -5,11 +5,15 @@
 
     <data>
 
+        <variable
+            name="viewModel"
+            type="org.sopt.zooczoocbbangbbang.presentation.detail.DetailViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@color/white_f2"
         tools:context=".presentation.detail.DetailActivity">
 
         <androidx.core.widget.NestedScrollView
@@ -34,7 +38,7 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintDimensionRatio="1:1"
                     android:scaleType="centerCrop"
-                    app:srcCompat="@drawable/junseo1"
+                    android:src="@drawable/junseo1"
                     android:id="@+id/iv_detail_image" />
 
                 <ImageView
@@ -79,6 +83,7 @@
 
                 <TextView
                     tools:text="12월 17일"
+                    android:text="@{viewModel.postingContent.date}"
                     style="@style/Typography.M14"
                     android:textColor="@color/grey_82"
                     android:layout_width="wrap_content"
@@ -91,6 +96,7 @@
 
                 <TextView
                     tools:text="복실맘"
+                    android:text="@{viewModel.postingContent.editor.name}"
                     style="@style/Typography.M14"
                     android:textColor="@color/grey_82"
                     android:layout_width="wrap_content"
@@ -105,12 +111,13 @@
                     android:layout_width="24dp"
                     android:layout_height="24dp"
                     app:cardCornerRadius="12dp"
-                    android:layout_marginEnd="4dp"
+                    android:layout_marginEnd="7dp"
                     app:layout_constraintEnd_toStartOf="@+id/tv_detail_editor"
                     app:layout_constraintTop_toTopOf="@id/tv_detail_editor"
                     app:layout_constraintBottom_toBottomOf="@id/tv_detail_editor">
 
                     <ImageView
+                        android:id="@+id/iv_detail_editor_image"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:scaleType="centerCrop"
@@ -120,6 +127,7 @@
 
                 <TextView
                     tools:text="오늘 복실이 사진 찍었다\n다들 댓글 남겨줘!"
+                    android:text="@{viewModel.postingContent.content}"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/tv_detail_content"
@@ -143,8 +151,9 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:id="@+id/rv_detail_comment"
+                    android:layout_marginHorizontal="18dp"
                     app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                    tools:listitem="@layout/item_comment"
+                    tools:listitem="@layout/item_comment_text"
                     app:layout_constraintTop_toBottomOf="@id/line_detail"
                     android:layout_marginTop="10dp" />
 
@@ -184,7 +193,7 @@
                 app:layout_constraintEnd_toEndOf="@id/et_detail_input"
                 app:layout_constraintTop_toTopOf="@id/et_detail_input"
                 app:layout_constraintBottom_toBottomOf="@id/et_detail_input"
-                android:id="@+id/iv_detail_enter" />
+                android:id="@+id/iv_detail_upload" />
 
             <ImageView
                 android:layout_width="wrap_content"
