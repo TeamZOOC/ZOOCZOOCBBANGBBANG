@@ -24,6 +24,8 @@
     <string name="tv_role_input_sub_title_text">우리 가족에서 저는</string>
     <string name="role_input_edit_text_hint">엄마, 아빠, 첫째딸, 둘째딸 (10자 이내)</string>
     <string name="role_input_complete_button_text">이렇게 불러주세요</string>
+    <string name="onboarding_profile_selector_sub_title">지금 마음에 드는 사진이 없다면\n나중에 등록할 수 있어요</string>
+    <string name="onboarding_profile_selector_button_text">프로필 생성하기</string>
 
     <!--상세 뷰-->
     <string name="detail_input_comment">댓글을 입력해보세요</string>
