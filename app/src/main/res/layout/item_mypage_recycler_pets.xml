@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:background="@drawable/ic_round_radius_21"
+        android:layout_marginEnd="10dp">
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/iv_mypage_pet_image"
+            android:layout_width="34dp"
+            android:layout_height="0dp"
+            android:layout_margin="3dp"
+            android:scaleType="centerCrop"
+            app:layout_constraintDimensionRatio="1:1"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:shapeAppearanceOverlay="@style/Style.CircleImageView.Half"/>
+
+        <TextView
+            android:id="@+id/tv_mypage_pet_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:layout_marginEnd="14dp"
+            android:text="토리"
+            app:layout_constraintBottom_toBottomOf="@+id/iv_mypage_pet_image"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/iv_mypage_pet_image"
+            app:layout_constraintTop_toTopOf="@+id/iv_mypage_pet_image" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

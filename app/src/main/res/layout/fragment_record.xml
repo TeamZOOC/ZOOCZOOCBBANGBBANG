@@ -39,7 +39,7 @@
                 android:backgroundTint="#F5F5F5"
                 app:cardCornerRadius="20dp"
                 app:cardElevation="0dp"
-                app:layout_constraintDimensionRatio="289:212"
+                app:layout_constraintDimensionRatio="264:230"
                 app:layout_constraintEnd_toEndOf="@+id/cl_record_bgwhite"
                 app:layout_constraintStart_toStartOf="@+id/cl_record_bgwhite"
                 app:layout_constraintTop_toTopOf="@+id/cl_record_bgwhite">
@@ -73,12 +73,13 @@
                 android:layout_marginBottom="18dp"
                 android:layout_marginTop="12dp"
                 android:background="@drawable/shape_record_white2_radius_12"
-                android:hint="@string/record_edt_hint"
+                android:hint="@string/mission_hintText"
                 android:inputType="textMultiLine"
                 android:text="@={viewmodel.recordText}"
                 android:paddingHorizontal="18dp"
                 android:paddingTop="18dp"
                 android:paddingBottom="18dp"
+                android:lineSpacingExtra="5sp"
                 android:gravity="top"
                 android:maxLength="70"
                 android:textAppearance="@style/Typography.M14"
@@ -99,7 +100,7 @@
             android:layout_marginTop="91dp"
             android:layout_marginBottom="42dp"
             android:clickable="@{viewmodel.buttonValidation}"
-            android:background="@{viewmodel.buttonValidation ? @drawable/shape_green_radius_47 : @drawable/shape_grey1_radius_47}"
+            android:background="@{viewmodel.buttonValidation ? @drawable/shape_green_radius_47 : @drawable/shape_grey_radius_47}"
             android:elevation="10dp"
             android:padding="10dp"
             android:text="@string/record_button_text"
@@ -108,12 +109,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/cl_record_bgwhite"
-            app:layout_constraintHorizontal_bias="0.516"
-            app:layout_constraintVertical_bias="0.0" />
+            app:layout_constraintTop_toBottomOf="@+id/cl_record_bgwhite" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
-
-
-
