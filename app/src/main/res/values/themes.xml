@@ -16,4 +16,55 @@
         <item name="colorAccent">@color/white</item>
     </style>
 
+    <style name="Zooc28SemiBold">
+        <item name="android:fontFamily">@font/pretendard_semibold</item>
+        <item name="android:textSize">28dp</item>
+    </style>
+
+    <style name="Zooc24SemiBold">
+        <item name="android:fontFamily">@font/pretendard_semibold</item>
+        <item name="android:textSize">24dp</item>
+    </style>
+
+    <style name="Zooc20SemiBold">
+        <item name="android:fontFamily">@font/pretendard_semibold</item>
+        <item name="android:textSize">20dp</item>
+    </style>
+
+    <style name="Zooc18SemiBold">
+        <item name="android:fontFamily">@font/pretendard_semibold</item>
+        <item name="android:textSize">18dp</item>
+    </style>
+
+    <style name="Zooc16SemiBold">
+        <item name="android:fontFamily">@font/pretendard_semibold</item>
+        <item name="android:textSize">16dp</item>
+    </style>
+
+    <style name="Zooc16Medium">
+        <item name="android:fontFamily">@font/pretendard_medium</item>
+        <item name="android:textSize">16dp</item>
+    </style>
+
+    <style name="Zooc14Medium">
+        <item name="android:fontFamily">@font/pretendard_medium</item>
+        <item name="android:textSize">14dp</item>
+    </style>
+
+    <style name="Zooc12Medium">
+        <item name="android:fontFamily">@font/pretendard_medium</item>
+        <item name="android:textSize">12dp</item>
+    </style>
+
+    <style name="Zooc10Medium">
+        <item name="android:fontFamily">@font/pretendard_medium</item>
+        <item name="android:textSize">10dp</item>
+    </style>
+
+    <style name="Style.CircleImageView.Half" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">50%</item>
+    </style>
+
+
 </resources>

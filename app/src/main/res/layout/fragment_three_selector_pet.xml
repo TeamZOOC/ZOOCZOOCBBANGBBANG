@@ -2,10 +2,13 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context=".presentation.main.record.Choose3PetFragment">
+    tools:context=".presentation.main.record.ThreeSelectorPetFragment">
 
     <data>
-
+        <variable
+            name="viewmodel"
+            type="org.sopt.zooczoocbbangbbang.presentation.main.record.ThreeSelectorPetViewModel" />
+        <import type="android.view.View"/>
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -78,7 +81,9 @@
                         android:background="@color/white_f2"/>
 
                     <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/cl_threeSelectorPet_1"
                         android:layout_width="match_parent"
+                        android:background="@{viewmodel.isSelectedFirst ? @color/white_f8 : @color/white_ff}"
                         android:layout_height="0dp"
                         android:layout_weight="1">
 
@@ -100,11 +105,24 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="17dp"
-                            android:textColor="@color/green_42c87f"
+                            android:textColor="@color/grey_82"
                             app:layout_constraintBottom_toBottomOf="@+id/iv_threeSelectorPet_first"
                             app:layout_constraintStart_toEndOf="@+id/iv_threeSelectorPet_first"
                             app:layout_constraintTop_toTopOf="@+id/iv_threeSelectorPet_first"
                             android:text="@string/choosePet_name" />
+
+                        <ImageView
+                            android:id="@+id/iv_threeSelectorPet_check_1"
+                            android:src="@drawable/ic_check"
+                            android:visibility="@{viewmodel.isSelectedFirst ? View.VISIBLE : View.INVISIBLE}"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            app:layout_constraintTop_toTopOf="@+id/tv_threeSelectorPet_first"
+                            app:layout_constraintBottom_toBottomOf="@+id/tv_threeSelectorPet_first"
+                            app:layout_constraintStart_toEndOf="@+id/tv_threeSelectorPet_first"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            android:layout_marginStart="112dp"
+                            android:layout_marginEnd="40dp" />
                     </androidx.constraintlayout.widget.ConstraintLayout>
 
                     <View
@@ -113,6 +131,8 @@
                         android:background="@color/white_f2"/>
 
                     <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/cl_threeSelectorPet_2"
+                        android:background="@{viewmodel.isSelectedSecond ? @color/white_f8 : @color/white_ff}"
                         android:layout_width="match_parent"
                         android:layout_height="0dp"
                         android:layout_weight="1">
@@ -135,11 +155,24 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="17dp"
-                            android:textColor="@color/green_42c87f"
+                            android:textColor="@color/grey_82"
                             app:layout_constraintBottom_toBottomOf="@+id/iv_threeSelectorPet_second"
                             app:layout_constraintStart_toEndOf="@+id/iv_threeSelectorPet_second"
                             app:layout_constraintTop_toTopOf="@+id/iv_threeSelectorPet_second"
                             android:text="@string/choosePet_name" />
+
+                        <ImageView
+                            android:id="@+id/iv_threeSelectorPet_check_2"
+                            android:src="@drawable/ic_check"
+                            android:visibility="@{viewmodel.isSelectedSecond ? View.VISIBLE : View.INVISIBLE}"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            app:layout_constraintTop_toTopOf="@+id/tv_threeSelectorPet_second"
+                            app:layout_constraintBottom_toBottomOf="@+id/tv_threeSelectorPet_second"
+                            app:layout_constraintStart_toEndOf="@+id/tv_threeSelectorPet_second"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            android:layout_marginStart="112dp"
+                            android:layout_marginEnd="40dp" />
                     </androidx.constraintlayout.widget.ConstraintLayout>
 
                     <View
@@ -148,6 +181,8 @@
                         android:background="@color/white_f2"/>
 
                     <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/cl_threeSelectorPet_3"
+                        android:background="@{viewmodel.isSelectedThird ? @color/white_f8 : @color/white_ff}"
                         android:layout_width="match_parent"
                         android:layout_height="0dp"
                         android:layout_weight="1">
@@ -170,11 +205,24 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="17dp"
-                            android:textColor="@color/green_42c87f"
+                            android:textColor="@color/grey_82"
                             app:layout_constraintBottom_toBottomOf="@+id/iv_threeSelectorPet_third"
                             app:layout_constraintStart_toEndOf="@+id/iv_threeSelectorPet_third"
                             app:layout_constraintTop_toTopOf="@+id/iv_threeSelectorPet_third"
                             android:text="@string/choosePet_name" />
+
+                        <ImageView
+                            android:id="@+id/iv_threeSelectorPet_check_3"
+                            android:src="@drawable/ic_check"
+                            android:visibility="@{viewmodel.isSelectedThird ? View.VISIBLE : View.INVISIBLE}"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            app:layout_constraintTop_toTopOf="@+id/tv_threeSelectorPet_third"
+                            app:layout_constraintBottom_toBottomOf="@+id/tv_threeSelectorPet_third"
+                            app:layout_constraintStart_toEndOf="@+id/tv_threeSelectorPet_third"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            android:layout_marginStart="112dp"
+                            android:layout_marginEnd="40dp" />
                     </androidx.constraintlayout.widget.ConstraintLayout>
                 </LinearLayout>
 
@@ -198,7 +246,8 @@
             android:layout_marginHorizontal="30dp"
             android:layout_marginTop="63dp"
             android:layout_marginBottom="44dp"
-            android:background="@drawable/shape_green_radius_47"
+            android:clickable="@{viewmodel.buttonValidation}"
+            android:background="@{viewmodel.buttonValidation ? @drawable/shape_green_radius_47 : @drawable/shape_grey_radius_47}"
             android:elevation="10dp"
             android:padding="10dp"
             android:text="@string/choose2Pet_btn"

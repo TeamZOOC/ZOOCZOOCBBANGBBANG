@@ -8,11 +8,11 @@
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/cl_recordDone_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/green_f0f2ef"
         tools:context=".presentation.main.record.RecordDoneActivity">
-
 
         <ImageButton
             android:id="@+id/imgbtn_record_back"
@@ -30,9 +30,8 @@
             android:layout_width="0dp"
             android:layout_height="443dp"
             android:layout_marginTop="92dp"
-            android:elevation="10dp"
+            android:elevation="16dp"
             app:cardCornerRadius="24dp"
-
             app:layout_constraintDimensionRatio="300:443"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
