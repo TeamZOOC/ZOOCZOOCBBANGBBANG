@@ -1,4 +1,4 @@
-package org.sopt.zooczoocbbangbbang.domain
+package org.sopt.zooczoocbbangbbang.domain.home
 
 data class PetData(
     val image: Int,

@@ -5,7 +5,7 @@ import androidx.recyclerview.widget.RecyclerView
 import coil.load
 import org.sopt.zooczoocbbangbbang.databinding.ItemGridArchivePostingBinding
 import org.sopt.zooczoocbbangbbang.databinding.ItemLinearArchivePostingBinding
-import org.sopt.zooczoocbbangbbang.domain.ArchivePostingData
+import org.sopt.zooczoocbbangbbang.domain.home.ArchivePostingData
 
 abstract class ArchivePostingViewHolder(private val binding: View) :
     RecyclerView.ViewHolder(binding) {

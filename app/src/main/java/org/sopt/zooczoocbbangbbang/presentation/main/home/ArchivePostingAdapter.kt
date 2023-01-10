@@ -5,7 +5,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import org.sopt.zooczoocbbangbbang.databinding.ItemGridArchivePostingBinding
 import org.sopt.zooczoocbbangbbang.databinding.ItemLinearArchivePostingBinding
-import org.sopt.zooczoocbbangbbang.domain.ArchivePostingData
+import org.sopt.zooczoocbbangbbang.domain.home.ArchivePostingData
 
 class ArchivePostingAdapter :
     RecyclerView.Adapter<ArchivePostingViewHolder>() {

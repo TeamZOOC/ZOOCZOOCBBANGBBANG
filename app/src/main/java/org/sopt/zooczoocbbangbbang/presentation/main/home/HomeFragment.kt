@@ -10,8 +10,8 @@ import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.SimpleItemAnimator
 import org.sopt.zooczoocbbangbbang.R
 import org.sopt.zooczoocbbangbbang.databinding.FragmentHomeBinding
-import org.sopt.zooczoocbbangbbang.domain.ArchivePostingData
-import org.sopt.zooczoocbbangbbang.domain.PetData
+import org.sopt.zooczoocbbangbbang.domain.home.ArchivePostingData
+import org.sopt.zooczoocbbangbbang.domain.home.PetData
 import org.sopt.zooczoocbbangbbang.presentation.base.BindingFragment
 import org.sopt.zooczoocbbangbbang.util.DisplayUtil.dpToPx
 

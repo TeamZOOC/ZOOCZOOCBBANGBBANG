@@ -5,7 +5,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
 import org.sopt.zooczoocbbangbbang.databinding.ItemCommentersBinding
-import org.sopt.zooczoocbbangbbang.domain.ArchivePostingData
+import org.sopt.zooczoocbbangbbang.domain.home.ArchivePostingData
 
 class CommentersAdapter(private val commenters: List<ArchivePostingData.Commenter>) : RecyclerView.Adapter<CommentersAdapter.CommentersViewHolder>() {
 

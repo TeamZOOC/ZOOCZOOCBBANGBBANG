@@ -7,7 +7,7 @@
 
         <variable
             name="data"
-            type="org.sopt.zooczoocbbangbbang.domain.ArchivePostingData" />
+            type="org.sopt.zooczoocbbangbbang.domain.home.ArchivePostingData" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

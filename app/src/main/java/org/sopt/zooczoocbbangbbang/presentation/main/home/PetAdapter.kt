@@ -5,7 +5,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
 import org.sopt.zooczoocbbangbbang.databinding.ItemPetBinding
-import org.sopt.zooczoocbbangbbang.domain.PetData
+import org.sopt.zooczoocbbangbbang.domain.home.PetData
 
 class PetAdapter : RecyclerView.Adapter<PetAdapter.PetViewHolder>() {
     private val pets = mutableListOf<PetData>()
