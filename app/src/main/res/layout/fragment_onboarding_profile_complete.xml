@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/tv_profile_complete_title"
+            android:text="@string/onboarding_profile_complete_title"
+            style="@style/Typography.S24"
+            android:textColor="@color/grey_4f"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="42dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:id="@+id/tv_profile_complete_sub_title_family_code"
+            app:layout_constraintTop_toBottomOf="@id/tv_profile_complete_title"
+            android:text="@string/onboarding_profile_complete_sub_title_family_code_text"
+            android:layout_marginTop="20dp"
+            style="@style/Typography.S24"
+            android:textColor="@color/green_42c87f"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:id="@+id/tv_profile_complete_sub_title_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/Typography.S24"
+            android:textColor="@color/grey_4f"
+            android:text="@string/onboarding_profile_complete_sub_title_text"
+            app:layout_constraintTop_toTopOf="@id/tv_profile_complete_sub_title_family_code"
+            app:layout_constraintBottom_toBottomOf="@id/tv_profile_complete_sub_title_family_code"
+            app:layout_constraintStart_toEndOf="@id/tv_profile_complete_sub_title_family_code" />
+
+        <ImageView
+            android:id="@+id/img_onboarding_profile_complete_image"
+            android:src="@drawable/onboarding_profile_complete_image"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintVertical_bias="0.15"
+            app:layout_constraintTop_toBottomOf="@id/tv_profile_complete_sub_title_family_code"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="52dp"
+            app:layout_constraintBottom_toTopOf="@+id/btn_move_input_family_code" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_move_input_family_code"
+            android:text="코드를 받았어요"
+            style="@style/Typography.S16"
+            android:background="@drawable/shape_green_radius_47_1"
+            android:textColor="@color/white"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            app:layout_constraintBottom_toTopOf="@+id/btn_move_create_family_code" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_move_create_family_code"
+            android:textColor="@color/white"
+            style="@style/Typography.S16"
+            android:background="@drawable/shape_green_radius_47_1"
+            android:text="아니요"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
