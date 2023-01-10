@@ -1,5 +1,6 @@
 package org.sopt.zooczoocbbangbbang.presentation.main.record
 
+import ThreeSelectorPetFragment
 import android.graphics.Color
 import android.os.Bundle
 import android.util.Log
@@ -15,7 +16,7 @@ class RecordActivity : BindingActivity<ActivityRecordBinding>(R.layout.activity_
         recordBinding = ActivityRecordBinding.inflate(layoutInflater)
         setContentView(binding.root)
         supportFragmentManager.beginTransaction()
-            .replace(R.id.fcv_record_view, RecordFragment())
+            .replace(R.id.fcv_record_view, ThreeSelectorPetFragment())
             .commit()
         displayFragment()
         clickCloseBtn()
