@@ -15,8 +15,8 @@
         android:layout_marginEnd="16dp">
 
         <com.google.android.material.imageview.ShapeableImageView
-            app:strokeWidth="4dp"
-            android:padding="3dp"
+            app:strokeWidth="2dp"
+            android:padding="2dp"
             app:strokeColor="#42C87F"
             android:id="@+id/img_members"
             android:layout_width="48dp"
@@ -25,7 +25,7 @@
             app:layout_constraintDimensionRatio="1:1"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            android:src="@drawable/mypage_member"
+            android:src="@drawable/img_myprofile"
             app:shapeAppearanceOverlay="@style/Style.CircleImageView.Half" />
 
         <TextView

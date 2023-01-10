@@ -45,7 +45,7 @@ class MyPofileEdityActivity :
             exitDialog.show()
         }
         binding.btnFinish.setOnClickListener {
-            Log.d("aaa", "버튼 클릭됨")
+            editProfileViewModel.onSubmit()
         }
         observe()
     }

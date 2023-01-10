@@ -92,7 +92,8 @@
                     android:backgroundTint="#828282"
                     app:layout_constraintEnd_toEndOf="@+id/tv_btn_invite"
                     app:layout_constraintStart_toStartOf="@+id/tv_btn_invite"
-                    app:layout_constraintTop_toBottomOf="@+id/tv_btn_invite" />
+                    app:layout_constraintTop_toBottomOf="@+id/tv_btn_invite"
+                    android:id="@+id/view4" />
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/rv_members"
@@ -133,6 +134,16 @@
                     app:layout_constraintBottom_toBottomOf="@+id/tv_member_num"
                     app:layout_constraintStart_toEndOf="@+id/tv_member_num"
                     app:layout_constraintTop_toTopOf="@+id/tv_member_num" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:srcCompat="@drawable/ic_invite_line"
+                    android:id="@+id/imageView3"
+                    app:layout_constraintStart_toStartOf="@+id/tv_btn_invite"
+                    app:layout_constraintEnd_toEndOf="@+id/tv_btn_invite"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_btn_invite"
+                    android:layout_marginTop="2dp" />
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <androidx.constraintlayout.widget.ConstraintLayout
@@ -341,7 +352,8 @@
                 app:layout_constraintEnd_toEndOf="@+id/tv_btn_quit"
                 app:layout_constraintHorizontal_bias="1.0"
                 app:layout_constraintStart_toStartOf="@+id/tv_btn_quit"
-                app:layout_constraintTop_toBottomOf="@+id/tv_btn_quit" />
+                app:layout_constraintTop_toBottomOf="@+id/tv_btn_quit"
+                android:id="@+id/view5" />
 
             <TextView
                 android:id="@+id/tv_btn_edit"
@@ -356,6 +368,17 @@
                 app:layout_constraintBottom_toBottomOf="@+id/tv_nickname"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="@+id/tv_nickname" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:srcCompat="@drawable/ic_quit_line"
+                android:id="@+id/imageView4"
+                app:layout_constraintEnd_toEndOf="@+id/tv_btn_quit"
+                app:layout_constraintStart_toStartOf="@+id/tv_btn_quit"
+                app:layout_constraintTop_toBottomOf="@+id/tv_btn_quit"
+                android:layout_marginTop="2dp" />
+
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
 </layout>

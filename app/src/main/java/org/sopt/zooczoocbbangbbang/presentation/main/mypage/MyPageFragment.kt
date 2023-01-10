@@ -38,11 +38,11 @@ class MyPageFragment : BindingFragment<FragmentMyPageBinding>(R.layout.fragment_
         binding.rvPets.adapter = myPagePetAdapter
     }
 
-    private fun fetchUserProfile() {
+    fun fetchUserProfile() {
         memberviewModel.userData.observe(viewLifecycleOwner) { user ->
             if (user != null) {
                 binding.ivMyprofile.load(user.imgMember)
-                binding.tvNickname.text=user.memberName
+                binding.tvNickname.text = user.memberName
             }
         }
     }

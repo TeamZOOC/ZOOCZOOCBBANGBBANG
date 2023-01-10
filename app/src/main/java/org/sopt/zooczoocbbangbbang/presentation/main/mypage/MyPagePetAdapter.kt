@@ -1,17 +1,20 @@
 package org.sopt.zooczoocbbangbbang.presentation.main.mypage
 
 import android.content.Context
+import android.content.Intent
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
+import org.sopt.zooczoocbbangbbang.R
 import org.sopt.zooczoocbbangbbang.data.remote.entity.mypage.ResponseMembersDto
 import org.sopt.zooczoocbbangbbang.databinding.ItemMypageRecyclerBtnPetsAddBinding
 import org.sopt.zooczoocbbangbbang.databinding.ItemMypageRecyclerBtnPetsAddBinding.inflate
 import org.sopt.zooczoocbbangbbang.databinding.ItemMypageRecyclerPetsBinding
 
-class MyPagePetAdapter(context: Context) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+class MyPagePetAdapter(private val context: Context) :
+    RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     private val inflater by lazy { LayoutInflater.from(context) }
     var petList = mutableListOf<ResponseMembersDto.Data.Pet>()
 
@@ -19,14 +22,24 @@ class MyPagePetAdapter(context: Context) : RecyclerView.Adapter<RecyclerView.Vie
         private val binding: ItemMypageRecyclerPetsBinding
     ) : RecyclerView.ViewHolder(binding.root) {
         fun onBind(data: ResponseMembersDto.Data.Pet) {
-            binding.ivMypagePetImage.load(data.photo)
+            if (data.photo == null) {
+                binding.ivMypagePetImage.load(R.drawable.img_default_pet)
+            } else {
+                binding.ivMypagePetImage.load(data.photo)
+            }
             binding.tvMypagePetName.text = data.name
         }
     }
 
     class AddPetViewHolder(
         private val binding: ItemMypageRecyclerBtnPetsAddBinding
-    ) : RecyclerView.ViewHolder(binding.root)
+    ) : RecyclerView.ViewHolder(binding.root) {
+        fun click(context: Context) {
+            binding.btnAddPet.setOnClickListener {
+                context.startActivity(Intent(context, PetRegisterActivity::class.java))
+            }
+        }
+    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         return when (viewType) {
@@ -46,6 +59,8 @@ class MyPagePetAdapter(context: Context) : RecyclerView.Adapter<RecyclerView.Vie
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         if (holder is PetViewHolder) {
             holder.onBind(petList[position])
+        } else if (holder is AddPetViewHolder) {
+            holder.click(context)
         }
     }
 

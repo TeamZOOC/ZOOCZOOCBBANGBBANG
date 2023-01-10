@@ -1,5 +1,6 @@
 package org.sopt.zooczoocbbangbbang.data
 
+import kotlinx.serialization.json.Json
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
@@ -12,6 +13,11 @@ object ServiceFactory {
             .addConverterFactory(Json.asConverterFactory("application/json".toMediaType()))
             .build()
     }*/
+
+    val json = Json {
+        isLenient = true
+        coerceInputValues = true
+    }
 
     private val retrofitZooc: Retrofit by lazy {
         Retrofit.Builder()
