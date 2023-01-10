@@ -26,7 +26,6 @@
     <string name="mission_hintText">ex) 2023년 2월 30일 \n어떤 순간이었는지 가족에게 남겨주세요</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
-    <dimen name="pagerWidth">174dp</dimen>
 
     <string name="record_button_text">다음</string>
 
