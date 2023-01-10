@@ -20,15 +20,34 @@
         tools:context=".presentation.main.record.MissionFragment">
 
         <androidx.viewpager2.widget.ViewPager2
-            android:id="@+id/fcv_mission_view"
+            android:id="@+id/vp_mission_view"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-
             android:layout_marginBottom="69dp"
+            android:clipToPadding="false"
+            android:clipChildren="false"
             android:name="org.sopt.zooczoocbbangbbang.presentation.main.record.MissionViewPagerFragment"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/btn_mission_bottom" />
+
+        <com.tbuonomo.viewpagerdotsindicator.DotsIndicator
+            android:id="@+id/dots_indicator"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:dotsColor="@color/green_dae0e6"
+            app:dotsCornerRadius="20dp"
+            android:layout_marginTop="27dp"
+            android:layout_marginBottom="36dp"
+            app:dotsSize="6dp"
+            app:dotsSpacing="5dp"
+            app:dotsWidthFactor="4"
+            app:selectedDotColor="@color/green_888c86"
+            app:progressMode="true"
+            app:layout_constraintStart_toStartOf="@+id/cl_mission_bg"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/vp_mission_view"
             app:layout_constraintBottom_toTopOf="@+id/btn_mission_bottom" />
 
         <androidx.appcompat.widget.AppCompatButton

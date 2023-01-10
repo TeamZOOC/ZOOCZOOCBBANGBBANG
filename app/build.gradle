@@ -83,4 +83,7 @@ dependencies {
 
     // view pager2
     implementation("androidx.viewpager2:viewpager2:1.0.0")
+
+    // viewpager2 circle indicator
+    implementation("com.tbuonomo:dotsindicator:4.3")
 }
