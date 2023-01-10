@@ -83,6 +83,7 @@
                     <androidx.constraintlayout.widget.ConstraintLayout
                         android:id="@+id/cl_threeSelectorPet_1"
                         android:layout_width="match_parent"
+                        android:background="@{viewmodel.isSelectedFirst ? @color/white_f8 : @color/white_ff}"
                         android:layout_height="0dp"
                         android:layout_weight="1">
 
@@ -131,6 +132,7 @@
 
                     <androidx.constraintlayout.widget.ConstraintLayout
                         android:id="@+id/cl_threeSelectorPet_2"
+                        android:background="@{viewmodel.isSelectedSecond ? @color/white_f8 : @color/white_ff}"
                         android:layout_width="match_parent"
                         android:layout_height="0dp"
                         android:layout_weight="1">
@@ -180,6 +182,7 @@
 
                     <androidx.constraintlayout.widget.ConstraintLayout
                         android:id="@+id/cl_threeSelectorPet_3"
+                        android:background="@{viewmodel.isSelectedThird ? @color/white_f8 : @color/white_ff}"
                         android:layout_width="match_parent"
                         android:layout_height="0dp"
                         android:layout_weight="1">

@@ -84,7 +84,7 @@
 
         <androidx.fragment.app.FragmentContainerView
             android:id="@+id/fcv_record_view"
-            android:name="FourSelectorPetFragment"
+            android:name="ThreeSelectorPetFragment"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginTop="101dp"
