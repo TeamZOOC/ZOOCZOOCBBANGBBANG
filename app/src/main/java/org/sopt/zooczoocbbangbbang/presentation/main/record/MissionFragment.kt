@@ -1,5 +1,6 @@
 package org.sopt.zooczoocbbangbbang.presentation.main.record
 
+import FourSelectorPetFragment
 import android.os.Bundle
 import android.util.Log
 import android.view.View
@@ -10,6 +11,7 @@ import androidx.viewpager2.widget.ViewPager2
 import org.sopt.zooczoocbbangbbang.R
 import org.sopt.zooczoocbbangbbang.databinding.FragmentMissionBinding
 import org.sopt.zooczoocbbangbbang.presentation.base.BindingFragment
+import timber.log.Timber
 
 class MissionFragment : BindingFragment<FragmentMissionBinding>(R.layout.fragment_mission) {
     private val missionViewModel: MissionViewModel by viewModels()
@@ -23,7 +25,9 @@ class MissionFragment : BindingFragment<FragmentMissionBinding>(R.layout.fragmen
 
     private fun clickNextBtn() {
         binding.btnMissionBottom.setOnClickListener() {
-            Log.d("MissionFragment", "반려동물 선택 뷰로 이동하는 로직 필요!")
+            Timber.tag("MissionFragment").d("반려동물 선택 뷰로 이동하는 로직 필요!")
+            parentFragmentManager.beginTransaction()
+                .replace(R.id.fcv_record_view, FourSelectorPetFragment()).commit()
         }
     }
 

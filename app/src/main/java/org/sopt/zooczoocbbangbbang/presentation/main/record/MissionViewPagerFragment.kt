@@ -1,7 +1,6 @@
 package org.sopt.zooczoocbbangbbang.presentation.main.record
 
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.fragment.app.viewModels
@@ -9,6 +8,7 @@ import coil.load
 import org.sopt.zooczoocbbangbbang.R
 import org.sopt.zooczoocbbangbbang.databinding.FragmentMissionViewPagerBinding
 import org.sopt.zooczoocbbangbbang.presentation.base.BindingFragment
+import timber.log.Timber
 
 class MissionViewPagerFragment :
     BindingFragment<FragmentMissionViewPagerBinding>(R.layout.fragment_mission_view_pager) {
@@ -17,7 +17,7 @@ class MissionViewPagerFragment :
         super.onViewCreated(view, savedInstanceState)
         binding.lifecycleOwner = viewLifecycleOwner
         binding.viewmodel = missionViewModel
-        Log.d("Mission", "MissionViewPagerFragment 20")
+        Timber.tag("Mission").d("MissionViewPagerFragment 20")
         clickImageBtn()
         observe()
     }
@@ -36,13 +36,13 @@ class MissionViewPagerFragment :
 
     private fun observe() {
         missionViewModel.image.observe(viewLifecycleOwner) {
-            Log.d("MissionFragment", "image:::${missionViewModel.image.value}")
+            Timber.tag("MissionFragment").d("image:::%s", missionViewModel.image.value)
         }
         missionViewModel.missionText.observe(viewLifecycleOwner) {
-            Log.d("MissionFragment", "Missiontext:::$it")
+            Timber.tag("MissionFragment").d("Missiontext:::%s", it)
         }
         missionViewModel.buttonValidation.observe(viewLifecycleOwner) {
-            Log.d("MissionFragment", "validation:::$it")
+            Timber.tag("MissionFragment").d("validation:::%s", it)
         } // validation은 true인데 버튼은 활성화되지 않은 건에 대하여...
     }
 
