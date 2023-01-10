@@ -16,7 +16,6 @@ class RecordFragment : BindingFragment<FragmentRecordBinding>(R.layout.fragment_
         clickNextBtn()
     }
 
-    // 사진을 불러오는 함수
     private fun clickImageBtn() {
         val launcher = registerForActivityResult(ActivityResultContracts.GetContent()) {
             binding.ivRecordBgimg.load(it) {
