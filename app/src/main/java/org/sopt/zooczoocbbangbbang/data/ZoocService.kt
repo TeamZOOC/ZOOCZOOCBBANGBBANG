@@ -19,7 +19,7 @@ interface ZoocService {
 
     @Headers("Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlhdCI6MTY3MjkwMjQzOSwiZXhwIjoxNjczNTA3MjM5fQ.ztLfFDHWIQP-vpejw_hfCwZPbkR5FjFMy7F6MRMbrZQ")
     @Multipart
-    @PATCH("user/profile")
+    @PATCH("user/profile?photo={true/false}")
     fun editProfile(
         @Query("photo") photo: Boolean,
         @Part body: RequestBody,

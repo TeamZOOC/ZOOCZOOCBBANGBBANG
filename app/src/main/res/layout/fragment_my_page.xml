@@ -332,7 +332,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/view_divider5" />
 
             <TextView
-                android:id="@+id/tv_btn_quit"
+                android:id="@+id/tv_btn_secession"
                 style="@style/Zooc12Medium"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -349,10 +349,10 @@
                 android:layout_marginTop="2dp"
                 android:layout_marginBottom="69dp"
                 app:layout_constraintBottom_toBottomOf="@+id/cl_container"
-                app:layout_constraintEnd_toEndOf="@+id/tv_btn_quit"
+                app:layout_constraintEnd_toEndOf="@+id/tv_btn_secession"
                 app:layout_constraintHorizontal_bias="1.0"
-                app:layout_constraintStart_toStartOf="@+id/tv_btn_quit"
-                app:layout_constraintTop_toBottomOf="@+id/tv_btn_quit"
+                app:layout_constraintStart_toStartOf="@+id/tv_btn_secession"
+                app:layout_constraintTop_toBottomOf="@+id/tv_btn_secession"
                 android:id="@+id/view5" />
 
             <TextView
@@ -374,9 +374,9 @@
                 android:layout_height="wrap_content"
                 app:srcCompat="@drawable/ic_quit_line"
                 android:id="@+id/imageView4"
-                app:layout_constraintEnd_toEndOf="@+id/tv_btn_quit"
-                app:layout_constraintStart_toStartOf="@+id/tv_btn_quit"
-                app:layout_constraintTop_toBottomOf="@+id/tv_btn_quit"
+                app:layout_constraintEnd_toEndOf="@+id/tv_btn_secession"
+                app:layout_constraintStart_toStartOf="@+id/tv_btn_secession"
+                app:layout_constraintTop_toBottomOf="@+id/tv_btn_secession"
                 android:layout_marginTop="2dp" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>

@@ -15,7 +15,7 @@ import org.sopt.zooczoocbbangbbang.presentation.base.BindingActivity
 
 class MyPofileEdityActivity :
     BindingActivity<ActivityMyPageEditProfileBinding>(R.layout.activity_my_page_edit_profile),
-    MyCustomDialogInterface {
+    MyProfileEditCustomDialogInterface {
     private val getContent =
         registerForActivityResult(ActivityResultContracts.GetContent()) { uri: Uri? ->
             binding.ivProfile.load(uri)

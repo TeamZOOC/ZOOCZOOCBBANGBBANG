@@ -9,11 +9,11 @@ import org.sopt.zooczoocbbangbbang.databinding.CustumdialogEditPhotoBinding
 
 class MyProfileEditCustomDialog(
     context: Context,
-    MyCustomDialogInterface: MyCustomDialogInterface
+    MyCustomDialogInterface: MyProfileEditCustomDialogInterface
 ) : Dialog(context) {
     private var mBinding: CustumdialogEditPhotoBinding? = null
     private val binding get() = mBinding!!
-    private var myCustomDialogInterface: MyCustomDialogInterface? = null
+    private var myCustomDialogInterface: MyProfileEditCustomDialogInterface? = null
 
     // 인터페이스 연결
     init {

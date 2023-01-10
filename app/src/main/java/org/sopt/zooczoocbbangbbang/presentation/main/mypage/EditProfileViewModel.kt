@@ -59,7 +59,6 @@ class EditProfileViewModel : ViewModel() {
             runCatching {
                 zoocService.editProfile(file.value != null, requestBody, file.value?.toFormData())
             }.onSuccess {
-                myPageFragment.fetchUserProfile()
             }.onFailure {
             }
         }

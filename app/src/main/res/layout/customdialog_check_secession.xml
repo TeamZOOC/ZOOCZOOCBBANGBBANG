@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="299dp"
@@ -50,7 +50,7 @@
             android:background="@drawable/bg_rewrite"
             android:layout_width="179dp"
             android:layout_height="54dp"
-            android:id="@+id/tv_rewrite"
+            android:id="@+id/tv_btn_no_secession"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintBottom_toBottomOf="parent" />
 
@@ -61,7 +61,7 @@
             android:layout_height="54dp"
             style="@style/Zooc16SemiBold"
             android:textColor="#333333"
-            android:id="@+id/tv_exit"
+            android:id="@+id/tv_btn_yes_secession"
             android:gravity="center"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintBottom_toBottomOf="parent" />

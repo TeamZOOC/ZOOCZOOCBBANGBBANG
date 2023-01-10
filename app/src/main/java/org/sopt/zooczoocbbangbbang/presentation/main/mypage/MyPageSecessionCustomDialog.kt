@@ -5,24 +5,24 @@ import android.content.Context
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
-import org.sopt.zooczoocbbangbbang.databinding.CustomdialogCheckQuitBinding
+import org.sopt.zooczoocbbangbbang.databinding.CustomdialogCheckSecessionBinding
 
-class MyProfileExitCustomDialog(
+class MyPageSecessionCustomDialog(
     context: Context,
-    MyCustomDialogInterface: MyProfileEditCustomDialogInterface
+    myPageCustomDialogInterface: MyPageCustomDialogInterface
 ) : Dialog(context) {
-    private var mBinding: CustomdialogCheckQuitBinding? = null
+    private var mBinding: CustomdialogCheckSecessionBinding? = null
     private val binding get() = mBinding!!
-    private var ExitDialogInterface: MyProfileEditCustomDialogInterface? = null
+    private var myPageSecessionDialogInterface: MyPageCustomDialogInterface? = null
 
     // 인터페이스 연결
     init {
-        this.ExitDialogInterface = MyCustomDialogInterface
+        this.myPageSecessionDialogInterface = myPageCustomDialogInterface
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        mBinding = CustomdialogCheckQuitBinding.inflate(layoutInflater)
+        mBinding = CustomdialogCheckSecessionBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         // 배경 투명
@@ -31,11 +31,11 @@ class MyProfileExitCustomDialog(
         // 커스텀 다이얼로그 외부 영역 클릭 시 꺼짐 현상 방지
         setCanceledOnTouchOutside(false)
 
-        binding.tvRewrite.setOnClickListener {
-            this.ExitDialogInterface?.rewriteBtnClicked()
+        binding.tvBtnYesSecession.setOnClickListener {
+            this.myPageSecessionDialogInterface?.yesSecessionBtnClicked()
         }
-        binding.tvExit.setOnClickListener {
-            this.ExitDialogInterface?.exitBtnClicked()
+        binding.tvBtnNoSecession.setOnClickListener {
+            this.myPageSecessionDialogInterface?.noSecessionBtnClicked()
         }
     }
 }

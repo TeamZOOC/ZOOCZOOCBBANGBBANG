@@ -22,11 +22,7 @@ class MemberViewModel : ViewModel() {
     val petData: LiveData<List<ResponseMembersDto.Data.Pet>>
         get() = _petData
 
-    init {
-        fetchMyPageData()
-    }
-
-    private fun fetchMyPageData() {
+    fun fetchMyPageData() {
         ZoocService.getUser().enqueueUtil(
             { result ->
                 _userData.value = result.data.user

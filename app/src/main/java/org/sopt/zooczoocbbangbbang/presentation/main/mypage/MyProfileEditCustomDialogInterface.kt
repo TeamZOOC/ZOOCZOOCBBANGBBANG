@@ -1,6 +1,6 @@
 package org.sopt.zooczoocbbangbbang.presentation.main.mypage
 
-interface MyCustomDialogInterface {
+interface MyProfileEditCustomDialogInterface {
 
     fun changePhotoBtnClicked()
     fun deletePhotoBtnClicked()
