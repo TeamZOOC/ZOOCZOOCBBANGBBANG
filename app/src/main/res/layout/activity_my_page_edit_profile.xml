@@ -10,6 +10,7 @@
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/layout"
         android:background="@color/green_f0f2ef"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -95,7 +96,7 @@
             android:layout_height="54dp"
             android:layout_marginHorizontal="30dp"
             android:layout_marginBottom="44dp"
-            android:backgroundTint="#3BB774"
+            app:cardBackgroundColor="@{viewModel.buttonValidation? @color/green_42c87f : @color/grey_bd}"
             android:elevation="18dp"
             app:cardCornerRadius="47dp"
             android:clickable="@{viewModel.buttonValidation}"

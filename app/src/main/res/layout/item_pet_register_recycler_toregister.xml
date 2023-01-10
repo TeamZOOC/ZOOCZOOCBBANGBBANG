@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="memberInfo"
+            type="org.sopt.zooczoocbbangbbang.data.remote.entity.mypage.ResponseMembersDto.Data.FamilyMember" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:background="#66DAE0D6"
+        android:layout_height="wrap_content">
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:layout_marginVertical="15dp"
+            android:id="@+id/img_members"
+            android:layout_width="70dp"
+            android:layout_height="0dp"
+            android:scaleType="centerCrop"
+            app:layout_constraintDimensionRatio="1:1"
+            app:shapeAppearance="@style/ShapeAppearanceOverlay.App.CornerSize50Percent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:src="@drawable/ic_register_pet_btn_get_photo"
+            app:shapeAppearanceOverlay="@style/Style.CircleImageView.Half"
+            android:layout_marginStart="30dp"
+            app:layout_constraintBottom_toBottomOf="parent" />
+
+        <EditText
+            android:layout_width="221dp"
+            android:layout_height="36dp"
+            android:background="@drawable/bg_register_pet_edittext"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginStart="9dp"
+            android:hint="ex) 사랑,토리 (4자 이내)"
+            android:paddingStart="18dp"
+            android:textColor="@color/grey_bd"
+            style="@style/Zooc14Medium"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/img_members" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

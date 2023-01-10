@@ -21,7 +21,7 @@ class MyPofileEdityActivity :
             binding.ivProfile.load(uri)
         }
 
-    private val editProfileViewModel:EditProfileViewModel by viewModels()
+    private val editProfileViewModel: EditProfileViewModel by viewModels()
     lateinit var myCustomDialog: MyProfileEditCustomDialog
     lateinit var exitDialog: MyProfileExitCustomDialog
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -36,7 +36,6 @@ class MyPofileEdityActivity :
             // Custom Dialog 배경 설정 (다음과 같이 진행해야 좌우 여백 없이 그려짐)
             myCustomDialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
             myCustomDialog.show()
-
         }
         binding.ivBack.setOnClickListener {
             exitDialog = MyProfileExitCustomDialog(this, this)
@@ -44,17 +43,15 @@ class MyPofileEdityActivity :
             // Custom Dialog 배경 설정 (다음과 같이 진행해야 좌우 여백 없이 그려짐)
             exitDialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
             exitDialog.show()
-
         }
-        binding.btnFinish.setOnClickListener{
-            Log.d("aaa","버튼 클릭됨")
+        binding.btnFinish.setOnClickListener {
+            Log.d("aaa", "버튼 클릭됨")
         }
         observe()
-
     }
 
-    private fun observe(){
-        editProfileViewModel.inputText.observe(this){
+    private fun observe() {
+        editProfileViewModel.inputText.observe(this) {
             Log.d("MyProfileActivity", "데이터값:::: ${editProfileViewModel.inputText.value}")
             editProfileViewModel.countText()
         }

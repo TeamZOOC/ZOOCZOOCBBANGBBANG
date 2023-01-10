@@ -7,5 +7,4 @@ interface MyCustomDialogInterface {
     fun cancelBtnClicked()
     fun rewriteBtnClicked()
     fun exitBtnClicked()
-
 }
