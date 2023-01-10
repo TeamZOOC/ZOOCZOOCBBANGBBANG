@@ -13,6 +13,7 @@
     <color name="green_f0f2ef">#F0F2EF</color>
     <color name="green_dee3db">#DEE3DB</color>
     <color name="green_888c86">#888C86</color>
+    <color name="green_dae0e6">#DAE0D6</color>
 
     <color name="white_ff">#FFFFFF</color>
     <color name="white_f8">#F8F8F8</color>
@@ -24,5 +25,6 @@
     <color name="grey_55">#555555</color>
     <color name="grey_4f">#4F4F4F</color>
     <color name="grey_33">#333333</color>
+    <color name="green_dae0d6">#DAE0D6</color>
 
 </resources>

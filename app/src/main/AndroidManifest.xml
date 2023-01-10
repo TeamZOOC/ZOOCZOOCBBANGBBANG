@@ -15,16 +15,19 @@
         android:theme="@style/Theme.ZOOCZOOCBBANGBBANG"
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
+
         <activity
             android:name=".presentation.main.mypage.PetRegisterActivity"
             android:exported="false"/>
         <activity
             android:name=".presentation.main.record.RecordDoneActivity"
+            android:name=".presentation.detail.DetailActivity"
+            android:windowSoftInputMode="adjustPan"
             android:exported="true">
         </activity>
         <activity
-            android:name=".presentation.main.record.RecordActivity"
-            android:exported="true">
+            android:name=".presentation.main.record.RecordDoneActivity"
+            android:exported="false">
         </activity>
         <activity
             android:name=".presentation.main.mypage.MyPofileEdityActivity"
@@ -35,6 +38,10 @@
         <activity
             android:name=".presentation.main.mypage.MyprofileSetAlarmActivity"
             android:exported="false" />
+        <activity
+            android:name=".presentation.main.record.RecordActivity"
+            android:exported="true"
+            android:windowSoftInputMode="adjustResize"/>
         <activity
             android:name=".presentation.main.MainActivity"
             android:exported="true">

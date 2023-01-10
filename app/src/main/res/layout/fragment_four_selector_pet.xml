@@ -1,0 +1,343 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".presentation.main.record.Choose4PetFragment">
+
+    <data>
+
+        <variable
+            name="viewmodel"
+            type="org.sopt.zooczoocbbangbbang.presentation.main.record.register.FourSelectorPetViewModel" />
+
+        <import type="android.view.View" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/cl_fourSelectorPet_main"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/green_f0f2ef">
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cv_fourSelectorPet_background"
+            android:layout_width="0dp"
+            android:layout_height="454dp"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="43dp"
+            android:layout_marginEnd="30dp"
+            android:backgroundTint="@color/white_ff"
+            app:cardCornerRadius="24dp"
+            app:cardElevation="10dp"
+            app:layout_constraintDimensionRatio="300:454"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/cl_fourSelectorPet_background"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/tv_fourSelectorPet_subtitle"
+                    style="@style/Typography.M15"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="6dp"
+                    android:text="@string/choose2Pet_header2"
+                    android:textColor="@color/grey_bd"
+                    app:layout_constraintEnd_toEndOf="@+id/tv_fourSelectorPet_title"
+                    app:layout_constraintStart_toStartOf="@+id/tv_fourSelectorPet_title"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_fourSelectorPet_title" />
+
+                <TextView
+                    android:id="@+id/tv_fourSelectorPet_title"
+                    style="@style/Typography.S18"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="101dp"
+                    android:layout_marginTop="40dp"
+                    android:layout_marginEnd="101dp"
+                    android:text="@string/choose2Pet_header1"
+                    android:textColor="@color/grey_4f"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:layout_marginTop="118dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_fourSelectorPet_subtitle">
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="@color/white_f2" />
+
+                    <androidx.appcompat.widget.LinearLayoutCompat
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"
+                        android:orientation="horizontal">
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:id="@+id/cl_fourSelectorPet_1"
+                            android:background="@{viewmodel.isSelectedFirst ? @color/white_f8 : @color/white_ff}"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1">
+
+                            <ImageView
+                                android:id="@+id/iv_fourSelectorPet_first"
+                                android:layout_width="48dp"
+                                android:layout_height="0dp"
+                                android:layout_marginStart="50dp"
+                                android:layout_marginEnd="49dp"
+                                android:layout_marginTop="44dp"
+                                android:layout_marginBottom="77dp"
+                                android:scaleType="fitXY"
+                                android:src="@drawable/shape_round_grey"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintDimensionRatio="1:1"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                            <TextView
+                                android:id="@+id/tv_fourSelectorPet_first"
+                                style="@style/Typography.M16"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="61dp"
+                                android:layout_marginTop="20dp"
+                                android:layout_marginEnd="60dp"
+                                android:text="@string/choosePet_name"
+                                android:textColor="@color/grey_82"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toBottomOf="@+id/iv_fourSelectorPet_first" />
+
+                            <ImageView
+                                android:id="@+id/iv_fourSelectorPet_check_1"
+                                android:src="@drawable/ic_check"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:visibility="@{viewmodel.isSelectedFirst() ? View.VISIBLE : View.INVISIBLE}"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent"
+                                android:layout_marginTop="23dp"
+                                android:layout_marginStart="24dp" />
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+
+                        <View
+                            android:layout_width="1dp"
+                            android:layout_height="match_parent"
+                            android:background="@color/white_f2" />
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:id="@+id/cl_fourSelectorPet_2"
+                            android:background="@{viewmodel.isSelectedSecond ? @color/white_f8 : @color/white_ff}"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1">
+
+                            <ImageView
+                                android:id="@+id/iv_fourSelectorPet_second"
+                                android:layout_width="48dp"
+                                android:layout_height="0dp"
+                                android:layout_marginStart="50dp"
+                                android:layout_marginEnd="49dp"
+                                android:layout_marginTop="44dp"
+                                android:layout_marginBottom="77dp"
+                                android:scaleType="fitXY"
+                                android:src="@drawable/shape_round_grey"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintDimensionRatio="1:1"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                            <TextView
+                                android:id="@+id/tv_fourSelectorPet_second"
+                                style="@style/Typography.M16"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="61dp"
+                                android:layout_marginTop="20dp"
+                                android:layout_marginEnd="60dp"
+                                android:text="@string/choosePet_name"
+                                android:textColor="@color/grey_82"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toBottomOf="@+id/iv_fourSelectorPet_second" />
+
+                            <ImageView
+                                android:src="@drawable/ic_check"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:id="@+id/iv_fourSelectorPet_check_2"
+                                android:visibility="@{viewmodel.isSelectedSecond ? View.VISIBLE : View.INVISIBLE}"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent"
+                                android:layout_marginTop="23dp"
+                                android:layout_marginStart="24dp" />
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+                    </androidx.appcompat.widget.LinearLayoutCompat>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="@color/white_f2" />
+
+                    <androidx.appcompat.widget.LinearLayoutCompat
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"
+                        android:orientation="horizontal">
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:id="@+id/cl_fourSelectorPet_3"
+                            android:background="@{viewmodel.isSelectedThird ? @color/white_f8 : @color/white_ff}"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1">
+
+                            <ImageView
+                                android:id="@+id/iv_fourSelectorPet_third"
+                                android:layout_width="48dp"
+                                android:layout_height="0dp"
+                                android:layout_marginStart="50dp"
+                                android:layout_marginEnd="49dp"
+                                android:layout_marginTop="44dp"
+                                android:layout_marginBottom="77dp"
+                                android:scaleType="fitXY"
+                                android:src="@drawable/shape_round_grey"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintDimensionRatio="1:1"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                            <TextView
+                                android:id="@+id/tv_fourSelectorPet_third"
+                                style="@style/Typography.M16"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="61dp"
+                                android:layout_marginTop="20dp"
+                                android:layout_marginEnd="60dp"
+                                android:text="@string/choosePet_name"
+                                android:textColor="@color/grey_82"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toBottomOf="@+id/iv_fourSelectorPet_third" />
+
+                            <ImageView
+                                android:src="@drawable/ic_check"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:id="@+id/iv_fourSelectorPet_check_3"
+                                android:visibility="@{viewmodel.isSelectedThird ? View.VISIBLE : View.INVISIBLE}"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent"
+                                android:layout_marginTop="23dp"
+                                android:layout_marginStart="24dp" />
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+
+                        <View
+                            android:layout_width="1dp"
+                            android:layout_height="match_parent"
+                            android:background="@color/white_f2" />
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:id="@+id/cl_fourSelectorPet_4"
+                            android:background="@{viewmodel.isSelectedFourth ? @color/white_f8 : @color/white_ff}"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1">
+
+                            <ImageView
+                                android:id="@+id/iv_fourSelectorPet_fourth"
+                                android:layout_width="48dp"
+                                android:layout_height="0dp"
+                                android:layout_marginStart="50dp"
+                                android:layout_marginEnd="49dp"
+                                android:layout_marginTop="44dp"
+                                android:layout_marginBottom="77dp"
+                                android:scaleType="fitXY"
+                                android:src="@drawable/shape_round_grey"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintDimensionRatio="1:1"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                            <TextView
+                                android:id="@+id/tv_fourSelectorPet_fourth"
+                                style="@style/Typography.M16"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="61dp"
+                                android:layout_marginTop="20dp"
+                                android:layout_marginEnd="60dp"
+                                android:text="@string/choosePet_name"
+                                android:textColor="@color/grey_82"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toBottomOf="@+id/iv_fourSelectorPet_fourth" />
+
+                            <ImageView
+                                android:src="@drawable/ic_check"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:id="@+id/iv_fourSelectorPet_check_4"
+                                android:visibility="@{viewmodel.isSelectedFourth ? View.VISIBLE : View.INVISIBLE}"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent"
+                                android:layout_marginTop="23dp"
+                                android:layout_marginStart="24dp" />
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+                    </androidx.appcompat.widget.LinearLayoutCompat>
+                </LinearLayout>
+
+                <ImageView
+                    android:id="@+id/iv_fourSelectorPet_backbtn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="20dp"
+                    android:src="@drawable/ic_back_round"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.cardview.widget.CardView>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_fourSelectorPet_bottom"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="30dp"
+            android:layout_marginTop="63dp"
+            android:layout_marginBottom="44dp"
+            android:clickable="@{viewmodel.buttonValidation}"
+            android:background="@{viewmodel.buttonValidation ? @drawable/shape_green_radius_47 : @drawable/shape_grey_radius_47}"
+            android:elevation="10dp"
+            android:padding="10dp"
+            android:text="@string/choose2Pet_btn"
+            android:textAppearance="@style/Typography.S20"
+            android:textColor="#E6FFFFFF"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/cv_fourSelectorPet_background" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

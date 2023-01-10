@@ -3,7 +3,7 @@ package org.sopt.zooczoocbbangbbang.data.remote.entity.mypage
 import com.google.gson.annotations.SerializedName
 
 data class ResponseEditProfileDto(
-    val `data`: Data,
+    val data: Profile,
     val message: String,
     val status: Int,
     val success: Boolean
