@@ -23,5 +23,6 @@
     <string name="choose2Pet_btn">등록</string>
     <string name="choosePet_name">토리</string>
 
-
+    <!--상세 뷰-->
+    <string name="detail_input_comment">댓글을 입력해보세요</string>
 </resources>
