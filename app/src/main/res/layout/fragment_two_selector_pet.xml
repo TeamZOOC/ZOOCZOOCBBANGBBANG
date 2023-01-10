@@ -80,6 +80,7 @@
 
                     <androidx.constraintlayout.widget.ConstraintLayout
                         android:id="@+id/cl_twoSelectorPet_firstLayout"
+                        android:background="@{viewmodel.isSelectedFirst ? @color/white_f8 : @color/white_ff}"
                         android:layout_width="match_parent"
                         android:layout_height="0dp"
                         android:layout_weight="1">
@@ -129,6 +130,7 @@
 
                     <androidx.constraintlayout.widget.ConstraintLayout
                         android:id="@+id/cl_twoSelectorPet_secondLayout"
+                        android:background="@{viewmodel.isSelectedSecond ? @color/white_f8 : @color/white_ff}"
                         android:layout_width="match_parent"
                         android:layout_height="0dp"
                         android:layout_weight="1">
