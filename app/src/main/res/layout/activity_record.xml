@@ -82,6 +82,14 @@
             android:layout_marginTop="101dp"
             tools:layout="@layout/fragment_record" />
 
+<!--        <androidx.fragment.app.FragmentContainerView-->
+<!--            android:id="@+id/fcv_selector_view"-->
+<!--            android:name="TwoSelectorPetFragment"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="match_parent"-->
+<!--            android:layout_marginTop="101dp"-->
+<!--            tools:layout="@layout/fragment_record" />-->
+
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
