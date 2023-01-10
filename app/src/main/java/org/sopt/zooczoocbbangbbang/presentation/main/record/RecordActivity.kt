@@ -23,14 +23,14 @@ class RecordActivity : BindingActivity<ActivityRecordBinding>(R.layout.activity_
 
     private fun displayFragment() {
         binding.tvRecordWrite.setOnClickListener {
-            changeFragment(
+            displayFragment(
                 RecordFragment()
             )
             binding.tvRecordWrite.setTextColor(Color.parseColor("#4F4F4F"))
             binding.tvRecordMission.setTextColor(Color.parseColor("#BDBDBD"))
         }
         binding.tvRecordMission.setOnClickListener {
-            changeFragment(
+            displayFragment(
                 MissionFragment()
             )
             binding.tvRecordMission.setTextColor(Color.parseColor("#4F4F4F"))
@@ -39,13 +39,12 @@ class RecordActivity : BindingActivity<ActivityRecordBinding>(R.layout.activity_
     }
 
     private fun clickCloseBtn() {
-        binding.imgbtnRecordBack.setOnClickListener() {
-            // finish()
-            Log.e("RecordActivity", "close 버튼 누름")
+        binding.imgbtnRecordBack.setOnClickListener {
+            Log.e("RecordActivity", "커스텀 다이얼로그 뜨는 로직 필요!")
         }
     }
 
-    fun changeFragment(fragment: Fragment) {
+    private fun displayFragment(fragment: Fragment) {
         supportFragmentManager.beginTransaction().replace(R.id.fcv_record_view, fragment).commit()
     }
 }

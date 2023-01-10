@@ -1,3 +1,4 @@
+import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
 import android.util.Log
@@ -7,6 +8,7 @@ import org.sopt.zooczoocbbangbbang.R
 import org.sopt.zooczoocbbangbbang.databinding.FragmentFourSelectorPetBinding
 import org.sopt.zooczoocbbangbbang.presentation.base.BindingFragment
 import org.sopt.zooczoocbbangbbang.presentation.main.record.FourSelectorPetViewModel
+import org.sopt.zooczoocbbangbbang.presentation.main.record.RecordDoneActivity
 
 class FourSelectorPetFragment :
     BindingFragment<FragmentFourSelectorPetBinding>(R.layout.fragment_four_selector_pet) {
@@ -17,6 +19,7 @@ class FourSelectorPetFragment :
         binding.viewmodel = fourSelectorViewModel
         super.onViewCreated(view, savedInstanceState)
         checkIsSelected()
+        clickRecordBtn()
     }
 
     private fun clickFirstSelectorItem() {
@@ -103,6 +106,14 @@ class FourSelectorPetFragment :
         fourSelectorViewModel.isSelectedFourth.observe(viewLifecycleOwner) {
             Log.d("ThreeSelector", "isSelected::: ${fourSelectorViewModel.isSelectedFourth.value}")
             clickAllSelectorItem()
+        }
+    }
+    private fun clickRecordBtn() {
+        binding.btnFourSelectorPetBottom.setOnClickListener {
+            activity?.let {
+                val intent = Intent(context, RecordDoneActivity::class.java)
+                startActivity(intent)
+            }
         }
     }
 

@@ -1,3 +1,4 @@
+import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
 import android.util.Log
@@ -6,6 +7,7 @@ import androidx.fragment.app.viewModels
 import org.sopt.zooczoocbbangbbang.R
 import org.sopt.zooczoocbbangbbang.databinding.FragmentThreeSelectorPetBinding
 import org.sopt.zooczoocbbangbbang.presentation.base.BindingFragment
+import org.sopt.zooczoocbbangbbang.presentation.main.record.RecordDoneActivity
 import org.sopt.zooczoocbbangbbang.presentation.main.record.ThreeSelectorPetViewModel
 
 class ThreeSelectorPetFragment :
@@ -16,6 +18,7 @@ class ThreeSelectorPetFragment :
         binding.viewmodel = threeSelectorViewModel
         super.onViewCreated(view, savedInstanceState)
         checkIsSelected()
+        clickRecordBtn()
     }
 
     private fun clickFirstSelectorItem() {
@@ -81,6 +84,15 @@ class ThreeSelectorPetFragment :
         threeSelectorViewModel.isSelectedThird.observe(viewLifecycleOwner) {
             Log.d("ThreeSelector", "isSelected::: ${threeSelectorViewModel.isSelectedThird.value}")
             clickThreeSelectorItem()
+        }
+    }
+
+    private fun clickRecordBtn() {
+        binding.btnThreeSelectorPetBottom.setOnClickListener {
+            activity?.let {
+                val intent = Intent(context, RecordDoneActivity::class.java)
+                startActivity(intent)
+            }
         }
     }
 

@@ -1,5 +1,6 @@
 package org.sopt.zooczoocbbangbbang.presentation.main.record
 
+import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
 import android.util.Log
@@ -17,6 +18,7 @@ open class TwoSelectorPetFragment :
         binding.viewmodel = twoSelectorViewModel
         super.onViewCreated(view, savedInstanceState)
         checkIsSelected()
+        clickRecordBtn()
     }
 
     private fun clickFirstSelectorItem() {
@@ -61,6 +63,15 @@ open class TwoSelectorPetFragment :
         twoSelectorViewModel.isSelectedSecond.observe(viewLifecycleOwner) {
             Log.d("TwoSelector", "isSelected::: ${twoSelectorViewModel.isSelectedSecond.value}")
             clickSecondSelectorItem()
+        }
+    }
+
+    private fun clickRecordBtn() {
+        binding.btnTwoSelectorPetBottom.setOnClickListener {
+            activity?.let {
+                val intent = Intent(context, RecordDoneActivity::class.java)
+                startActivity(intent)
+            }
         }
     }
 
