@@ -2,7 +2,7 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context=".presentation.main.record.FourSelectorPetFragment">
+    tools:context=".presentation.main.record.Choose4PetFragment">
 
     <data>
 
@@ -327,7 +327,7 @@
             android:layout_marginTop="63dp"
             android:layout_marginBottom="44dp"
             android:clickable="@{viewmodel.buttonValidation}"
-            android:background="@{viewmodel.buttonValidation ? @drawable/shape_green_radius_20 : @drawable/shape_record_grey_radius_18}"
+            android:background="@{viewmodel.buttonValidation ? @drawable/shape_green_radius_47 : @drawable/shape_grey_radius_47}"
             android:elevation="10dp"
             android:padding="10dp"
             android:text="@string/choose2Pet_btn"
