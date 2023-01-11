@@ -1,5 +1,4 @@
 <resources>
-
     <string name="app_name">ZOOCZOOCBBANGBBANG</string>
 
     <!--home-->
@@ -29,6 +28,14 @@
     <string name="mission_hintText">ex) 2023년 2월 30일 \n어떤 순간이었는지 가족에게 남겨주세요</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
-    <dimen name="pagerWidth">174dp</dimen>
+
+    <string name="record_button_text">다음</string>
+
+    <string name="customDialog_title">페이지를 나가시겠어요?</string>
+    <string name="customDialog_subtitle">지금 떠나면 내용이 저장되지 않아요</string>
+    <string name="customDialog_relaywrite">이어쓰기</string>
+    <string name="customDialog_quit">나가기</string>
+\
+
 
 </resources>

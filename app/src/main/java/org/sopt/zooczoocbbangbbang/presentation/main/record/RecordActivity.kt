@@ -2,13 +2,16 @@ package org.sopt.zooczoocbbangbbang.presentation.main.record
 
 import android.graphics.Color
 import android.os.Bundle
-import android.util.Log
+import androidx.activity.viewModels
 import androidx.fragment.app.Fragment
 import org.sopt.zooczoocbbangbbang.R
 import org.sopt.zooczoocbbangbbang.databinding.ActivityRecordBinding
 import org.sopt.zooczoocbbangbbang.presentation.base.BindingActivity
+import org.sopt.zooczoocbbangbbang.presentation.main.record.mission.MissionFragment
+import timber.log.Timber
 
 class RecordActivity : BindingActivity<ActivityRecordBinding>(R.layout.activity_record) {
+    private val recordViewModel: RecordViewModel by viewModels()
     private lateinit var recordBinding: ActivityRecordBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -39,9 +42,16 @@ class RecordActivity : BindingActivity<ActivityRecordBinding>(R.layout.activity_
     }
 
     private fun clickCloseBtn() {
-        binding.imgbtnRecordBack.setOnClickListener {
-            Log.e("RecordActivity", "커스텀 다이얼로그 뜨는 로직 필요!")
+        binding.imgbtnRecordClose.setOnClickListener {
+            Timber.tag("RecordActivity").e("커스텀 다이얼로그 뜨는 로직 필요!")
+            showMessageDialog()
         }
+    }
+
+    private fun showMessageDialog() {
+        val customDialog = CustomDialog(finishApp = { finish() })
+        customDialog.show(supportFragmentManager, "CustomDialog")
+        customDialog.isCancelable = false
     }
 
     private fun displayFragment(fragment: Fragment) {

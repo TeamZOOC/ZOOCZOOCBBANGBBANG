@@ -1,3 +1,5 @@
+package org.sopt.zooczoocbbangbbang.presentation.main.record.register
+
 import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
@@ -7,7 +9,6 @@ import androidx.fragment.app.viewModels
 import org.sopt.zooczoocbbangbbang.R
 import org.sopt.zooczoocbbangbbang.databinding.FragmentFourSelectorPetBinding
 import org.sopt.zooczoocbbangbbang.presentation.base.BindingFragment
-import org.sopt.zooczoocbbangbbang.presentation.main.record.FourSelectorPetViewModel
 import org.sopt.zooczoocbbangbbang.presentation.main.record.RecordDoneActivity
 
 class FourSelectorPetFragment :

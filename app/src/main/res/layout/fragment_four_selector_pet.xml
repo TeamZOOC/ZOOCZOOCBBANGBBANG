@@ -8,7 +8,7 @@
 
         <variable
             name="viewmodel"
-            type="org.sopt.zooczoocbbangbbang.presentation.main.record.FourSelectorPetViewModel" />
+            type="org.sopt.zooczoocbbangbbang.presentation.main.record.register.FourSelectorPetViewModel" />
 
         <import type="android.view.View" />
     </data>
