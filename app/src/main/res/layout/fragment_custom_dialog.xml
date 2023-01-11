@@ -13,7 +13,7 @@
         <androidx.cardview.widget.CardView
             android:id="@+id/cv_dialog_background"
             android:layout_width="299dp"
-            android:layout_height="0dp"
+            android:layout_height="wrap_content"
             app:cardBackgroundColor="@color/white_f8"
             app:layout_constraintDimensionRatio="299:174"
             android:background="@color/white_ff"
@@ -34,10 +34,11 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     style="@style/Typography.S18"
+                    android:gravity="center"
                     android:textColor="@color/grey_4f"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    android:layout_marginTop="41dp"
+                    android:layout_marginTop="40dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     android:layout_marginStart="64dp"
                     android:layout_marginEnd="65dp" />
@@ -45,12 +46,13 @@
                 <TextView
                     android:id="@+id/tv_dialog_subtitle"
                     android:text="@string/customDialog_subtitle"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     style="@style/Typography.M14"
                     android:textColor="@color/grey_bd"
+                    android:gravity="center"
                     app:layout_constraintTop_toBottomOf="@+id/tv_dialog_title"
-                    android:layout_marginTop="6dp"
+                    android:layout_marginTop="10dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     android:layout_marginStart="39dp"
@@ -58,7 +60,7 @@
 
                 <androidx.appcompat.widget.LinearLayoutCompat
                     android:layout_width="match_parent"
-                    android:layout_height="0dp"
+                    android:layout_height="54dp"
                     android:orientation="horizontal"
                     android:background="@color/black"
                     app:layout_constraintStart_toStartOf="parent"
@@ -68,13 +70,13 @@
                     app:layout_constraintBottom_toBottomOf="parent">
 
                     <androidx.constraintlayout.widget.ConstraintLayout
-                        android:id="@+id/cl_dialog_relaywrite_background"
+                        android:id="@+id/cl_dialog_first_choice"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:background="@color/green_42c87f">
 
                         <TextView
-                            android:id="@+id/tv_dialog_relaywrite"
+                            android:id="@+id/tv_dialog_first_choice"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="@string/customDialog_relaywrite"
@@ -89,13 +91,13 @@
                     </androidx.constraintlayout.widget.ConstraintLayout>
 
                     <androidx.constraintlayout.widget.ConstraintLayout
-                        android:id="@+id/cl_dialog_quit_background"
+                        android:id="@+id/cl_dialog_second_choice"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:background="@color/white_f2">
 
                         <TextView
-                            android:id="@+id/tv_dialog_quit"
+                            android:id="@+id/tv_dialog_second_choice"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="@string/customDialog_quit"
