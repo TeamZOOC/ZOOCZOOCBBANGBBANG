@@ -7,6 +7,7 @@ import androidx.fragment.app.Fragment
 import org.sopt.zooczoocbbangbbang.R
 import org.sopt.zooczoocbbangbbang.databinding.ActivityRecordBinding
 import org.sopt.zooczoocbbangbbang.presentation.base.BindingActivity
+import org.sopt.zooczoocbbangbbang.presentation.main.record.daily.RecordFragment
 
 class RecordActivity : BindingActivity<ActivityRecordBinding>(R.layout.activity_record) {
     private lateinit var recordBinding: ActivityRecordBinding
