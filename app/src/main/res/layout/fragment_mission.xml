@@ -15,7 +15,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/cl_mission_bg"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:minHeight="627dp"
         tools:context=".presentation.main.record.MissionFragment">
 
@@ -55,8 +55,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="30dp"
+            android:layout_marginBottom="44dp"
             android:clickable="@{viewmodel.buttonValidation}"
-            android:background="@{viewmodel.buttonValidation ? @drawable/shape_green_radius_47 : @drawable/shape_grey_radius_47}"
+            android:background="@drawable/shape_grey_radius_47"
             android:elevation="10dp"
             android:padding="10dp"
             android:text="@string/button_next"

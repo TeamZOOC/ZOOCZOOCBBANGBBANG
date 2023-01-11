@@ -1,6 +1,5 @@
 package org.sopt.zooczoocbbangbbang.presentation.main.record.daily
 
-import FourSelectorPetFragment
 import android.os.Bundle
 import android.view.View
 import androidx.activity.result.contract.ActivityResultContracts
@@ -9,14 +8,15 @@ import coil.load
 import org.sopt.zooczoocbbangbbang.R
 import org.sopt.zooczoocbbangbbang.databinding.FragmentRecordBinding
 import org.sopt.zooczoocbbangbbang.presentation.base.BindingFragment
+import org.sopt.zooczoocbbangbbang.presentation.main.record.register.FourSelectorPetFragment
 import org.sopt.zooczoocbbangbbang.util.ContentUriRequestBody
 import timber.log.Timber
 
 class RecordFragment : BindingFragment<FragmentRecordBinding>(R.layout.fragment_record) {
     private val recordViewModel: RecordViewModel by viewModels()
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.lifecycleOwner = viewLifecycleOwner
         binding.viewmodel = recordViewModel
         clickImageBtn()
         clickNextBtn()

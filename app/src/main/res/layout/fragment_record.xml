@@ -17,7 +17,7 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            tools:context=".presentation.main.record.daily.RecordFragment">
+            tools:context=".presentation.main.record.RecordFragment">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/cl_record_bgwhite"
@@ -73,7 +73,7 @@
                     android:layout_marginHorizontal="18dp"
                     android:layout_marginBottom="18dp"
                     android:layout_marginTop="12dp"
-                    android:background="@drawable/shape_rec_white2_radius_12"
+                    android:background="@drawable/shape_record_white2_radius_12"
                     android:hint="@string/mission_hintText"
                     android:inputType="textMultiLine"
                     android:text="@={viewmodel.recordText}"
@@ -98,16 +98,18 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="30dp"
+                android:layout_marginTop="69dp"
+                android:layout_marginBottom="44dp"
                 android:clickable="@{viewmodel.buttonValidation}"
                 android:background="@{viewmodel.buttonValidation ? @drawable/shape_green_radius_47 : @drawable/shape_grey_radius_47}"
                 android:elevation="10dp"
                 android:padding="10dp"
-                android:text="@string/button_next"
+                android:text="@string/record_button_text"
                 android:textColor="@color/white"
                 android:textAppearance="@style/Typography.S20"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                android:layout_marginTop="69dp"
                 app:layout_constraintTop_toBottomOf="@+id/cl_record_bgwhite" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
