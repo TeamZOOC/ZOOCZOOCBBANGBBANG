@@ -1,11 +1,12 @@
-package org.sopt.zooczoocbbangbbang.presentation.main.home
+package org.sopt.zooczoocbbangbbang.presentation.main.home.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
 import org.sopt.zooczoocbbangbbang.databinding.ItemPetBinding
-import org.sopt.zooczoocbbangbbang.domain.PetData
+import org.sopt.zooczoocbbangbbang.presentation.main.home.state.FoldableUiState
+import org.sopt.zooczoocbbangbbang.presentation.main.home.data.PetData
 
 class PetAdapter : RecyclerView.Adapter<PetAdapter.PetViewHolder>() {
     private val pets = mutableListOf<PetData>()
@@ -17,7 +18,7 @@ class PetAdapter : RecyclerView.Adapter<PetAdapter.PetViewHolder>() {
 
         fun onBind(data: PetData) {
             binding.tvPetItemName.text = data.name
-            binding.ivHomePetProfile.load(data.image)
+            binding.ivHomePetProfile.load(data.photo)
             when (data.isSelected) {
                 true -> updateUi(FoldableUiState.EXPAND)
                 false -> updateUi(FoldableUiState.FOLD)

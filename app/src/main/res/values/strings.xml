@@ -21,6 +21,8 @@
     <string name="choose2Pet_btn">등록</string>
     <string name="choosePet_name">토리</string>
 
+    <!--상세 뷰-->
+    <string name="detail_input_comment">댓글을 입력해보세요</string>
     <!--미션하기 뷰-->
     <string name="mission_question">갤러리를 볼 때마다 당신을 웃게 \n만드는 강아지 사진은 무엇인가요?</string>
     <string name="mission_hintText">ex) 2023년 2월 30일 \n어떤 순간이었는지 가족에게 남겨주세요</string>

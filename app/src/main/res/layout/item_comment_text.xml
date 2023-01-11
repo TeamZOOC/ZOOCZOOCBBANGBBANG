@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="data"
+            type="org.sopt.zooczoocbbangbbang.data.remote.entity.common.Comment" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cv_detail_comment_text_commenter_image"
+            android:layout_width="38dp"
+            android:layout_height="38dp"
+            android:layout_marginVertical="16dp"
+            app:cardCornerRadius="19dp"
+            android:layout_marginStart="12dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:scaleType="centerCrop"
+                app:srcCompat="@drawable/ym2"
+                android:id="@+id/iv_detail_comment_text_commenter_image" />
+        </androidx.cardview.widget.CardView>
+
+        <TextView
+            tools:text="복실이아빠에요^^"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/tv_detail_comment_text_commenter"
+            style="@style/Typography.M12"
+            android:textColor="@color/grey_82"
+            android:layout_marginStart="17dp"
+            android:text="@{data.nickName}"
+            app:layout_constraintStart_toEndOf="@+id/cv_detail_comment_text_commenter_image"
+            app:layout_constraintTop_toTopOf="@+id/cv_detail_comment_text_commenter_image"
+            android:layout_marginTop="2dp" />
+
+        <TextView
+            tools:text="오~ 멋진데?"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/tv_detail_comment_text_comment"
+            android:layout_marginStart="17dp"
+            style="@style/Typography.M14"
+            android:textColor="@color/grey_33"
+            android:text="@{data.content}"
+            app:layout_constraintStart_toEndOf="@+id/cv_detail_comment_text_commenter_image"
+            app:layout_constraintBottom_toBottomOf="@+id/cv_detail_comment_text_commenter_image"
+            android:layout_marginBottom="2dp" />
+
+        <TextView
+            tools:text="12월 18일"
+            style="@style/Typography.M10"
+            android:textColor="@color/grey_bd"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/tv_detail_comment_text_comment_date"
+            android:text="@{data.date}"
+            app:layout_constraintStart_toEndOf="@+id/tv_detail_comment_text_commenter"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_detail_comment_text_commenter"
+            app:layout_constraintTop_toTopOf="@+id/tv_detail_comment_text_commenter"
+            android:layout_marginStart="12dp" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:srcCompat="@drawable/ic_more_grey"
+            android:id="@+id/iv_detail_comment_text_comment_more"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="4dp" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

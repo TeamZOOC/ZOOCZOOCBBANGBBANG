@@ -10,7 +10,8 @@ object ContextExt {
         if (toast == null) {
             toast = Toast.makeText(this, message, Toast.LENGTH_SHORT)
         } else {
-            toast!!.setText(message)
+            toast!!.cancel()
+            toast = Toast.makeText(this, message, Toast.LENGTH_SHORT)
         }
         toast?.show()
     }
@@ -19,7 +20,8 @@ object ContextExt {
         if (toast == null) {
             toast = Toast.makeText(this, message, Toast.LENGTH_LONG)
         } else {
-            toast!!.setText(message)
+            toast!!.cancel()
+            toast = Toast.makeText(this, message, Toast.LENGTH_SHORT)
         }
         toast?.show()
     }

@@ -1,6 +1,7 @@
 package org.sopt.zooczoocbbangbbang.data.remote.entity.mypage
 
 import com.google.gson.annotations.SerializedName
+import org.sopt.zooczoocbbangbbang.data.remote.entity.common.Pet
 
 data class ResponseMembersDto(
     val data: Data,
@@ -17,12 +18,6 @@ data class ResponseMembersDto(
             val id: Int,
             @SerializedName("nick_name")
             val nickName: String,
-            val photo: String
-        )
-
-        data class Pet(
-            val id: Int,
-            val name: String,
             val photo: String
         )
 
