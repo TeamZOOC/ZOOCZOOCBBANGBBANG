@@ -4,9 +4,10 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
+import org.sopt.zooczoocbbangbbang.R
 import org.sopt.zooczoocbbangbbang.databinding.ItemPetBinding
-import org.sopt.zooczoocbbangbbang.presentation.main.home.state.FoldableUiState
 import org.sopt.zooczoocbbangbbang.presentation.main.home.data.PetData
+import org.sopt.zooczoocbbangbbang.presentation.main.home.state.FoldableUiState
 
 class PetAdapter : RecyclerView.Adapter<PetAdapter.PetViewHolder>() {
     private val pets = mutableListOf<PetData>()
@@ -18,7 +19,7 @@ class PetAdapter : RecyclerView.Adapter<PetAdapter.PetViewHolder>() {
 
         fun onBind(data: PetData) {
             binding.tvPetItemName.text = data.name
-            binding.ivHomePetProfile.load(data.photo)
+            binding.ivHomePetProfile.load(data.photo ?: R.drawable.ic_default_image)
             when (data.isSelected) {
                 true -> updateUi(FoldableUiState.EXPAND)
                 false -> updateUi(FoldableUiState.FOLD)
