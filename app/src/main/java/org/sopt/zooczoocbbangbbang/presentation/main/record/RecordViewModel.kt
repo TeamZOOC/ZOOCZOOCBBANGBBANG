@@ -13,6 +13,7 @@ class RecordViewModel : ViewModel() {
     private var isTextNotNull: LiveData<Boolean> = Transformations.map(recordText) { checkText() }
     val image: MutableLiveData<Uri?> = MutableLiveData()
     private var isShowImage: LiveData<Boolean> = Transformations.map(image) { checkImage() }
+    // private var isFilled:
 
     // val isBothFilled = MutableLiveData(false)
     // private val _errorMessage = MutableLiveData<String>()

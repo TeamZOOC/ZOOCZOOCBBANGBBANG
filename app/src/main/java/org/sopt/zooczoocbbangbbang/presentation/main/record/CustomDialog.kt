@@ -11,7 +11,7 @@ import androidx.fragment.app.DialogFragment
 import org.sopt.zooczoocbbangbbang.databinding.FragmentCustomDialogBinding
 import timber.log.Timber
 
-class CustomDialog(val finishApp: () -> Unit) : DialogFragment() {
+class CustomDialog(val finishApp: () -> Unit?) : DialogFragment() {
     private var _binding: FragmentCustomDialogBinding? = null
     private val binding get() = _binding!!
 

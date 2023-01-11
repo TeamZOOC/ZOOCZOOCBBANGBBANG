@@ -3,13 +3,14 @@ package org.sopt.zooczoocbbangbbang.presentation.main.record.mission
 import android.os.Bundle
 import android.util.Log
 import android.view.View
-import androidx.fragment.app.viewModels
+import androidx.fragment.app.activityViewModels
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.CompositePageTransformer
 import androidx.viewpager2.widget.ViewPager2
 import org.sopt.zooczoocbbangbbang.R
 import org.sopt.zooczoocbbangbbang.databinding.FragmentMissionBinding
 import org.sopt.zooczoocbbangbbang.presentation.base.BindingFragment
+import org.sopt.zooczoocbbangbbang.presentation.main.record.CustomDialog
 import org.sopt.zooczoocbbangbbang.presentation.main.record.MissionFragmentStateAdapter
 import org.sopt.zooczoocbbangbbang.presentation.main.record.MissionViewModel
 import org.sopt.zooczoocbbangbbang.presentation.main.record.MissionViewPagerFragment
@@ -17,7 +18,9 @@ import org.sopt.zooczoocbbangbbang.presentation.main.record.register.FourSelecto
 import timber.log.Timber
 
 class MissionFragment : BindingFragment<FragmentMissionBinding>(R.layout.fragment_mission) {
-    private val missionViewModel: MissionViewModel by viewModels()
+    private val missionViewModel: MissionViewModel by activityViewModels()
+
+    // private val recordViewModel: RecordViewModel by activityViewModels()
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.lifecycleOwner = viewLifecycleOwner
@@ -48,11 +51,23 @@ class MissionFragment : BindingFragment<FragmentMissionBinding>(R.layout.fragmen
         binding.vpMissionView.adapter = pagerAdapter
         binding.vpMissionView.registerOnPageChangeCallback(object :
                 ViewPager2.OnPageChangeCallback() {
+                override fun onPageScrollStateChanged(state: Int) {
+                    super.onPageScrollStateChanged(state)
+                    if (state == ViewPager2.SCROLL_STATE_DRAGGING) {
+                        showMessageDialog()
+                        binding.vpMissionView.currentItem = 0
+                    }
+                }
+
                 override fun onPageSelected(position: Int) {
                     super.onPageSelected(position)
+
+                    // 넘어가겠다고 하면 뷰모델 데이터를 초기화
                     Log.e("MissionFragment", "Page::: ${position + 1}")
                 }
             })
+        val num: Int = binding.vpMissionView.currentItem
+        binding.vpMissionView.currentItem = 1
 
         val pageMarginPx = resources.getDimensionPixelOffset(R.dimen.pagerWidth)
         val pagerWidth = resources.getDimensionPixelOffset(R.dimen.pagerWidth)
@@ -92,6 +107,12 @@ class MissionFragment : BindingFragment<FragmentMissionBinding>(R.layout.fragmen
                 binding.btnMissionBottom.setBackgroundResource(R.drawable.shape_green_radius_47)
             }
         } // validation은 true인데 버튼은 활성화되지 않은 건에 대하여...
+    }
+
+    private fun showMessageDialog() {
+        val customDialog = CustomDialog(finishApp = { onDestroy() })
+        customDialog.show(parentFragmentManager, "CustomDialog")
+        customDialog.isCancelable = false
     }
 
     companion object {
