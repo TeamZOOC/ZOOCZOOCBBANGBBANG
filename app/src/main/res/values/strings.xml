@@ -56,5 +56,13 @@
 
     <string name="onboarding_move_input_family_code_button_text">코드를 받았어요</string>
     <string name="onboarding_move_create_family_code_button_text">아니요</string>
+    <string name="onboarding_invitation_share_title_text">가족을 초대해보세요</string>
+    <string name="onboarding_invitation_share_sub_title_text">함께 추억을 공유하고 싶은 가족들에게\n초대링크를 보내보세요</string>
+    <string name="onboarding_invitation_share_family_button_text">초대하기</string>
+    <string name="onboarding_end_title_text">이제 추억을 쌓을 시간이에요!</string>
+    <string name="onboarding_end_sub_title_text">가족과 기록한 순간들이\nZOOC 소중한 추억으로 남을 거예요</string>
+    <string name="onboarding_input_code_title_text">전달받은 가족 코드를\n입력해주세요</string>
+    <string name="onboarding_input_code_complete_button_text">입력하기</string>
+    <string name="onboarding_input_code_input_view_example">ex) SEF33210</string>
 
 </resources>
