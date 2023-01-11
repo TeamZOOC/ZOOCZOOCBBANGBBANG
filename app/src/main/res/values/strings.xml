@@ -32,6 +32,8 @@
     <string name="onboarding_pet_register_title_text">좋아요!\n먼저 반려동물을 등록해볼까요?</string>
     <string name="onboarding_pet_register_sub_title_text">최대 4마리까지 등록 가능해요!</string>
     <string name="onboarding_pet_register_input_hint_text">ex) 사랑,토리 (4자 이내)</string>
+    <string name="onboarding_pet_register_add">추가</string>
+    <string name="onboarding_pet_register_button_text">등록하기</string>
 
     <!--상세 뷰-->
     <string name="detail_input_comment">댓글을 입력해보세요</string>
