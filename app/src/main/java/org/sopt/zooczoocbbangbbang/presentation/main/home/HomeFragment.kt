@@ -1,5 +1,7 @@
 package org.sopt.zooczoocbbangbbang.presentation.main.home
 
+import android.app.ActivityOptions
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.view.ViewGroup.LayoutParams.WRAP_CONTENT
@@ -12,11 +14,18 @@ import androidx.recyclerview.widget.SimpleItemAnimator
 import org.sopt.zooczoocbbangbbang.R
 import org.sopt.zooczoocbbangbbang.databinding.FragmentHomeBinding
 import org.sopt.zooczoocbbangbbang.presentation.base.BindingFragment
+import org.sopt.zooczoocbbangbbang.presentation.detail.DetailActivity
+import org.sopt.zooczoocbbangbbang.presentation.detail.DetailActivity.Companion.CONTENT
+import org.sopt.zooczoocbbangbbang.presentation.detail.DetailActivity.Companion.DATE
+import org.sopt.zooczoocbbangbbang.presentation.detail.DetailActivity.Companion.PET_IMAGE
+import org.sopt.zooczoocbbangbbang.presentation.detail.DetailActivity.Companion.WRITER_IMAGE
+import org.sopt.zooczoocbbangbbang.presentation.detail.DetailActivity.Companion.WRITER_NAME
 import org.sopt.zooczoocbbangbbang.presentation.main.home.adapter.ArchiveItemDecorator
 import org.sopt.zooczoocbbangbbang.presentation.main.home.adapter.ArchivePostingAdapter
 import org.sopt.zooczoocbbangbbang.presentation.main.home.adapter.PetAdapter
 import org.sopt.zooczoocbbangbbang.presentation.main.home.state.LayoutManagerType
 import org.sopt.zooczoocbbangbbang.util.DisplayUtil.dpToPx
+import android.util.Pair as UtilPair
 
 class HomeFragment : BindingFragment<FragmentHomeBinding>(R.layout.fragment_home) {
     private lateinit var petAdapter: PetAdapter
@@ -29,11 +38,66 @@ class HomeFragment : BindingFragment<FragmentHomeBinding>(R.layout.fragment_home
         super.onViewCreated(view, savedInstanceState)
         initPetAdapter()
         initArchiveAdapter()
+
         homeViewModel.getRecords()
         homeViewModel.getPets()
+
+        initPetsData()
+        initRecordsData()
+
         clickLinearButton()
         clickGridButton()
         clickOutside()
+    }
+
+    private fun initPetsData() {
+        homeViewModel.pets.observe(viewLifecycleOwner) {
+            petAdapter.initPets(it)
+        }
+    }
+
+    private fun initRecordsData() {
+        homeViewModel.records.observe(viewLifecycleOwner) {
+            archivePostingAdapter.initArchives(it)
+        }
+    }
+
+    private fun clickItem(views: Map<String, View>) {
+        val intent = Intent(requireContext(), DetailActivity::class.java)
+        val options = makeTransitionIntentOption(views)
+        startActivity(intent, options.toBundle())
+    }
+
+    /*private fun makeBundleToDetailActivity():Bundle{
+        return Bundle().apply {
+            putString(PET_IMAGE, )
+        }
+    }*/
+
+    private fun makeTransitionIntentOption(views: Map<String, View>): ActivityOptions {
+        return if (views.size == 1) {
+            makeGridOptions(views)
+        } else {
+            makeLinearOption(views)
+        }
+    }
+
+    private fun makeLinearOption(views: Map<String, View>): ActivityOptions {
+        return ActivityOptions.makeSceneTransitionAnimation(
+            requireActivity(),
+            UtilPair.create(views[PET_IMAGE], PET_IMAGE),
+            UtilPair.create(views[DATE], DATE),
+            UtilPair.create(views[WRITER_IMAGE], WRITER_IMAGE),
+            UtilPair.create(views[WRITER_NAME], WRITER_NAME),
+            UtilPair.create(views[CONTENT], CONTENT)
+        )
+    }
+
+    private fun makeGridOptions(views: Map<String, View>): ActivityOptions {
+        return ActivityOptions.makeSceneTransitionAnimation(
+            requireActivity(),
+            UtilPair.create(views[PET_IMAGE], PET_IMAGE)
+        )
     }
 
     private fun initPetAdapter() {
@@ -49,7 +113,7 @@ class HomeFragment : BindingFragment<FragmentHomeBinding>(R.layout.fragment_home
             GridLayoutManager(requireContext(), 3, GridLayoutManager.VERTICAL, false)
 
         binding.rvArchivePosting.layoutManager = linearLayoutManager
-        archivePostingAdapter = ArchivePostingAdapter()
+        archivePostingAdapter = ArchivePostingAdapter { clickItem(it) }
         binding.rvArchivePosting.adapter = archivePostingAdapter
         binding.rvArchivePosting.addItemDecoration(ArchiveItemDecorator(requireContext(), 10, 0))
         removeRecyclerViewAnimator(binding.rvArchivePosting)

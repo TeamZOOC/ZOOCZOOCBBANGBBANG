@@ -1,7 +1,5 @@
 package org.sopt.zooczoocbbangbbang.data.remote.api
 
-import okhttp3.MultipartBody
-import okhttp3.RequestBody
 import org.sopt.zooczoocbbangbbang.data.remote.entity.detail.request.RequestCommentDto
 import org.sopt.zooczoocbbangbbang.data.remote.entity.detail.request.RequestEmojiDto
 import org.sopt.zooczoocbbangbbang.data.remote.entity.detail.response.ResponseCommentsDto
@@ -9,17 +7,12 @@ import org.sopt.zooczoocbbangbbang.data.remote.entity.detail.response.ResponseRe
 import org.sopt.zooczoocbbangbbang.data.remote.entity.home.response.ResponseFamilyInfoDto
 import org.sopt.zooczoocbbangbbang.data.remote.entity.home.response.ResponsePetDto
 import org.sopt.zooczoocbbangbbang.data.remote.entity.home.response.ResponseTotalRecordsDto
-import org.sopt.zooczoocbbangbbang.data.remote.entity.mypage.ResponseEditProfileDto
 import org.sopt.zooczoocbbangbbang.data.remote.entity.mypage.ResponseMembersDto
 import retrofit2.Call
 import retrofit2.http.Body
 import retrofit2.http.GET
-import retrofit2.http.Multipart
-import retrofit2.http.PATCH
 import retrofit2.http.POST
-import retrofit2.http.Part
 import retrofit2.http.Path
-import retrofit2.http.Query
 
 interface ZoocService {
     @GET("family/mypage")
@@ -55,12 +48,4 @@ interface ZoocService {
         @Path("recordId") recordId: Int,
         @Body body: RequestEmojiDto
     ): Call<ResponseCommentsDto>
-
-    @Multipart
-    @PATCH("user/profile")
-    fun patchEditProfile(
-        @Query("photo") photo: Boolean,
-        @Part file: MultipartBody.Part?,
-        @Part body: RequestBody
-    ): Call<ResponseEditProfileDto>
 }

@@ -32,13 +32,13 @@
                 <ImageView
                     android:layout_width="0dp"
                     android:layout_height="0dp"
-                    android:transitionName="image"
+                    android:transitionName="petImage"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintDimensionRatio="1:1"
                     android:scaleType="centerCrop"
-                    android:src="@drawable/junseo1"
+                    tools:src="@drawable/junseo1"
                     android:id="@+id/iv_detail_image" />
 
                 <ImageView
@@ -89,6 +89,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/tv_detail_date"
+                    android:transitionName="date"
                     app:layout_constraintTop_toBottomOf="@+id/iv_detail_image"
                     app:layout_constraintStart_toStartOf="parent"
                     android:layout_marginStart="30dp"
@@ -98,6 +99,7 @@
                     tools:text="복실맘"
                     android:text="@{viewModel.recordDetail.Record.writerName}"
                     style="@style/Typography.M14"
+                    android:transitionName="writerName"
                     android:textColor="@color/grey_82"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -112,6 +114,7 @@
                     android:layout_height="24dp"
                     app:cardCornerRadius="12dp"
                     android:layout_marginEnd="7dp"
+                    android:transitionName="writerProfile"
                     app:layout_constraintEnd_toStartOf="@+id/tv_detail_editor"
                     app:layout_constraintTop_toTopOf="@id/tv_detail_editor"
                     app:layout_constraintBottom_toBottomOf="@id/tv_detail_editor">
@@ -131,6 +134,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/tv_detail_content"
+                    android:transitionName="content"
                     style="@style/Typography.M16"
                     android:textColor="@color/grey_4f"
                     app:layout_constraintTop_toBottomOf="@id/tv_detail_date"

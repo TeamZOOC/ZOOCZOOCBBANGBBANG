@@ -17,8 +17,8 @@ class DetailActivity : BindingActivity<ActivityDetailBinding>(R.layout.activity_
         super.onCreate(savedInstanceState)
         binding.viewModel = detailViewModel
 
-        initAdapter()
         getRecordDetail()
+        initAdapter()
         initImages()
         initComments()
         clickEmojiSelection()
@@ -27,7 +27,7 @@ class DetailActivity : BindingActivity<ActivityDetailBinding>(R.layout.activity_
     }
 
     private fun getRecordDetail() {
-        detailViewModel.getDetailData()
+        //detailViewModel.getDetailData()
     }
 
     private fun clickEmojiSelection() {
@@ -71,5 +71,13 @@ class DetailActivity : BindingActivity<ActivityDetailBinding>(R.layout.activity_
             shortToast("눌린 id는 ${it}번입니다.")
             detailViewModel.uploadEmoji(it)
         }
+    }
+
+    companion object {
+        const val PET_IMAGE = "petImage"
+        const val DATE = "date"
+        const val WRITER_IMAGE = "writerProfile"
+        const val WRITER_NAME = "writerName"
+        const val CONTENT = "content"
     }
 }

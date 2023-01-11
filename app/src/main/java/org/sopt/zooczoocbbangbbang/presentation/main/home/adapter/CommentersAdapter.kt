@@ -4,15 +4,15 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
+import org.sopt.zooczoocbbangbbang.data.remote.entity.home.response.ResponseTotalRecordsDto
 import org.sopt.zooczoocbbangbbang.databinding.ItemCommentersBinding
-import org.sopt.zooczoocbbangbbang.presentation.main.home.data.ArchivePostingData
 
-class CommentersAdapter(private val commenters: List<ArchivePostingData.CommentWriter>) :
+class CommentersAdapter(private val commenters: List<ResponseTotalRecordsDto.RecordDto.CommentWriter>) :
     RecyclerView.Adapter<CommentersAdapter.CommentersViewHolder>() {
 
     class CommentersViewHolder(private val binding: ItemCommentersBinding) :
         RecyclerView.ViewHolder(binding.root) {
-        fun onBind(data: ArchivePostingData.CommentWriter) {
+        fun onBind(data: ResponseTotalRecordsDto.RecordDto.CommentWriter) {
             binding.ivCommenter.load(data.writerPhoto)
         }
     }

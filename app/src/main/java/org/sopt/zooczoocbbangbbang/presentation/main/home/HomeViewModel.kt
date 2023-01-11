@@ -1,6 +1,7 @@
 package org.sopt.zooczoocbbangbbang.presentation.main.home
 
 import android.util.Log
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -15,15 +16,17 @@ import retrofit2.await
 
 class HomeViewModel : ViewModel() {
     private val zoocService = ServiceFactory.zoocService
-    private val pets = MutableLiveData<List<PetData>>()
-    private val records = MutableLiveData<List<ArchivePostingData>>()
+    private val _pets = MutableLiveData<List<PetData>>()
+    val pets: LiveData<List<PetData>> get() = _pets
+    private val _records = MutableLiveData<List<ArchivePostingData>>()
+    val records: LiveData<List<ArchivePostingData>> get() = _records
 
     fun getRecords() {
         viewModelScope.launch {
             kotlin.runCatching {
                 zoocService.getAllRecords(1).await()
             }.onSuccess {
-                records.value = mappingRecord(it)
+                _records.value = mappingRecord(it)
             }.onFailure {
                 if (it is HttpException) {
                     Log.e("HomeFragment", "전체 기록 가져오기 서버 통신 onResponse but not successful")
@@ -39,7 +42,7 @@ class HomeViewModel : ViewModel() {
             kotlin.runCatching {
                 zoocService.getAllPets(1).await()
             }.onSuccess {
-                pets.value = mappingPet(it)
+                _pets.value = mappingPet(it)
             }.onFailure {
                 if (it is HttpException) {
                     Log.e("HomeFragment", "모든 펫 가져오기 서버 통신 onResponse but not successful")
