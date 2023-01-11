@@ -54,5 +54,7 @@
     <string name="alarm">알림</string>
     <string name="alarm_content">%1$s님이 새로운 게시글을 올렸습니다</string>
 
+    <string name="onboarding_move_input_family_code_button_text">코드를 받았어요</string>
+    <string name="onboarding_move_create_family_code_button_text">아니요</string>
 
 </resources>

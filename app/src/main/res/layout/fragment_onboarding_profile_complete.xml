@@ -8,7 +8,6 @@
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:paddingHorizontal="30dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
@@ -17,6 +16,7 @@
             android:text="@string/onboarding_profile_complete_title"
             style="@style/Typography.S24"
             android:textColor="@color/grey_4f"
+            android:layout_marginHorizontal="30dp"
             app:layout_constraintTop_toTopOf="parent"
             android:layout_marginTop="42dp"
             android:layout_width="match_parent"
@@ -28,6 +28,7 @@
             android:text="@string/onboarding_profile_complete_sub_title_family_code_text"
             android:layout_marginTop="20dp"
             style="@style/Typography.S24"
+            android:layout_marginStart="30dp"
             android:textColor="@color/green_42c87f"
             app:layout_constraintStart_toStartOf="parent"
             android:layout_width="wrap_content"
@@ -47,8 +48,9 @@
         <ImageView
             android:id="@+id/img_onboarding_profile_complete_image"
             android:src="@drawable/onboarding_profile_complete_image"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginHorizontal="12dp"
             app:layout_constraintVertical_bias="0.15"
             app:layout_constraintTop_toBottomOf="@id/tv_profile_complete_sub_title_family_code"
             app:layout_constraintStart_toStartOf="parent"
@@ -58,11 +60,12 @@
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btn_move_input_family_code"
-            android:text="코드를 받았어요"
+            android:text="@string/onboarding_move_input_family_code_button_text"
             style="@style/Typography.S16"
             android:background="@drawable/shape_green_radius_47_1"
             android:textColor="@color/white"
             android:layout_width="match_parent"
+            android:layout_marginHorizontal="30dp"
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
             app:layout_constraintBottom_toTopOf="@+id/btn_move_create_family_code" />
@@ -72,7 +75,9 @@
             android:textColor="@color/white"
             style="@style/Typography.S16"
             android:background="@drawable/shape_green_radius_47_1"
-            android:text="아니요"
+            android:text="@string/onboarding_move_create_family_code_button_text"
+            android:layout_marginHorizontal="30dp"
+            android:layout_marginBottom="34dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:layout_constraintBottom_toBottomOf="parent" />
