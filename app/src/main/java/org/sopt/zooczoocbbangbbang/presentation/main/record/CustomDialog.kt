@@ -30,15 +30,15 @@ class CustomDialog(val finishApp: () -> Unit?) : DialogFragment() {
     }
 
     private fun clickRelayWriteBtn() {
-        binding.clDialogRelaywriteBackground.setOnClickListener() {
-            Timber.tag("CustomDialogFragment").d("다이얼로그 닫기 로직 필요!")
+        binding.clDialogFirstChoice.setOnClickListener() {
+            //Timber.tag("CustomDialogFragment").d("다이얼로그 닫기 로직 필요!")
             dismiss()
         }
     }
 
     private fun clickQuitBtn() {
-        binding.clDialogQuitBackground.setOnClickListener() {
-            Timber.tag("CustomDialogFragment").d("home뷰로 가는 로직 필요!")
+        binding.clDialogSecondChoice.setOnClickListener() {
+            //Timber.tag("CustomDialogFragment").d("home뷰로 가는 로직 필요!")
         }
     }
 
