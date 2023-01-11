@@ -1,6 +1,5 @@
-package org.sopt.zooczoocbbangbbang.presentation.main.record
+package org.sopt.zooczoocbbangbbang.presentation.main.record.mission
 
-import FourSelectorPetFragment
 import android.os.Bundle
 import android.util.Log
 import android.view.View
@@ -11,6 +10,10 @@ import androidx.viewpager2.widget.ViewPager2
 import org.sopt.zooczoocbbangbbang.R
 import org.sopt.zooczoocbbangbbang.databinding.FragmentMissionBinding
 import org.sopt.zooczoocbbangbbang.presentation.base.BindingFragment
+import org.sopt.zooczoocbbangbbang.presentation.main.record.MissionFragmentStateAdapter
+import org.sopt.zooczoocbbangbbang.presentation.main.record.MissionViewModel
+import org.sopt.zooczoocbbangbbang.presentation.main.record.MissionViewPagerFragment
+import org.sopt.zooczoocbbangbbang.presentation.main.record.register.FourSelectorPetFragment
 import timber.log.Timber
 
 class MissionFragment : BindingFragment<FragmentMissionBinding>(R.layout.fragment_mission) {

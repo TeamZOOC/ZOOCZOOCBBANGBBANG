@@ -1,4 +1,4 @@
-package org.sopt.zooczoocbbangbbang.presentation.main.record
+package org.sopt.zooczoocbbangbbang.presentation.main.record.register
 
 import androidx.lifecycle.MediatorLiveData
 import androidx.lifecycle.MutableLiveData
