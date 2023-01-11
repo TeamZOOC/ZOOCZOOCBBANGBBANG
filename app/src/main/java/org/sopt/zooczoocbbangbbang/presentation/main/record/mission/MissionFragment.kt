@@ -51,7 +51,6 @@ class MissionFragment : BindingFragment<FragmentMissionBinding>(R.layout.fragmen
                     super.onPageScrollStateChanged(state)
                     if (state == ViewPager2.SCROLL_STATE_DRAGGING) {
                         showMessageDialog()
-                        binding.vpMissionView.currentItem = 0
                     }
                 }
 
