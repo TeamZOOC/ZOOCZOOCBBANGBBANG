@@ -20,6 +20,7 @@ class MissionViewPagerFragment :
         Timber.tag("Mission").d("MissionViewPagerFragment 20")
         clickImageBtn()
         observe()
+        // binding.edtMission.requestFocus()
     }
 
     private fun clickImageBtn() {
