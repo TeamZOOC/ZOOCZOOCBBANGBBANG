@@ -49,7 +49,9 @@
     <string name="customDialog_subtitle">지금 떠나면 내용이 저장되지 않아요</string>
     <string name="customDialog_relaywrite">이어쓰기</string>
     <string name="customDialog_quit">나가기</string>
-\
 
+    <string name="onboarding_move_input_family_code_button_text">코드를 받았어요</string>
+    <string name="onboarding_move_create_family_code_button_text">아니요</string>
+    <dimen name="pagerWidth">174dp</dimen>
 
 </resources>
