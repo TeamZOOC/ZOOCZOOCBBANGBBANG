@@ -6,7 +6,6 @@ import androidx.fragment.app.Fragment
 import org.sopt.zooczoocbbangbbang.R
 import org.sopt.zooczoocbbangbbang.databinding.ActivityRecordBinding
 import org.sopt.zooczoocbbangbbang.presentation.base.BindingActivity
-import org.sopt.zooczoocbbangbbang.presentation.main.record.daily.RecordFragment
 import org.sopt.zooczoocbbangbbang.presentation.main.record.mission.MissionFragment
 import timber.log.Timber
 

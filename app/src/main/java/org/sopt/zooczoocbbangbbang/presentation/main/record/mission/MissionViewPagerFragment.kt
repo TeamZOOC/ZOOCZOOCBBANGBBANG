@@ -19,8 +19,7 @@ class MissionViewPagerFragment :
         binding.viewmodel = missionViewModel
         Timber.tag("Mission").d("MissionViewPagerFragment 20")
         clickImageBtn()
-        observe()
-        // binding.edtMission.requestFocus()
+        // observe()
     }
 
     private fun clickImageBtn() {
@@ -33,18 +32,6 @@ class MissionViewPagerFragment :
         binding.ivMissionImgbtn.setOnClickListener {
             launcher.launch("image/*")
         }
-    }
-
-    private fun observe() {
-        missionViewModel.image.observe(viewLifecycleOwner) {
-            Timber.tag("MissionFragment").d("image:::%s", missionViewModel.image.value)
-        }
-        missionViewModel.missionText.observe(viewLifecycleOwner) {
-            Timber.tag("MissionFragment").d("Missiontext:::%s", it)
-        }
-        missionViewModel.buttonValidation.observe(viewLifecycleOwner) {
-            Timber.tag("MissionFragment").d("validation:::%s", it)
-        } // validation은 true인데 버튼은 활성화되지 않은 건에 대하여...
     }
 
     companion object {

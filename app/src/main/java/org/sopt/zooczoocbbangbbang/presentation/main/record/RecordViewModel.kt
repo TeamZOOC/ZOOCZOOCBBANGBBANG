@@ -14,6 +14,9 @@ class RecordViewModel : ViewModel() {
     val image: MutableLiveData<Uri?> = MutableLiveData()
     private var isShowImage: LiveData<Boolean> = Transformations.map(image) { checkImage() }
 
+    // val isBothFilled = MutableLiveData(false)
+    // private val _errorMessage = MutableLiveData<String>()
+
     private fun checkText(): Boolean {
         return !recordText.value.isNullOrEmpty()
     }

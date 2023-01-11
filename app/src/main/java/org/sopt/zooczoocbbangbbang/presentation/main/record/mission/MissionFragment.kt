@@ -24,6 +24,7 @@ class MissionFragment : BindingFragment<FragmentMissionBinding>(R.layout.fragmen
         binding.viewmodel = missionViewModel
         showViewPager()
         clickNextBtn()
+        observe()
     }
 
     private fun clickNextBtn() {
@@ -75,6 +76,22 @@ class MissionFragment : BindingFragment<FragmentMissionBinding>(R.layout.fragmen
             setPadding(0, 0, 0, 0)
             getChildAt(0).overScrollMode = RecyclerView.OVER_SCROLL_NEVER
         }
+    }
+
+    private fun observe() {
+        missionViewModel.image.observe(viewLifecycleOwner) {
+            Timber.tag("MissionFragment").d("image:::%s", missionViewModel.image.value)
+        }
+        missionViewModel.missionText.observe(viewLifecycleOwner) {
+            Timber.tag("MissionFragment").d("Missiontext:::%s", it)
+        }
+        missionViewModel.buttonValidation.observe(viewLifecycleOwner) {
+            Timber.tag("MissionFragment")
+                .d("buttonValidation::: %s", missionViewModel.buttonValidation.value)
+            if (missionViewModel.buttonValidation.value == true) {
+                binding.btnMissionBottom.setBackgroundResource(R.drawable.shape_green_radius_47)
+            }
+        } // validation은 true인데 버튼은 활성화되지 않은 건에 대하여...
     }
 
     companion object {

@@ -77,7 +77,7 @@
 
             <androidx.fragment.app.FragmentContainerView
                 android:id="@+id/fcv_record_view"
-                android:name="org.sopt.zooczoocbbangbbang.presentation.main.record.daily.RecordFragment"
+                android:name="org.sopt.zooczoocbbangbbang.presentation.main.record.RecordFragment"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginTop="101dp"

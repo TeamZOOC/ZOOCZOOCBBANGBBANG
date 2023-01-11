@@ -43,7 +43,7 @@ class CustomDialog(val finishApp: () -> Unit) : DialogFragment() {
     }
 
     override fun onDestroyView() {
-        super.onDestroyView()
         _binding = null
+        super.onDestroyView()
     }
 }

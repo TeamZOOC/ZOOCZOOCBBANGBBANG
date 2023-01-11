@@ -1,6 +1,5 @@
 package org.sopt.zooczoocbbangbbang.presentation.main.record
 
-import FourSelectorPetFragment
 import android.os.Bundle
 import android.view.View
 import androidx.activity.result.contract.ActivityResultContracts
@@ -9,6 +8,7 @@ import coil.load
 import org.sopt.zooczoocbbangbbang.R
 import org.sopt.zooczoocbbangbbang.databinding.FragmentRecordBinding
 import org.sopt.zooczoocbbangbbang.presentation.base.BindingFragment
+import org.sopt.zooczoocbbangbbang.presentation.main.record.register.FourSelectorPetFragment
 import timber.log.Timber
 
 class RecordFragment : BindingFragment<FragmentRecordBinding>(R.layout.fragment_record) {
@@ -43,13 +43,13 @@ class RecordFragment : BindingFragment<FragmentRecordBinding>(R.layout.fragment_
 
     private fun observe() {
         recordViewModel.image.observe(viewLifecycleOwner) {
-            Timber.tag("observe").d("image:::%s", recordViewModel.image.value)
+            Timber.tag("RecordFragment").d("image:::%s", recordViewModel.image.value)
         }
         recordViewModel.recordText.observe(viewLifecycleOwner) {
-            Timber.tag("observe").d("Recordtext:::%s", it)
+            Timber.tag("RecordFragment").d("Recordtext:::%s", it)
         }
         recordViewModel.buttonValidation.observe(viewLifecycleOwner) {
-            Timber.tag("observe").d("validation:::%s", it)
+            Timber.tag("RecordFragment").d("validation:::%s", it)
         }
     }
 
