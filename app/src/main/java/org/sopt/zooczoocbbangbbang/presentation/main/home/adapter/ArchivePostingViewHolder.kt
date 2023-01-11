@@ -1,11 +1,11 @@
-package org.sopt.zooczoocbbangbbang.presentation.main.home
+package org.sopt.zooczoocbbangbbang.presentation.main.home.adapter
 
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
 import org.sopt.zooczoocbbangbbang.databinding.ItemGridArchivePostingBinding
 import org.sopt.zooczoocbbangbbang.databinding.ItemLinearArchivePostingBinding
-import org.sopt.zooczoocbbangbbang.domain.home.ArchivePostingData
+import org.sopt.zooczoocbbangbbang.presentation.main.home.data.ArchivePostingData
 
 abstract class ArchivePostingViewHolder(private val binding: View) :
     RecyclerView.ViewHolder(binding) {
@@ -18,10 +18,10 @@ class ArchivePostingLinearViewHolder(private val binding: ItemLinearArchivePosti
     private lateinit var commentersAdapter: CommentersAdapter
 
     override fun onBind(data: ArchivePostingData, clickItem: () -> Unit) {
-        binding.ivArchivePetImage.load(data.petImage)
-        binding.ivArchiveUploaderProfile.load(data.editorImage)
+        binding.ivArchivePetImage.load(data.record.photo)
+        binding.ivArchiveUploaderProfile.load(data.record.writerPhoto)
         binding.data = data
-        initAdapter(data.commenters)
+        initAdapter(data.commentWriters)
 
         if (data.isSelected) {
             expandItem()
@@ -34,7 +34,7 @@ class ArchivePostingLinearViewHolder(private val binding: ItemLinearArchivePosti
         }
     }
 
-    private fun initAdapter(commenters: List<ArchivePostingData.Commenter>) {
+    private fun initAdapter(commenters: List<ArchivePostingData.CommentWriter>) {
         commentersAdapter = CommentersAdapter(commenters)
         binding.rvCommenters.adapter = commentersAdapter
     }
@@ -51,6 +51,6 @@ class ArchivePostingLinearViewHolder(private val binding: ItemLinearArchivePosti
 class ArchivePostingGridViewHolder(private val binding: ItemGridArchivePostingBinding) :
     ArchivePostingViewHolder(binding.root) {
     override fun onBind(data: ArchivePostingData, clickItem: () -> Unit) {
-        binding.ivArchiveGridPetImage.load(data.petImage)
+        binding.ivArchiveGridPetImage.load(data.record.photo)
     }
 }

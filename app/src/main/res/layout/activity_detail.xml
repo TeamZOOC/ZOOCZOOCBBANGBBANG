@@ -17,6 +17,7 @@
         tools:context=".presentation.detail.DetailActivity">
 
         <androidx.core.widget.NestedScrollView
+            android:id="@+id/nsv_detail"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             app:layout_constraintBottom_toTopOf="@+id/cl_detail_input"
@@ -82,7 +83,7 @@
 
                 <TextView
                     tools:text="12월 17일"
-                    android:text="@{viewModel.postingContent.date}"
+                    android:text="@{viewModel.recordDetail.Record.date}"
                     style="@style/Typography.M14"
                     android:textColor="@color/grey_82"
                     android:layout_width="wrap_content"
@@ -95,7 +96,7 @@
 
                 <TextView
                     tools:text="복실맘"
-                    android:text="@{viewModel.postingContent.editor.name}"
+                    android:text="@{viewModel.recordDetail.Record.writerName}"
                     style="@style/Typography.M14"
                     android:textColor="@color/grey_82"
                     android:layout_width="wrap_content"
@@ -126,7 +127,7 @@
 
                 <TextView
                     tools:text="오늘 복실이 사진 찍었다\n다들 댓글 남겨줘!"
-                    android:text="@{viewModel.postingContent.content}"
+                    android:text="@{viewModel.recordDetail.Record.content}"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/tv_detail_content"

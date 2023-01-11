@@ -7,7 +7,7 @@
 
         <variable
             name="data"
-            type="org.sopt.zooczoocbbangbbang.domain.home.ArchivePostingData" />
+            type="org.sopt.zooczoocbbangbbang.presentation.main.home.data.ArchivePostingData" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -54,7 +54,7 @@
                     android:layout_marginTop="21dp"
                     android:layout_marginStart="15dp"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"/>
+                    app:layout_constraintTop_toTopOf="parent" />
 
                 <com.google.android.material.card.MaterialCardView
                     android:id="@+id/cv_archive_uploader_profile"
@@ -84,7 +84,7 @@
                     android:layout_marginBottom="24dp"
                     style="@style/Typography.M12"
                     android:textColor="@color/grey_82"
-                    android:text="@{data.date}"
+                    android:text="@{data.Record.date}"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintBottom_toBottomOf="parent"
@@ -94,7 +94,7 @@
                     android:id="@+id/tv_archive_content"
                     style="@style/Typography.M14"
                     android:textColor="@color/grey_4f"
-                    android:text="@{data.content}"
+                    android:text="@{data.Record.content}"
                     android:maxLines="3"
                     android:minLines="3"
                     tools:text="오늘 복실이 사진 찍었다! 다들 댓글 남겨줘! 오늘 복실이 사진 찍었다! 다들 댓글 남겨"
@@ -111,7 +111,7 @@
                     android:layout_height="0dp"
                     style="@style/Typography.M14"
                     android:textColor="@color/grey_82"
-                    android:text="@{data.editor}"
+                    android:text="@{data.Record.writerName}"
                     app:layout_constraintTop_toTopOf="@id/cv_archive_uploader_profile"
                     app:layout_constraintBottom_toBottomOf="@id/cv_archive_uploader_profile"
                     app:layout_constraintStart_toEndOf="@id/cv_archive_uploader_profile"

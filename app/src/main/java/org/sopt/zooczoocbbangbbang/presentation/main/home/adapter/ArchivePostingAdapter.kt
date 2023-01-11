@@ -1,11 +1,12 @@
-package org.sopt.zooczoocbbangbbang.presentation.main.home
+package org.sopt.zooczoocbbangbbang.presentation.main.home.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import org.sopt.zooczoocbbangbbang.databinding.ItemGridArchivePostingBinding
 import org.sopt.zooczoocbbangbbang.databinding.ItemLinearArchivePostingBinding
-import org.sopt.zooczoocbbangbbang.domain.home.ArchivePostingData
+import org.sopt.zooczoocbbangbbang.presentation.main.home.state.LayoutManagerType
+import org.sopt.zooczoocbbangbbang.presentation.main.home.data.ArchivePostingData
 
 class ArchivePostingAdapter :
     RecyclerView.Adapter<ArchivePostingViewHolder>() {

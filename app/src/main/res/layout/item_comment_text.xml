@@ -7,7 +7,7 @@
 
         <variable
             name="data"
-            type="org.sopt.zooczoocbbangbbang.domain.detail.Comment" />
+            type="org.sopt.zooczoocbbangbbang.data.remote.entity.common.Comment" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -41,7 +41,7 @@
             style="@style/Typography.M12"
             android:textColor="@color/grey_82"
             android:layout_marginStart="17dp"
-            android:text="@{data.editor}"
+            android:text="@{data.nickName}"
             app:layout_constraintStart_toEndOf="@+id/cv_detail_comment_text_commenter_image"
             app:layout_constraintTop_toTopOf="@+id/cv_detail_comment_text_commenter_image"
             android:layout_marginTop="2dp" />

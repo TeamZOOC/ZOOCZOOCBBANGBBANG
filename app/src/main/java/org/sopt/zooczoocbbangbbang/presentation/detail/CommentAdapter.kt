@@ -1,14 +1,15 @@
 package org.sopt.zooczoocbbangbbang.presentation.detail
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import org.sopt.zooczoocbbangbbang.data.remote.entity.common.Comment
 import org.sopt.zooczoocbbangbbang.databinding.ItemCommentEmojiBinding
 import org.sopt.zooczoocbbangbbang.databinding.ItemCommentTextBinding
-import org.sopt.zooczoocbbangbbang.domain.detail.Comment
 
 class CommentAdapter : RecyclerView.Adapter<CommentViewHolder>() {
-    private val comments = mutableListOf<Comment>()
+    private var comments: List<Comment> = emptyList()
 
     override fun getItemViewType(position: Int): Int {
         return when (comments[position].isEmoji) {
@@ -38,7 +39,9 @@ class CommentAdapter : RecyclerView.Adapter<CommentViewHolder>() {
     override fun getItemCount(): Int = comments.size
 
     fun initComments(comments: List<Comment>) {
-        this.comments.addAll(comments)
+        Log.d("asdf", "initComments")
+        this.comments = comments.toList()
+        notifyDataSetChanged()
     }
 
     companion object {
