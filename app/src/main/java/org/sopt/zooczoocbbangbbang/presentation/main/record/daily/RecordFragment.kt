@@ -38,7 +38,7 @@ class RecordFragment : BindingFragment<FragmentRecordBinding>(R.layout.fragment_
 
     private fun clickNextBtn() {
         binding.btnRecordBottom.setOnClickListener {
-            recordViewModel.isPostSuccess.observe(viewLifecycleOwner) {
+            recordViewModel.isRecordPostSuccess.observe(viewLifecycleOwner) {
                 parentFragmentManager.beginTransaction()
                     .replace(R.id.fcv_record_view, FourSelectorPetFragment()).commit()
             }

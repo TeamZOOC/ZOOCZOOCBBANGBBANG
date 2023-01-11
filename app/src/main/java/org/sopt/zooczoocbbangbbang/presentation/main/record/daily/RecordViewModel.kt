@@ -23,7 +23,7 @@ class RecordViewModel : ViewModel() {
     private var isShowImage: LiveData<Boolean> = Transformations.map(image) { checkImage() }
     private val petInfo: MutableLiveData<List<String>> = MutableLiveData(listOf("1", "2", "3"))
 
-    val isPostSuccess = MutableLiveData(false)
+    val isRecordPostSuccess = MutableLiveData(false)
     private val _errorMessage = MutableLiveData<String>()
     val errorMessage: LiveData<String> = _errorMessage
 
@@ -60,9 +60,9 @@ class RecordViewModel : ViewModel() {
                     requestBody
                 )
             }.onSuccess {
-                isPostSuccess.value = true
+                isRecordPostSuccess.value = true
             }.onFailure {
-                isPostSuccess.value = false
+                isRecordPostSuccess.value = false
                 _errorMessage.value = "네트워크 상태가 좋지 않습니다"
                 Timber.tag("RecordViewModel").d(errorMessage.toString())
             }

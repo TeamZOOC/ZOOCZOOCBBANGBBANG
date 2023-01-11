@@ -12,15 +12,11 @@ import org.sopt.zooczoocbbangbbang.databinding.FragmentMissionBinding
 import org.sopt.zooczoocbbangbbang.presentation.base.BindingFragment
 import org.sopt.zooczoocbbangbbang.presentation.main.record.CustomDialog
 import org.sopt.zooczoocbbangbbang.presentation.main.record.MissionFragmentStateAdapter
-import org.sopt.zooczoocbbangbbang.presentation.main.record.MissionViewModel
-import org.sopt.zooczoocbbangbbang.presentation.main.record.MissionViewPagerFragment
 import org.sopt.zooczoocbbangbbang.presentation.main.record.register.FourSelectorPetFragment
 import timber.log.Timber
 
 class MissionFragment : BindingFragment<FragmentMissionBinding>(R.layout.fragment_mission) {
     private val missionViewModel: MissionViewModel by activityViewModels()
-
-    // private val recordViewModel: RecordViewModel by activityViewModels()
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.lifecycleOwner = viewLifecycleOwner

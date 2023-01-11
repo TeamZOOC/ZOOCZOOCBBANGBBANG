@@ -1,4 +1,4 @@
-package org.sopt.zooczoocbbangbbang.presentation.main.record
+package org.sopt.zooczoocbbangbbang.presentation.main.record.mission
 
 import android.os.Bundle
 import android.view.View
@@ -8,27 +8,25 @@ import coil.load
 import org.sopt.zooczoocbbangbbang.R
 import org.sopt.zooczoocbbangbbang.databinding.FragmentMissionViewPagerBinding
 import org.sopt.zooczoocbbangbbang.presentation.base.BindingFragment
+import org.sopt.zooczoocbbangbbang.util.ContentUriRequestBody
 import timber.log.Timber
 
 class MissionViewPagerFragment :
     BindingFragment<FragmentMissionViewPagerBinding>(R.layout.fragment_mission_view_pager) {
     private val missionViewModel: MissionViewModel by activityViewModels()
-
-    // private val recordViewModel: RecordViewModel by activityViewModels()
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.lifecycleOwner = viewLifecycleOwner
         binding.viewmodel = missionViewModel
         Timber.tag("Mission").d("MissionViewPagerFragment 20")
         clickImageBtn()
-        // observe()
     }
 
     private fun clickImageBtn() {
         val launcher = registerForActivityResult(ActivityResultContracts.GetContent()) {
             binding.ivMissionBgimg.load(it) {
                 transformations()
-                missionViewModel.image.value = it
+                missionViewModel.image.value =
+                    it?.let { uri -> ContentUriRequestBody(requireContext(), uri) }
             }
         }
         binding.ivMissionImgbtn.setOnClickListener {
