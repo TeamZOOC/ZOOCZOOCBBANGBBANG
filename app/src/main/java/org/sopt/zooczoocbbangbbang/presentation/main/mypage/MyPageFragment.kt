@@ -13,6 +13,7 @@ import coil.load
 import org.sopt.zooczoocbbangbbang.R
 import org.sopt.zooczoocbbangbbang.databinding.FragmentMyPageBinding
 import org.sopt.zooczoocbbangbbang.presentation.base.BindingFragment
+import org.sopt.zooczoocbbangbbang.presentation.main.mypage.editprofile.MyPofileEdityActivity
 
 class MyPageFragment :
     BindingFragment<FragmentMyPageBinding>(R.layout.fragment_my_page),
@@ -20,9 +21,6 @@ class MyPageFragment :
     private lateinit var myPageMemberAdapter: MyPageMemberAdapter
     private lateinit var myPagePetAdapter: MyPagePetAdapter
     private val memberviewModel: MemberViewModel by viewModels()
-
-    // private lateinit var img: String
-    // private lateinit var nickname: String
 
     lateinit var secessionDialog: MyPageSecessionCustomDialog
 
@@ -34,11 +32,10 @@ class MyPageFragment :
                 .show()
         }
         binding.tvBtnEdit.setOnClickListener {
-            // var i = Intent(activity, MyPofileEdityActivity::class.java)
-            // i.putExtra("img", img)
-            // i.putExtra("nickname", nickname)
-            // requireActivity().startActivity(i)
-            requireActivity().startActivity(Intent(activity, MyPofileEdityActivity::class.java))
+            var i = Intent(activity, MyPofileEdityActivity::class.java)
+            i.putExtra("img", memberviewModel.userData.value?.imgMember)
+            i.putExtra("nickname", memberviewModel.userData.value?.memberName)
+            requireActivity().startActivity(i)
         }
         binding.tvBtnAppInfo.setOnClickListener {
             requireActivity().startActivity(Intent(activity, MyprofileAppInfoActivity::class.java))
@@ -80,14 +77,14 @@ class MyPageFragment :
         memberviewModel.userData.observe(viewLifecycleOwner) { user ->
             Log.d("aaa", "$user")
             if (user.imgMember == null) {
+                Log.d("aaa", "이미지 널 좋아해")
                 binding.cvProfile.load(R.drawable.img_default_pet)
                 binding.tvNickname.text = user.memberName
             } else {
+                Log.d("aaa", "릴리 릴리 릴리")
                 binding.cvProfile.load(user.imgMember)
                 binding.tvNickname.text = user.memberName
             }
-            // img = user.imgMember
-            // nickname = user.memberName
         }
     }
 
@@ -95,7 +92,7 @@ class MyPageFragment :
         memberviewModel.memberData.observe(viewLifecycleOwner) { member ->
             if (member != null) {
                 myPageMemberAdapter.setMemberlist(member)
-                binding.tvMemberNum.text = myPageMemberAdapter.memberList?.size.toString()
+                binding.tvMemberNum.text = myPageMemberAdapter.getMemebersSize().toString()
             }
         }
     }

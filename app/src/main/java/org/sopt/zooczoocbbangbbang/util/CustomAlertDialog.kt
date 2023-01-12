@@ -19,7 +19,8 @@ class CustomAlertDialog(
     private val dialog = Dialog(context)
     private val binding = FragmentCustomDialogBinding.inflate(LayoutInflater.from(context))
 
-    fun showDialog() {
+    fun showDialog(convertDialogState: () -> Unit = {}) {
+        convertDialogState()
         initView()
         initData()
         initClickEvents()

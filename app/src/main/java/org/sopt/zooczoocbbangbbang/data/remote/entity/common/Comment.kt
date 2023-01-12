@@ -6,5 +6,6 @@ data class Comment(
     val emoji: Int?,
     val isEmoji: Boolean,
     val nickName: String,
-    val photo: String?
+    val photo: String?,
+    val writerId: Int
 )

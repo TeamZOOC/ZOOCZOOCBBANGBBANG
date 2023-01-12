@@ -8,7 +8,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
 import org.sopt.zooczoocbbangbbang.R
-import org.sopt.zooczoocbbangbbang.data.remote.entity.mypage.ResponseMembersDto
+import org.sopt.zooczoocbbangbbang.data.remote.entity.common.Pet
 import org.sopt.zooczoocbbangbbang.databinding.ItemMypageRecyclerBtnPetsAddBinding
 import org.sopt.zooczoocbbangbbang.databinding.ItemMypageRecyclerBtnPetsAddBinding.inflate
 import org.sopt.zooczoocbbangbbang.databinding.ItemMypageRecyclerPetsBinding
@@ -16,12 +16,12 @@ import org.sopt.zooczoocbbangbbang.databinding.ItemMypageRecyclerPetsBinding
 class MyPagePetAdapter(private val context: Context) :
     RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     private val inflater by lazy { LayoutInflater.from(context) }
-    var petList = mutableListOf<ResponseMembersDto.Data.Pet>()
+    var petList = mutableListOf<Pet>()
 
     class PetViewHolder(
         private val binding: ItemMypageRecyclerPetsBinding
     ) : RecyclerView.ViewHolder(binding.root) {
-        fun onBind(data: ResponseMembersDto.Data.Pet) {
+        fun onBind(data: Pet) {
             binding.ivMypagePetImage.load(data.photo ?: R.drawable.img_default_pet)
             binding.tvMypagePetName.text = data.name
         }
@@ -79,7 +79,7 @@ class MyPagePetAdapter(private val context: Context) :
         return petList.size + 1
     }
 
-    fun setPetlist(pets: List<ResponseMembersDto.Data.Pet>) {
+    fun setPetlist(pets: List<Pet>) {
         petList.removeAll(pets)
         petList.addAll(pets)
         notifyDataSetChanged()

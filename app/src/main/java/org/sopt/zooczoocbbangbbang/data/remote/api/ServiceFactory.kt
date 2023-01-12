@@ -1,9 +1,8 @@
-package org.sopt.zooczoocbbangbbang.data
+package org.sopt.zooczoocbbangbbang.data.remote.api
 
 import kotlinx.serialization.json.Json
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
-import org.sopt.zooczoocbbangbbang.data.remote.api.AuthInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 

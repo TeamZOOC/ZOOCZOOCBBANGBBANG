@@ -3,7 +3,8 @@ package org.sopt.zooczoocbbangbbang.presentation.main.home.adapter
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
-import org.sopt.zooczoocbbangbbang.data.remote.entity.home.response.ResponseTotalRecordsDto
+import org.sopt.zooczoocbbangbbang.R
+import org.sopt.zooczoocbbangbbang.data.remote.entity.common.Comment
 import org.sopt.zooczoocbbangbbang.databinding.ItemGridArchivePostingBinding
 import org.sopt.zooczoocbbangbbang.databinding.ItemLinearArchivePostingBinding
 import org.sopt.zooczoocbbangbbang.presentation.detail.DetailActivity.Companion.CONTENT
@@ -12,13 +13,14 @@ import org.sopt.zooczoocbbangbbang.presentation.detail.DetailActivity.Companion.
 import org.sopt.zooczoocbbangbbang.presentation.detail.DetailActivity.Companion.WRITER_IMAGE
 import org.sopt.zooczoocbbangbbang.presentation.detail.DetailActivity.Companion.WRITER_NAME
 import org.sopt.zooczoocbbangbbang.presentation.main.home.data.ArchivePostingData
+import org.sopt.zooczoocbbangbbang.presentation.main.home.data.RecordTransportData
 
 abstract class ArchivePostingViewHolder(private val binding: View) :
     RecyclerView.ViewHolder(binding) {
     abstract fun onBind(
         data: ArchivePostingData,
         clickItem: () -> Unit,
-        clickExpandedItem: (views: Map<String, View>) -> Unit
+        clickExpandedItem: (views: Map<String, View>, recordTransportData: RecordTransportData) -> Unit
     )
 }
 
@@ -30,10 +32,12 @@ class ArchivePostingLinearViewHolder(private val binding: ItemLinearArchivePosti
     override fun onBind(
         data: ArchivePostingData,
         clickItem: () -> Unit,
-        clickExpandedItem: (views: Map<String, View>) -> Unit
+        clickExpandedItem: (views: Map<String, View>, recordTransportData: RecordTransportData) -> Unit
     ) {
         binding.ivArchivePetImage.load(data.record.photo)
-        binding.ivArchiveUploaderProfile.load(data.record.writerPhoto)
+        binding.ivArchiveUploaderProfile.load(
+            data.record.writerPhoto ?: R.drawable.ic_default_image
+        )
         binding.data = data
         initAdapter(data.commentWriters)
 
@@ -52,6 +56,14 @@ class ArchivePostingLinearViewHolder(private val binding: ItemLinearArchivePosti
                         WRITER_IMAGE to binding.ivArchiveUploaderProfile,
                         WRITER_NAME to binding.tvArchiveEditor,
                         CONTENT to binding.tvArchiveContent
+                    ),
+                    RecordTransportData(
+                        id = data.record.id,
+                        petImage = data.record.photo,
+                        date = data.record.date,
+                        writerImage = data.record.writerPhoto,
+                        writerName = data.record.writerName,
+                        content = data.record.content
                     )
                 )
             } else {
@@ -60,7 +72,7 @@ class ArchivePostingLinearViewHolder(private val binding: ItemLinearArchivePosti
         }
     }
 
-    private fun initAdapter(commenters: List<ResponseTotalRecordsDto.RecordDto.CommentWriter>) {
+    private fun initAdapter(commenters: List<Comment>) {
         commentersAdapter = CommentersAdapter(commenters)
         binding.rvCommenters.adapter = commentersAdapter
     }
@@ -79,11 +91,21 @@ class ArchivePostingGridViewHolder(private val binding: ItemGridArchivePostingBi
     override fun onBind(
         data: ArchivePostingData,
         clickItem: () -> Unit,
-        clickExpandedItem: (views: Map<String, View>) -> Unit
+        clickExpandedItem: (views: Map<String, View>, recordTransportData: RecordTransportData) -> Unit
     ) {
         binding.ivArchiveGridPetImage.load(data.record.photo)
         itemView.setOnClickListener {
-            clickExpandedItem(mapOf(PET_IMAGE to binding.ivArchiveGridPetImage))
+            clickExpandedItem(
+                mapOf(PET_IMAGE to binding.ivArchiveGridPetImage),
+                RecordTransportData(
+                    id = data.record.id,
+                    petImage = data.record.photo,
+                    date = data.record.date,
+                    writerImage = data.record.writerPhoto,
+                    writerName = data.record.writerName,
+                    content = data.record.content
+                )
+            )
         }
     }
 }

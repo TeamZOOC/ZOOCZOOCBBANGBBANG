@@ -13,16 +13,19 @@ import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.SimpleItemAnimator
 import org.sopt.zooczoocbbangbbang.R
 import org.sopt.zooczoocbbangbbang.databinding.FragmentHomeBinding
+import org.sopt.zooczoocbbangbbang.presentation.alarm.AlarmActivity
 import org.sopt.zooczoocbbangbbang.presentation.base.BindingFragment
 import org.sopt.zooczoocbbangbbang.presentation.detail.DetailActivity
 import org.sopt.zooczoocbbangbbang.presentation.detail.DetailActivity.Companion.CONTENT
 import org.sopt.zooczoocbbangbbang.presentation.detail.DetailActivity.Companion.DATE
+import org.sopt.zooczoocbbangbbang.presentation.detail.DetailActivity.Companion.ID
 import org.sopt.zooczoocbbangbbang.presentation.detail.DetailActivity.Companion.PET_IMAGE
 import org.sopt.zooczoocbbangbbang.presentation.detail.DetailActivity.Companion.WRITER_IMAGE
 import org.sopt.zooczoocbbangbbang.presentation.detail.DetailActivity.Companion.WRITER_NAME
 import org.sopt.zooczoocbbangbbang.presentation.main.home.adapter.ArchiveItemDecorator
 import org.sopt.zooczoocbbangbbang.presentation.main.home.adapter.ArchivePostingAdapter
 import org.sopt.zooczoocbbangbbang.presentation.main.home.adapter.PetAdapter
+import org.sopt.zooczoocbbangbbang.presentation.main.home.data.RecordTransportData
 import org.sopt.zooczoocbbangbbang.presentation.main.home.state.LayoutManagerType
 import org.sopt.zooczoocbbangbbang.util.DisplayUtil.dpToPx
 import android.util.Pair as UtilPair
@@ -36,18 +39,34 @@ class HomeFragment : BindingFragment<FragmentHomeBinding>(R.layout.fragment_home
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        initPetAdapter()
-        initArchiveAdapter()
+        getData()
+        initAdapters()
+        initData()
+        gatherClickEvents()
+    }
 
-        homeViewModel.getRecords()
-        homeViewModel.getPets()
-
+    private fun initData() {
         initPetsData()
         initRecordsData()
+    }
 
+    private fun getData() {
+        homeViewModel.getPets()
+        homeViewModel.pets.observe(viewLifecycleOwner) {
+            homeViewModel.getRecords(it[0].id)
+        }
+    }
+
+    private fun initAdapters() {
+        initPetAdapter()
+        initArchiveAdapter()
+    }
+
+    private fun gatherClickEvents() {
         clickLinearButton()
         clickGridButton()
         clickOutside()
+        clickAlarm()
     }
 
     private fun initPetsData() {
@@ -62,17 +81,23 @@ class HomeFragment : BindingFragment<FragmentHomeBinding>(R.layout.fragment_home
         }
     }
 
-    private fun clickItem(views: Map<String, View>) {
+    private fun clickItem(views: Map<String, View>, recordTransportData: RecordTransportData) {
         val intent = Intent(requireContext(), DetailActivity::class.java)
         val options = makeTransitionIntentOption(views)
+        intent.putExtras(makeBundleToDetailActivity(recordTransportData))
         startActivity(intent, options.toBundle())
     }
 
-    /*private fun makeBundleToDetailActivity():Bundle{
+    private fun makeBundleToDetailActivity(recordTransportData: RecordTransportData): Bundle {
         return Bundle().apply {
-            putString(PET_IMAGE, )
+            putInt(ID, recordTransportData.id)
+            putString(PET_IMAGE, recordTransportData.petImage)
+            putString(DATE, recordTransportData.date)
+            putString(WRITER_IMAGE, recordTransportData.writerImage)
+            putString(WRITER_NAME, recordTransportData.writerName)
+            putString(CONTENT, recordTransportData.content)
         }
-    }*/
+    }
 
     private fun makeTransitionIntentOption(views: Map<String, View>): ActivityOptions {
         return if (views.size == 1) {
@@ -101,9 +126,13 @@ class HomeFragment : BindingFragment<FragmentHomeBinding>(R.layout.fragment_home
     }
 
     private fun initPetAdapter() {
-        petAdapter = PetAdapter()
+        petAdapter = PetAdapter { clickPet(it) }
         binding.rvHomePet.adapter = petAdapter
         removeRecyclerViewAnimator(binding.rvHomePet)
+    }
+
+    private fun clickPet(petId: Int) {
+        homeViewModel.getRecords(petId)
     }
 
     private fun initArchiveAdapter() {
@@ -113,7 +142,9 @@ class HomeFragment : BindingFragment<FragmentHomeBinding>(R.layout.fragment_home
             GridLayoutManager(requireContext(), 3, GridLayoutManager.VERTICAL, false)
 
         binding.rvArchivePosting.layoutManager = linearLayoutManager
-        archivePostingAdapter = ArchivePostingAdapter { clickItem(it) }
+        archivePostingAdapter = ArchivePostingAdapter { options, bundle ->
+            clickItem(options, bundle)
+        }
         binding.rvArchivePosting.adapter = archivePostingAdapter
         binding.rvArchivePosting.addItemDecoration(ArchiveItemDecorator(requireContext(), 10, 0))
         removeRecyclerViewAnimator(binding.rvArchivePosting)
@@ -147,6 +178,13 @@ class HomeFragment : BindingFragment<FragmentHomeBinding>(R.layout.fragment_home
     private fun clickOutside() {
         binding.clHome.setOnClickListener {
             archivePostingAdapter.foldItem()
+        }
+    }
+
+    private fun clickAlarm() {
+        binding.ivHomeAlarm.setOnClickListener {
+            val intent = Intent(requireContext(), AlarmActivity::class.java)
+            startActivity(intent)
         }
     }
 

@@ -1,4 +1,4 @@
-package org.sopt.zooczoocbbangbbang.presentation.main.mypage
+package org.sopt.zooczoocbbangbbang.presentation.main.mypage.editprofile
 
 import android.util.Log
 import androidx.lifecycle.LiveData
@@ -10,10 +10,11 @@ import kotlinx.coroutines.launch
 import kotlinx.serialization.encodeToString
 import okhttp3.MediaType.Companion.toMediaType
 import okhttp3.RequestBody.Companion.toRequestBody
-import org.sopt.zooczoocbbangbbang.data.ServiceFactory
-import org.sopt.zooczoocbbangbbang.data.ServiceFactory.json
+import org.sopt.zooczoocbbangbbang.data.remote.api.ServiceFactory
+import org.sopt.zooczoocbbangbbang.data.remote.api.ServiceFactory.json
 import org.sopt.zooczoocbbangbbang.data.remote.entity.mypage.ResponseEditProfileDto
 import org.sopt.zooczoocbbangbbang.util.ContentUriRequestBody
+import retrofit2.HttpException
 import retrofit2.await
 
 class EditProfileViewModel : ViewModel() {
@@ -27,6 +28,8 @@ class EditProfileViewModel : ViewModel() {
 
     var setCount = MutableLiveData(0)
     val inputText = MutableLiveData("")
+
+    val isProfileEditSuccess = MutableLiveData<Boolean>(false)
 
     fun countText() {
         setCount.value = inputText.value!!.length
@@ -61,13 +64,18 @@ class EditProfileViewModel : ViewModel() {
 
         viewModelScope.launch {
             runCatching {
-                Log.d("aaa", "${file.value != null}")
+                Log.d("aaa", "사진 널 아니지: ${file.value}")
                 zoocService.editProfile(file.value != null, requestB, file.value?.toFormData())
                     .await()
             }.onSuccess {
                 Log.d("aaa", "성공")
+                isProfileEditSuccess.value = true
             }.onFailure {
-                Log.e("aaa", "실패", it)
+                if (it is HttpException) {
+                    Log.e("aaa", "프로필 수정 서버 통신 onResponse but not successful")
+                } else {
+                    Log.e("aaa", "프로필 수정 서버 통신 onFailure")
+                }
             }
         }
     }

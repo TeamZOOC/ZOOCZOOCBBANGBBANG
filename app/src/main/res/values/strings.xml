@@ -20,6 +20,20 @@
     <string name="choose2Pet_header2">어디에 기록을 남길까요?</string>
     <string name="choose2Pet_btn">등록</string>
     <string name="choosePet_name">토리</string>
+    <string name="role_input_title_text">가족에서\n 어떤 역할을 맡고 있나요?</string>
+    <string name="tv_role_input_sub_title_text">우리 가족에서 저는</string>
+    <string name="role_input_edit_text_hint">엄마, 아빠, 첫째딸, 둘째딸 (10자 이내)</string>
+    <string name="role_input_complete_button_text">이렇게 불러주세요</string>
+    <string name="onboarding_profile_selector_sub_title">지금 마음에 드는 사진이 없다면\n나중에 등록할 수 있어요</string>
+    <string name="onboarding_profile_selector_button_text">프로필 생성하기</string>
+    <string name="onboarding_profile_complete_title">멋진 프로필이네요!\n이제 가족과 함께 시작해봐요</string>
+    <string name="onboarding_profile_complete_sub_title_family_code_text">가족 코드</string>
+    <string name="onboarding_profile_complete_sub_title_text">를 받았나요?</string>
+    <string name="onboarding_pet_register_title_text">좋아요!\n먼저 반려동물을 등록해볼까요?</string>
+    <string name="onboarding_pet_register_sub_title_text">최대 4마리까지 등록 가능해요!</string>
+    <string name="onboarding_pet_register_input_hint_text">ex) 사랑,토리 (4자 이내)</string>
+    <string name="onboarding_pet_register_add">추가</string>
+    <string name="onboarding_pet_register_button_text">등록하기</string>
 
     <!--상세 뷰-->
     <string name="detail_input_comment">댓글을 입력해보세요</string>
@@ -35,7 +49,24 @@
     <string name="customDialog_subtitle">지금 떠나면 내용이 저장되지 않아요</string>
     <string name="customDialog_relaywrite">이어쓰기</string>
     <string name="customDialog_quit">나가기</string>
-\
 
+    <!-- 로그인 -->
+    <string name="signin_title">ZOOC에서 가족들과 함께 잊지 못할 \n추억을 쭉 쌓아보세요</string>
+    <string name="signin_subtitle">가족의 추억을 쭉 \n기록하는 손쉬운 방법</string>
+    <string name="signup_complete_title">안녕하세요! \nZOOC에 온 걸 환영해요</string>
 
+    <!-- 알림 -->
+    <string name="alarm">알림</string>
+    <string name="alarm_content">%1$s님이 새로운 게시글을 올렸습니다</string>
+
+    <string name="onboarding_move_input_family_code_button_text">코드를 받았어요</string>
+    <string name="onboarding_move_create_family_code_button_text">아니요</string>
+    <string name="onboarding_invitation_share_title_text">가족을 초대해보세요</string>
+    <string name="onboarding_invitation_share_sub_title_text">함께 추억을 공유하고 싶은 가족들에게\n초대링크를 보내보세요</string>
+    <string name="onboarding_invitation_share_family_button_text">초대하기</string>
+    <string name="onboarding_end_title_text">이제 추억을 쌓을 시간이에요!</string>
+    <string name="onboarding_end_sub_title_text">가족과 기록한 순간들이\nZOOC 소중한 추억으로 남을 거예요</string>
+    <string name="onboarding_input_code_title_text">전달받은 가족 코드를\n입력해주세요</string>
+    <string name="onboarding_input_code_complete_button_text">입력하기</string>
+    <string name="onboarding_input_code_input_view_example">ex) SEF33210</string>
 </resources>

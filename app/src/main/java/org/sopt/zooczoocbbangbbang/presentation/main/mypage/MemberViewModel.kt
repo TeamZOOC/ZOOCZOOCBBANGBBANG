@@ -4,7 +4,8 @@ import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import org.sopt.zooczoocbbangbbang.data.ServiceFactory
+import org.sopt.zooczoocbbangbbang.data.remote.api.ServiceFactory
+import org.sopt.zooczoocbbangbbang.data.remote.entity.common.Pet
 import org.sopt.zooczoocbbangbbang.data.remote.entity.mypage.ResponseMembersDto
 import org.sopt.zooczoocbbangbbang.util.enqueueUtil
 import timber.log.Timber
@@ -18,8 +19,8 @@ class MemberViewModel : ViewModel() {
     val _userData = MutableLiveData<ResponseMembersDto.Data.User>()
     val userData: LiveData<ResponseMembersDto.Data.User>
         get() = _userData
-    val _petData = MutableLiveData<List<ResponseMembersDto.Data.Pet>>()
-    val petData: LiveData<List<ResponseMembersDto.Data.Pet>>
+    val _petData = MutableLiveData<List<Pet>>()
+    val petData: LiveData<List<Pet>>
         get() = _petData
 
     fun fetchMyPageData() {

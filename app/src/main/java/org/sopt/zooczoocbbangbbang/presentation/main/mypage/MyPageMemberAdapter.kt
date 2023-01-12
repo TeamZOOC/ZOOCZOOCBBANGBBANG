@@ -14,7 +14,7 @@ import org.sopt.zooczoocbbangbbang.databinding.ItemMypageRecyclerMembersFirstBin
 class MyPageMemberAdapter(context: Context) :
     RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     private val inflater by lazy { LayoutInflater.from(context) }
-    var memberList = mutableListOf<ResponseMembersDto.Data.FamilyMember>()
+    private var memberList: List<ResponseMembersDto.Data.FamilyMember> = emptyList()
 
     class memberViewHolder(
         private val binding: ItemMypageRecyclerMembersBinding
@@ -45,12 +45,12 @@ class MyPageMemberAdapter(context: Context) :
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         return when (viewType) {
             MYPROFILE -> {
-                Log.d("asdf", "마이프로필 뷰홀더 생성")
+                Log.d("qwer", "마이프로필 뷰홀더 생성")
                 val binding = ItemMypageRecyclerMembersFirstBinding.inflate(inflater, parent, false)
                 memberFirstViewHolder(binding)
             }
             else -> {
-                Log.d("asdf", "프로필 뷰홀더 생성")
+                Log.d("qwer", "프로필 뷰홀더 생성")
                 val binding = ItemMypageRecyclerMembersBinding.inflate(inflater, parent, false)
                 memberViewHolder(binding)
             }
@@ -60,8 +60,10 @@ class MyPageMemberAdapter(context: Context) :
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         if (holder is memberFirstViewHolder) {
             holder.onBind(memberList[0])
+            Log.d("qwer", "마이프로필 onBindViewHolder: ${memberList[0]}")
         } else if (holder is memberViewHolder) {
             holder.onBind(memberList[position])
+            Log.d("qwer", "프로필 onBindViewHolder: ${memberList[position]}")
         }
     }
 
@@ -76,10 +78,14 @@ class MyPageMemberAdapter(context: Context) :
 
     override fun getItemCount() = memberList.size
 
-    fun setMemberlist(memberlist: List<ResponseMembersDto.Data.FamilyMember>) {
-        memberList.removeAll(memberlist)
-        memberList.addAll(memberlist)
-        notifyItemInserted(memberList.size)
+    fun setMemberlist(memberList: List<ResponseMembersDto.Data.FamilyMember>) {
+        this.memberList = memberList.toList()
+        Log.d("qwer", "memberList: $memberList")
+        notifyDataSetChanged()
+    }
+
+    fun getMemebersSize(): Int {
+        return memberList.size
     }
 
     companion object {

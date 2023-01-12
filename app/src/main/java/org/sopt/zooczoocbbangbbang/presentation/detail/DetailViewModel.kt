@@ -5,7 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.launch
-import org.sopt.zooczoocbbangbbang.data.ServiceFactory
+import org.sopt.zooczoocbbangbbang.data.remote.api.ServiceFactory
 import org.sopt.zooczoocbbangbbang.data.remote.entity.common.Comment
 import org.sopt.zooczoocbbangbbang.data.remote.entity.detail.request.RequestCommentDto
 import org.sopt.zooczoocbbangbbang.data.remote.entity.detail.request.RequestEmojiDto
@@ -19,10 +19,10 @@ class DetailViewModel : ViewModel() {
     val comments = MutableLiveData<List<Comment>>()
     val emojiId = MutableLiveData<Int>()
 
-    fun uploadComment(comment: String) {
+    fun uploadComment(recordId: Int, comment: String) {
         viewModelScope.launch {
             kotlin.runCatching {
-                zoocService.postTextComment(25, RequestCommentDto(comment)).await()
+                zoocService.postTextComment(recordId, RequestCommentDto(comment)).await()
             }.onSuccess {
                 comments.value = it.data
             }.onFailure {
@@ -35,11 +35,10 @@ class DetailViewModel : ViewModel() {
         }
     }
 
-    fun uploadEmoji(emojiId: Int) {
+    fun uploadEmoji(recordId: Int, emojiId: Int) {
         viewModelScope.launch {
             kotlin.runCatching {
-                Log.d("DetailFragment", "$emojiId")
-                zoocService.postEmojiComment(25, RequestEmojiDto(emojiId)).await()
+                zoocService.postEmojiComment(recordId, RequestEmojiDto(emojiId)).await()
             }.onSuccess {
                 comments.value = it.data
             }.onFailure {
@@ -52,10 +51,10 @@ class DetailViewModel : ViewModel() {
         }
     }
 
-    fun getDetailData() {
+    fun getDetailData(recordId: Int) {
         viewModelScope.launch {
             kotlin.runCatching {
-                zoocService.getRecordDetail(1, 25).await()
+                zoocService.getRecordDetail(1, recordId).await()
             }.onSuccess {
                 recordDetail.value = it.data
                 comments.value = it.data.comments

@@ -1,34 +1,37 @@
 package org.sopt.zooczoocbbangbbang.presentation.main.mypage
 
 import android.content.Context
+import android.net.Uri
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
-import org.sopt.zooczoocbbangbbang.data.remote.entity.mypage.ResponseMembersDto
+import org.sopt.zooczoocbbangbbang.R
+import org.sopt.zooczoocbbangbbang.data.remote.entity.common.Pet
 import org.sopt.zooczoocbbangbbang.databinding.ItemPetRegisterRecyclerRegisteredBinding
 import org.sopt.zooczoocbbangbbang.databinding.ItemPetRegisterRecyclerToregisterBinding
 
-class PetRegisterAdapter(context: Context) :
+class PetRegisterAdapter(private val context: Context, private val clickItem: () -> Unit) :
     RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     private val inflater by lazy { LayoutInflater.from(context) }
-    var petRegisterList = mutableListOf<ResponseMembersDto.Data.Pet>()
+    var petRegisterList = mutableListOf<Pet>()
 
     class RegisteredViewHolder(
         private val binding: ItemPetRegisterRecyclerRegisteredBinding
     ) : RecyclerView.ViewHolder(binding.root) {
-        fun onBind(data: ResponseMembersDto.Data.Pet) {
-            binding.imgPet.load(data.photo)
+        fun onBind(data: Pet) {
+            binding.imgPet.load(data.photo ?: R.drawable.ic_default_image)
             binding.tvPet.text = data.name
         }
     }
 
-    class toRegisterViewHolder(
+    class ToRegisterViewHolder(
         private val binding: ItemPetRegisterRecyclerToregisterBinding
     ) : RecyclerView.ViewHolder(binding.root) {
-        fun click(context: Context) {
-            binding.imgPet.setOnClickListener {
+        fun onBind(clickItem: () -> Unit) {
+            itemView.setOnClickListener {
+                clickItem()
             }
         }
     }
@@ -46,7 +49,7 @@ class PetRegisterAdapter(context: Context) :
                 Log.d("qwer", "펫 추가 뷰홀더 생성")
                 val binding =
                     ItemPetRegisterRecyclerToregisterBinding.inflate(inflater, parent, false)
-                toRegisterViewHolder(binding)
+                ToRegisterViewHolder(binding)
             }
         }
     }
@@ -54,6 +57,9 @@ class PetRegisterAdapter(context: Context) :
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         if (holder is RegisteredViewHolder) {
             holder.onBind(petRegisterList[position])
+        }
+        if (holder is ToRegisterViewHolder) {
+            holder.onBind { clickItem }
         }
     }
 
@@ -76,10 +82,13 @@ class PetRegisterAdapter(context: Context) :
         return petRegisterList.size + 1
     }
 
-    fun setRegisteredPetlist(pet: List<ResponseMembersDto.Data.Pet>) {
+    fun setRegisteredPetlist(pet: List<Pet>) {
         petRegisterList.removeAll(pet)
         petRegisterList.addAll(pet)
         notifyDataSetChanged()
+    }
+
+    fun setLastItemImage(uri: Uri?) {
     }
 
     companion object {

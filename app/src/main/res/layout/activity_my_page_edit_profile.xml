@@ -4,10 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-
         <variable
             name="viewModel"
-            type="org.sopt.zooczoocbbangbbang.presentation.main.mypage.EditProfileViewModel" />
+            type="org.sopt.zooczoocbbangbbang.presentation.main.mypage.editprofile.EditProfileViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -83,6 +82,7 @@
             android:textColor="#000000"
             android:text="@={viewModel.inputText}"
             android:hint="바꿀 이름 적어"
+            android:textColorHint="@color/grey_bd"
             android:maxLength="10"
             style="@style/Zooc20SemiBold"
             android:backgroundTint="@color/green_42c87f"

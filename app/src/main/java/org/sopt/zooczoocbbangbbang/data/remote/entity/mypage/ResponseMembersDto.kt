@@ -21,12 +21,6 @@ data class ResponseMembersDto(
             val photo: String?
         )
 
-        data class Pet(
-            val id: Int,
-            val name: String,
-            val photo: String?
-        )
-
         data class User(
             val id: Int,
             @SerializedName("nick_name")

@@ -1,4 +1,4 @@
-package org.sopt.zooczoocbbangbbang.presentation.main.mypage
+package org.sopt.zooczoocbbangbbang.presentation.main.mypage.editprofile
 
 import android.app.Dialog
 import android.content.Context

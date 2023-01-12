@@ -7,11 +7,12 @@ import androidx.recyclerview.widget.RecyclerView
 import org.sopt.zooczoocbbangbbang.databinding.ItemGridArchivePostingBinding
 import org.sopt.zooczoocbbangbbang.databinding.ItemLinearArchivePostingBinding
 import org.sopt.zooczoocbbangbbang.presentation.main.home.data.ArchivePostingData
+import org.sopt.zooczoocbbangbbang.presentation.main.home.data.RecordTransportData
 import org.sopt.zooczoocbbangbbang.presentation.main.home.state.LayoutManagerType
 
-class ArchivePostingAdapter(private val clickExpandedItem: (views: Map<String, View>) -> Unit) :
+class ArchivePostingAdapter(private val clickExpandedItem: (views: Map<String, View>, RecordTransportData) -> Unit) :
     RecyclerView.Adapter<ArchivePostingViewHolder>() {
-    private val archives = mutableListOf<ArchivePostingData>()
+    private var archives: List<ArchivePostingData> = emptyList()
     private var currentIndex: Int = 0
     private var previousIndex: Int = -1
     var layoutManagerType = LayoutManagerType.LINEAR
@@ -32,11 +33,15 @@ class ArchivePostingAdapter(private val clickExpandedItem: (views: Map<String, V
 
     override fun onBindViewHolder(holder: ArchivePostingViewHolder, position: Int) {
         if (holder is ArchivePostingLinearViewHolder) {
-            holder.onBind(archives[position], { clickItem(position) }) { clickExpandedItem(it) }
+            holder.onBind(archives[position], { clickItem(position) }) { options, bundle ->
+                clickExpandedItem(options, bundle)
+            }
         } else {
-            holder.onBind(archives[position], {}) { clickExpandedItem(it) }
+            holder.onBind(archives[position], {}) { options, bundle ->
+                clickExpandedItem(options, bundle)
+            }
+            holder.setIsRecyclable(false)
         }
-        holder.setIsRecyclable(false)
     }
 
     private fun clickItem(position: Int) {
@@ -48,14 +53,8 @@ class ArchivePostingAdapter(private val clickExpandedItem: (views: Map<String, V
         notifyItemChanged(previousIndex)
     }
 
-    override fun getItemCount(): Int = archives.size
-
-    override fun getItemViewType(position: Int): Int {
-        return position
-    }
-
     fun initArchives(items: List<ArchivePostingData>) {
-        archives.addAll(items)
+        archives = items.toList()
         notifyDataSetChanged()
     }
 
@@ -64,5 +63,11 @@ class ArchivePostingAdapter(private val clickExpandedItem: (views: Map<String, V
         notifyItemChanged(currentIndex)
         currentIndex = 0
         previousIndex = -1
+    }
+
+    override fun getItemCount(): Int = archives.size
+
+    override fun getItemViewType(position: Int): Int {
+        return position
     }
 }

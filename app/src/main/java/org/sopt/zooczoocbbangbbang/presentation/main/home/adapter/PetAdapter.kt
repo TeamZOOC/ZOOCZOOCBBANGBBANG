@@ -9,7 +9,8 @@ import org.sopt.zooczoocbbangbbang.databinding.ItemPetBinding
 import org.sopt.zooczoocbbangbbang.presentation.main.home.data.PetData
 import org.sopt.zooczoocbbangbbang.presentation.main.home.state.FoldableUiState
 
-class PetAdapter : RecyclerView.Adapter<PetAdapter.PetViewHolder>() {
+class PetAdapter(private val clickItem: (Int) -> Unit) :
+    RecyclerView.Adapter<PetAdapter.PetViewHolder>() {
     private val pets = mutableListOf<PetData>()
     private var currentIndex = 0
     private var previousIndex = -1
@@ -17,12 +18,15 @@ class PetAdapter : RecyclerView.Adapter<PetAdapter.PetViewHolder>() {
     class PetViewHolder(private val binding: ItemPetBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
-        fun onBind(data: PetData) {
+        fun onBind(data: PetData, clickItem: () -> Unit) {
             binding.tvPetItemName.text = data.name
             binding.ivHomePetProfile.load(data.photo ?: R.drawable.ic_default_image)
             when (data.isSelected) {
                 true -> updateUi(FoldableUiState.EXPAND)
                 false -> updateUi(FoldableUiState.FOLD)
+            }
+            itemView.setOnClickListener {
+                clickItem()
             }
         }
 
@@ -49,15 +53,19 @@ class PetAdapter : RecyclerView.Adapter<PetAdapter.PetViewHolder>() {
     }
 
     override fun onBindViewHolder(holder: PetViewHolder, position: Int) {
-        holder.itemView.setOnClickListener {
-            previousIndex = currentIndex
-            currentIndex = position
-            holder.updateUi(FoldableUiState.EXPAND)
-            pets[previousIndex].isSelected = false
-            pets[currentIndex].isSelected = true
-            notifyItemChanged(previousIndex)
-        }
-        holder.onBind(pets[position])
+        pets[currentIndex].isSelected = true
+        holder.onBind(pets[position]) { clickItem(holder, position) }
+        holder.setIsRecyclable(false)
+    }
+
+    private fun clickItem(holder: PetViewHolder, position: Int) {
+        previousIndex = currentIndex
+        currentIndex = position
+        holder.updateUi(FoldableUiState.EXPAND)
+        pets[previousIndex].isSelected = false
+        pets[currentIndex].isSelected = true
+        notifyItemChanged(previousIndex)
+        clickItem(pets[position].id)
     }
 
     override fun getItemCount(): Int = pets.size

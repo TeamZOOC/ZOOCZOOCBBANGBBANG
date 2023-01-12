@@ -38,6 +38,7 @@
             android:layout_marginStart="9dp"
             android:hint="ex) 사랑,토리 (4자 이내)"
             android:text="@={viewModel.inputText}"
+            android:textColorHint="@color/grey_bd"
             android:paddingStart="18dp"
             android:textColor="@color/grey_bd"
             style="@style/Zooc14Medium"

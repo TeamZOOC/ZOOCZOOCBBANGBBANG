@@ -5,6 +5,7 @@
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
+        android:name=".ZoocApplication"
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
@@ -20,16 +21,54 @@
             android:name=".presentation.main.mypage.PetRegisterActivity"
             android:exported="false"/>
         <activity
-            android:name=".presentation.detail.DetailActivity"
-            android:windowSoftInputMode="adjustPan"
-            android:exported="true">
+            android:name=".presentation.auth.SignUpCompleteActivity"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
         </activity>
+        <activity
+            android:name="com.kakao.sdk.auth.AuthCodeHandlerActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <!-- Redirect URI: "kakao${NATIVE_APP_KEY}://oauth" -->
+                <data
+                    android:host="oauth"
+                    android:scheme="kakao444abf8009d07e98dbd0ad87ffca4ca3" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".presentation.auth.SplashActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".presentation.auth.SignInActivity"
+            android:exported="false" />
+        <activity
+            android:name=".presentation.detail.DetailActivity"
+            android:exported="true"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".presentation.onboarding.OnboardingActivity"
+            android:exported="true" />
+        <activity
+            android:name=".presentation.alarm.AlarmActivity"
+            android:exported="false"/>
         <activity
             android:name=".presentation.main.record.RecordDoneActivity"
-            android:exported="false">
-        </activity>
+            android:exported="false" />
         <activity
-            android:name=".presentation.main.mypage.MyPofileEdityActivity"
+            android:name=".presentation.main.mypage.editprofile.MyPofileEdityActivity"
             android:exported="false" />
         <activity
             android:name=".presentation.main.mypage.MyprofileAppInfoActivity"
@@ -40,16 +79,10 @@
         <activity
             android:name=".presentation.main.record.RecordActivity"
             android:exported="true"
-            android:windowSoftInputMode="adjustResize"/>
+            android:windowSoftInputMode="adjustResize" />
         <activity
             android:name=".presentation.main.MainActivity"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+            android:exported="true" />
     </application>
 
 </manifest>

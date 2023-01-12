@@ -6,6 +6,7 @@ import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import org.sopt.zooczoocbbangbbang.databinding.CustomdialogCheckQuitBinding
+import org.sopt.zooczoocbbangbbang.presentation.main.mypage.editprofile.MyProfileEditCustomDialogInterface
 
 class MyProfileExitCustomDialog(
     context: Context,
