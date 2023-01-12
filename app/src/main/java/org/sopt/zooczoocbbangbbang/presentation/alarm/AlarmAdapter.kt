@@ -3,6 +3,8 @@ package org.sopt.zooczoocbbangbbang.presentation.alarm
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import coil.load
+import org.sopt.zooczoocbbangbbang.R
 import org.sopt.zooczoocbbangbbang.data.remote.entity.alarm.ResponseAlarmDto
 import org.sopt.zooczoocbbangbbang.databinding.ItemAlarmBinding
 
@@ -13,6 +15,7 @@ class AlarmAdapter : RecyclerView.Adapter<AlarmAdapter.AlarmViewHolder>() {
         RecyclerView.ViewHolder(binding.root) {
         fun onBind(data: ResponseAlarmDto.Alarm) {
             binding.data = data
+            binding.ivAlarmUserImage.load(data.writer.photo ?: R.drawable.ic_default_image)
         }
     }
 
@@ -30,5 +33,6 @@ class AlarmAdapter : RecyclerView.Adapter<AlarmAdapter.AlarmViewHolder>() {
 
     fun initAlarms(alarms: List<ResponseAlarmDto.Alarm>) {
         this.alarms = alarms.toList()
+        notifyDataSetChanged()
     }
 }
