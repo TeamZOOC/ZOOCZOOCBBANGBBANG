@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="data"
+            type="org.sopt.zooczoocbbangbbang.data.remote.entity.alarm.ResponseAlarmDto.Alarm" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            app:layout_constraintTop_toBottomOf="@id/cv_alarm_user_image"
+            android:layout_marginTop="17dp"
+            android:background="@color/white_e9"
+            android:id="@+id/line_alarm" />
+
+        <TextView
+            tools:text="2022.11.05"
+            android:text="@{data.createdTime}"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/tv_alarm_date"
+            style="@style/Typography.M12"
+            android:textColor="@color/grey_bd"
+            app:layout_constraintStart_toEndOf="@+id/cv_alarm_user_image"
+            app:layout_constraintBottom_toBottomOf="@+id/cv_alarm_user_image"
+            android:layout_marginBottom="1dp"
+            android:layout_marginStart="16dp" />
+
+        <TextView
+            tools:text="미나님이 새로운 게시글을 올렸습니다"
+            android:text="@{@string/alarm_content(data.Writer.nickName)}"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/tv_alarm_content"
+            style="@style/Typography.M15"
+            android:textColor="@color/grey_33"
+            app:layout_constraintTop_toTopOf="@+id/cv_alarm_user_image"
+            android:layout_marginTop="1dp"
+            app:layout_constraintStart_toEndOf="@+id/cv_alarm_user_image"
+            android:layout_marginStart="16dp" />
+
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="42dp"
+            android:layout_height="42dp"
+            app:cardCornerRadius="21dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:id="@+id/cv_alarm_user_image">
+
+            <ImageView
+                android:layout_marginStart="4dp"
+                android:id="@+id/iv_alarm_user_image"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="centerCrop"
+                tools:src="@drawable/junseo1" />
+
+        </com.google.android.material.card.MaterialCardView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
