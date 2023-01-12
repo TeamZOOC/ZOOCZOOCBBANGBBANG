@@ -89,4 +89,7 @@ dependencies {
 
     // viewpager2 circle indicator
     implementation("com.tbuonomo:dotsindicator:4.3")
+
+    //lottie
+    implementation "com.airbnb.android:lottie:5.2.0"
 }
