@@ -5,7 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.launch
-import org.sopt.zooczoocbbangbbang.data.remote.api.ServiceFactory
+import org.sopt.zooczoocbbangbbang.data.ServiceFactory
 import org.sopt.zooczoocbbangbbang.data.remote.entity.common.Comment
 import org.sopt.zooczoocbbangbbang.data.remote.entity.detail.request.RequestCommentDto
 import org.sopt.zooczoocbbangbbang.data.remote.entity.detail.request.RequestEmojiDto

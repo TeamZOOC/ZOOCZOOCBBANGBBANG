@@ -33,6 +33,7 @@
             android:textAppearance="@style/Zooc12Medium"
             android:textColor="#4F4F4F"
             android:textSize="12sp"
+            android:maxLines="1"
             android:gravity="center"
             android:text="구름 아빠"
             app:layout_constraintEnd_toEndOf="@+id/img_members"

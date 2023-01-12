@@ -18,7 +18,7 @@
             android:background="#F0F2EF"
             tools:context=".presentation.main.mypage.MyPageFragment">
 
-            <com.google.android.material.card.MaterialCardView
+            <com.google.android.material.imageview.ShapeableImageView
                 android:id="@+id/cv_profile"
                 android:layout_width="72dp"
                 android:layout_height="0dp"
@@ -29,14 +29,11 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:strokeColor="#DAE0D6"
-                app:strokeWidth="2dp">
-
-                <ImageView
-                    android:id="@+id/iv_myprofile"
-                    android:layout_width="72dp"
-                    android:layout_height="72dp"
-                    tools:src="@drawable/img_myprofile" />
-            </com.google.android.material.card.MaterialCardView>
+                android:scaleType="centerCrop"
+                app:shapeAppearanceOverlay="@style/Style.CircleImageView.Half"
+                tools:src="@drawable/img_myprofile"
+                android:padding="2dp"
+                app:strokeWidth="2dp"></com.google.android.material.imageview.ShapeableImageView>
 
             <TextView
                 android:id="@+id/tv_nickname"
@@ -44,6 +41,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
+                android:maxLines="1"
                 android:text="복실맘"
                 android:textColor="#333333"
                 app:layout_constraintBottom_toBottomOf="@+id/cv_profile"

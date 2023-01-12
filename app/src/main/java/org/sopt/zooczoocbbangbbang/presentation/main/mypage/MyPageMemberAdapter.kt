@@ -77,8 +77,9 @@ class MyPageMemberAdapter(context: Context) :
     override fun getItemCount() = memberList.size
 
     fun setMemberlist(memberlist: List<ResponseMembersDto.Data.FamilyMember>) {
+        memberList.removeAll(memberlist)
         memberList.addAll(memberlist)
-        notifyDataSetChanged()
+        notifyItemInserted(memberList.size)
     }
 
     companion object {

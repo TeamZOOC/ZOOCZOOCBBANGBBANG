@@ -4,10 +4,9 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
-
         <variable
-            name="memberInfo"
-            type="org.sopt.zooczoocbbangbbang.data.remote.entity.mypage.ResponseMembersDto.Data.FamilyMember" />
+            name="viewModel"
+            type="org.sopt.zooczoocbbangbbang.presentation.main.mypage.RegisterPetViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -17,7 +16,7 @@
 
         <com.google.android.material.imageview.ShapeableImageView
             android:layout_marginVertical="15dp"
-            android:id="@+id/img_members"
+            android:id="@+id/img_pet"
             android:layout_width="70dp"
             android:layout_height="0dp"
             android:scaleType="centerCrop"
@@ -33,15 +32,17 @@
         <EditText
             android:layout_width="221dp"
             android:layout_height="36dp"
+            android:id="@+id/et_pet_name"
             android:background="@drawable/bg_register_pet_edittext"
             app:layout_constraintTop_toTopOf="parent"
             android:layout_marginStart="9dp"
             android:hint="ex) 사랑,토리 (4자 이내)"
+            android:text="@={viewModel.inputText}"
             android:paddingStart="18dp"
             android:textColor="@color/grey_bd"
             style="@style/Zooc14Medium"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/img_members" />
+            app:layout_constraintStart_toEndOf="@+id/img_pet" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

@@ -6,7 +6,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.launch
-import org.sopt.zooczoocbbangbbang.data.remote.api.ServiceFactory
+import org.sopt.zooczoocbbangbbang.data.ServiceFactory
 import org.sopt.zooczoocbbangbbang.data.remote.entity.home.response.ResponsePetDto
 import org.sopt.zooczoocbbangbbang.data.remote.entity.home.response.ResponseTotalRecordsDto
 import org.sopt.zooczoocbbangbbang.presentation.main.home.data.ArchivePostingData

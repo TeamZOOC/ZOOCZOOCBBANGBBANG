@@ -4,8 +4,10 @@ import android.content.Intent
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
+import android.util.Log
 import android.view.Gravity
 import android.view.View
+import android.widget.Toast
 import androidx.fragment.app.viewModels
 import coil.load
 import org.sopt.zooczoocbbangbbang.R
@@ -18,15 +20,24 @@ class MyPageFragment :
     private lateinit var myPageMemberAdapter: MyPageMemberAdapter
     private lateinit var myPagePetAdapter: MyPagePetAdapter
     private val memberviewModel: MemberViewModel by viewModels()
+
+    private lateinit var img: String
+    private lateinit var nickname: String
+
     lateinit var secessionDialog: MyPageSecessionCustomDialog
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        initAdapter()
-        fetchUserProfile()
-        addMember()
-        addPet()
+
+        binding.tvBtnInvite.setOnClickListener {
+            Toast.makeText(requireContext(), "링크 복사 완료", Toast.LENGTH_SHORT)
+                .show()
+        }
         binding.tvBtnEdit.setOnClickListener {
-            requireActivity().startActivity(Intent(activity, MyPofileEdityActivity::class.java))
+            var i = Intent(activity, MyPofileEdityActivity::class.java)
+            i.putExtra("img", img)
+            i.putExtra("nickname", nickname)
+            requireActivity().startActivity(i)
         }
         binding.tvBtnAppInfo.setOnClickListener {
             requireActivity().startActivity(Intent(activity, MyprofileAppInfoActivity::class.java))
@@ -43,10 +54,13 @@ class MyPageFragment :
         }
     }
 
-    override fun onStart() {
-        super.onStart()
-        getUser()
+    override fun onResume() {
+        super.onResume()
+        getMypageData()
         fetchUserProfile()
+        initAdapter()
+        addMember()
+        addPet()
     }
 
     private fun initAdapter() {
@@ -56,13 +70,21 @@ class MyPageFragment :
         myPagePetAdapter = MyPagePetAdapter(requireContext())
         binding.rvPets.adapter = myPagePetAdapter
     }
-    private fun getUser(){
+
+    private fun getMypageData() {
         memberviewModel.fetchMyPageData()
     }
+
     private fun fetchUserProfile() {
         memberviewModel.userData.observe(viewLifecycleOwner) { user ->
-            if (user != null) {
-                binding.ivMyprofile.load(user.imgMember)
+            Log.d("aaa", "$user")
+            if (user.imgMember == null) {
+                binding.cvProfile.load(R.drawable.img_default_pet)
+                binding.tvNickname.text = user.memberName
+            } else {
+                img = user.imgMember
+                nickname = user.memberName
+                binding.cvProfile.load(user.imgMember)
                 binding.tvNickname.text = user.memberName
             }
         }
@@ -75,8 +97,6 @@ class MyPageFragment :
                 binding.tvMemberNum.text = myPageMemberAdapter.memberList?.size.toString()
             }
         }
-//         MyPageMemberAdapter.setMemberlist(memberviewModel.exampleList)
-//         binding.tvMemberNum.text= MyPageMemberAdapter.memberList.size.toString()
     }
 
     private fun addPet() {
@@ -86,8 +106,6 @@ class MyPageFragment :
                 binding.tvCountPet.text = myPagePetAdapter.petList?.size.toString()
             }
         }
-        // MyPagePetAdapter.setPetlist(petviewModel.exampleList)
-        // binding.tvCountPet.text = (MyPagePetAdapter.petList.size - 1).toString()
     }
 
     override fun yesSecessionBtnClicked() {

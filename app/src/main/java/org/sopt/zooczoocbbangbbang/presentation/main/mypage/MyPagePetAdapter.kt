@@ -22,11 +22,7 @@ class MyPagePetAdapter(private val context: Context) :
         private val binding: ItemMypageRecyclerPetsBinding
     ) : RecyclerView.ViewHolder(binding.root) {
         fun onBind(data: ResponseMembersDto.Data.Pet) {
-            if (data.photo == null) {
-                binding.ivMypagePetImage.load(R.drawable.img_default_pet)
-            } else {
-                binding.ivMypagePetImage.load(data.photo)
-            }
+            binding.ivMypagePetImage.load(data.photo ?: R.drawable.img_default_pet)
             binding.tvMypagePetName.text = data.name
         }
     }
@@ -84,6 +80,7 @@ class MyPagePetAdapter(private val context: Context) :
     }
 
     fun setPetlist(pets: List<ResponseMembersDto.Data.Pet>) {
+        petList.removeAll(pets)
         petList.addAll(pets)
         notifyDataSetChanged()
     }

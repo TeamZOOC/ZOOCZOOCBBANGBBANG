@@ -20,7 +20,6 @@
             android:name=".presentation.main.mypage.PetRegisterActivity"
             android:exported="false"/>
         <activity
-            android:name=".presentation.main.record.RecordDoneActivity"
             android:name=".presentation.detail.DetailActivity"
             android:windowSoftInputMode="adjustPan"
             android:exported="true">

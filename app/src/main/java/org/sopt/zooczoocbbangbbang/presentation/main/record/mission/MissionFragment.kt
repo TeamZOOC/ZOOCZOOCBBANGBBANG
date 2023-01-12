@@ -110,7 +110,7 @@ class MissionFragment : BindingFragment<FragmentMissionBinding>(R.layout.fragmen
     }
 
     private fun showMessageDialog() {
-        val customDialog = CustomDialog(finishApp = { onDestroy() })
+        val customDialog = CustomDialog { onDestroy() }
         customDialog.show(parentFragmentManager, "CustomDialog")
         customDialog.isCancelable = false
     }

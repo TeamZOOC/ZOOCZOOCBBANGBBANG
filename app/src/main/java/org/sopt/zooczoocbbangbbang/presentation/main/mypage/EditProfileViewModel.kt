@@ -1,5 +1,6 @@
 package org.sopt.zooczoocbbangbbang.presentation.main.mypage
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Transformations
@@ -13,11 +14,10 @@ import org.sopt.zooczoocbbangbbang.data.ServiceFactory
 import org.sopt.zooczoocbbangbbang.data.ServiceFactory.json
 import org.sopt.zooczoocbbangbbang.data.remote.entity.mypage.ResponseEditProfileDto
 import org.sopt.zooczoocbbangbbang.util.ContentUriRequestBody
+import retrofit2.await
 
 class EditProfileViewModel : ViewModel() {
     private val zoocService = ServiceFactory.zoocService
-
-    private lateinit var myPageFragment: MyPageFragment
 
     val file = MutableLiveData<ContentUriRequestBody>()
 
@@ -53,13 +53,21 @@ class EditProfileViewModel : ViewModel() {
     )
 
     fun onSubmit() {
+        Log.d("aaa", "서밋 접근 성공")
         val requestBody = json.encodeToString(ProfileIntroduction(inputText.value ?: ""))
-            .toRequestBody("application/json".toMediaType())
+            .toRequestBody("text/plain".toMediaType())
+
+        val requestB = (inputText.value ?: "").toRequestBody("text/plain".toMediaType())
+
         viewModelScope.launch {
             runCatching {
-                zoocService.editProfile(file.value != null, requestBody, file.value?.toFormData())
+                Log.d("aaa", "${file.value != null}")
+                zoocService.editProfile(file.value != null, requestB, file.value?.toFormData())
+                    .await()
             }.onSuccess {
+                Log.d("aaa", "성공")
             }.onFailure {
+                Log.e("aaa", "실패", it)
             }
         }
     }

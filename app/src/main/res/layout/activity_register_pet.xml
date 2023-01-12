@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -79,9 +78,11 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_pets"
             android:layout_width="391dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="22dp"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             tools:itemCount="4"
