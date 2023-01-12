@@ -1,6 +1,5 @@
 package org.sopt.zooczoocbbangbbang.presentation.main.record.mission
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MediatorLiveData
 import androidx.lifecycle.MutableLiveData
@@ -28,7 +27,11 @@ class MissionViewModel : ViewModel() {
         Transformations.map(missionText) { checkMissionText() }
     val image: MutableLiveData<ContentUriRequestBody> = MutableLiveData()
     private var isShowImage: LiveData<Boolean> = Transformations.map(image) { checkImage() }
-    private val petInfo: MutableLiveData<List<String>> = MutableLiveData(listOf("1", "2", "3"))
+
+    // private val petInfo: MutableLiveData<List<String>> = MutableLiveData(listOf())
+    private val allPetList: MutableLiveData<List<String>> = MutableLiveData(mutableListOf())
+    private val choosenPetList: MutableLiveData<List<String>> = MutableLiveData(listOf())
+    var petNum: MutableLiveData<Int> = MutableLiveData()
 
     private val _pets = MutableLiveData<List<PetData>>()
     val pets: LiveData<List<PetData>> get() = _pets
@@ -61,7 +64,7 @@ class MissionViewModel : ViewModel() {
     }
 
     private fun onSubmit() {
-        val requestBody = json.encodeToString(PetInfo(missionText.value!!, petInfo.value!!))
+        val requestBody = json.encodeToString(PetInfo(missionText.value!!, allPetList.value!!))
             .toRequestBody("application/body".toMediaType())
 
         viewModelScope.launch {
@@ -81,13 +84,15 @@ class MissionViewModel : ViewModel() {
         }
     }
 
-    fun getPets() {
+    fun getPetNum() {
         viewModelScope.launch {
             kotlin.runCatching {
-                zoocService.getAllPets(1).await()
+                zoocService.getAllPets(9).await()
             }.onSuccess {
-                // _pets.value = mappingPet(it)
-                Log.d("MissionViewmModel", "펫 데이터는 ?!?!?!${it.data}")
+                Timber.tag("MissionViewModel").d("펫 데이터 length::: %s", it.data.size)
+                Timber.tag("MissionViewModel").d(it.data[0].name)
+                Timber.tag("MissionViewModel").d(it.data[1].name)
+                petNum.value = it.data.size
             }.onFailure {
                 if (it is HttpException) {
                     Timber.tag("HomeFragment").e("모든 펫 가져오기 서버 통신 onResponse but not successful")
@@ -101,6 +106,6 @@ class MissionViewModel : ViewModel() {
     @kotlinx.serialization.Serializable
     data class PetInfo(
         val content: String,
-        val pet: List<String>
+        val allPetList: List<String>
     )
 }
