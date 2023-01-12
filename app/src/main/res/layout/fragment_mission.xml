@@ -44,7 +44,6 @@
             app:dotsSpacing="5dp"
             app:dotsWidthFactor="4"
             app:selectedDotColor="@color/green_888c86"
-            app:progressMode="true"
             app:layout_constraintStart_toStartOf="@+id/cl_mission_bg"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/vp_mission_view"

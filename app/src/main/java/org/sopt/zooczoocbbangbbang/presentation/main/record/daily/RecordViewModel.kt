@@ -15,13 +15,14 @@ import org.sopt.zooczoocbbangbbang.data.ServiceFactory.json
 import org.sopt.zooczoocbbangbbang.util.ContentUriRequestBody
 import timber.log.Timber
 
+// recordviewmodel을 반려동물 선택 fragment와 데이터를 공유해서 서버통신을 해야할듯...
 class RecordViewModel : ViewModel() {
     private val service = ServiceFactory.zoocService
     val recordText = MutableLiveData("")
     private var isTextNotNull: LiveData<Boolean> = Transformations.map(recordText) { checkText() }
     val image: MutableLiveData<ContentUriRequestBody> = MutableLiveData()
     private var isShowImage: LiveData<Boolean> = Transformations.map(image) { checkImage() }
-    private val petInfo: MutableLiveData<List<String>> = MutableLiveData(listOf("1", "2", "3"))
+    private val petInfo: MutableLiveData<List<String>> = MutableLiveData(listOf("", "", "", ""))
 
     val isRecordPostSuccess = MutableLiveData(false)
     private val _errorMessage = MutableLiveData<String>()

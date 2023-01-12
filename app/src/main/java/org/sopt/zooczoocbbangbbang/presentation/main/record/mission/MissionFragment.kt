@@ -4,9 +4,11 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View
 import androidx.fragment.app.activityViewModels
+import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.CompositePageTransformer
 import androidx.viewpager2.widget.ViewPager2
+import kotlinx.coroutines.launch
 import org.sopt.zooczoocbbangbbang.R
 import org.sopt.zooczoocbbangbbang.databinding.FragmentMissionBinding
 import org.sopt.zooczoocbbangbbang.presentation.base.BindingFragment
@@ -47,10 +49,18 @@ class MissionFragment : BindingFragment<FragmentMissionBinding>(R.layout.fragmen
         binding.vpMissionView.adapter = pagerAdapter
         binding.vpMissionView.registerOnPageChangeCallback(object :
                 ViewPager2.OnPageChangeCallback() {
-                override fun onPageScrollStateChanged(state: Int) {
-                    super.onPageScrollStateChanged(state)
-                    if (state == ViewPager2.SCROLL_STATE_DRAGGING) {
+
+                override fun onPageScrolled(
+                    position: Int,
+                    positionOffset: Float,
+                    positionOffsetPixels: Int
+                ) {
+                    super.onPageScrolled(position, positionOffset, positionOffsetPixels)
+                    if (position == 0 && positionOffsetPixels >= 150) {
                         showMessageDialog()
+                        viewLifecycleOwner.lifecycleScope.launch {
+                            binding.vpMissionView.setCurrentItem(0, true)
+                        }
                     }
                 }
 
@@ -61,8 +71,6 @@ class MissionFragment : BindingFragment<FragmentMissionBinding>(R.layout.fragmen
                     Log.e("MissionFragment", "Page::: ${position + 1}")
                 }
             })
-        val num: Int = binding.vpMissionView.currentItem
-        binding.vpMissionView.currentItem = 1
 
         val pageMarginPx = resources.getDimensionPixelOffset(R.dimen.pagerWidth)
         val pagerWidth = resources.getDimensionPixelOffset(R.dimen.pagerWidth)
@@ -105,9 +113,11 @@ class MissionFragment : BindingFragment<FragmentMissionBinding>(R.layout.fragmen
     }
 
     private fun showMessageDialog() {
-        val customDialog = CustomDialog(finishApp = { onDestroy() })
-        customDialog.show(parentFragmentManager, "CustomDialog")
-        customDialog.isCancelable = false
+        if (parentFragmentManager.findFragmentByTag("CustomDialog") == null) {
+            val customDialog = CustomDialog(finishApp = { requireActivity().finish() })
+            customDialog.show(parentFragmentManager, "CustomDialog")
+            customDialog.isCancelable = false
+        }
     }
 
     companion object {

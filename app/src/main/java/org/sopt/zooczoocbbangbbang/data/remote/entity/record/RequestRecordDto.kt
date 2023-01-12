@@ -1,4 +1,4 @@
-package org.sopt.zooczoocbbangbbang.data.remote.entity.reord
+package org.sopt.zooczoocbbangbbang.data.remote.entity.record
 
 import kotlinx.serialization.Serializable
 

@@ -3,7 +3,7 @@ package org.sopt.zooczoocbbangbbang.presentation.main.record.daily
 import android.os.Bundle
 import android.view.View
 import androidx.activity.result.contract.ActivityResultContracts
-import androidx.fragment.app.viewModels
+import androidx.fragment.app.activityViewModels
 import coil.load
 import org.sopt.zooczoocbbangbbang.R
 import org.sopt.zooczoocbbangbbang.databinding.FragmentRecordBinding
@@ -13,8 +13,9 @@ import org.sopt.zooczoocbbangbbang.util.ContentUriRequestBody
 import timber.log.Timber
 
 class RecordFragment : BindingFragment<FragmentRecordBinding>(R.layout.fragment_record) {
-    private val recordViewModel: RecordViewModel by viewModels()
+    private val recordViewModel: RecordViewModel by activityViewModels()
 
+    // private val sharedRecordViewModel: SharedRecordViewModel by activityViewModels()
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.viewmodel = recordViewModel
@@ -36,12 +37,15 @@ class RecordFragment : BindingFragment<FragmentRecordBinding>(R.layout.fragment_
         }
     }
 
+    // 반려동물 선택 뷰로 넘어가는 로직 필요
     private fun clickNextBtn() {
         binding.btnRecordBottom.setOnClickListener {
-            recordViewModel.isRecordPostSuccess.observe(viewLifecycleOwner) {
-                parentFragmentManager.beginTransaction()
-                    .replace(R.id.fcv_record_view, FourSelectorPetFragment()).commit()
-            }
+            // recordViewModel.isRecordPostSuccess.observe(viewLifecycleOwner) {
+            //     parentFragmentManager.beginTransaction()
+            //         .replace(R.id.fcv_record_view, FourSelectorPetFragment()).commit()
+            // }
+            parentFragmentManager.beginTransaction()
+                .replace(R.id.fcv_record_view, FourSelectorPetFragment()).commit()
         }
     }
 
