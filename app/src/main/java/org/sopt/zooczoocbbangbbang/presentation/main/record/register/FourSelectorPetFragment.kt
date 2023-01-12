@@ -19,8 +19,19 @@ class FourSelectorPetFragment :
         binding.lifecycleOwner = viewLifecycleOwner
         binding.viewmodel = fourSelectorViewModel
         super.onViewCreated(view, savedInstanceState)
+        showPetInfo()
         checkIsSelected()
         clickRecordBtn()
+    }
+
+    private fun showPetInfo() {
+        fourSelectorViewModel.getPetInfo()
+        fourSelectorViewModel.petNum.observe(viewLifecycleOwner) {
+            binding.tvFourSelectorPetFirst.text = fourSelectorViewModel.petNameList.value?.get(0)
+            binding.tvFourSelectorPetSecond.text = fourSelectorViewModel.petNameList.value?.get(1)
+            binding.tvFourSelectorPetThird.text = fourSelectorViewModel.petNameList.value?.get(2)
+            binding.tvFourSelectorPetFourth.text = fourSelectorViewModel.petNameList.value?.get(3)
+        }
     }
 
     private fun clickFirstSelectorItem() {
@@ -109,12 +120,11 @@ class FourSelectorPetFragment :
             clickAllSelectorItem()
         }
     }
+
     private fun clickRecordBtn() {
         binding.btnFourSelectorPetBottom.setOnClickListener {
-            activity?.let {
-                val intent = Intent(context, RecordDoneActivity::class.java)
-                startActivity(intent)
-            }
+            val intent = Intent(requireContext(), RecordDoneActivity::class.java)
+            startActivity(intent)
         }
     }
 

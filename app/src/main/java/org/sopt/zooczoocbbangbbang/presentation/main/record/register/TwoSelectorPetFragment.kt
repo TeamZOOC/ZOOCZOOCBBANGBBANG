@@ -9,16 +9,32 @@ import androidx.fragment.app.viewModels
 import org.sopt.zooczoocbbangbbang.R
 import org.sopt.zooczoocbbangbbang.databinding.FragmentTwoSelectorPetBinding
 import org.sopt.zooczoocbbangbbang.presentation.base.BindingFragment
+import org.sopt.zooczoocbbangbbang.presentation.main.record.register.TwoSelectorPetViewModel
 
 open class TwoSelectorPetFragment :
     BindingFragment<FragmentTwoSelectorPetBinding>(R.layout.fragment_two_selector_pet) {
     private val twoSelectorViewModel: TwoSelectorPetViewModel by viewModels()
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         binding.lifecycleOwner = viewLifecycleOwner
         binding.viewmodel = twoSelectorViewModel
         super.onViewCreated(view, savedInstanceState)
+        showPetInfo()
         checkIsSelected()
         clickRecordBtn()
+    }
+
+    private fun showPetInfo() {
+        twoSelectorViewModel.getPetInfo()
+        // Log.d("TwoSelector", "aaa ${twoSelectorViewModel.petNameList.value?.get(0)}")
+        // Log.d("TwoSelector", "aaa ${twoSelectorViewModel.petNameList.value?.get(1)}")
+        // twoSelectorViewModel.petNum.observe(viewLifecycleOwner) {
+        //     binding.tvTwoSelectorPetFirst.text = twoSelectorViewModel.petNameList.value?.get(0)
+        //     binding.tvTwoSelectorPetFirst.text = twoSelectorViewModel.petNameList.value?.get(1)
+        // }
+
+        // binding.tvTwoSelectorPetFirst.text = twoSelectorViewModel.petNameList.value?.get(0)
+        // binding.tvTwoSelectorPetFirst.text = twoSelectorViewModel.petNameList.value?.get(1)
     }
 
     private fun clickFirstSelectorItem() {

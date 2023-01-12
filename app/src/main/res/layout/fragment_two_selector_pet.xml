@@ -5,10 +5,12 @@
     tools:context=".presentation.main.record.Choose2PetFragment">
 
     <data>
+
         <variable
             name="viewmodel"
-            type="org.sopt.zooczoocbbangbbang.presentation.main.record.TwoSelectorPetViewModel" />
-        <import type="android.view.View"/>
+            type="org.sopt.zooczoocbbangbbang.presentation.main.record.register.TwoSelectorPetViewModel" />
+
+        <import type="android.view.View" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -76,7 +78,7 @@
                     <View
                         android:layout_width="match_parent"
                         android:layout_height="1dp"
-                        android:background="@color/white_f2"/>
+                        android:background="@color/white_f2" />
 
                     <androidx.constraintlayout.widget.ConstraintLayout
                         android:id="@+id/cl_twoSelectorPet_firstLayout"
@@ -91,7 +93,7 @@
                             android:layout_height="0dp"
                             android:layout_marginStart="38dp"
                             android:scaleType="fitXY"
-                            android:src="@drawable/shape_round_grey"
+                            android:src="@{viewmodel.petImageList[0]}"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintDimensionRatio="1:1"
                             app:layout_constraintStart_toStartOf="parent"
@@ -107,7 +109,8 @@
                             app:layout_constraintBottom_toBottomOf="@+id/iv_twoSelectorPet_first"
                             app:layout_constraintStart_toEndOf="@+id/iv_twoSelectorPet_first"
                             app:layout_constraintTop_toTopOf="@+id/iv_twoSelectorPet_first"
-                            android:text="@string/choosePet_name" />
+                            android:text="@{viewmodel.petNameList[0]}"
+                            tools:text="@string/choosePet_name" />
 
                         <ImageView
                             android:id="@+id/iv_twoSelectorPet_check_1"
@@ -126,7 +129,7 @@
                     <View
                         android:layout_width="match_parent"
                         android:layout_height="1dp"
-                        android:background="@color/white_f2"/>
+                        android:background="@color/white_f2" />
 
                     <androidx.constraintlayout.widget.ConstraintLayout
                         android:id="@+id/cl_twoSelectorPet_secondLayout"
@@ -141,7 +144,7 @@
                             android:layout_height="0dp"
                             android:layout_marginStart="38dp"
                             android:scaleType="fitXY"
-                            android:src="@drawable/shape_round_grey"
+                            android:src="@{viewmodel.petImageList[0]}"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintDimensionRatio="1:1"
                             app:layout_constraintStart_toStartOf="parent"
@@ -157,7 +160,8 @@
                             app:layout_constraintBottom_toBottomOf="@+id/iv_twoSelectorPet_second"
                             app:layout_constraintStart_toEndOf="@+id/iv_twoSelectorPet_second"
                             app:layout_constraintTop_toTopOf="@+id/iv_twoSelectorPet_second"
-                            android:text="@string/choosePet_name" />
+                            android:text="@{viewmodel.petNameList[1]}"
+                            tools:text="@string/choosePet_name" />
 
                         <ImageView
                             android:id="@+id/iv_twoSelectorPet_check_2"
