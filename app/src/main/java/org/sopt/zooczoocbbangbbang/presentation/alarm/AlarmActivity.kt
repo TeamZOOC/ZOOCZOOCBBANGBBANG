@@ -15,6 +15,7 @@ class AlarmActivity : BindingActivity<ActivityAlarmBinding>(R.layout.activity_al
         alarmViewModel.getAlarms()
         initAdapter()
         initData()
+        clickBackArrow()
     }
 
     private fun initAdapter() {
@@ -25,6 +26,12 @@ class AlarmActivity : BindingActivity<ActivityAlarmBinding>(R.layout.activity_al
     private fun initData() {
         alarmViewModel.alarms.observe(this) {
             alarmAdapter.initAlarms(it)
+        }
+    }
+
+    private fun clickBackArrow() {
+        binding.ivAlarmBack.setOnClickListener {
+            finish()
         }
     }
 }
