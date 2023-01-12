@@ -94,5 +94,16 @@
         <item name="cornerSize">50%</item>
     </style>
 
+    <style name="OnboardingEditTextStyle" parent="Widget.AppCompat.EditText">
+        <item name="colorControlNormal">@color/grey_bd</item>
+        <item name="colorControlActivated">@color/green_888c86</item>
+        <item name="android:fontFamily">@font/pretendard_medium</item>
+        <item name="android:textSize">16dp</item>
+    </style>
+
+    <style name="OnboardingProgressBarStyle" parent="@style/Widget.AppCompat.ProgressBar.Horizontal">
+        <item name="android:indeterminateDrawable">@drawable/onboarding_progressbar</item>
+    </style>
+
 
 </resources>

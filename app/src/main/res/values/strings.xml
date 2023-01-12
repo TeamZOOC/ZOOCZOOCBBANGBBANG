@@ -60,6 +60,4 @@
     <string name="onboarding_input_code_title_text">전달받은 가족 코드를\n입력해주세요</string>
     <string name="onboarding_input_code_complete_button_text">입력하기</string>
     <string name="onboarding_input_code_input_view_example">ex) SEF33210</string>
-    <dimen name="pagerWidth">174dp</dimen>
-
 </resources>
