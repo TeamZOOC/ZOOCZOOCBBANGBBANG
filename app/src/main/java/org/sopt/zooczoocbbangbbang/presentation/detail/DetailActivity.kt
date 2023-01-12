@@ -1,9 +1,11 @@
 package org.sopt.zooczoocbbangbbang.presentation.detail
 
 import android.os.Bundle
+import android.util.Log
 import androidx.activity.viewModels
 import coil.load
 import org.sopt.zooczoocbbangbbang.R
+import org.sopt.zooczoocbbangbbang.data.remote.entity.detail.response.ResponseRecordDetailDto
 import org.sopt.zooczoocbbangbbang.databinding.ActivityDetailBinding
 import org.sopt.zooczoocbbangbbang.presentation.base.BindingActivity
 import org.sopt.zooczoocbbangbbang.presentation.main.home.EmojiBottomSheetDialog
@@ -15,19 +17,38 @@ class DetailActivity : BindingActivity<ActivityDetailBinding>(R.layout.activity_
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding.viewModel = detailViewModel
 
-        getRecordDetail()
+        getDataFromHome()
         initAdapter()
-        initImages()
+        //initImages()
         initComments()
         clickEmojiSelection()
         clickUploadButton()
         uploadEmoji()
     }
 
+    override fun onResume() {
+        super.onResume()
+        //getRecordDetail()
+    }
+
+    private fun getDataFromHome() {
+        val bundle = intent.extras
+        Log.d("asdf", "detailView: content: ${bundle?.getString(CONTENT)}")
+        binding.ivDetailImage.load(bundle?.getString(PET_IMAGE))
+        binding.ivDetailEditorImage.load(bundle?.getString(WRITER_IMAGE))
+        binding.data = ResponseRecordDetailDto.RecordDetailDto.Record(
+            content = bundle?.getString(CONTENT) ?: "",
+            date = bundle?.getString(DATE) ?: "",
+            id = -1,
+            photo = "",
+            writerName = bundle?.getString(WRITER_NAME) ?: "",
+            writerPhoto = ""
+        )
+    }
+
     private fun getRecordDetail() {
-        //detailViewModel.getDetailData()
+        detailViewModel.getDetailData()
     }
 
     private fun clickEmojiSelection() {

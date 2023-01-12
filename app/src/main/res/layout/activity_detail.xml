@@ -6,8 +6,8 @@
     <data>
 
         <variable
-            name="viewModel"
-            type="org.sopt.zooczoocbbangbbang.presentation.detail.DetailViewModel" />
+            name="data"
+            type="org.sopt.zooczoocbbangbbang.data.remote.entity.detail.response.ResponseRecordDetailDto.RecordDetailDto.Record" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -83,7 +83,7 @@
 
                 <TextView
                     tools:text="12월 17일"
-                    android:text="@{viewModel.recordDetail.Record.date}"
+                    android:text="@{data.date}"
                     style="@style/Typography.M14"
                     android:textColor="@color/grey_82"
                     android:layout_width="wrap_content"
@@ -97,7 +97,7 @@
 
                 <TextView
                     tools:text="복실맘"
-                    android:text="@{viewModel.recordDetail.Record.writerName}"
+                    android:text="@{data.writerName}"
                     style="@style/Typography.M14"
                     android:transitionName="writerName"
                     android:textColor="@color/grey_82"
@@ -130,7 +130,7 @@
 
                 <TextView
                     tools:text="오늘 복실이 사진 찍었다\n다들 댓글 남겨줘!"
-                    android:text="@{viewModel.recordDetail.Record.content}"
+                    android:text="@{data.content}"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/tv_detail_content"
