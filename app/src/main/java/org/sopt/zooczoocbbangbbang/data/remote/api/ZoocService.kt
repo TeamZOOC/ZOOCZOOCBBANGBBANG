@@ -1,5 +1,6 @@
 package org.sopt.zooczoocbbangbbang.data.remote.api
 
+import org.sopt.zooczoocbbangbbang.data.remote.entity.alarm.ResponseAlarmDto
 import org.sopt.zooczoocbbangbbang.data.remote.entity.detail.request.RequestCommentDto
 import org.sopt.zooczoocbbangbbang.data.remote.entity.detail.request.RequestEmojiDto
 import org.sopt.zooczoocbbangbbang.data.remote.entity.detail.response.ResponseCommentsDto
@@ -13,6 +14,7 @@ import retrofit2.http.Body
 import retrofit2.http.GET
 import retrofit2.http.POST
 import retrofit2.http.Path
+import retrofit2.http.Query
 
 interface ZoocService {
     @GET("family/mypage")
@@ -48,4 +50,9 @@ interface ZoocService {
         @Path("recordId") recordId: Int,
         @Body body: RequestEmojiDto
     ): Call<ResponseCommentsDto>
+
+    @GET("alarm/list")
+    fun getAlarms(
+        @Query("familyId") familyId: Int
+    ): Call<ResponseAlarmDto>
 }
