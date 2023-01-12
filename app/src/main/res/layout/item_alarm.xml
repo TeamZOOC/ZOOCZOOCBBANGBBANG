@@ -38,12 +38,15 @@
         <TextView
             tools:text="미나님이 새로운 게시글을 올렸습니다"
             android:text="@{@string/alarm_content(data.Writer.nickName)}"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:id="@+id/tv_alarm_content"
             style="@style/Typography.M15"
             android:textColor="@color/grey_33"
+            android:maxLines="1"
+            android:ellipsize="end"
             app:layout_constraintTop_toTopOf="@+id/cv_alarm_user_image"
+            app:layout_constraintEnd_toEndOf="parent"
             android:layout_marginTop="1dp"
             app:layout_constraintStart_toEndOf="@+id/cv_alarm_user_image"
             android:layout_marginStart="16dp" />
