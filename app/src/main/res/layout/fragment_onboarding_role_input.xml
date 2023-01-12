@@ -36,6 +36,7 @@
             android:layout_height="wrap_content"
             app:layout_constraintTop_toBottomOf="@id/tv_role_input_sub_title"
             android:layout_marginTop="17dp"
+            android:backgroundTint="@color/selector_edit_text_under_line"
             android:hint="@string/role_input_edit_text_hint"
             style="@style/Typography.M16" />
 

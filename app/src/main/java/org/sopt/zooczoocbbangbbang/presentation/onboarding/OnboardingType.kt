@@ -1,4 +1,4 @@
-package org.sopt.zooczoocbbangbbang.presentation.main.onboarding
+package org.sopt.zooczoocbbangbbang.presentation.onboarding
 
 enum class OnboardingType {
     DEFAULT,

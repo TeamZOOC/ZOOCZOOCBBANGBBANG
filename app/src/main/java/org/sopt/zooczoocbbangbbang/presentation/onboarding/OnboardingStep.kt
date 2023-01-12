@@ -1,4 +1,4 @@
-package org.sopt.zooczoocbbangbbang.presentation.main.onboarding
+package org.sopt.zooczoocbbangbbang.presentation.onboarding
 
 class OnboardingStep private constructor(
     val value: Int
