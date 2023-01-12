@@ -10,8 +10,8 @@ import kotlinx.coroutines.launch
 import kotlinx.serialization.encodeToString
 import okhttp3.MediaType.Companion.toMediaType
 import okhttp3.RequestBody.Companion.toRequestBody
-import org.sopt.zooczoocbbangbbang.data.ServiceFactory
-import org.sopt.zooczoocbbangbbang.data.ServiceFactory.json
+import org.sopt.zooczoocbbangbbang.data.remote.api.ServiceFactory
+import org.sopt.zooczoocbbangbbang.data.remote.api.ServiceFactory.json
 import org.sopt.zooczoocbbangbbang.util.ContentUriRequestBody
 import timber.log.Timber
 

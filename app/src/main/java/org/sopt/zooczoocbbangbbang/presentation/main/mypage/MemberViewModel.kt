@@ -3,7 +3,7 @@ package org.sopt.zooczoocbbangbbang.presentation.main.mypage
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import org.sopt.zooczoocbbangbbang.data.ServiceFactory
+import org.sopt.zooczoocbbangbbang.data.remote.api.ServiceFactory
 import org.sopt.zooczoocbbangbbang.data.remote.entity.mypage.ResponseMembersDto
 import org.sopt.zooczoocbbangbbang.util.enqueueUtil
 import timber.log.Timber

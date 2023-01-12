@@ -1,4 +1,4 @@
-package org.sopt.zooczoocbbangbbang.presentation.main.home
+package org.sopt.zooczoocbbangbbang.presentation.main.home.adapter
 
 import android.content.Context
 import android.graphics.Rect

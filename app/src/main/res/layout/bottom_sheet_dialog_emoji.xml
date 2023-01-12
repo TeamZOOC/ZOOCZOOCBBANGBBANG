@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/rect_radius_24_top"
+        android:backgroundTint="@color/white_f8"
+        tools:context=".presentation.main.home.EmojiBottomSheetDialog">
+
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="49dp"
+            android:layout_height="4dp"
+            android:layout_marginTop="13dp"
+            android:backgroundTint="@color/green_dae0d6"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:id="@+id/cv_emoji_dialog_line" />
+
+        <androidx.constraintlayout.helper.widget.Flow
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/cl_dialog_emojis"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:constraint_referenced_ids="iv_dialog_emoji_dancing,iv_dialog_emoji_heart,iv_dialog_emoji_smile,iv_dialog_emoji_sad,iv_dialog_emoji_thumb,iv_dialog_emoji_surprise,iv_dialog_emoji_hug,iv_dialog_emoji_dog"
+            app:flow_wrapMode="aligned"
+            app:layout_constraintTop_toBottomOf="@+id/cv_emoji_dialog_line"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:flow_horizontalGap="4dp"
+            app:flow_verticalGap="7dp"
+            android:layout_marginTop="25dp"
+            android:layout_marginStart="24dp"
+            android:layout_marginEnd="24dp"
+            android:layout_marginBottom="42dp" />
+
+        <ImageView
+            android:src="@drawable/ic_emo_dancing"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/iv_dialog_emoji_dancing" />
+
+        <ImageView
+            android:src="@drawable/ic_emo_heart"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/iv_dialog_emoji_heart" />
+
+        <ImageView
+            android:src="@drawable/ic_emo_smile"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/iv_dialog_emoji_smile" />
+
+        <ImageView
+            android:src="@drawable/ic_emo_sad"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/iv_dialog_emoji_sad" />
+
+        <ImageView
+            android:src="@drawable/ic_emo_thumb"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/iv_dialog_emoji_thumb" />
+
+        <ImageView
+            android:src="@drawable/ic_emo_surprise"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/iv_dialog_emoji_surprise" />
+
+        <ImageView
+            android:src="@drawable/ic_emo_hug"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/iv_dialog_emoji_hug" />
+
+        <ImageView
+            android:src="@drawable/ic_emo_dog"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/iv_dialog_emoji_dog" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

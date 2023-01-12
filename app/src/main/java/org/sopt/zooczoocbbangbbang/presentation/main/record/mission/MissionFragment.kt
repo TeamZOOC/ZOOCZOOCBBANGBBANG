@@ -30,7 +30,7 @@ class MissionFragment : BindingFragment<FragmentMissionBinding>(R.layout.fragmen
     private fun clickNextBtn() {
         binding.btnMissionBottom.setOnClickListener() {
             Timber.tag("MissionFragment").d("33")
-            missionViewModel.getPetList()
+            missionViewModel.getPets()
             // parentFragmentManager.beginTransaction()
             //     .replace(R.id.fcv_record_view, FourSelectorPetFragment()).commit()
         }

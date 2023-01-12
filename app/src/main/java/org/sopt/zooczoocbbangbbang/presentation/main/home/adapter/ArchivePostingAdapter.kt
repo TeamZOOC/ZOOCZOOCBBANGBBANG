@@ -1,13 +1,16 @@
-package org.sopt.zooczoocbbangbbang.presentation.main.home
+package org.sopt.zooczoocbbangbbang.presentation.main.home.adapter
 
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import org.sopt.zooczoocbbangbbang.databinding.ItemGridArchivePostingBinding
 import org.sopt.zooczoocbbangbbang.databinding.ItemLinearArchivePostingBinding
-import org.sopt.zooczoocbbangbbang.domain.ArchivePostingData
+import org.sopt.zooczoocbbangbbang.presentation.main.home.data.ArchivePostingData
+import org.sopt.zooczoocbbangbbang.presentation.main.home.data.RecordTransportData
+import org.sopt.zooczoocbbangbbang.presentation.main.home.state.LayoutManagerType
 
-class ArchivePostingAdapter :
+class ArchivePostingAdapter(private val clickExpandedItem: (views: Map<String, View>, RecordTransportData) -> Unit) :
     RecyclerView.Adapter<ArchivePostingViewHolder>() {
     private val archives = mutableListOf<ArchivePostingData>()
     private var currentIndex: Int = 0
@@ -30,11 +33,15 @@ class ArchivePostingAdapter :
 
     override fun onBindViewHolder(holder: ArchivePostingViewHolder, position: Int) {
         if (holder is ArchivePostingLinearViewHolder) {
-            holder.onBind(archives[position]) { clickItem(position) }
+            holder.onBind(archives[position], { clickItem(position) }) { options, bundle ->
+                clickExpandedItem(options, bundle)
+            }
         } else {
-            holder.onBind(archives[position]) {}
+            holder.onBind(archives[position], {}) { options, bundle ->
+                clickExpandedItem(options, bundle)
+            }
+            holder.setIsRecyclable(false)
         }
-        holder.setIsRecyclable(false)
     }
 
     private fun clickItem(position: Int) {
@@ -44,12 +51,6 @@ class ArchivePostingAdapter :
         archives[currentIndex].isSelected = true
         notifyItemChanged(currentIndex)
         notifyItemChanged(previousIndex)
-    }
-
-    override fun getItemCount(): Int = archives.size
-
-    override fun getItemViewType(position: Int): Int {
-        return position
     }
 
     fun initArchives(items: List<ArchivePostingData>) {
@@ -62,5 +63,11 @@ class ArchivePostingAdapter :
         notifyItemChanged(currentIndex)
         currentIndex = 0
         previousIndex = -1
+    }
+
+    override fun getItemCount(): Int = archives.size
+
+    override fun getItemViewType(position: Int): Int {
+        return position
     }
 }
