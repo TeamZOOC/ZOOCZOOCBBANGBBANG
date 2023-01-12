@@ -17,7 +17,7 @@ data class ResponseAlarmDto(
             val id: Int,
             @SerializedName("nick_name")
             val nickName: String,
-            val photo: String
+            val photo: String?
         )
     }
 }
