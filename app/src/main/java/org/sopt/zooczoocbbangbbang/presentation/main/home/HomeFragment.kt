@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.SimpleItemAnimator
 import org.sopt.zooczoocbbangbbang.R
 import org.sopt.zooczoocbbangbbang.databinding.FragmentHomeBinding
+import org.sopt.zooczoocbbangbbang.presentation.alarm.AlarmActivity
 import org.sopt.zooczoocbbangbbang.presentation.base.BindingFragment
 import org.sopt.zooczoocbbangbbang.presentation.detail.DetailActivity
 import org.sopt.zooczoocbbangbbang.presentation.detail.DetailActivity.Companion.CONTENT
@@ -50,6 +51,7 @@ class HomeFragment : BindingFragment<FragmentHomeBinding>(R.layout.fragment_home
         clickLinearButton()
         clickGridButton()
         clickOutside()
+        clickAlarm()
     }
 
     private fun initPetsData() {
@@ -157,6 +159,13 @@ class HomeFragment : BindingFragment<FragmentHomeBinding>(R.layout.fragment_home
     private fun clickOutside() {
         binding.clHome.setOnClickListener {
             archivePostingAdapter.foldItem()
+        }
+    }
+
+    private fun clickAlarm() {
+        binding.ivHomeAlarm.setOnClickListener {
+            val intent = Intent(requireContext(), AlarmActivity::class.java)
+            startActivity(intent)
         }
     }
 
