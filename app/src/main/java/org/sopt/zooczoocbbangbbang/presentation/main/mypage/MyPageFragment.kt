@@ -21,8 +21,8 @@ class MyPageFragment :
     private lateinit var myPagePetAdapter: MyPagePetAdapter
     private val memberviewModel: MemberViewModel by viewModels()
 
-    private lateinit var img: String
-    private lateinit var nickname: String
+    // private lateinit var img: String
+    // private lateinit var nickname: String
 
     lateinit var secessionDialog: MyPageSecessionCustomDialog
 
@@ -34,10 +34,11 @@ class MyPageFragment :
                 .show()
         }
         binding.tvBtnEdit.setOnClickListener {
-            var i = Intent(activity, MyPofileEdityActivity::class.java)
-            i.putExtra("img", img)
-            i.putExtra("nickname", nickname)
-            requireActivity().startActivity(i)
+            // var i = Intent(activity, MyPofileEdityActivity::class.java)
+            // i.putExtra("img", img)
+            // i.putExtra("nickname", nickname)
+            // requireActivity().startActivity(i)
+            requireActivity().startActivity(Intent(activity, MyPofileEdityActivity::class.java))
         }
         binding.tvBtnAppInfo.setOnClickListener {
             requireActivity().startActivity(Intent(activity, MyprofileAppInfoActivity::class.java))
@@ -82,11 +83,11 @@ class MyPageFragment :
                 binding.cvProfile.load(R.drawable.img_default_pet)
                 binding.tvNickname.text = user.memberName
             } else {
-                img = user.imgMember
-                nickname = user.memberName
                 binding.cvProfile.load(user.imgMember)
                 binding.tvNickname.text = user.memberName
             }
+            // img = user.imgMember
+            // nickname = user.memberName
         }
     }
 

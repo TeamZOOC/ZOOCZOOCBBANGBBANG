@@ -46,11 +46,11 @@ class MyPofileEdityActivity :
             editProfileViewModel.onSubmit()
             finish()
         }
-        val j = intent
-        val progileImg = j.getStringExtra("img")
-        val nickname = j.getStringExtra("nickname")
-        binding.ivProfile.load(progileImg)
-        binding.editText.hint = nickname
+        // val j = intent
+        // val progileImg = j.getStringExtra("img")
+        // val nickname = j.getStringExtra("nickname")
+        // binding.ivProfile.load(progileImg)
+        // binding.editText.hint = nickname
         observe()
     }
 
