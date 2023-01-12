@@ -14,7 +14,6 @@ import org.sopt.zooczoocbbangbbang.databinding.FragmentMissionBinding
 import org.sopt.zooczoocbbangbbang.presentation.base.BindingFragment
 import org.sopt.zooczoocbbangbbang.presentation.main.record.CustomDialog
 import org.sopt.zooczoocbbangbbang.presentation.main.record.MissionFragmentStateAdapter
-import org.sopt.zooczoocbbangbbang.presentation.main.record.register.FourSelectorPetFragment
 import timber.log.Timber
 
 class MissionFragment : BindingFragment<FragmentMissionBinding>(R.layout.fragment_mission) {
@@ -30,9 +29,10 @@ class MissionFragment : BindingFragment<FragmentMissionBinding>(R.layout.fragmen
 
     private fun clickNextBtn() {
         binding.btnMissionBottom.setOnClickListener() {
-            Timber.tag("MissionFragment").d("반려동물 선택 뷰로 이동하는 로직 필요!")
-            parentFragmentManager.beginTransaction()
-                .replace(R.id.fcv_record_view, FourSelectorPetFragment()).commit()
+            Timber.tag("MissionFragment").d("33")
+            missionViewModel.getPetList()
+            // parentFragmentManager.beginTransaction()
+            //     .replace(R.id.fcv_record_view, FourSelectorPetFragment()).commit()
         }
     }
 

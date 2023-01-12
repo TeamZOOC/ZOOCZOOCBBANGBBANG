@@ -12,11 +12,14 @@ import okhttp3.MediaType.Companion.toMediaType
 import okhttp3.RequestBody.Companion.toRequestBody
 import org.sopt.zooczoocbbangbbang.data.ServiceFactory
 import org.sopt.zooczoocbbangbbang.data.ServiceFactory.json
+import org.sopt.zooczoocbbangbbang.data.remote.entity.record.ResponsePetInfoDto
 import org.sopt.zooczoocbbangbbang.util.ContentUriRequestBody
+import org.sopt.zooczoocbbangbbang.util.enqueueUtil
 import timber.log.Timber
 
 class MissionViewModel : ViewModel() {
     private val service = ServiceFactory.zoocService
+    private val gsonService = ServiceFactory.gsonZoocService
     val missionText = MutableLiveData("")
     private var isTextNotNull: LiveData<Boolean> =
         Transformations.map(missionText) { checkMissionText() }
@@ -24,7 +27,10 @@ class MissionViewModel : ViewModel() {
     private var isShowImage: LiveData<Boolean> = Transformations.map(image) { checkImage() }
     private val petInfo: MutableLiveData<List<String>> = MutableLiveData(listOf("1", "2", "3"))
 
-    val isMissionPostSuccess = MutableLiveData(false)
+    private val _petData = MutableLiveData<List<ResponsePetInfoDto.Pet>>()
+    val petData: LiveData<List<ResponsePetInfoDto.Pet>> get() = _petData
+
+    val isSuccess = MutableLiveData(false)
     private val _errorMessage = MutableLiveData<String>()
     val errorMessage: LiveData<String> = _errorMessage
 
@@ -63,13 +69,26 @@ class MissionViewModel : ViewModel() {
                     requestBody
                 )
             }.onSuccess {
-                isMissionPostSuccess.value = true
+                isSuccess.value = true
             }.onFailure {
-                isMissionPostSuccess.value = false
+                isSuccess.value = false
                 _errorMessage.value = "네트워크 상태가 좋지 않습니다"
                 Timber.tag("RecordViewModel").d(errorMessage.toString())
             }
         }
+    }
+
+    fun getPetList() {
+        isSuccess.value = true
+        gsonService.getPetInfo().enqueueUtil(
+            { result ->
+                _petData.value = result.data
+                Timber.d("펫 데이터 result: $result")
+            },
+            { code ->
+                Timber.d("펫 데이터 code: $code")
+            }
+        )
     }
 
     @kotlinx.serialization.Serializable

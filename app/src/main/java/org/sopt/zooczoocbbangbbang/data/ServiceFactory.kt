@@ -29,4 +29,5 @@ object ServiceFactory {
     }
 
     val zoocService: ZoocService = serializationZooc.create(ZoocService::class.java)
+    val gsonZoocService: ZoocService = gsonZooc.create(ZoocService::class.java)
 }

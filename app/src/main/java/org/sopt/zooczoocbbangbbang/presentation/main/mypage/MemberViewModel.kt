@@ -25,7 +25,7 @@ class MemberViewModel : ViewModel() {
                 Timber.i("멤버 데이터 조회 성공: $result")
             },
             { code ->
-                Timber.d("멤버 데이터 조회 실패: $code")
+                Timber.d("멤버 데이터 조회 성공: $code")
             }
         )
     }
