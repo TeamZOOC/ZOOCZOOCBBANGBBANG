@@ -1,5 +1,7 @@
 package org.sopt.zooczoocbbangbbang.presentation.main.record.daily
 
+import ThreeSelectorPetFragment
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.activity.result.contract.ActivityResultContracts
@@ -8,7 +10,9 @@ import coil.load
 import org.sopt.zooczoocbbangbbang.R
 import org.sopt.zooczoocbbangbbang.databinding.FragmentRecordBinding
 import org.sopt.zooczoocbbangbbang.presentation.base.BindingFragment
+import org.sopt.zooczoocbbangbbang.presentation.main.record.RecordDoneActivity
 import org.sopt.zooczoocbbangbbang.presentation.main.record.register.FourSelectorPetFragment
+import org.sopt.zooczoocbbangbbang.presentation.main.record.register.TwoSelectorPetFragment
 import org.sopt.zooczoocbbangbbang.util.ContentUriRequestBody
 import timber.log.Timber
 
@@ -40,12 +44,25 @@ class RecordFragment : BindingFragment<FragmentRecordBinding>(R.layout.fragment_
     // 반려동물 선택 뷰로 넘어가는 로직 필요
     private fun clickNextBtn() {
         binding.btnRecordBottom.setOnClickListener {
-            // recordViewModel.isRecordPostSuccess.observe(viewLifecycleOwner) {
-            //     parentFragmentManager.beginTransaction()
-            //         .replace(R.id.fcv_record_view, FourSelectorPetFragment()).commit()
-            // }
-            parentFragmentManager.beginTransaction()
-                .replace(R.id.fcv_record_view, FourSelectorPetFragment()).commit()
+            // parentFragmentManager.beginTransaction()
+            //     .replace(R.id.fcv_record_view, FourSelectorPetFragment()).commit()
+
+            recordViewModel.getPetNum()
+            recordViewModel.petNum.observe(viewLifecycleOwner) {
+                Timber.tag("Mission").d("petNum::: %s", recordViewModel.petNum.value)
+                when (it) {
+                    1 -> {
+                        val intent = Intent(requireContext(), RecordDoneActivity::class.java)
+                        startActivity(intent)
+                    }
+                    2 -> parentFragmentManager.beginTransaction()
+                        .replace(R.id.fcv_record_view, TwoSelectorPetFragment()).commit()
+                    3 -> parentFragmentManager.beginTransaction()
+                        .replace(R.id.fcv_record_view, ThreeSelectorPetFragment()).commit()
+                    4 -> parentFragmentManager.beginTransaction()
+                        .replace(R.id.fcv_record_view, FourSelectorPetFragment()).commit()
+                }
+            }
         }
     }
 

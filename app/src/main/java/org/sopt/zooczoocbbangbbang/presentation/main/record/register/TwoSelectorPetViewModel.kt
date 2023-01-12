@@ -13,7 +13,6 @@ import timber.log.Timber
 class TwoSelectorPetViewModel : ViewModel() {
     val isSelectedFirst = MutableLiveData(false)
     val isSelectedSecond = MutableLiveData(false)
-    var petNum: MutableLiveData<Int> = MutableLiveData()
     var petNameList = MutableLiveData<List<String>>()
     var petImageList = MutableLiveData<List<String>>()
 

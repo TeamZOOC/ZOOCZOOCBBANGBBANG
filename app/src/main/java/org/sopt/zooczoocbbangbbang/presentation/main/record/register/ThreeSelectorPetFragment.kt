@@ -17,6 +17,7 @@ class ThreeSelectorPetFragment :
         binding.lifecycleOwner = viewLifecycleOwner
         binding.viewmodel = threeSelectorViewModel
         super.onViewCreated(view, savedInstanceState)
+        threeSelectorViewModel.getPetInfo()
         checkIsSelected()
         clickRecordBtn()
     }

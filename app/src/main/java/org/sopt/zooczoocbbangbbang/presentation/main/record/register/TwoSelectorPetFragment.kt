@@ -1,15 +1,15 @@
-package org.sopt.zooczoocbbangbbang.presentation.main.record
+package org.sopt.zooczoocbbangbbang.presentation.main.record.register
 
 import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import androidx.fragment.app.viewModels
 import org.sopt.zooczoocbbangbbang.R
 import org.sopt.zooczoocbbangbbang.databinding.FragmentTwoSelectorPetBinding
 import org.sopt.zooczoocbbangbbang.presentation.base.BindingFragment
-import org.sopt.zooczoocbbangbbang.presentation.main.record.register.TwoSelectorPetViewModel
+import org.sopt.zooczoocbbangbbang.presentation.main.record.RecordDoneActivity
+import timber.log.Timber
 
 open class TwoSelectorPetFragment :
     BindingFragment<FragmentTwoSelectorPetBinding>(R.layout.fragment_two_selector_pet) {
@@ -19,22 +19,9 @@ open class TwoSelectorPetFragment :
         binding.lifecycleOwner = viewLifecycleOwner
         binding.viewmodel = twoSelectorViewModel
         super.onViewCreated(view, savedInstanceState)
-        showPetInfo()
+        twoSelectorViewModel.getPetInfo()
         checkIsSelected()
         clickRecordBtn()
-    }
-
-    private fun showPetInfo() {
-        twoSelectorViewModel.getPetInfo()
-        // Log.d("TwoSelector", "aaa ${twoSelectorViewModel.petNameList.value?.get(0)}")
-        // Log.d("TwoSelector", "aaa ${twoSelectorViewModel.petNameList.value?.get(1)}")
-        // twoSelectorViewModel.petNum.observe(viewLifecycleOwner) {
-        //     binding.tvTwoSelectorPetFirst.text = twoSelectorViewModel.petNameList.value?.get(0)
-        //     binding.tvTwoSelectorPetFirst.text = twoSelectorViewModel.petNameList.value?.get(1)
-        // }
-
-        // binding.tvTwoSelectorPetFirst.text = twoSelectorViewModel.petNameList.value?.get(0)
-        // binding.tvTwoSelectorPetFirst.text = twoSelectorViewModel.petNameList.value?.get(1)
     }
 
     private fun clickFirstSelectorItem() {
@@ -73,11 +60,13 @@ open class TwoSelectorPetFragment :
 
     private fun checkIsSelected() {
         twoSelectorViewModel.isSelectedFirst.observe(viewLifecycleOwner) {
-            Log.d("TwoSelector", "isSelected::: ${twoSelectorViewModel.isSelectedFirst.value}")
+            Timber.tag("TwoSelector")
+                .d("isSelected::: %s", twoSelectorViewModel.isSelectedFirst.value)
             clickFirstSelectorItem()
         }
         twoSelectorViewModel.isSelectedSecond.observe(viewLifecycleOwner) {
-            Log.d("TwoSelector", "isSelected::: ${twoSelectorViewModel.isSelectedSecond.value}")
+            Timber.tag("TwoSelector")
+                .d("isSelected::: %s", twoSelectorViewModel.isSelectedSecond.value)
             clickSecondSelectorItem()
         }
     }
