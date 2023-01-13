@@ -19,10 +19,10 @@ class DetailViewModel : ViewModel() {
     val comments = MutableLiveData<List<Comment>>()
     val emojiId = MutableLiveData<Int>()
 
-    fun uploadComment(comment: String) {
+    fun uploadComment(recordId: Int, comment: String) {
         viewModelScope.launch {
             kotlin.runCatching {
-                zoocService.postTextComment(25, RequestCommentDto(comment)).await()
+                zoocService.postTextComment(recordId, RequestCommentDto(comment)).await()
             }.onSuccess {
                 comments.value = it.data
             }.onFailure {
@@ -35,10 +35,10 @@ class DetailViewModel : ViewModel() {
         }
     }
 
-    fun uploadEmoji(emojiId: Int) {
+    fun uploadEmoji(recordId: Int, emojiId: Int) {
         viewModelScope.launch {
             kotlin.runCatching {
-                zoocService.postEmojiComment(25, RequestEmojiDto(emojiId)).await()
+                zoocService.postEmojiComment(recordId, RequestEmojiDto(emojiId)).await()
             }.onSuccess {
                 comments.value = it.data
             }.onFailure {

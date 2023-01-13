@@ -21,12 +21,13 @@ class HomeViewModel : ViewModel() {
     private val _records = MutableLiveData<List<ArchivePostingData>>()
     val records: LiveData<List<ArchivePostingData>> get() = _records
 
-    fun getRecords() {
+    fun getRecords(petId: Int) {
         viewModelScope.launch {
             kotlin.runCatching {
-                zoocService.getAllRecords(1).await()
+                zoocService.getAllRecords(1, petId).await()
             }.onSuccess {
                 _records.value = mappingRecord(it)
+                Log.d("token", "zz: ${records.value?.map { it.record.id }}")
             }.onFailure {
                 if (it is HttpException) {
                     Log.e("HomeFragment", "전체 기록 가져오기 서버 통신 onResponse but not successful")
@@ -56,7 +57,7 @@ class HomeViewModel : ViewModel() {
     private fun mappingRecord(data: ResponseTotalRecordsDto): List<ArchivePostingData> {
         return data.data.map {
             ArchivePostingData(
-                commentWriters = it.commentWriters,
+                commentWriters = it.comments,
                 record = it.record,
                 isSelected = false
             )

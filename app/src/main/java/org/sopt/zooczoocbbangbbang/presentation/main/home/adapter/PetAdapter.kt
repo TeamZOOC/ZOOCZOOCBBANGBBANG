@@ -9,7 +9,8 @@ import org.sopt.zooczoocbbangbbang.databinding.ItemPetBinding
 import org.sopt.zooczoocbbangbbang.presentation.main.home.data.PetData
 import org.sopt.zooczoocbbangbbang.presentation.main.home.state.FoldableUiState
 
-class PetAdapter : RecyclerView.Adapter<PetAdapter.PetViewHolder>() {
+class PetAdapter(private val clickItem: (Int) -> Unit) :
+    RecyclerView.Adapter<PetAdapter.PetViewHolder>() {
     private val pets = mutableListOf<PetData>()
     private var currentIndex = 0
     private var previousIndex = -1
@@ -64,6 +65,7 @@ class PetAdapter : RecyclerView.Adapter<PetAdapter.PetViewHolder>() {
         pets[previousIndex].isSelected = false
         pets[currentIndex].isSelected = true
         notifyItemChanged(previousIndex)
+        clickItem(pets[position].id)
     }
 
     override fun getItemCount(): Int = pets.size
