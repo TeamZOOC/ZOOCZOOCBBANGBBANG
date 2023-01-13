@@ -1,10 +1,12 @@
 package org.sopt.zooczoocbbangbbang.presentation.onboarding
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.activity.viewModels
 import org.sopt.zooczoocbbangbbang.R
 import org.sopt.zooczoocbbangbbang.databinding.ActivityOnboardingBinding
 import org.sopt.zooczoocbbangbbang.presentation.base.BindingActivity
+import org.sopt.zooczoocbbangbbang.presentation.main.MainActivity
 import org.sopt.zooczoocbbangbbang.presentation.onboarding.create.PetRegisterFragment
 import org.sopt.zooczoocbbangbbang.presentation.onboarding.end.OnboardingEndFragment
 import org.sopt.zooczoocbbangbbang.presentation.onboarding.invitation.InvitationAfterFragment
@@ -24,6 +26,7 @@ class OnboardingActivity :
         setContentView(binding.root)
         binding.onboardingViewModel = onboardingViewModel
         observeFragmentChangeStream()
+        observeEndOnboardingEventStream()
     }
 
     private fun observeFragmentChangeStream() {
@@ -37,6 +40,14 @@ class OnboardingActivity :
                 Onboarding.INVITATION_AFTER -> replaceInvitationAfterFragment()
                 Onboarding.INPUT_CODE -> replaceJoinFamilyFragment()
                 Onboarding.END -> replaceOnboardingEndFragment()
+            }
+        }
+    }
+
+    private fun observeEndOnboardingEventStream() {
+        onboardingViewModel.endOnboardingEventStream.observe(this) {
+            it.getContentIfNotHandled()?.let {
+                moveHome()
             }
         }
     }
@@ -95,5 +106,11 @@ class OnboardingActivity :
             OnboardingEndFragment(),
             R.id.fcv_onboarding
         )
+    }
+
+    private fun moveHome() {
+        val moveHomeIntent = Intent(this, MainActivity::class.java)
+        startActivity(moveHomeIntent)
+        finish()
     }
 }
