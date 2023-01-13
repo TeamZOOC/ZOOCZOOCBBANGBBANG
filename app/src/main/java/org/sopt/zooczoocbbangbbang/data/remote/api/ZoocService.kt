@@ -3,6 +3,7 @@ package org.sopt.zooczoocbbangbbang.data.remote.api
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
 import org.sopt.zooczoocbbangbbang.data.remote.entity.alarm.ResponseAlarmDto
+import org.sopt.zooczoocbbangbbang.data.remote.entity.auth.ResponseSignUpDto
 import org.sopt.zooczoocbbangbbang.data.remote.entity.detail.request.RequestCommentDto
 import org.sopt.zooczoocbbangbbang.data.remote.entity.detail.request.RequestEmojiDto
 import org.sopt.zooczoocbbangbbang.data.remote.entity.detail.response.ResponseCommentsDto
@@ -30,9 +31,10 @@ interface ZoocService {
     @GET("family")
     fun getFamilyInfo(): Call<ResponseFamilyInfoDto>
 
-    @GET("record/{familyId}")
+    @GET("record/aos/{familyId}/{petId}")
     fun getAllRecords(
-        @Path("familyId") familyId: Int
+        @Path("familyId") familyId: Int,
+        @Path("petId") petId: Int
     ): Call<ResponseTotalRecordsDto>
 
     @GET("record/pet/{familyId}")
@@ -40,7 +42,7 @@ interface ZoocService {
         @Path("familyId") familyId: Int
     ): Call<ResponsePetDto>
 
-    @GET("record/{familyId}/{recordId}")
+    @GET("record/detail/{familyId}/{recordId}")
     fun getRecordDetail(
         @Path("familyId") familyId: Int,
         @Path("recordId") recordId: Int
@@ -57,6 +59,9 @@ interface ZoocService {
         @Path("recordId") recordId: Int,
         @Body body: RequestEmojiDto
     ): Call<ResponseCommentsDto>
+
+    @POST("user/kakao/signin")
+    fun postToken(): Call<ResponseSignUpDto>
 
     @GET("alarm/list")
     fun getAlarms(

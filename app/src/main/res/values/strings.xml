@@ -50,6 +50,11 @@
     <string name="customDialog_relaywrite">이어쓰기</string>
     <string name="customDialog_quit">나가기</string>
 
+    <!-- 로그인 -->
+    <string name="signin_title">ZOOC에서 가족들과 함께 잊지 못할 \n추억을 쭉 쌓아보세요</string>
+    <string name="signin_subtitle">가족의 추억을 쭉 \n기록하는 손쉬운 방법</string>
+    <string name="signup_complete_title">안녕하세요! \nZOOC에 온 걸 환영해요</string>
+
     <!-- 알림 -->
     <string name="alarm">알림</string>
     <string name="alarm_content">%1$s님이 새로운 게시글을 올렸습니다</string>

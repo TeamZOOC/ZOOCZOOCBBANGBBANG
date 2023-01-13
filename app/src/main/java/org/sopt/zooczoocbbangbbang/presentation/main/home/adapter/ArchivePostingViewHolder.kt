@@ -5,6 +5,7 @@ import androidx.recyclerview.widget.RecyclerView
 import coil.load
 import org.sopt.zooczoocbbangbbang.R
 import org.sopt.zooczoocbbangbbang.data.remote.entity.home.response.ResponseTotalRecordsDto
+import org.sopt.zooczoocbbangbbang.data.remote.entity.common.Comment
 import org.sopt.zooczoocbbangbbang.databinding.ItemGridArchivePostingBinding
 import org.sopt.zooczoocbbangbbang.databinding.ItemLinearArchivePostingBinding
 import org.sopt.zooczoocbbangbbang.presentation.detail.DetailActivity.Companion.CONTENT
@@ -72,7 +73,7 @@ class ArchivePostingLinearViewHolder(private val binding: ItemLinearArchivePosti
         }
     }
 
-    private fun initAdapter(commenters: List<ResponseTotalRecordsDto.RecordDto.CommentWriter>) {
+    private fun initAdapter(commenters: List<Comment>) {
         commentersAdapter = CommentersAdapter(commenters)
         binding.rvCommenters.adapter = commentersAdapter
     }

@@ -51,8 +51,10 @@ class HomeFragment : BindingFragment<FragmentHomeBinding>(R.layout.fragment_home
     }
 
     private fun getData() {
-        homeViewModel.getRecords()
         homeViewModel.getPets()
+        homeViewModel.pets.observe(viewLifecycleOwner) {
+            homeViewModel.getRecords(it[0].id)
+        }
     }
 
     private fun initAdapters() {
@@ -124,9 +126,13 @@ class HomeFragment : BindingFragment<FragmentHomeBinding>(R.layout.fragment_home
     }
 
     private fun initPetAdapter() {
-        petAdapter = PetAdapter()
+        petAdapter = PetAdapter { clickPet(it) }
         binding.rvHomePet.adapter = petAdapter
         removeRecyclerViewAnimator(binding.rvHomePet)
+    }
+
+    private fun clickPet(petId: Int) {
+        homeViewModel.getRecords(petId)
     }
 
     private fun initArchiveAdapter() {
