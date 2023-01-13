@@ -12,7 +12,7 @@ import org.sopt.zooczoocbbangbbang.presentation.main.home.state.LayoutManagerTyp
 
 class ArchivePostingAdapter(private val clickExpandedItem: (views: Map<String, View>, RecordTransportData) -> Unit) :
     RecyclerView.Adapter<ArchivePostingViewHolder>() {
-    private val archives = mutableListOf<ArchivePostingData>()
+    private var archives: List<ArchivePostingData> = emptyList()
     private var currentIndex: Int = 0
     private var previousIndex: Int = -1
     var layoutManagerType = LayoutManagerType.LINEAR
@@ -54,7 +54,7 @@ class ArchivePostingAdapter(private val clickExpandedItem: (views: Map<String, V
     }
 
     fun initArchives(items: List<ArchivePostingData>) {
-        archives.addAll(items)
+        archives = items.toList()
         notifyDataSetChanged()
     }
 

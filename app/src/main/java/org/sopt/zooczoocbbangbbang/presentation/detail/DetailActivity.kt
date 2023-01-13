@@ -73,6 +73,7 @@ class DetailActivity : BindingActivity<ActivityDetailBinding>(R.layout.activity_
     private fun clickUploadButton() {
         binding.ivDetailUpload.setOnClickListener {
             uploadComment()
+            binding.etDetailInput.text.clear()
         }
     }
 
@@ -89,7 +90,9 @@ class DetailActivity : BindingActivity<ActivityDetailBinding>(R.layout.activity_
             date = myBundle.getString(DATE) ?: throw IllegalArgumentException(DETAIL_ERROR),
             id = myBundle.getInt(ID),
             photo = myBundle.getString(PET_IMAGE) ?: throw IllegalArgumentException(DETAIL_ERROR),
-            writerName = myBundle.getString(WRITER_NAME) ?: throw IllegalArgumentException(DETAIL_ERROR),
+            writerName = myBundle.getString(WRITER_NAME) ?: throw IllegalArgumentException(
+                DETAIL_ERROR
+            ),
             writerPhoto = myBundle.getString(WRITER_IMAGE)
         )
         binding.ivDetailImage.load(data.photo)
@@ -152,12 +155,18 @@ class DetailActivity : BindingActivity<ActivityDetailBinding>(R.layout.activity_
 
     private fun uploadComment() {
         val comment = binding.etDetailInput.text.toString()
-        detailViewModel.uploadComment(comment)
+        detailViewModel.uploadComment(
+            detailViewModel.recordDetail.value?.record?.id ?: error(""),
+            comment
+        )
     }
 
     private fun uploadEmoji() {
         detailViewModel.emojiId.observe(this) {
-            detailViewModel.uploadEmoji(it)
+            detailViewModel.uploadEmoji(
+                detailViewModel.recordDetail.value?.record?.id ?: error(""),
+                it
+            )
         }
     }
 
