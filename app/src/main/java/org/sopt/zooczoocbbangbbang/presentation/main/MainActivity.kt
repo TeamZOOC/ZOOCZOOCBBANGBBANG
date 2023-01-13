@@ -2,7 +2,9 @@ package org.sopt.zooczoocbbangbbang.presentation.main
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import org.sopt.zooczoocbbangbbang.R
+import org.sopt.zooczoocbbangbbang.data.local.ZoocStorage
 import org.sopt.zooczoocbbangbbang.databinding.ActivityMainBinding
 import org.sopt.zooczoocbbangbbang.presentation.base.BindingActivity
 import org.sopt.zooczoocbbangbbang.presentation.main.home.HomeFragment
@@ -16,6 +18,7 @@ class MainActivity : BindingActivity<ActivityMainBinding>(R.layout.activity_main
         super.onCreate(savedInstanceState)
         initBottomNavigation()
         clickRecording()
+        Log.d("jwt token", "token: ${ZoocStorage.token}")
     }
 
     private fun initBottomNavigation() {

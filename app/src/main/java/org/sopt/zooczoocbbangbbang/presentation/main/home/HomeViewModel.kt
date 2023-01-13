@@ -24,7 +24,7 @@ class HomeViewModel : ViewModel() {
     fun getRecords() {
         viewModelScope.launch {
             kotlin.runCatching {
-                zoocService.getAllRecords(1).await()
+                zoocService.getAllRecords(1, 1).await()
             }.onSuccess {
                 _records.value = mappingRecord(it)
             }.onFailure {
@@ -56,7 +56,7 @@ class HomeViewModel : ViewModel() {
     private fun mappingRecord(data: ResponseTotalRecordsDto): List<ArchivePostingData> {
         return data.data.map {
             ArchivePostingData(
-                commentWriters = it.commentWriters,
+                commentWriters = it.comments,
                 record = it.record,
                 isSelected = false
             )
