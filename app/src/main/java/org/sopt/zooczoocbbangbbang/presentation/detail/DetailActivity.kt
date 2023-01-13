@@ -11,6 +11,10 @@ import org.sopt.zooczoocbbangbbang.presentation.base.BindingActivity
 import org.sopt.zooczoocbbangbbang.presentation.main.home.EmojiBottomSheetDialog
 import org.sopt.zooczoocbbangbbang.util.ContextExt.shortToast
 
+const val DETAIL_ERROR = "[ERROR] Detail Activity - 필요한 정보가 넘어오지 않았습니다."
+const val IS_FIRST_RECORD = "첫 번째 게시물입니다"
+const val IS_LAST_RECORD = "마지막 게시물입니다"
+
 class DetailActivity : BindingActivity<ActivityDetailBinding>(R.layout.activity_detail) {
     private lateinit var commentAdapter: CommentAdapter
     private val detailViewModel: DetailViewModel by viewModels()
@@ -20,7 +24,7 @@ class DetailActivity : BindingActivity<ActivityDetailBinding>(R.layout.activity_
 
         getDataFromHome()
         initAdapter()
-        // initImages()
+        //initImages()
         initComments()
         clickEmojiSelection()
         clickUploadButton()
@@ -29,7 +33,7 @@ class DetailActivity : BindingActivity<ActivityDetailBinding>(R.layout.activity_
 
     override fun onResume() {
         super.onResume()
-        // getRecordDetail()
+        //getRecordDetail()
     }
 
     private fun getDataFromHome() {

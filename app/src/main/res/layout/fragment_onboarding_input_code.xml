@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="onboardingViewModel"
+            type="org.sopt.zooczoocbbangbbang.presentation.onboarding.OnboardingViewModel" />
+
+        <variable
+            name="joinFamilyViewModel"
+            type="org.sopt.zooczoocbbangbbang.presentation.onboarding.join.JoinFamilyViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/tv_onboarding_input_code_title"
+            android:text="@string/onboarding_input_code_title_text"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginHorizontal="30dp"
+            style="@style/Typography.S24"
+            android:textColor="@color/grey_4f"
+            android:layout_marginTop="42dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <EditText
+            android:id="@+id/et_onboarding_input_code_input_view"
+            android:hint="@string/onboarding_input_code_input_view_example"
+            android:background="@drawable/selector_input_code"
+            android:paddingVertical="9dp"
+            android:paddingStart="18dp"
+            android:text="@={joinFamilyViewModel.codeInputStream}"
+            android:layout_marginTop="40dp"
+            android:layout_marginEnd="138dp"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/tv_onboarding_input_code_title"
+            app:layout_constraintStart_toStartOf="@+id/tv_onboarding_input_code_title"
+            app:layout_constraintEnd_toEndOf="@+id/tv_onboarding_input_code_title" />
+
+        <ImageView
+            android:src="@drawable/img_onboarding_code"
+            android:layout_marginTop="38dp"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toTopOf="@+id/btn_onboarding_input_code_complete"
+            app:layout_constraintTop_toBottomOf="@+id/et_onboarding_input_code_input_view" />
+
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:layout_marginHorizontal="30dp"
+            android:id="@+id/btn_onboarding_input_code_complete"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginBottom="34dp"
+            android:background="@drawable/shape_green_radius_47_1"
+            style="@style/Typography.S16"
+            android:textColor="@color/white"
+            android:paddingVertical="15dp"
+            android:enabled="@{joinFamilyViewModel.isEnableButtonStream}"
+            android:onClick="@{()->onboardingViewModel.moveEndStep()}"
+            android:text="@string/onboarding_input_code_complete_button_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

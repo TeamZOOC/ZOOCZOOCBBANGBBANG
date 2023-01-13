@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="onboardingViewModel"
+            type="org.sopt.zooczoocbbangbbang.presentation.onboarding.OnboardingViewModel" />
+
+        <variable
+            name="profileSelectViewModel"
+            type="org.sopt.zooczoocbbangbbang.presentation.onboarding.profile.ProfileSelectViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:paddingHorizontal="30dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/tv_profile_selector_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/Typography.S24"
+            android:textColor="@color/grey_4f"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="42dp"
+            android:text="엄마!\n프로필 사진을 등록할까요?" />
+
+        <TextView
+            android:id="@+id/tv_profile_selector_sub_title"
+            android:text="@string/onboarding_profile_selector_sub_title"
+            app:layout_constraintTop_toBottomOf="@id/tv_profile_selector_title"
+            android:layout_marginTop="16dp"
+            style="@style/Typography.M16"
+            android:textColor="@color/grey_bd"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <View
+            android:id="@+id/view_profile_selector_frame"
+            app:layout_constraintTop_toBottomOf="@id/tv_profile_selector_sub_title"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="44dp"
+            android:background="@drawable/shape_white_circle"
+            android:layout_width="161dp"
+            android:layout_height="161dp" />
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/img_profile_selector"
+            app:layout_constraintTop_toTopOf="@id/view_profile_selector_frame"
+            app:layout_constraintStart_toStartOf="@id/view_profile_selector_frame"
+            app:layout_constraintEnd_toEndOf="@id/view_profile_selector_frame"
+            app:layout_constraintBottom_toBottomOf="@id/view_profile_selector_frame"
+            android:src="@drawable/img_select_profile_image"
+            imageOfUriString="@{profileSelectViewModel.profileImageStream}"
+            android:onClick="@{()->profileSelectViewModel.onClickProfilePickerButton()}"
+            android:layout_margin="7dp"
+            android:layout_width="0dp"
+            android:layout_height="0dp" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_profile_selector_complete"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:text="@string/onboarding_profile_selector_button_text"
+            android:onClick="@{()->onboardingViewModel.moveStartFamilyCodeStep()}"
+            android:textColor="@color/white"
+            style="@style/Typography.S16"
+            android:background="@drawable/shape_green_radius_47_1"
+            android:paddingTop="14dp"
+            android:paddingBottom="16dp"
+            android:layout_marginBottom="34dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

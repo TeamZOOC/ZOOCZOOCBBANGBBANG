@@ -38,7 +38,6 @@ class DetailViewModel : ViewModel() {
     fun uploadEmoji(emojiId: Int) {
         viewModelScope.launch {
             kotlin.runCatching {
-                Log.d("DetailFragment", "$emojiId")
                 zoocService.postEmojiComment(25, RequestEmojiDto(emojiId)).await()
             }.onSuccess {
                 comments.value = it.data
@@ -52,10 +51,10 @@ class DetailViewModel : ViewModel() {
         }
     }
 
-    fun getDetailData() {
+    fun getDetailData(recordId: Int) {
         viewModelScope.launch {
             kotlin.runCatching {
-                zoocService.getRecordDetail(1, 25).await()
+                zoocService.getRecordDetail(1, recordId).await()
             }.onSuccess {
                 recordDetail.value = it.data
                 comments.value = it.data.comments
