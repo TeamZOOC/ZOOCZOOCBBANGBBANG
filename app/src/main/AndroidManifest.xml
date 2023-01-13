@@ -6,6 +6,7 @@
 
     <application
         android:allowBackup="true"
+        android:name=".App"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
         android:icon="@mipmap/ic_launcher"
@@ -15,6 +16,7 @@
         android:theme="@style/Theme.ZOOCZOOCBBANGBBANG"
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
+
         <activity
             android:name="com.kakao.sdk.auth.AuthCodeHandlerActivity"
             android:exported="true">
@@ -28,6 +30,14 @@
                     android:scheme="kakao444abf8009d07e98dbd0ad87ffca4ca3" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".presentation.detail.DetailActivity"
+            android:windowSoftInputMode="adjustPan"
+            android:exported="true">
+        </activity>
+        <activity
+            android:name=".presentation.onboarding.OnboardingActivity"
+            android:exported="true" />
         <activity
             android:name=".presentation.alarm.AlarmActivity"
             android:exported="false"/>

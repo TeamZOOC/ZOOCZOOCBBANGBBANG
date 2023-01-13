@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="onboardingViewModel"
+            type="org.sopt.zooczoocbbangbbang.presentation.onboarding.OnboardingViewModel" />
+
+        <variable
+            name="roleInputViewModel"
+            type="org.sopt.zooczoocbbangbbang.presentation.onboarding.profile.RoleInputViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:paddingHorizontal="30dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/tv_role_input_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/Typography.S24"
+            android:textColor="@color/grey_4f"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="42dp"
+            android:text="@string/role_input_title_text" />
+
+        <TextView
+            android:id="@+id/tv_role_input_sub_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/Typography.M16"
+            app:layout_constraintTop_toBottomOf="@id/tv_role_input_title"
+            android:layout_marginTop="40dp"
+            android:textColor="@color/grey_4f"
+            android:text="@string/tv_role_input_sub_title_text" />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/tv_role_input_sub_title"
+            android:layout_marginTop="17dp"
+            android:text="@={roleInputViewModel.roleTextStream}"
+            android:backgroundTint="@color/selector_edit_text_under_line"
+            android:hint="@string/role_input_edit_text_hint"
+            style="@style/Typography.M16" />
+
+
+        <androidx.appcompat.widget.AppCompatButton
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginBottom="34dp"
+            android:paddingTop="14dp"
+            android:paddingBottom="16dp"
+            android:textColor="@color/white"
+            android:enabled="@{roleInputViewModel.isEnableButtonStream}"
+            android:id="@+id/btn_role_input_complete"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="@{()-> onboardingViewModel.moveSelectProfileStep()}"
+            android:background="@drawable/shape_green_radius_47_1"
+            android:text="@string/role_input_complete_button_text" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
