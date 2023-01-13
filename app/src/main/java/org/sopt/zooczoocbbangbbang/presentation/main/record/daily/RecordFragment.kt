@@ -40,7 +40,6 @@ class RecordFragment : BindingFragment<FragmentRecordBinding>(R.layout.fragment_
         }
     }
 
-    // 반려동물 선택 뷰로 넘어가는 로직 필요
     private fun clickNextBtn() {
         binding.btnRecordBottom.setOnClickListener {
             recordViewModel.getPetNum()

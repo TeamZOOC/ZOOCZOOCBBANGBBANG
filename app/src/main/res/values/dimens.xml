@@ -2,5 +2,6 @@
 <resources>
     <dimen name="dimen_0">0dp</dimen>
     <dimen name="dimen_30">30dp</dimen>
-    <dimen name="pagerWidth">174dp</dimen>
+    <dimen name="pagerWidth">181dp</dimen>
+
 </resources>
