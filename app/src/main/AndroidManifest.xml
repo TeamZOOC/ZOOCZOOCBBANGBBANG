@@ -55,6 +55,12 @@
             android:exported="true"
             android:windowSoftInputMode="adjustPan" />
         <activity
+            android:name=".presentation.onboarding.OnboardingActivity"
+            android:exported="true" />
+        <activity
+            android:name=".presentation.alarm.AlarmActivity"
+            android:exported="false"/>
+        <activity
             android:name=".presentation.main.record.RecordDoneActivity"
             android:exported="false" />
         <activity

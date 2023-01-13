@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="position"
+            type="java.lang.Integer" />
+        <variable
+            name="data"
+            type="org.sopt.zooczoocbbangbbang.presentation.onboarding.create.model.PetUiModel" />
+        <variable
+            name="listener"
+            type="org.sopt.zooczoocbbangbbang.presentation.onboarding.create.PetRegisterFormListener" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <View
+            android:id="@+id/img_onboarding_pet_register_frame"
+            android:background="@drawable/shape_white_circle"
+            android:layout_marginVertical="10dp"
+            android:layout_marginStart="22dp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_width="70dp"
+            android:layout_height="70dp" />
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/image_onboarding_pet_register"
+            android:src="@drawable/img_select_profile_image"
+            android:layout_margin="5dp"
+            imageOfUriString="@{data.uriString}"
+            android:onClick="@{()->listener.onSelectImage()}"
+            app:layout_constraintTop_toTopOf="@id/img_onboarding_pet_register_frame"
+            app:layout_constraintBottom_toBottomOf="@id/img_onboarding_pet_register_frame"
+            app:layout_constraintStart_toStartOf="@id/img_onboarding_pet_register_frame"
+            app:layout_constraintEnd_toEndOf="@id/img_onboarding_pet_register_frame"
+            android:layout_width="0dp"
+            android:layout_height="0dp" />
+
+        <EditText
+            android:id="@+id/img_onboarding_pet_register_input"
+            app:layout_constraintTop_toTopOf="@id/img_onboarding_pet_register_frame"
+            app:layout_constraintBottom_toBottomOf="@id/img_onboarding_pet_register_frame"
+            app:layout_constraintStart_toEndOf="@id/img_onboarding_pet_register_frame"
+            android:layout_marginStart="9dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginEnd="63dp"
+            android:layout_width="0dp"
+            android:hint="@string/onboarding_pet_register_input_hint_text"
+            android:paddingHorizontal="16dp"
+            android:paddingVertical="7dp"
+            android:maxLength="4"
+            android:background="@drawable/selector_input_pet_name"
+            android:layout_height="wrap_content" />
+
+        <ImageView
+            android:id="@+id/img_onboarding_pet_register_cancel"
+            android:layout_marginStart="10dp"
+            android:onClick="@{()->listener.onCancel(position)}"
+            app:layout_constraintTop_toTopOf="@id/img_onboarding_pet_register_input"
+            app:layout_constraintStart_toEndOf="@id/img_onboarding_pet_register_input"
+            app:layout_constraintBottom_toBottomOf="@id/img_onboarding_pet_register_input"
+            android:src="@drawable/ic_pet_cancel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
