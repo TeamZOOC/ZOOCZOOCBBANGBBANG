@@ -69,7 +69,7 @@
             android:layout_width="match_parent"
             android:layout_marginHorizontal="30dp"
             android:layout_height="wrap_content"
-            android:onClick="@{()->onboardingViewModel.moveRegisterPetStep()}"
+            android:onClick="@{()->onboardingViewModel.moveInputCodeStep()}"
             android:layout_marginBottom="10dp"
             app:layout_constraintBottom_toTopOf="@+id/btn_move_create_family_code" />
 
@@ -77,7 +77,8 @@
             android:id="@+id/btn_move_create_family_code"
             android:textColor="@color/white"
             style="@style/Typography.S16"
-            android:onClick="@{()->onboardingViewModel.moveInputCodeStep()}"
+            android:enabled="false"
+            android:onClick="@{()->onboardingViewModel.moveRegisterPetStep()}"
             android:background="@drawable/shape_green_radius_47_1"
             android:text="@string/onboarding_move_create_family_code_button_text"
             android:layout_marginHorizontal="30dp"
