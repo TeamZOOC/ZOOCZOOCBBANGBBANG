@@ -73,7 +73,4 @@ class RecordFragment : BindingFragment<FragmentRecordBinding>(R.layout.fragment_
             Timber.tag("observe").d("validation:::%s", it)
         }
     }
-
-    companion object {
-    }
 }

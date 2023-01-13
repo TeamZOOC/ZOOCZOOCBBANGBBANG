@@ -68,13 +68,6 @@ class MissionFragment : BindingFragment<FragmentMissionBinding>(R.layout.fragmen
             Log.d("MissionFragment", "fragments::: ${pagerAdapter.fragments.size}")
         }
 
-        // pagerAdapter.addFragment(MissionViewPagerFragment())
-        // pagerAdapter.addFragment(MissionViewPagerFragment())
-        // pagerAdapter.addFragment(MissionViewPagerFragment())
-        // pagerAdapter.addFragment(MissionViewPagerFragment())
-        // pagerAdapter.addFragment(MissionViewPagerFragment())
-        // pagerAdapter.addFragment(MissionViewPagerFragment())
-
         binding.vpMissionView.adapter = pagerAdapter
         binding.vpMissionView.registerOnPageChangeCallback(object :
                 ViewPager2.OnPageChangeCallback() {
