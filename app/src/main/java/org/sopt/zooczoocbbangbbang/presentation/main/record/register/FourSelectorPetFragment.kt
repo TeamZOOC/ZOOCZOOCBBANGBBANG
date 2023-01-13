@@ -5,6 +5,7 @@ import android.graphics.Color
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.viewModels
+import coil.load
 import org.sopt.zooczoocbbangbbang.R
 import org.sopt.zooczoocbbangbbang.databinding.FragmentFourSelectorPetBinding
 import org.sopt.zooczoocbbangbbang.presentation.base.BindingFragment
@@ -20,22 +21,18 @@ class FourSelectorPetFragment :
         binding.viewmodel = fourSelectorViewModel
         super.onViewCreated(view, savedInstanceState)
         fourSelectorViewModel.getPetInfo()
+        fetchPetImage()
         checkIsSelected()
         clickRecordBtn()
+        // clickBackBtn()
     }
 
     private fun clickFirstSelectorItem() {
         binding.clFourSelectorPet1.setOnClickListener {
             fourSelectorViewModel.switchFirstBooleanValue()
             if (fourSelectorViewModel.isSelectedFirst.value == true) {
-                binding.ivFourSelectorPetFirst.setBackgroundColor(
-                    R.drawable.shape_round_green
-                )
                 binding.tvFourSelectorPetFirst.setTextColor(Color.parseColor("#42C87F"))
             } else {
-                binding.ivFourSelectorPetFirst.setBackgroundColor(
-                    R.drawable.shape_round_grey
-                )
                 binding.tvFourSelectorPetFirst.setTextColor(Color.parseColor("#828282"))
             }
         }
@@ -45,14 +42,8 @@ class FourSelectorPetFragment :
         binding.clFourSelectorPet2.setOnClickListener {
             fourSelectorViewModel.switchSecondBooleanValue()
             if (fourSelectorViewModel.isSelectedSecond.value == true) {
-                binding.ivFourSelectorPetSecond.setBackgroundColor(
-                    R.drawable.shape_round_green
-                )
                 binding.tvFourSelectorPetSecond.setTextColor(Color.parseColor("#42C87F"))
             } else {
-                binding.ivFourSelectorPetSecond.setBackgroundColor(
-                    R.drawable.shape_round_grey
-                )
                 binding.tvFourSelectorPetSecond.setTextColor(Color.parseColor("#828282"))
             }
         }
@@ -62,14 +53,8 @@ class FourSelectorPetFragment :
         binding.clFourSelectorPet3.setOnClickListener {
             fourSelectorViewModel.switchThirdBooleanValue()
             if (fourSelectorViewModel.isSelectedThird.value == true) {
-                binding.ivFourSelectorPetThird.setBackgroundColor(
-                    R.drawable.shape_round_green
-                )
                 binding.tvFourSelectorPetThird.setTextColor(Color.parseColor("#42C87F"))
             } else {
-                binding.ivFourSelectorPetThird.setBackgroundColor(
-                    R.drawable.shape_round_grey
-                )
                 binding.tvFourSelectorPetThird.setTextColor(Color.parseColor("#828282"))
             }
         }
@@ -79,14 +64,8 @@ class FourSelectorPetFragment :
         binding.clFourSelectorPet4.setOnClickListener {
             fourSelectorViewModel.switchFourthBooleanValue()
             if (fourSelectorViewModel.isSelectedFourth.value == true) {
-                binding.ivFourSelectorPetFourth.setBackgroundColor(
-                    R.drawable.shape_round_green
-                )
                 binding.tvFourSelectorPetFourth.setTextColor(Color.parseColor("#42C87F"))
             } else {
-                binding.ivFourSelectorPetFourth.setBackgroundColor(
-                    R.drawable.shape_round_grey
-                )
                 binding.tvFourSelectorPetFourth.setTextColor(Color.parseColor("#828282"))
             }
         }
@@ -120,6 +99,21 @@ class FourSelectorPetFragment :
             val intent = Intent(requireContext(), RecordDoneActivity::class.java)
             startActivity(intent)
         }
+    }
+
+    // 근데 이게 일상탭인지 미션탭인지 어떻게 알지?
+    // private fun clickBackBtn() {
+    //     binding.ivFourSelectorPetBackbtn.setOnClickListener {
+    //         parentFragmentManager.beginTransaction()
+    //             .replace(R.id.fcv_record_view, RecordFragment()).addToBackStack(null).commit()
+    //     }
+    // }
+
+    private fun fetchPetImage() {
+        binding.ivFourSelectorPetFirst.load(fourSelectorViewModel.petImageList.value?.get(0))
+        binding.ivFourSelectorPetSecond.load(fourSelectorViewModel.petImageList.value?.get(1))
+        binding.ivFourSelectorPetThird.load(fourSelectorViewModel.petImageList.value?.get(2))
+        binding.ivFourSelectorPetFourth.load(fourSelectorViewModel.petImageList.value?.get(3))
     }
 
     companion object {

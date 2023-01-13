@@ -17,8 +17,8 @@ import org.sopt.zooczoocbbangbbang.presentation.base.BindingFragment
 import org.sopt.zooczoocbbangbbang.presentation.main.record.CustomDialog
 import org.sopt.zooczoocbbangbbang.presentation.main.record.MissionFragmentStateAdapter
 import org.sopt.zooczoocbbangbbang.presentation.main.record.RecordDoneActivity
-import org.sopt.zooczoocbbangbbang.presentation.main.record.TwoSelectorPetFragment
 import org.sopt.zooczoocbbangbbang.presentation.main.record.register.FourSelectorPetFragment
+import org.sopt.zooczoocbbangbbang.presentation.main.record.register.TwoSelectorPetFragment
 import timber.log.Timber
 
 class MissionFragment : BindingFragment<FragmentMissionBinding>(R.layout.fragment_mission) {

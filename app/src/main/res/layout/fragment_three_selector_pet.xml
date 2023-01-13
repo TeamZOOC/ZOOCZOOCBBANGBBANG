@@ -5,10 +5,12 @@
     tools:context=".presentation.main.record.ThreeSelectorPetFragment">
 
     <data>
+
         <variable
             name="viewmodel"
             type="org.sopt.zooczoocbbangbbang.presentation.main.record.ThreeSelectorPetViewModel" />
-        <import type="android.view.View"/>
+
+        <import type="android.view.View" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -36,7 +38,6 @@
                 android:id="@+id/cl_threeSelectorPet_background"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
-
 
 
                 <TextView
@@ -78,7 +79,7 @@
                     <View
                         android:layout_width="match_parent"
                         android:layout_height="1dp"
-                        android:background="@color/white_f2"/>
+                        android:background="@color/white_f2" />
 
                     <androidx.constraintlayout.widget.ConstraintLayout
                         android:id="@+id/cl_threeSelectorPet_1"
@@ -93,11 +94,20 @@
                             android:layout_height="0dp"
                             android:layout_marginStart="38dp"
                             android:scaleType="fitXY"
-                            android:src="@{viewmodel.petImageList[0]}"
+                            android:backgroundTint="#1A4DBC80"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintDimensionRatio="1:1"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toTopOf="parent" />
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:id="@+id/cl_threeSelectorPet_first_bg"
+                            android:layout_width="48dp"
+                            android:layout_height="48dp"
+                            android:visibility="@{viewmodel.isSelectedFirst ? View.VISIBLE : View.INVISIBLE}"
+                            android:background="@drawable/shape_round_green"
+                            app:layout_constraintStart_toStartOf="@id/iv_threeSelectorPet_first"
+                            app:layout_constraintBottom_toBottomOf="@+id/iv_threeSelectorPet_first" />
 
                         <TextView
                             android:id="@+id/tv_threeSelectorPet_first"
@@ -129,7 +139,7 @@
                     <View
                         android:layout_width="match_parent"
                         android:layout_height="1dp"
-                        android:background="@color/white_f2"/>
+                        android:background="@color/white_f2" />
 
                     <androidx.constraintlayout.widget.ConstraintLayout
                         android:id="@+id/cl_threeSelectorPet_2"
@@ -144,11 +154,20 @@
                             android:layout_height="0dp"
                             android:layout_marginStart="38dp"
                             android:scaleType="fitXY"
-                            android:src="@{viewmodel.petImageList[1]}"
+                            android:backgroundTint="#1A4DBC80"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintDimensionRatio="1:1"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toTopOf="parent" />
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:id="@+id/cl_threeSelectorPet_second_bg"
+                            android:layout_width="48dp"
+                            android:layout_height="48dp"
+                            android:visibility="@{viewmodel.isSelectedSecond ? View.VISIBLE : View.INVISIBLE}"
+                            android:background="@drawable/shape_round_green"
+                            app:layout_constraintStart_toStartOf="@id/iv_threeSelectorPet_second"
+                            app:layout_constraintBottom_toBottomOf="@+id/iv_threeSelectorPet_second" />
 
                         <TextView
                             android:id="@+id/tv_threeSelectorPet_second"
@@ -161,7 +180,7 @@
                             app:layout_constraintStart_toEndOf="@+id/iv_threeSelectorPet_second"
                             app:layout_constraintTop_toTopOf="@+id/iv_threeSelectorPet_second"
                             android:text="@{viewmodel.petNameList[1]}"
-                            tools:text="@string/choosePet_name"/>
+                            tools:text="@string/choosePet_name" />
 
                         <ImageView
                             android:id="@+id/iv_threeSelectorPet_check_2"
@@ -180,7 +199,7 @@
                     <View
                         android:layout_width="match_parent"
                         android:layout_height="1dp"
-                        android:background="@color/white_f2"/>
+                        android:background="@color/white_f2" />
 
                     <androidx.constraintlayout.widget.ConstraintLayout
                         android:id="@+id/cl_threeSelectorPet_3"
@@ -195,11 +214,20 @@
                             android:layout_height="0dp"
                             android:layout_marginStart="38dp"
                             android:scaleType="fitXY"
-                            android:src="@{viewmodel.petImageList[2]}"
+                            android:backgroundTint="#1A4DBC80"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintDimensionRatio="1:1"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toTopOf="parent" />
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:id="@+id/cl_threeSelectorPet_third_bg"
+                            android:layout_width="48dp"
+                            android:layout_height="48dp"
+                            android:visibility="@{viewmodel.isSelectedThird ? View.VISIBLE : View.INVISIBLE}"
+                            android:background="@drawable/shape_round_green"
+                            app:layout_constraintStart_toStartOf="@id/iv_threeSelectorPet_third"
+                            app:layout_constraintBottom_toBottomOf="@+id/iv_threeSelectorPet_third" />
 
                         <TextView
                             android:id="@+id/tv_threeSelectorPet_third"

@@ -5,6 +5,8 @@ import android.graphics.Color
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.viewModels
+import coil.load
+import coil.transform.CircleCropTransformation
 import org.sopt.zooczoocbbangbbang.R
 import org.sopt.zooczoocbbangbbang.databinding.FragmentTwoSelectorPetBinding
 import org.sopt.zooczoocbbangbbang.presentation.base.BindingFragment
@@ -20,6 +22,7 @@ open class TwoSelectorPetFragment :
         binding.viewmodel = twoSelectorViewModel
         super.onViewCreated(view, savedInstanceState)
         twoSelectorViewModel.getPetInfo()
+        fetchPetImage()
         checkIsSelected()
         clickRecordBtn()
     }
@@ -28,14 +31,8 @@ open class TwoSelectorPetFragment :
         binding.clTwoSelectorPetFirstLayout.setOnClickListener {
             twoSelectorViewModel.switchFirstBooleanValue()
             if (twoSelectorViewModel.isSelectedFirst.value == true) {
-                binding.ivTwoSelectorPetFirst.setImageResource(
-                    R.drawable.shape_round_green
-                )
                 binding.tvTwoSelectorPetFirst.setTextColor(Color.parseColor("#42C87F"))
             } else {
-                binding.ivTwoSelectorPetFirst.setImageResource(
-                    R.drawable.shape_round_grey
-                )
                 binding.tvTwoSelectorPetFirst.setTextColor(Color.parseColor("#828282"))
             }
         }
@@ -45,14 +42,8 @@ open class TwoSelectorPetFragment :
         binding.clTwoSelectorPetSecondLayout.setOnClickListener {
             twoSelectorViewModel.switchSecondBooleanValue()
             if (twoSelectorViewModel.isSelectedSecond.value == true) {
-                binding.ivTwoSelectorPetSecond.setImageResource(
-                    R.drawable.shape_round_green
-                )
                 binding.tvTwoSelectorPetSecond.setTextColor(Color.parseColor("#42C87F"))
             } else {
-                binding.ivTwoSelectorPetSecond.setImageResource(
-                    R.drawable.shape_round_grey
-                )
                 binding.tvTwoSelectorPetSecond.setTextColor(Color.parseColor("#828282"))
             }
         }
@@ -76,6 +67,24 @@ open class TwoSelectorPetFragment :
             activity?.let {
                 val intent = Intent(context, RecordDoneActivity::class.java)
                 startActivity(intent)
+            }
+        }
+    }
+
+    private fun clickBackBtn() {
+        binding.ivTwoSelectorPetBackbtn.setOnClickListener {
+            // parentFragmentManager.beginTransaction()
+            //     .replace(R.id.fcv_record_view, RecordFragment()).addToBackStack(null).commit()
+        }
+    }
+
+    private fun fetchPetImage() {
+        twoSelectorViewModel.petImageList.observe(viewLifecycleOwner) {
+            binding.ivTwoSelectorPetFirst.load(twoSelectorViewModel.petImageList.value?.get(0)) {
+                transformations(CircleCropTransformation())
+            }
+            binding.ivTwoSelectorPetSecond.load(twoSelectorViewModel.petImageList.value?.get(1)) {
+                transformations(CircleCropTransformation())
             }
         }
     }
