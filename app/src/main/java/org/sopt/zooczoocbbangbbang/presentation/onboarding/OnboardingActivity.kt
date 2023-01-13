@@ -18,10 +18,11 @@ import org.sopt.zooczoocbbangbbang.util.replaceFragmentInActivity
 class OnboardingActivity :
     BindingActivity<ActivityOnboardingBinding>(R.layout.activity_onboarding) {
     private val onboardingViewModel: OnboardingViewModel by viewModels()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_onboarding)
-        binding.viewModel = onboardingViewModel
+        setContentView(binding.root)
+        binding.onboardingViewModel = onboardingViewModel
         observeFragmentChangeStream()
     }
 
