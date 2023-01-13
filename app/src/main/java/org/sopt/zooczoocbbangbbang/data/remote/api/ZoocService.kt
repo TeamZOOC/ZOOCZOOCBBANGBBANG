@@ -65,7 +65,9 @@ interface ZoocService {
 
     // 미션 정보 조회 (GET)
     @GET("record/mission/{familyId}")
-    fun getMissionList(): Call<ResponseMissionDto>
+    fun getMissionList(
+        @Path("familyId") familyId: Int
+    ): Call<ResponseMissionDto>
 
     // 기록/미션 작성하기 (POST)
     @Multipart

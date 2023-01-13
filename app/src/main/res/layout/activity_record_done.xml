@@ -83,6 +83,7 @@
                     app:srcCompat="@drawable/img_upload" />
 
                 <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btn_recordDone_bottom"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="21dp"

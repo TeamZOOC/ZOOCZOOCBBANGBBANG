@@ -19,7 +19,6 @@ import timber.log.Timber
 class RecordFragment : BindingFragment<FragmentRecordBinding>(R.layout.fragment_record) {
     private val recordViewModel: RecordViewModel by activityViewModels()
 
-    // private val sharedRecordViewModel: SharedRecordViewModel by activityViewModels()
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.viewmodel = recordViewModel
@@ -44,9 +43,6 @@ class RecordFragment : BindingFragment<FragmentRecordBinding>(R.layout.fragment_
     // 반려동물 선택 뷰로 넘어가는 로직 필요
     private fun clickNextBtn() {
         binding.btnRecordBottom.setOnClickListener {
-            // parentFragmentManager.beginTransaction()
-            //     .replace(R.id.fcv_record_view, FourSelectorPetFragment()).commit()
-
             recordViewModel.getPetNum()
             recordViewModel.petNum.observe(viewLifecycleOwner) {
                 Timber.tag("Mission").d("petNum::: %s", recordViewModel.petNum.value)

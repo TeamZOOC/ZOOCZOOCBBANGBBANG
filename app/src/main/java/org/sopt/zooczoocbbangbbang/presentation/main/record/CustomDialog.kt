@@ -1,6 +1,5 @@
 package org.sopt.zooczoocbbangbbang.presentation.main.record
 
-import android.content.Intent
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
@@ -10,7 +9,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.DialogFragment
 import org.sopt.zooczoocbbangbbang.databinding.FragmentCustomDialogBinding
-import org.sopt.zooczoocbbangbbang.presentation.main.MainActivity
 
 class CustomDialog(val finishApp: () -> Unit?) : DialogFragment() {
     private var _binding: FragmentCustomDialogBinding? = null
@@ -39,8 +37,7 @@ class CustomDialog(val finishApp: () -> Unit?) : DialogFragment() {
 
     private fun clickQuitBtn() {
         binding.clDialogSecondChoice.setOnClickListener() {
-            val intent = Intent(requireContext(), MainActivity::class.java)
-            startActivity(intent)
+            requireActivity().finish()
         }
     }
 

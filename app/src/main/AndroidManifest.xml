@@ -25,17 +25,17 @@
         </activity>
         <activity
             android:name=".presentation.detail.DetailActivity"
-            android:exported="true"
-            android:windowSoftInputMode="adjustPan"></activity>
+            android:exported="false"
+            android:windowSoftInputMode="adjustPan" />
         <activity
             android:name=".presentation.main.record.RecordDoneActivity"
-            android:exported="false"></activity>
+            android:exported="false" />
         <activity
             android:name=".presentation.main.mypage.MyPofileEdityActivity"
             android:exported="false" />
         <activity
             android:name=".presentation.main.record.RecordActivity"
-            android:exported="true"
+            android:exported="false"
             android:windowSoftInputMode="adjustResize" />
         <activity
             android:name=".presentation.main.MainActivity"
