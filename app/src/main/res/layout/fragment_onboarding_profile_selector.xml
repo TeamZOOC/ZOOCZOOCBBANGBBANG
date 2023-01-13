@@ -4,6 +4,13 @@
 
     <data>
 
+        <variable
+            name="onboardingViewModel"
+            type="org.sopt.zooczoocbbangbbang.presentation.onboarding.OnboardingViewModel" />
+
+        <variable
+            name="profileSelectViewModel"
+            type="org.sopt.zooczoocbbangbbang.presentation.onboarding.profile.ProfileSelectViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -41,13 +48,15 @@
             android:layout_width="161dp"
             android:layout_height="161dp" />
 
-        <ImageView
+        <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/img_profile_selector"
             app:layout_constraintTop_toTopOf="@id/view_profile_selector_frame"
             app:layout_constraintStart_toStartOf="@id/view_profile_selector_frame"
             app:layout_constraintEnd_toEndOf="@id/view_profile_selector_frame"
             app:layout_constraintBottom_toBottomOf="@id/view_profile_selector_frame"
             android:src="@drawable/img_select_profile_image"
+            imageOfUriString="@{profileSelectViewModel.profileImageStream}"
+            android:onClick="@{()->profileSelectViewModel.onClickProfilePickerButton()}"
             android:layout_margin="7dp"
             android:layout_width="0dp"
             android:layout_height="0dp" />
@@ -56,6 +65,7 @@
             android:id="@+id/btn_profile_selector_complete"
             app:layout_constraintBottom_toBottomOf="parent"
             android:text="@string/onboarding_profile_selector_button_text"
+            android:onClick="@{()->onboardingViewModel.moveStartFamilyCodeStep()}"
             android:textColor="@color/white"
             style="@style/Typography.S16"
             android:background="@drawable/shape_green_radius_47_1"

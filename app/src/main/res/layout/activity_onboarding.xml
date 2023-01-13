@@ -6,7 +6,7 @@
     <data>
 
         <variable
-            name="viewModel"
+            name="onboardingViewModel"
             type="org.sopt.zooczoocbbangbbang.presentation.onboarding.OnboardingViewModel" />
     </data>
 
@@ -27,9 +27,13 @@
                 app:layout_constraintStart_toStartOf="parent"
                 android:src="@drawable/ic_arrow_back"
                 android:layout_marginTop="25dp"
-                android:onClick="@{()-> viewModel.movePreviousStepOnboarding()}"
+                android:layout_marginStart="16dp"
+                android:clickable="true"
+                android:onClick="@{() -> onboardingViewModel.movePreviousStepOnboarding()}"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:contentDescription="onboarding_header_back_button"
+                android:focusable="true" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <ProgressBar
@@ -39,8 +43,7 @@
             android:paddingHorizontal="30dp"
             android:backgroundTint="@color/green_42c87f"
             android:max="5"
-            tools:progress="1"
-            android:progress="1"
+            android:progress="@{onboardingViewModel.onboardingStream.progress.value}"
             android:progressDrawable="@drawable/onboarding_progressbar"
             style="@style/Widget.AppCompat.ProgressBar.Horizontal"
             android:layout_width="match_parent"

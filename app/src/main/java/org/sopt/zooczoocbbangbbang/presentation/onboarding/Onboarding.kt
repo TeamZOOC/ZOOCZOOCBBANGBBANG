@@ -1,5 +1,7 @@
 package org.sopt.zooczoocbbangbbang.presentation.onboarding
 
+import android.util.Log
+
 enum class Onboarding(
     val step: OnboardingStep,
     val progress: OnboardingProgress,
@@ -48,11 +50,18 @@ enum class Onboarding(
 
     private fun hasStepOf(value: Int) = (this.step == OnboardingStep.valueOf(value))
 
-    fun previous(): Onboarding? = values().find {
-        it.hasStepOf(it.step.value - 1)
-    }
-
-    fun next(): Onboarding? = values().find {
-        it.hasStepOf(it.step.value + 1)
+    fun previous(): Onboarding? {
+        Log.d("testthis", this.toString())
+        if (this.step.value <= 1) {
+            return null
+        }
+        return values().find {
+            Log.d("test", "${this.step.value}")
+            if (this.step.value <= 1) {
+                it.hasStepOf(this.step.value)
+            } else {
+                it.hasStepOf(this.step.value - 1)
+            }
+        }
     }
 }
