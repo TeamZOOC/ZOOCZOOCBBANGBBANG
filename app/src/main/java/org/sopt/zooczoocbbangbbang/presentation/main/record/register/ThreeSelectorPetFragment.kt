@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View
 import androidx.fragment.app.viewModels
+import coil.load
 import org.sopt.zooczoocbbangbbang.R
 import org.sopt.zooczoocbbangbbang.databinding.FragmentThreeSelectorPetBinding
 import org.sopt.zooczoocbbangbbang.presentation.base.BindingFragment
@@ -17,6 +18,8 @@ class ThreeSelectorPetFragment :
         binding.lifecycleOwner = viewLifecycleOwner
         binding.viewmodel = threeSelectorViewModel
         super.onViewCreated(view, savedInstanceState)
+        threeSelectorViewModel.getPetInfo()
+        fetchPetImage()
         checkIsSelected()
         clickRecordBtn()
     }
@@ -25,14 +28,8 @@ class ThreeSelectorPetFragment :
         binding.clThreeSelectorPet1.setOnClickListener {
             threeSelectorViewModel.switchFirstBooleanValue()
             if (threeSelectorViewModel.isSelectedFirst.value == true) {
-                binding.ivThreeSelectorPetFirst.setImageResource(
-                    R.drawable.shape_round_green
-                )
                 binding.tvThreeSelectorPetFirst.setTextColor(Color.parseColor("#42C87F"))
             } else {
-                binding.ivThreeSelectorPetFirst.setImageResource(
-                    R.drawable.shape_round_grey
-                )
                 binding.tvThreeSelectorPetFirst.setTextColor(Color.parseColor("#828282"))
             }
         }
@@ -42,14 +39,8 @@ class ThreeSelectorPetFragment :
         binding.clThreeSelectorPet2.setOnClickListener {
             threeSelectorViewModel.switchSecondBooleanValue()
             if (threeSelectorViewModel.isSelectedSecond.value == true) {
-                binding.ivThreeSelectorPetSecond.setImageResource(
-                    R.drawable.shape_round_green
-                )
                 binding.tvThreeSelectorPetSecond.setTextColor(Color.parseColor("#42C87F"))
             } else {
-                binding.ivThreeSelectorPetSecond.setImageResource(
-                    R.drawable.shape_round_grey
-                )
                 binding.tvThreeSelectorPetSecond.setTextColor(Color.parseColor("#828282"))
             }
         }
@@ -59,14 +50,8 @@ class ThreeSelectorPetFragment :
         binding.clThreeSelectorPet3.setOnClickListener {
             threeSelectorViewModel.switchThirdBooleanValue()
             if (threeSelectorViewModel.isSelectedThird.value == true) {
-                binding.ivThreeSelectorPetThird.setImageResource(
-                    R.drawable.shape_round_green
-                )
                 binding.tvThreeSelectorPetThird.setTextColor(Color.parseColor("#42C87F"))
             } else {
-                binding.ivThreeSelectorPetThird.setImageResource(
-                    R.drawable.shape_round_grey
-                )
                 binding.tvThreeSelectorPetThird.setTextColor(Color.parseColor("#828282"))
             }
         }
@@ -89,11 +74,15 @@ class ThreeSelectorPetFragment :
 
     private fun clickRecordBtn() {
         binding.btnThreeSelectorPetBottom.setOnClickListener {
-            activity?.let {
-                val intent = Intent(context, RecordDoneActivity::class.java)
-                startActivity(intent)
-            }
+            val intent = Intent(context, RecordDoneActivity::class.java)
+            startActivity(intent)
         }
+    }
+
+    private fun fetchPetImage() {
+        binding.ivThreeSelectorPetFirst.load(threeSelectorViewModel.petImageList.value?.get(0))
+        binding.ivThreeSelectorPetSecond.load(threeSelectorViewModel.petImageList.value?.get(1))
+        binding.ivThreeSelectorPetThird.load(threeSelectorViewModel.petImageList.value?.get(2))
     }
 
     companion object {

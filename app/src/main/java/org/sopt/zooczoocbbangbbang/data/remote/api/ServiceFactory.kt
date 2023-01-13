@@ -1,5 +1,6 @@
 package org.sopt.zooczoocbbangbbang.data.remote.api
 
+import kotlinx.serialization.json.Json
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
@@ -14,6 +15,11 @@ object ServiceFactory {
             .addConverterFactory(Json.asConverterFactory("application/json".toMediaType()))
             .build()
     }*/
+
+    val json = Json {
+        isLenient = true
+        coerceInputValues = true
+    }
 
     private val retrofitZooc: Retrofit by lazy {
         Retrofit.Builder()

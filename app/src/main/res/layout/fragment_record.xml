@@ -10,7 +10,7 @@
 
         <variable
             name="viewmodel"
-            type="org.sopt.zooczoocbbangbbang.presentation.main.record.RecordViewModel" />
+            type="org.sopt.zooczoocbbangbbang.presentation.main.record.daily.RecordViewModel" />
     </data>
 
 

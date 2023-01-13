@@ -9,7 +9,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.DialogFragment
 import org.sopt.zooczoocbbangbbang.databinding.FragmentCustomDialogBinding
-import timber.log.Timber
 
 class CustomDialog(val finishApp: () -> Unit?) : DialogFragment() {
     private var _binding: FragmentCustomDialogBinding? = null
@@ -31,14 +30,14 @@ class CustomDialog(val finishApp: () -> Unit?) : DialogFragment() {
 
     private fun clickRelayWriteBtn() {
         binding.clDialogFirstChoice.setOnClickListener() {
-            //Timber.tag("CustomDialogFragment").d("다이얼로그 닫기 로직 필요!")
+            // Timber.tag("CustomDialogFragment").d("다이얼로그 닫기 로직 필요!")
             dismiss()
         }
     }
 
     private fun clickQuitBtn() {
         binding.clDialogSecondChoice.setOnClickListener() {
-            //Timber.tag("CustomDialogFragment").d("home뷰로 가는 로직 필요!")
+            requireActivity().finish()
         }
     }
 

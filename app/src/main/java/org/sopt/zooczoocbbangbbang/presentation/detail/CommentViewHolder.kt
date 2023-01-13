@@ -23,7 +23,11 @@ class CommentTextViewHolder(private val binding: ItemCommentTextBinding) :
 class CommentEmojiViewHolder(private val binding: ItemCommentEmojiBinding) :
     CommentViewHolder(binding) {
     override fun onBind(data: Comment) {
-        binding.ivDetailCommentEmojiEmoji.load(Emoji.findIdByOrdinal(data.emoji?:throw IllegalArgumentException("잘못된 이모지 아이디 입니다.")))
+        binding.ivDetailCommentEmojiEmoji.load(
+            Emoji.findIdByOrdinal(
+                data.emoji ?: throw IllegalArgumentException("잘못된 이모지 아이디 입니다.")
+            )
+        )
         binding.ivDetailCommentEmojiCommenterImage.load(data.photo)
         binding.data = data
     }
