@@ -1,6 +1,7 @@
 package org.sopt.zooczoocbbangbbang.presentation.main.record.register
 
 import android.util.Log
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MediatorLiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -17,10 +18,16 @@ class FourSelectorPetViewModel : ViewModel() {
     val isSelectedThird = MutableLiveData(false)
     val isSelectedFourth = MutableLiveData(false)
     var petNum: MutableLiveData<Int> = MutableLiveData()
+    val isPostSuccess = MutableLiveData(false)
+    private val service = ServiceFactory.zoocService
 
     // var petName: MutableLiveData<String> = MutableLiveData()
     var petNameList = MutableLiveData<MutableList<String>>()
     var petImageList = MutableLiveData<MutableList<String>>()
+    val petIdList = mutableListOf<Int>()
+    private val _errorMessage = MutableLiveData<String>()
+    val errorMessage: LiveData<String> = _errorMessage
+    val selectedPetList = MutableLiveData<MutableList<String>>()
 
     fun switchFirstBooleanValue() {
         isSelectedFirst.value = !isSelectedFirst.value!!
@@ -71,6 +78,7 @@ class FourSelectorPetViewModel : ViewModel() {
                 for (i in 0 until len) {
                     petNameList.value?.add(it.data[i].name)
                     petImageList.value?.add(it.data[i].photo)
+                    petIdList.add(it.data[i].id)
                     Log.d("Four", "${it.data[i].name}")
                     Log.d("Four", "${it.data[i].photo}")
                 }
@@ -83,4 +91,31 @@ class FourSelectorPetViewModel : ViewModel() {
             }
         }
     }
+
+    // private fun onSubmit() {
+    //     val requestBody = json.encodeToString(PetInfo(text.value!!, petInfo.value!!))
+    //         .toRequestBody("application/body".toMediaType())
+    //
+    //     viewModelScope.launch {
+    //         runCatching {
+    //             service.postRecord(
+    //                 "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlhdCI6MTY3MjkwMjQzOSwiZXhwIjoxNjczNTA3MjM5fQ.ztLfFDHWIQP-vpejw_hfCwZPbkR5FjFMy7F6MRMbrZQ",
+    //                 image.value?.toFormData(),
+    //                 requestBody
+    //             )
+    //         }.onSuccess {
+    //             isPostSuccess.value = true
+    //         }.onFailure {
+    //             isPostSuccess.value = false
+    //             _errorMessage.value = "네트워크 상태가 좋지 않습니다"
+    //             Timber.tag("RecordViewModel").d(errorMessage.toString())
+    //         }
+    //     }
+    // }
+    //
+    // @kotlinx.serialization.Serializable
+    // data class PetInfo(
+    //     val content: String,
+    //     val pet: List<String>
+    // )
 }

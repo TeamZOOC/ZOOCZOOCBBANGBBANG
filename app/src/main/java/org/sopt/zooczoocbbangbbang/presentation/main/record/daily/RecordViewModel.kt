@@ -59,7 +59,6 @@ class RecordViewModel : ViewModel() {
         viewModelScope.launch {
             runCatching {
                 service.postRecord(
-                    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlhdCI6MTY3MjkwMjQzOSwiZXhwIjoxNjczNTA3MjM5fQ.ztLfFDHWIQP-vpejw_hfCwZPbkR5FjFMy7F6MRMbrZQ",
                     image.value?.toFormData(),
                     requestBody
                 )

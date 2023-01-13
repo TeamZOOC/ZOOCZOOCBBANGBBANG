@@ -22,6 +22,7 @@ import timber.log.Timber
 
 class MissionFragment : BindingFragment<FragmentMissionBinding>(R.layout.fragment_mission) {
     private val missionViewModel: MissionViewModel by activityViewModels()
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.lifecycleOwner = viewLifecycleOwner
@@ -57,15 +58,16 @@ class MissionFragment : BindingFragment<FragmentMissionBinding>(R.layout.fragmen
         val pagerAdapter = MissionFragmentStateAdapter(requireActivity())
         showNextPager(pagerAdapter)
         missionViewModel.missionList.observe(viewLifecycleOwner) {
-            Log.d("MissionFragment", "missonList !!! ${missionViewModel.missionList.value?.size}")
-            Log.d("MissionFragment", "hhuhj")
+            Timber.tag("MissionFragment")
+                .d("missonList !!! " + missionViewModel.missionList.value?.size)
+            Timber.tag("MissionFragment").d("hhuhj")
             val fragments = mutableListOf<Fragment>()
             repeat(it.size) {
                 fragments.add(MissionViewPagerFragment())
             }
             pagerAdapter.addFragment(fragments)
 
-            Log.d("MissionFragment", "fragments::: ${pagerAdapter.fragments.size}")
+            Timber.tag("MissionFragment").d("fragments::: %s", pagerAdapter.fragments.size)
         }
 
         binding.vpMissionView.adapter = pagerAdapter
@@ -89,7 +91,6 @@ class MissionFragment : BindingFragment<FragmentMissionBinding>(R.layout.fragmen
                     missionViewModel.position.value = position
                     missionViewModel.isPageScrolling = true
                     // viewpager fragment에서 값이 바뀌면 observing해서 index로 가져오기
-
                     // 넘어가겠다고 하면 뷰모델 데이터를 초기화
                     Log.e("qwer", "Page::: ${position + 1}")
                 }
