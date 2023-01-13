@@ -13,6 +13,8 @@ import org.sopt.zooczoocbbangbbang.data.local.ZoocStorage
 import org.sopt.zooczoocbbangbbang.databinding.ActivitySignInBinding
 import org.sopt.zooczoocbbangbbang.presentation.base.BindingActivity
 import org.sopt.zooczoocbbangbbang.presentation.main.MainActivity
+import org.sopt.zooczoocbbangbbang.presentation.onboarding.Onboarding
+import org.sopt.zooczoocbbangbbang.presentation.onboarding.OnboardingActivity
 
 const val KAKAO_LOGIN = "kakaoLogin"
 
@@ -72,7 +74,7 @@ class SignInActivity : BindingActivity<ActivitySignInBinding>(R.layout.activity_
     }
 
     private fun goToOnBoarding() {
-        val intent = Intent(this, MainActivity::class.java)
+        val intent = Intent(this, OnboardingActivity::class.java)
         startActivity(intent)
         finish()
     }

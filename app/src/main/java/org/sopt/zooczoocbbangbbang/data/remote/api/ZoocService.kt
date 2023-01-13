@@ -1,6 +1,7 @@
 package org.sopt.zooczoocbbangbbang.data.remote.api
 
 import org.sopt.zooczoocbbangbbang.data.remote.entity.alarm.ResponseAlarmDto
+import org.sopt.zooczoocbbangbbang.data.remote.entity.auth.ResponseSignUpDto
 import org.sopt.zooczoocbbangbbang.data.remote.entity.detail.request.RequestCommentDto
 import org.sopt.zooczoocbbangbbang.data.remote.entity.detail.request.RequestEmojiDto
 import org.sopt.zooczoocbbangbbang.data.remote.entity.detail.response.ResponseCommentsDto
