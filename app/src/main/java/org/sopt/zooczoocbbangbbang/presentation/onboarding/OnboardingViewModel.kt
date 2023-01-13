@@ -9,7 +9,7 @@ import org.sopt.zooczoocbbangbbang.util.NonNullMutableLiveData
 
 class OnboardingViewModel : ViewModel() {
     private val _onboardingStream: NonNullMutableLiveData<Onboarding> =
-        NonNullMutableLiveData(Onboarding.INPUT_ROLE)
+        NonNullMutableLiveData(Onboarding.REGISTER_PET)
     val onboardingStream: NonNullLiveData<Onboarding>
         get() = _onboardingStream
 

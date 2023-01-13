@@ -1,10 +1,9 @@
 package org.sopt.zooczoocbbangbbang.presentation.onboarding.create
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
-import androidx.recyclerview.widget.DiffUtil
-import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import org.sopt.zooczoocbbangbbang.R
 import org.sopt.zooczoocbbangbbang.databinding.ItemOnboardingPetRegisterBinding
@@ -12,11 +11,11 @@ import org.sopt.zooczoocbbangbbang.presentation.onboarding.create.model.PetUiMod
 
 class PetRegisterFormAdapter(
     val onCancelListener: (Int) -> Unit,
-    val onSelectImageListener: () -> Unit
-) : ListAdapter<PetUiModel, PetRegisterFormAdapter.ViewHolder>(
-    diffUtil
-),
-    PetRegisterFormListener {
+    val onSelectImageListener: (Int) -> Unit
+) : RecyclerView.Adapter<PetRegisterFormAdapter.ViewHolder>(), PetRegisterFormListener {
+
+    private val petRegisterForms = mutableListOf<PetUiModel>(PetUiModel())
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val binding: ItemOnboardingPetRegisterBinding = DataBindingUtil.inflate(
             LayoutInflater.from(parent.context),
@@ -28,11 +27,42 @@ class PetRegisterFormAdapter(
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.onBind(getItem(position), position)
+        holder.onBind(petRegisterForms[position], position)
     }
 
-    override fun onSelectImage() {
-        onSelectImageListener()
+    override fun getItemCount(): Int = petRegisterForms.size
+
+    fun addNewForm() {
+        if (isMaxContent()) return
+        petRegisterForms.add(PetUiModel())
+        this.notifyItemInserted(petRegisterForms.size - 1)
+    }
+
+    fun deleteForm(position: Int) {
+        if (isMinContent()) return
+        petRegisterForms.removeAt(position)
+        this.notifyItemRemoved(position)
+    }
+
+    fun editItemImage(position: Int, uriString: String) {
+        petRegisterForms[position].uriString = uriString
+        this.notifyItemChanged(position)
+    }
+
+    fun getAllForms(): List<PetUiModel> {
+        return petRegisterForms.toList()
+    }
+
+    fun isMaxContent(): Boolean {
+        return petRegisterForms.size >= 4
+    }
+
+    fun isMinContent(): Boolean {
+        return petRegisterForms.size <= 1
+    }
+
+    override fun onSelectImage(position: Int) {
+        onSelectImageListener(position)
     }
 
     override fun onCancel(position: Int) {
@@ -48,18 +78,6 @@ class PetRegisterFormAdapter(
                 this.position = position
                 data = item
                 listener = petRegisterFormListener
-            }
-        }
-    }
-
-    companion object {
-        val diffUtil = object : DiffUtil.ItemCallback<PetUiModel>() {
-            override fun areItemsTheSame(oldItem: PetUiModel, newItem: PetUiModel): Boolean {
-                return oldItem == newItem
-            }
-
-            override fun areContentsTheSame(oldItem: PetUiModel, newItem: PetUiModel): Boolean {
-                return oldItem.name == newItem.name && oldItem.uriString == newItem.uriString
             }
         }
     }

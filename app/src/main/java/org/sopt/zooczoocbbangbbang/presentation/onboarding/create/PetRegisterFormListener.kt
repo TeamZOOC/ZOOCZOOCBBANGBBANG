@@ -1,6 +1,6 @@
 package org.sopt.zooczoocbbangbbang.presentation.onboarding.create
 
 interface PetRegisterFormListener {
-    fun onSelectImage()
+    fun onSelectImage(position: Int)
     fun onCancel(position: Int)
 }

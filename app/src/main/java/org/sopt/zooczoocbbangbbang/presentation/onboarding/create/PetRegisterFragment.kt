@@ -17,12 +17,14 @@ class PetRegisterFragment :
     private val onboardingViewModel: OnboardingViewModel by activityViewModels()
     private val petRegisterViewModel: PetRegisterViewModel by viewModels()
     private lateinit var petRegisterFormAdapter: PetRegisterFormAdapter
+    private var selectedPosition: Int = 0
 
     private val pickProfileImage = registerForActivityResult(
         ActivityResultContracts.PickVisualMedia()
     ) { uri ->
         if (uri != null) {
             Log.d("PhotoPicker", "Selected URI: $uri")
+            petRegisterFormAdapter.editItemImage(selectedPosition, uri.toString())
         } else {
             Log.d("PhotoPicker", "No media selected")
         }
@@ -35,20 +37,36 @@ class PetRegisterFragment :
         petRegisterFormAdapter = PetRegisterFormAdapter(
             onCancelListener = { petRegisterViewModel.removePetRegisterForm(it) },
             onSelectImageListener = {
+                selectedPosition = it
                 pickProfileImage.launch(PickVisualMediaRequest(ActivityResultContracts.PickVisualMedia.ImageOnly))
             }
         )
         binding.rcvOnboardingRegisterPets.adapter = petRegisterFormAdapter
-        observePetRegisterForm()
+        observeAddPetEvent()
+        observeDelPetEvent()
     }
 
-    private fun observePetRegisterForm() {
-        petRegisterViewModel.petUiModelList.observe(viewLifecycleOwner) {
-            petRegisterFormAdapter.submitList(it)
-            if (it.size > 4) {
-                petRegisterViewModel.toggleDisableAddFrom()
-            } else {
-                petRegisterViewModel.toggleEnableAddFrom()
+    private fun observeAddPetEvent() {
+        petRegisterViewModel.addPetFormEventStream.observe(viewLifecycleOwner) {
+            it.getContentIfNotHandled()?.let {
+                petRegisterFormAdapter.addNewForm()
+                toggleAddPetButton()
+            }
+        }
+    }
+
+    private fun toggleAddPetButton() {
+        if (petRegisterFormAdapter.isMaxContent()) {
+            petRegisterViewModel.toggleDisableAddPetButton()
+        } else {
+            petRegisterViewModel.toggleEnableAddPetButton()
+        }
+    }
+
+    private fun observeDelPetEvent() {
+        petRegisterViewModel.delPetFormEventStream.observe(viewLifecycleOwner) {
+            it.getContentIfNotHandled()?.let { position ->
+                petRegisterFormAdapter.deleteForm(position)
             }
         }
     }
