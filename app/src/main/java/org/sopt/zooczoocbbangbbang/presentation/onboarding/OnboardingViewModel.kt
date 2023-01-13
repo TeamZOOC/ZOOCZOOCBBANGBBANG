@@ -1,14 +1,20 @@
 package org.sopt.zooczoocbbangbbang.presentation.onboarding
 
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import org.sopt.zooczoocbbangbbang.util.Event
 import org.sopt.zooczoocbbangbbang.util.NonNullLiveData
 import org.sopt.zooczoocbbangbbang.util.NonNullMutableLiveData
 
 class OnboardingViewModel : ViewModel() {
     private val _onboardingStream: NonNullMutableLiveData<Onboarding> =
-        NonNullMutableLiveData(Onboarding.REGISTER_PET)
+        NonNullMutableLiveData(Onboarding.INPUT_ROLE)
     val onboardingStream: NonNullLiveData<Onboarding>
         get() = _onboardingStream
+
+    private val _endOnboardingEventStream: MutableLiveData<Event<Unit>> = MutableLiveData()
+    val endOnboardingEventStream: LiveData<Event<Unit>> get() = _endOnboardingEventStream
 
     fun movePreviousStepOnboarding() {
         _onboardingStream.value.previous()?.let { _onboardingStream.value = it }
@@ -40,5 +46,9 @@ class OnboardingViewModel : ViewModel() {
 
     fun moveEndStep() {
         _onboardingStream.value = Onboarding.END
+    }
+
+    fun moveHomeStep() {
+        _endOnboardingEventStream.value = Event(Unit)
     }
 }
