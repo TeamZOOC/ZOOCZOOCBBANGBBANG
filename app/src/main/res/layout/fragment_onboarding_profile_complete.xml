@@ -77,7 +77,6 @@
             android:id="@+id/btn_move_create_family_code"
             android:textColor="@color/white"
             style="@style/Typography.S16"
-            android:enabled="false"
             android:onClick="@{()->onboardingViewModel.moveRegisterPetStep()}"
             android:background="@drawable/shape_green_radius_47_1"
             android:text="@string/onboarding_move_create_family_code_button_text"

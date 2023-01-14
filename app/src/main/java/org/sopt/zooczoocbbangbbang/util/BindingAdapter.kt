@@ -17,7 +17,7 @@ fun setProgressRatio(progressBar: ProgressBar, progress: OnboardingProgress) {
 
 @BindingAdapter("imageOfUriString")
 fun setImageOfUriString(imageView: ImageView, uriString: String?) {
-    if (uriString != null) {
+    if (!uriString.isNullOrBlank()) {
         val uri = Uri.parse(uriString)
         imageView.setImageURI(uri)
     } else {
