@@ -9,7 +9,7 @@ import org.sopt.zooczoocbbangbbang.util.NonNullMutableLiveData
 
 class OnboardingViewModel : ViewModel() {
     private val _onboardingStream: NonNullMutableLiveData<Onboarding> =
-        NonNullMutableLiveData(Onboarding.REGISTER_PET)
+        NonNullMutableLiveData(Onboarding.INPUT_ROLE)
     val onboardingStream: NonNullLiveData<Onboarding>
         get() = _onboardingStream
 
@@ -36,13 +36,13 @@ class OnboardingViewModel : ViewModel() {
         _onboardingStream.value = Onboarding.INPUT_CODE
     }
 
-    fun moveInvitationBeforeStep() {
+    /*fun moveInvitationBeforeStep() {
         _onboardingStream.value = Onboarding.INVITATION_BEFORE
     }
 
     fun moveInvitationAfterStep() {
         _onboardingStream.value = Onboarding.INVITATION_AFTER
-    }
+    }*/
 
     fun moveEndStep() {
         _onboardingStream.value = Onboarding.END

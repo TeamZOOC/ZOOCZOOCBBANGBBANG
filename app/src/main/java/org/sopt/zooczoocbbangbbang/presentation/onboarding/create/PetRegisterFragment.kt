@@ -67,6 +67,7 @@ class PetRegisterFragment :
         petRegisterViewModel.delPetFormEventStream.observe(viewLifecycleOwner) {
             it.getContentIfNotHandled()?.let { position ->
                 petRegisterFormAdapter.deleteForm(position)
+                toggleAddPetButton()
             }
         }
     }

@@ -32,7 +32,8 @@ enum class Onboarding(
         OnboardingProgress.valueOf(4),
         OnboardingType.INPUT_CODE
     ),
-    INVITATION_BEFORE(
+
+    /*INVITATION_BEFORE(
         OnboardingStep.valueOf(5),
         OnboardingProgress.valueOf(5),
         OnboardingType.CREATE_CODE
@@ -41,9 +42,9 @@ enum class Onboarding(
         OnboardingStep.valueOf(6),
         OnboardingProgress.valueOf(5),
         OnboardingType.CREATE_CODE
-    ),
+    ),*/
     END(
-        OnboardingStep.valueOf(7),
+        OnboardingStep.valueOf(5),
         OnboardingProgress.valueOf(5),
         OnboardingType.DEFAULT
     );

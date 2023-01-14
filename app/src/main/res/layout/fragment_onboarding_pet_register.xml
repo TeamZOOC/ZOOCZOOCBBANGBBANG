@@ -97,7 +97,7 @@
             android:layout_marginBottom="30dp"
             android:layout_marginHorizontal="30dp"
             android:text="@string/onboarding_pet_register_button_text"
-            android:onClick="@{()->onboardingViewModel.moveInvitationBeforeStep()}"
+            android:onClick="@{()->onboardingViewModel.moveEndStep()}"
             style="@style/Typography.S16"
             android:textColor="@color/white"
             android:paddingVertical="15dp"

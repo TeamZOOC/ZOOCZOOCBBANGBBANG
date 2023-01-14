@@ -1,4 +1,4 @@
-package org.sopt.zooczoocbbangbbang.presentation.onboarding
+package org.sopt.zooczoocbbangbbang.data
 
 class OnboardingRepository private constructor() {
     companion object {
