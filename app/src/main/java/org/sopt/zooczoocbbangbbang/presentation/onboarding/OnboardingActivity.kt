@@ -36,8 +36,8 @@ class OnboardingActivity :
                 Onboarding.SELECT_PROFILE -> replaceSelectProfileFragment()
                 Onboarding.START_FAMILY_CODE -> replaceCompleteProfileFragment()
                 Onboarding.REGISTER_PET -> replacePetRegisterFragment()
-                Onboarding.INVITATION_BEFORE -> replaceInvitationBeforeFragment()
-                Onboarding.INVITATION_AFTER -> replaceInvitationAfterFragment()
+                /*Onboarding.INVITATION_BEFORE -> replaceInvitationBeforeFragment()
+                Onboarding.INVITATION_AFTER -> replaceInvitationAfterFragment()*/
                 Onboarding.INPUT_CODE -> replaceJoinFamilyFragment()
                 Onboarding.END -> replaceOnboardingEndFragment()
             }

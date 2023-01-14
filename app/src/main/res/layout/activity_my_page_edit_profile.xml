@@ -4,10 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-
+        <variable
+            name="viewModel"
+            type="org.sopt.zooczoocbbangbbang.presentation.main.mypage.editprofile.EditProfileViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/layout"
+        android:background="@color/green_f0f2ef"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
@@ -33,23 +37,21 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@+id/iv_back" />
 
-        <com.google.android.material.card.MaterialCardView
-            android:id="@+id/cv_profile"
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/iv_profile"
+            android:scaleType="centerCrop"
             android:layout_width="109dp"
-            android:layout_height="109dp"
+            android:layout_height="0dp"
+            app:shapeAppearance="@style/ShapeAppearanceOverlay.App.CornerSize50Percent"
+            android:src="@drawable/ic_basic_profile"
             android:layout_marginTop="190dp"
-            app:cardCornerRadius="200dp"
+            app:layout_constraintDimensionRatio="1:1"
+            tools:srcCompat="@tools:sample/avatars"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv_title">
+            app:layout_constraintTop_toBottomOf="@+id/tv_title" />
 
-            <ImageView
-                android:id="@+id/iv_profile"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                app:layout_constraintTop_toBottomOf="@+id/tv_title"
-                tools:srcCompat="@tools:sample/avatars" />
-        </com.google.android.material.card.MaterialCardView>
 
         <com.google.android.material.card.MaterialCardView
             android:layout_width="35dp"
@@ -58,8 +60,8 @@
             android:layout_marginTop="78dp"
             android:backgroundTint="#42C87F"
             app:cardCornerRadius="200dp"
-            app:layout_constraintStart_toStartOf="@+id/cv_profile"
-            app:layout_constraintTop_toTopOf="@+id/cv_profile"
+            app:layout_constraintStart_toStartOf="@+id/iv_profile"
+            app:layout_constraintTop_toTopOf="@+id/iv_profile"
             android:id="@+id/materialCardView">
 
             <ImageView
@@ -72,27 +74,33 @@
         </com.google.android.material.card.MaterialCardView>
 
         <EditText
+            android:maxLines="1"
             android:layout_width="196dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="58dp"
             android:gravity="center"
             android:textColor="#000000"
-            android:text="안녕"
+            android:text="@={viewModel.inputText}"
+            android:hint="바꿀 이름 적어"
+            android:textColorHint="@color/grey_bd"
+            android:maxLength="10"
             style="@style/Zooc20SemiBold"
             android:backgroundTint="@color/green_42c87f"
-            app:layout_constraintTop_toBottomOf="@+id/cv_profile"
+            app:layout_constraintTop_toBottomOf="@+id/iv_profile"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             android:id="@+id/editText" />
 
         <com.google.android.material.card.MaterialCardView
+            android:id="@+id/btn_finish"
             android:layout_width="match_parent"
             android:layout_height="54dp"
             android:layout_marginHorizontal="30dp"
             android:layout_marginBottom="44dp"
-            android:backgroundTint="#3BB774"
+            app:cardBackgroundColor="@{viewModel.buttonValidation? @color/green_42c87f : @color/grey_bd}"
             android:elevation="18dp"
             app:cardCornerRadius="47dp"
+            android:clickable="@{viewModel.buttonValidation}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -121,7 +129,7 @@
             app:layout_constraintTop_toBottomOf="@+id/editText" />
 
         <TextView
-            android:text="0"
+            android:text="@{String.valueOf(viewModel.setCount)}"
             style="@style/Zooc12Medium"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

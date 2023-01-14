@@ -4,7 +4,6 @@ import android.view.View
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
 import org.sopt.zooczoocbbangbbang.R
-import org.sopt.zooczoocbbangbbang.data.remote.entity.home.response.ResponseTotalRecordsDto
 import org.sopt.zooczoocbbangbbang.data.remote.entity.common.Comment
 import org.sopt.zooczoocbbangbbang.databinding.ItemGridArchivePostingBinding
 import org.sopt.zooczoocbbangbbang.databinding.ItemLinearArchivePostingBinding

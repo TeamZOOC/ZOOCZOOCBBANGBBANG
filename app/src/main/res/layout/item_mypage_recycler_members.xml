@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
+
         <variable
             name="memberInfo"
             type="org.sopt.zooczoocbbangbbang.data.remote.entity.mypage.ResponseMembersDto.Data.FamilyMember" />
@@ -33,6 +33,8 @@
             android:textAppearance="@style/Zooc12Medium"
             android:textColor="#4F4F4F"
             android:textSize="12sp"
+            android:maxLines="1"
+            android:gravity="center"
             android:text="구름 아빠"
             app:layout_constraintEnd_toEndOf="@+id/img_members"
             app:layout_constraintStart_toStartOf="@+id/img_members"

@@ -13,8 +13,6 @@ import org.sopt.zooczoocbbangbbang.data.local.ZoocStorage
 import org.sopt.zooczoocbbangbbang.databinding.ActivitySignInBinding
 import org.sopt.zooczoocbbangbbang.presentation.base.BindingActivity
 import org.sopt.zooczoocbbangbbang.presentation.main.MainActivity
-import org.sopt.zooczoocbbangbbang.presentation.onboarding.Onboarding
-import org.sopt.zooczoocbbangbbang.presentation.onboarding.OnboardingActivity
 
 const val KAKAO_LOGIN = "kakaoLogin"
 

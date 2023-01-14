@@ -7,7 +7,7 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
 object ServiceFactory {
-    private const val BASE_URL = "http://3.36.236.44:3000"
+    private const val BASE_URL = "http://3.36.236.44:3000/"
 
     /*val retrofitZooc: Retrofit by lazy {
         Retrofit.Builder()

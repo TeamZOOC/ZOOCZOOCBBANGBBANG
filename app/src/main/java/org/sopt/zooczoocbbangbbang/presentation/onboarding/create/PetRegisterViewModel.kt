@@ -1,50 +1,33 @@
 package org.sopt.zooczoocbbangbbang.presentation.onboarding.create
 
-import android.util.Log
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import org.sopt.zooczoocbbangbbang.presentation.onboarding.create.model.PetUiModel
-import org.sopt.zooczoocbbangbbang.util.NonNullLiveData
-import org.sopt.zooczoocbbangbbang.util.NonNullMutableLiveData
+import org.sopt.zooczoocbbangbbang.util.Event
 
 class PetRegisterViewModel : ViewModel() {
-    private val petRegisterForms = mutableListOf(PetUiModel.empty)
-    private val _petUiModelList: NonNullMutableLiveData<List<PetUiModel>> = NonNullMutableLiveData(
-        listOf(PetUiModel.empty)
-    )
-    val petUiModelList: NonNullLiveData<List<PetUiModel>> get() = _petUiModelList
+    private val _addPetFormEventStream: MutableLiveData<Event<Unit>> = MutableLiveData()
+    val addPetFormEventStream: LiveData<Event<Unit>> get() = _addPetFormEventStream
 
-    private val _canAddForm: NonNullMutableLiveData<Boolean> = NonNullMutableLiveData(true)
-    val canAddForm: NonNullLiveData<Boolean> get() = _canAddForm
+    private val _delPetFormEventStream: MutableLiveData<Event<Int>> = MutableLiveData()
+    val delPetFormEventStream: LiveData<Event<Int>> get() = _delPetFormEventStream
+
+    private val _canAddPetForm: MutableLiveData<Boolean> = MutableLiveData(true)
+    val canAddPetForm: LiveData<Boolean> get() = _canAddPetForm
 
     fun addPetRegisterForm() {
-        if (!_canAddForm.value) return
-        petRegisterForms.add(PetUiModel.empty)
-        updateForms()
-        Log.d("testui", "$petRegisterForms")
+        _addPetFormEventStream.value = Event(Unit)
     }
 
     fun removePetRegisterForm(position: Int) {
-        if (petRegisterForms.size == 1) return
-        petRegisterForms.removeAt(position)
-        updateForms()
+        _delPetFormEventStream.value = Event(position)
     }
 
-    fun editPetRegisterForm(position: Int, uriString: String, name: String) {
-        petRegisterForms[position].apply {
-            this.uriString = uriString
-            this.name = name
-        }
+    fun toggleEnableAddPetButton() {
+        _canAddPetForm.value = true
     }
 
-    private fun updateForms() {
-        _petUiModelList.value = petRegisterForms.toList()
-    }
-
-    fun toggleEnableAddFrom() {
-        _canAddForm.value = true
-    }
-
-    fun toggleDisableAddFrom() {
-        _canAddForm.value = false
+    fun toggleDisableAddPetButton() {
+        _canAddPetForm.value = false
     }
 }
