@@ -53,6 +53,7 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+
         </activity>
         <activity
             android:name=".presentation.auth.SignInActivity"
@@ -85,7 +86,9 @@
             android:windowSoftInputMode="adjustResize" />
         <activity
             android:name=".presentation.main.MainActivity"
-            android:exported="true" />
+            android:exported="true">
+
+        </activity>
     </application>
 
 </manifest>

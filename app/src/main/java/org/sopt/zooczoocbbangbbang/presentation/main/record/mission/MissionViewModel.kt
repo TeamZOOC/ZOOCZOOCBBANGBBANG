@@ -19,9 +19,9 @@ import retrofit2.HttpException
 import retrofit2.await
 import timber.log.Timber
 
+// text, image, pet 정보 저장해서 멀티파트 구현해야함,,
 class MissionViewModel : ViewModel() {
     private val service = ServiceFactory.zoocService
-    private val gsonService = ServiceFactory.zoocService
     val missionText = MutableLiveData("")
     private var isTextNotNull = MutableLiveData<Boolean>()
     val image: MutableLiveData<ContentUriRequestBody> = MutableLiveData()
@@ -30,11 +30,12 @@ class MissionViewModel : ViewModel() {
     val missionNum: MutableLiveData<Int> = MutableLiveData()
     var isChange: Boolean = false
 
+    val selectedPets = MutableLiveData<List<Int>>()
+
     // private val petInfo: MutableLiveData<List<String>> = MutableLiveData(listOf())
     private val allPetList: MutableLiveData<List<String>> = MutableLiveData(mutableListOf())
-    private val choosenPetList: MutableLiveData<List<String>> = MutableLiveData(listOf())
     var petNum: MutableLiveData<Int> = MutableLiveData()
-    var missionList = MutableLiveData<List<String>>()
+    var missionList = MutableLiveData<List<MissionUiModel>>()
 
     private val _pets = MutableLiveData<List<PetData>>()
     val pets: LiveData<List<PetData>> get() = _pets
@@ -71,23 +72,29 @@ class MissionViewModel : ViewModel() {
             )
     }
 
-    private fun onSubmit() {
-        val requestBody = json.encodeToString(PetInfo(missionText.value!!, allPetList.value!!))
-            .toRequestBody("application/body".toMediaType())
+    fun onSubmit() {
+        val content = missionText.value!!.toRequestBody("text/plain".toMediaType())
+        val pets = json.encodeToString(selectedPets.value!!)
+            .toRequestBody("text/plain".toMediaType())
 
         viewModelScope.launch {
             runCatching {
-                service.postRecord(
-                    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlhdCI6MTY3MjkwMjQzOSwiZXhwIjoxNjczNTA3MjM5fQ.ztLfFDHWIQP-vpejw_hfCwZPbkR5FjFMy7F6MRMbrZQ",
+                service.postMission(
+                    missionList.value?.get(position.value!!)?.id!!,
                     image.value?.toFormData(),
-                    requestBody
+                    content,
+                    pets
                 )
             }.onSuccess {
+                Log.d("qwer", "서버통신 성공")
                 isSuccess.value = true
             }.onFailure {
                 isSuccess.value = false
-                _errorMessage.value = "네트워크 상태가 좋지 않습니다"
-                Timber.tag("RecordViewModel").d(errorMessage.toString())
+                if (it is HttpException) {
+                    Log.e("qwer", "미션 등록하기 서버 통신 onResponse but not successful")
+                } else {
+                    Log.e("qwer", it.stackTraceToString())
+                }
             }
         }
     }
@@ -95,7 +102,7 @@ class MissionViewModel : ViewModel() {
     fun getPetNum() {
         viewModelScope.launch {
             kotlin.runCatching {
-                zoocService.getAllPets(9).await()
+                zoocService.getAllPets(1).await()
             }.onSuccess {
                 Timber.tag("MissionViewModel").d("펫 데이터 length::: %s", it.data.size)
                 Timber.tag("MissionViewModel").d(it.data[0].name)
@@ -120,7 +127,9 @@ class MissionViewModel : ViewModel() {
                 missionNum.value = it.data.size
                 Timber.tag("Mission").d(it.data[0].missionContent)
                 Timber.tag("Mission").d(it.data[1].missionContent)
-                missionList.value = it.data.map { it.missionContent }
+                missionList.value = it.data.map {
+                    MissionUiModel(it.id, it.missionContent)
+                }
                 position.value = 0
                 Timber.tag("Mission").d("미션 리스트:: %s", missionList.value)
             }.onFailure {
@@ -137,5 +146,10 @@ class MissionViewModel : ViewModel() {
 @kotlinx.serialization.Serializable
 data class PetInfo(
     val content: String,
-    val allPetList: List<String>
+    val allPetList: List<Int>
+)
+
+data class MissionUiModel(
+    val id: Int,
+    val missionContent: String
 )

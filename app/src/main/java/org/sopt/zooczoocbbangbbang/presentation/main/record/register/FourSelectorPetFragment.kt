@@ -1,20 +1,25 @@
 package org.sopt.zooczoocbbangbbang.presentation.main.record.register
 
-import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
+import android.util.Log
 import android.view.View
+import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import coil.load
+import coil.transform.CircleCropTransformation
 import org.sopt.zooczoocbbangbbang.R
 import org.sopt.zooczoocbbangbbang.databinding.FragmentFourSelectorPetBinding
 import org.sopt.zooczoocbbangbbang.presentation.base.BindingFragment
-import org.sopt.zooczoocbbangbbang.presentation.main.record.RecordDoneActivity
+import org.sopt.zooczoocbbangbbang.presentation.main.record.daily.RecordViewModel
+import org.sopt.zooczoocbbangbbang.presentation.main.record.mission.MissionViewModel
 import timber.log.Timber
 
 class FourSelectorPetFragment :
     BindingFragment<FragmentFourSelectorPetBinding>(R.layout.fragment_four_selector_pet) {
     private val fourSelectorViewModel: FourSelectorPetViewModel by viewModels()
+    private val missionViewModel: MissionViewModel by activityViewModels()
+    private val recordViewModel: RecordViewModel by activityViewModels()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         binding.lifecycleOwner = viewLifecycleOwner
@@ -96,9 +101,31 @@ class FourSelectorPetFragment :
 
     private fun clickRecordBtn() {
         binding.btnFourSelectorPetBottom.setOnClickListener {
-            val intent = Intent(requireContext(), RecordDoneActivity::class.java)
-            startActivity(intent)
+            Log.d("qwer", "0차 진입점")
+            gatherPets()
+            // requireActivity().finish()
         }
+    }
+
+    private fun gatherPets() {
+        val selectedPets = mutableListOf<Int>()
+
+        if (fourSelectorViewModel.isSelectedFirst.value == true) {
+            selectedPets.add(fourSelectorViewModel.petIdList[0])
+        }
+        if (fourSelectorViewModel.isSelectedSecond.value == true) {
+            selectedPets.add(fourSelectorViewModel.petIdList[1])
+        }
+        if (fourSelectorViewModel.isSelectedThird.value == true) {
+            selectedPets.add(fourSelectorViewModel.petIdList[2])
+        }
+        if (fourSelectorViewModel.isSelectedFourth.value == true) {
+            selectedPets.add(fourSelectorViewModel.petIdList[3])
+        }
+
+        Log.d("qwer", "1차 진입점")
+        missionViewModel.selectedPets.value = selectedPets
+        recordViewModel.selectedPets.value = selectedPets
     }
 
     // 근데 이게 일상탭인지 미션탭인지 어떻게 알지?
@@ -110,12 +137,25 @@ class FourSelectorPetFragment :
     // }
 
     private fun fetchPetImage() {
-        binding.ivFourSelectorPetFirst.load(fourSelectorViewModel.petImageList.value?.get(0))
-        binding.ivFourSelectorPetSecond.load(fourSelectorViewModel.petImageList.value?.get(1))
-        binding.ivFourSelectorPetThird.load(fourSelectorViewModel.petImageList.value?.get(2))
-        binding.ivFourSelectorPetFourth.load(fourSelectorViewModel.petImageList.value?.get(3))
-    }
-
-    companion object {
+        binding.ivFourSelectorPetFirst.load(fourSelectorViewModel.petImageList.value?.get(0)) {
+            transformations(
+                CircleCropTransformation()
+            )
+        }
+        binding.ivFourSelectorPetSecond.load(fourSelectorViewModel.petImageList.value?.get(1)) {
+            transformations(
+                CircleCropTransformation()
+            )
+        }
+        binding.ivFourSelectorPetThird.load(fourSelectorViewModel.petImageList.value?.get(2)) {
+            transformations(
+                CircleCropTransformation()
+            )
+        }
+        binding.ivFourSelectorPetFourth.load(fourSelectorViewModel.petImageList.value?.get(3)) {
+            transformations(
+                CircleCropTransformation()
+            )
+        }
     }
 }

@@ -1,5 +1,6 @@
 package org.sopt.zooczoocbbangbbang.presentation.main.record
 
+import android.util.Log
 import androidx.lifecycle.MediatorLiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -16,6 +17,7 @@ class ThreeSelectorPetViewModel : ViewModel() {
     val isSelectedThird = MutableLiveData(false)
     var petNameList = MutableLiveData<List<String>>()
     var petImageList = MutableLiveData<List<String>>()
+    val petIdList = mutableListOf<Int>()
 
     fun switchFirstBooleanValue() {
         isSelectedFirst.value = !isSelectedFirst.value!!
@@ -50,7 +52,7 @@ class ThreeSelectorPetViewModel : ViewModel() {
     fun getPetInfo() {
         viewModelScope.launch {
             kotlin.runCatching {
-                ServiceFactory.zoocService.getAllPets(9).await()
+                ServiceFactory.zoocService.getAllPets(1).await()
             }.onSuccess { it ->
                 Timber.tag("TwoSelector").d("펫 데이터 length::: %s", it.data.size)
                 Timber.tag("TwoSelector").d(it.data[0].photo)
@@ -58,6 +60,8 @@ class ThreeSelectorPetViewModel : ViewModel() {
                 Timber.tag("TwoSelector").d("전 %s", petImageList.value)
                 petNameList.value = it.data.map { it.name }
                 petImageList.value = it.data.map { it.photo }
+                Log.d("qwer", "${petImageList.value}")
+                petIdList.addAll(it.data.map { it.id })
                 Timber.tag("TwoSelector").d("후 %s", petImageList.value)
             }.onFailure {
                 if (it is HttpException) {
