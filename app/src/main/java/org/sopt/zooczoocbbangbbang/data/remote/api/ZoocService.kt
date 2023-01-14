@@ -55,9 +55,10 @@ interface ZoocService {
         @Path("familyId") familyId: Int
     ): Call<ResponsePetDto>
 
-    @GET("record/detail/{familyId}/{recordId}")
+    @GET("record/detail/{familyId}/{petId}/{recordId}")
     fun getRecordDetail(
         @Path("familyId") familyId: Int,
+        @Path("petId") petId: Int,
         @Path("recordId") recordId: Int
     ): Call<ResponseRecordDetailDto>
 

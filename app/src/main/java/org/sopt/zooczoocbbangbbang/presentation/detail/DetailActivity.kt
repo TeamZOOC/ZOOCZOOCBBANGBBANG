@@ -95,6 +95,8 @@ class DetailActivity : BindingActivity<ActivityDetailBinding>(R.layout.activity_
             ),
             writerPhoto = myBundle.getString(WRITER_IMAGE)
         )
+
+        detailViewModel.petId = myBundle.getInt(PET_ID)
         binding.ivDetailImage.load(data.photo)
         binding.ivDetailEditorImage.load(data.writerPhoto ?: R.drawable.ic_default_image)
         binding.data = data
@@ -171,6 +173,7 @@ class DetailActivity : BindingActivity<ActivityDetailBinding>(R.layout.activity_
     }
 
     companion object {
+        const val PET_ID = "petId"
         const val ID = "id"
         const val PET_IMAGE = "petImage"
         const val DATE = "date"

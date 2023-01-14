@@ -18,6 +18,7 @@ class DetailViewModel : ViewModel() {
     val recordDetail = MutableLiveData<ResponseRecordDetailDto.RecordDetailDto>()
     val comments = MutableLiveData<List<Comment>>()
     val emojiId = MutableLiveData<Int>()
+    var petId: Int = -1
 
     fun uploadComment(recordId: Int, comment: String) {
         viewModelScope.launch {
@@ -54,7 +55,7 @@ class DetailViewModel : ViewModel() {
     fun getDetailData(recordId: Int) {
         viewModelScope.launch {
             kotlin.runCatching {
-                zoocService.getRecordDetail(1, recordId).await()
+                zoocService.getRecordDetail(1, petId, recordId).await()
             }.onSuccess {
                 recordDetail.value = it.data
                 comments.value = it.data.comments
