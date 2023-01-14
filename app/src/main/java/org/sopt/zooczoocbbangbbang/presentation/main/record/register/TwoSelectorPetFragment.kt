@@ -3,7 +3,9 @@ package org.sopt.zooczoocbbangbbang.presentation.main.record.register
 import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
+import android.util.Log
 import android.view.View
+import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import coil.load
 import coil.transform.CircleCropTransformation
@@ -11,11 +13,15 @@ import org.sopt.zooczoocbbangbbang.R
 import org.sopt.zooczoocbbangbbang.databinding.FragmentTwoSelectorPetBinding
 import org.sopt.zooczoocbbangbbang.presentation.base.BindingFragment
 import org.sopt.zooczoocbbangbbang.presentation.main.record.RecordDoneActivity
+import org.sopt.zooczoocbbangbbang.presentation.main.record.daily.RecordViewModel
+import org.sopt.zooczoocbbangbbang.presentation.main.record.mission.MissionViewModel
 import timber.log.Timber
 
 open class TwoSelectorPetFragment :
     BindingFragment<FragmentTwoSelectorPetBinding>(R.layout.fragment_two_selector_pet) {
     private val twoSelectorViewModel: TwoSelectorPetViewModel by viewModels()
+    private val missionViewModel: MissionViewModel by activityViewModels()
+    private val recordViewModel: RecordViewModel by activityViewModels()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         binding.lifecycleOwner = viewLifecycleOwner
@@ -25,6 +31,8 @@ open class TwoSelectorPetFragment :
         fetchPetImage()
         checkIsSelected()
         clickRecordBtn()
+        observeSelectComplete()
+        observePostCoompleted()
     }
 
     private fun clickFirstSelectorItem() {
@@ -62,15 +70,6 @@ open class TwoSelectorPetFragment :
         }
     }
 
-    private fun clickRecordBtn() {
-        binding.btnTwoSelectorPetBottom.setOnClickListener {
-            activity?.let {
-                val intent = Intent(context, RecordDoneActivity::class.java)
-                startActivity(intent)
-            }
-        }
-    }
-
     private fun clickBackBtn() {
         binding.ivTwoSelectorPetBackbtn.setOnClickListener {
             // parentFragmentManager.beginTransaction()
@@ -89,6 +88,59 @@ open class TwoSelectorPetFragment :
         }
     }
 
-    companion object {
+    private fun clickRecordBtn() {
+        binding.btnTwoSelectorPetBottom.setOnClickListener {
+            Log.d("qwer", "0차 진입점")
+            gatherPets()
+        }
+    }
+
+    private fun gatherPets() {
+        val tempPets = mutableListOf<Int>()
+
+        if (twoSelectorViewModel.isSelectedFirst.value == true) {
+            tempPets.add(twoSelectorViewModel.petIdList[0])
+        }
+        if (twoSelectorViewModel.isSelectedSecond.value == true) {
+            tempPets.add(twoSelectorViewModel.petIdList[1])
+        }
+
+        Log.d("qwer", "1차 진입점")
+        missionViewModel.selectedPets.value = tempPets.toList()
+        recordViewModel.selectedPets.value = tempPets.toList()
+    }
+
+    private fun observeSelectComplete() {
+        missionViewModel.selectedPets.observe(viewLifecycleOwner) {
+            Log.d("qwer", "list1: $it")
+            if (!it.isNullOrEmpty()) {
+                Log.d("qwer", "list2: $it")
+                missionViewModel.onSubmit()
+            }
+        }
+        recordViewModel.selectedPets.observe(viewLifecycleOwner) {
+            Log.d("qwer", "list1: $it")
+            if (!it.isNullOrEmpty()) {
+                Log.d("qwer", "list2: $it")
+                recordViewModel.onSubmit()
+            }
+        }
+    }
+
+    private fun observePostCoompleted() {
+        missionViewModel.isSuccess.observe(viewLifecycleOwner) {
+            if (it) {
+                Log.d("qwer", "여기 온거 맞지?")
+                val intent = Intent(requireContext(), RecordDoneActivity::class.java)
+                startActivity(intent)
+            }
+        }
+        recordViewModel.isSuccess.observe(viewLifecycleOwner) {
+            if (it) {
+                Log.d("qwer", "여기 온거 맞지?")
+                val intent = Intent(requireContext(), RecordDoneActivity::class.java)
+                startActivity(intent)
+            }
+        }
     }
 }

@@ -18,7 +18,6 @@ import org.sopt.zooczoocbbangbbang.data.remote.entity.record.ResponseMissionDto
 import retrofit2.Call
 import retrofit2.http.Body
 import retrofit2.http.GET
-import retrofit2.http.Header
 import retrofit2.http.Multipart
 import retrofit2.http.PATCH
 import retrofit2.http.POST
@@ -89,10 +88,26 @@ interface ZoocService {
 
     // 기록/미션 작성하기 (POST)
     @Multipart
-    @POST("record/{familyId}?missionId={missionId}")
+    @POST("record/{familyId}")
+    fun postMission(
+        @Query("missionId") missionId: Int,
+        @Part file: MultipartBody.Part? = null,
+        @Part("content") content: RequestBody,
+        @Part("pet") pet: RequestBody
+        // @Header("x-auth-token") token: String,
+        /*@Part file: MultipartBody.Part? = null,
+        @Part requestBody: RequestBody*/
+    ): Call<RequestRecordDto>
+
+    @Multipart
+    @POST("record/{familyId}")
     fun postRecord(
-        @Header("x-auth-token") token: String,
-        @Part image: MultipartBody.Part? = null,
-        @Part requestBody: RequestBody
+        @Path("familyId") familyId: Int,
+        @Part file: MultipartBody.Part? = null,
+        @Part("content") content: RequestBody,
+        @Part("pet") pet: RequestBody
+        // @Header("x-auth-token") token: String,
+        /*@Part file: MultipartBody.Part? = null,
+        @Part requestBody: RequestBody*/
     ): Call<RequestRecordDto>
 }

@@ -1,5 +1,6 @@
 package org.sopt.zooczoocbbangbbang.presentation.main.record.daily
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MediatorLiveData
 import androidx.lifecycle.MutableLiveData
@@ -12,6 +13,8 @@ import okhttp3.MediaType.Companion.toMediaType
 import okhttp3.RequestBody.Companion.toRequestBody
 import org.sopt.zooczoocbbangbbang.data.remote.api.ServiceFactory
 import org.sopt.zooczoocbbangbbang.data.remote.api.ServiceFactory.json
+import org.sopt.zooczoocbbangbbang.presentation.main.home.data.PetData
+import org.sopt.zooczoocbbangbbang.presentation.main.record.mission.MissionUiModel
 import org.sopt.zooczoocbbangbbang.util.ContentUriRequestBody
 import retrofit2.HttpException
 import retrofit2.await
@@ -30,6 +33,13 @@ class RecordViewModel : ViewModel() {
     val isRecordPostSuccess = MutableLiveData(false)
     private val _errorMessage = MutableLiveData<String>()
     val errorMessage: LiveData<String> = _errorMessage
+    var recordList = MutableLiveData<List<MissionUiModel>>()
+    val selectedPets = MutableLiveData<List<Int>>()
+
+    val isSuccess = MutableLiveData(false)
+
+    private val _pets = MutableLiveData<List<PetData>>()
+    val pets: LiveData<List<PetData>> get() = _pets
 
     private fun checkText(): Boolean {
         return !recordText.value.isNullOrEmpty()
@@ -52,23 +62,49 @@ class RecordViewModel : ViewModel() {
         return (isTextNotNull.value == true) and (isShowImage.value == true)
     }
 
-    private fun onSubmit() {
-        val requestBody = json.encodeToString(PetInfo(recordText.value!!, petInfo.value!!))
-            .toRequestBody("application/body".toMediaType())
+    // private fun onSubmit() {
+    //     val requestBody = json.encodeToString(PetInfo(recordText.value!!, petInfo.value!!))
+    //         .toRequestBody("application/body".toMediaType())
+    //
+    //     viewModelScope.launch {
+    //         runCatching {
+    //             /*service.postRecord(
+    //                 image.value?.toFormData(),
+    //                 requestBody
+    //             )*/
+    //         }.onSuccess {
+    //             isRecordPostSuccess.value = true
+    //         }.onFailure {
+    //             isRecordPostSuccess.value = false
+    //             _errorMessage.value = "네트워크 상태가 좋지 않습니다"
+    //             Timber.tag("RecordViewModel").d(errorMessage.toString())
+    //         }
+    //     }
+    // }
+
+    fun onSubmit() {
+        val content = recordText.value!!.toRequestBody("text/plain".toMediaType())
+        val pets = json.encodeToString(selectedPets.value!!)
+            .toRequestBody("text/plain".toMediaType())
 
         viewModelScope.launch {
             runCatching {
                 service.postRecord(
-                    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlhdCI6MTY3MjkwMjQzOSwiZXhwIjoxNjczNTA3MjM5fQ.ztLfFDHWIQP-vpejw_hfCwZPbkR5FjFMy7F6MRMbrZQ",
+                    1,
                     image.value?.toFormData(),
-                    requestBody
+                    content,
+                    pets
                 )
             }.onSuccess {
-                isRecordPostSuccess.value = true
+                Log.d("qwer", "jjj서버통신 성공")
+                isSuccess.value = true
             }.onFailure {
-                isRecordPostSuccess.value = false
-                _errorMessage.value = "네트워크 상태가 좋지 않습니다"
-                Timber.tag("RecordViewModel").d(errorMessage.toString())
+                isSuccess.value = false
+                if (it is HttpException) {
+                    Log.e("qwer", "jjjjjj미션 등록하기 서버 통신 onResponse but not successful")
+                } else {
+                    Log.e("qwer", it.stackTraceToString())
+                }
             }
         }
     }
@@ -76,7 +112,7 @@ class RecordViewModel : ViewModel() {
     fun getPetNum() {
         viewModelScope.launch {
             kotlin.runCatching {
-                ServiceFactory.zoocService.getAllPets(9).await()
+                ServiceFactory.zoocService.getAllPets(1).await()
             }.onSuccess {
                 Timber.tag("RecordViewModel").d("펫 데이터 length::: %s", it.data.size)
                 Timber.tag("RecordViewModel").d(it.data[0].name)

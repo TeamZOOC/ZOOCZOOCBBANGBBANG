@@ -15,6 +15,7 @@ class TwoSelectorPetViewModel : ViewModel() {
     val isSelectedSecond = MutableLiveData(false)
     var petNameList = MutableLiveData<List<String>>()
     var petImageList = MutableLiveData<List<String>>()
+    val petIdList = mutableListOf<Int>()
 
     fun switchFirstBooleanValue() {
         isSelectedFirst.value = !isSelectedFirst.value!!
@@ -42,7 +43,7 @@ class TwoSelectorPetViewModel : ViewModel() {
     fun getPetInfo() {
         viewModelScope.launch {
             kotlin.runCatching {
-                ServiceFactory.zoocService.getAllPets(9).await()
+                ServiceFactory.zoocService.getAllPets(1).await()
             }.onSuccess { it ->
                 Timber.tag("TwoSelector").d("펫 데이터 length::: %s", it.data.size)
                 Timber.tag("TwoSelector").d(it.data[0].photo)
@@ -50,6 +51,7 @@ class TwoSelectorPetViewModel : ViewModel() {
                 Timber.tag("TwoSelector").d("전 %s", petImageList.value)
                 petNameList.value = it.data.map { it.name }
                 petImageList.value = it.data.map { it.photo }
+                petIdList.addAll(it.data.map { it.id })
                 Timber.tag("TwoSelector").d("후 %s", petImageList.value)
             }.onFailure {
                 if (it is HttpException) {
@@ -60,4 +62,9 @@ class TwoSelectorPetViewModel : ViewModel() {
             }
         }
     }
+    // fun onSavePet(){
+    //     if(isSelectedFirst.value == true){
+    //         selectedPetList.add
+    //     }
+    // }
 }
