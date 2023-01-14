@@ -20,6 +20,7 @@ class HomeViewModel : ViewModel() {
     val pets: LiveData<List<PetData>> get() = _pets
     private val _records = MutableLiveData<List<ArchivePostingData>>()
     val records: LiveData<List<ArchivePostingData>> get() = _records
+    var currentPetId: Int = -1
 
     fun getRecords(petId: Int) {
         viewModelScope.launch {
@@ -27,7 +28,6 @@ class HomeViewModel : ViewModel() {
                 zoocService.getAllRecords(1, petId).await()
             }.onSuccess {
                 _records.value = mappingRecord(it)
-                Log.d("token", "zz: ${records.value?.map { it.record.id }}")
             }.onFailure {
                 if (it is HttpException) {
                     Log.e("HomeFragment", "전체 기록 가져오기 서버 통신 onResponse but not successful")
@@ -44,6 +44,7 @@ class HomeViewModel : ViewModel() {
                 zoocService.getAllPets(1).await()
             }.onSuccess {
                 _pets.value = mappingPet(it)
+                currentPetId = it.data[0].id
             }.onFailure {
                 if (it is HttpException) {
                     Log.e("HomeFragment", "모든 펫 가져오기 서버 통신 onResponse but not successful")

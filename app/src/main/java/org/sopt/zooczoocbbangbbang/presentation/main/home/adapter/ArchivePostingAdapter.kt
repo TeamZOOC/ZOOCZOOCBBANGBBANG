@@ -65,6 +65,11 @@ class ArchivePostingAdapter(private val clickExpandedItem: (views: Map<String, V
         previousIndex = -1
     }
 
+    fun clearItemPosition() {
+        currentIndex = 0
+        previousIndex = -1
+    }
+
     override fun getItemCount(): Int = archives.size
 
     override fun getItemViewType(position: Int): Int {

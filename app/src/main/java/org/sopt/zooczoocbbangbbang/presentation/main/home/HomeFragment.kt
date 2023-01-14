@@ -3,6 +3,7 @@ package org.sopt.zooczoocbbangbbang.presentation.main.home
 import android.app.ActivityOptions
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.view.ViewGroup.LayoutParams.WRAP_CONTENT
 import androidx.constraintlayout.widget.ConstraintSet
@@ -19,6 +20,7 @@ import org.sopt.zooczoocbbangbbang.presentation.detail.DetailActivity
 import org.sopt.zooczoocbbangbbang.presentation.detail.DetailActivity.Companion.CONTENT
 import org.sopt.zooczoocbbangbbang.presentation.detail.DetailActivity.Companion.DATE
 import org.sopt.zooczoocbbangbbang.presentation.detail.DetailActivity.Companion.ID
+import org.sopt.zooczoocbbangbbang.presentation.detail.DetailActivity.Companion.PET_ID
 import org.sopt.zooczoocbbangbbang.presentation.detail.DetailActivity.Companion.PET_IMAGE
 import org.sopt.zooczoocbbangbbang.presentation.detail.DetailActivity.Companion.WRITER_IMAGE
 import org.sopt.zooczoocbbangbbang.presentation.detail.DetailActivity.Companion.WRITER_NAME
@@ -84,12 +86,21 @@ class HomeFragment : BindingFragment<FragmentHomeBinding>(R.layout.fragment_home
     private fun clickItem(views: Map<String, View>, recordTransportData: RecordTransportData) {
         val intent = Intent(requireContext(), DetailActivity::class.java)
         val options = makeTransitionIntentOption(views)
-        intent.putExtras(makeBundleToDetailActivity(recordTransportData))
+        intent.putExtras(
+            makeBundleToDetailActivity(
+                recordTransportData,
+                homeViewModel.currentPetId
+            )
+        )
         startActivity(intent, options.toBundle())
     }
 
-    private fun makeBundleToDetailActivity(recordTransportData: RecordTransportData): Bundle {
+    private fun makeBundleToDetailActivity(
+        recordTransportData: RecordTransportData,
+        petId: Int
+    ): Bundle {
         return Bundle().apply {
+            putInt(PET_ID, petId)
             putInt(ID, recordTransportData.id)
             putString(PET_IMAGE, recordTransportData.petImage)
             putString(DATE, recordTransportData.date)
@@ -132,7 +143,10 @@ class HomeFragment : BindingFragment<FragmentHomeBinding>(R.layout.fragment_home
     }
 
     private fun clickPet(petId: Int) {
+        Log.d("asdf", "펫 클릭됨 id: $petId")
         homeViewModel.getRecords(petId)
+        homeViewModel.currentPetId = petId
+        archivePostingAdapter.clearItemPosition()
     }
 
     private fun initArchiveAdapter() {
