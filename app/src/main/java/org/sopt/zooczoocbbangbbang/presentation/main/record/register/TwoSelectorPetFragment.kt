@@ -133,6 +133,7 @@ open class TwoSelectorPetFragment :
                 Log.d("qwer", "여기 온거 맞지?")
                 val intent = Intent(requireContext(), RecordDoneActivity::class.java)
                 startActivity(intent)
+                requireActivity().finish()
             }
         }
         recordViewModel.isSuccess.observe(viewLifecycleOwner) {
@@ -140,6 +141,7 @@ open class TwoSelectorPetFragment :
                 Log.d("qwer", "여기 온거 맞지?")
                 val intent = Intent(requireContext(), RecordDoneActivity::class.java)
                 startActivity(intent)
+                requireActivity().finish()
             }
         }
     }
