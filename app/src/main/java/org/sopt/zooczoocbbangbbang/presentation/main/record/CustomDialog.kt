@@ -10,7 +10,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.DialogFragment
 import org.sopt.zooczoocbbangbbang.databinding.FragmentCustomDialogBinding
 
-class CustomDialog(val finishApp: () -> Unit?) : DialogFragment() {
+class CustomDialog(val finishApp: () -> Unit) : DialogFragment() {
     private var _binding: FragmentCustomDialogBinding? = null
     private val binding get() = _binding!!
 

@@ -48,7 +48,7 @@ class RecordActivity : BindingActivity<ActivityRecordBinding>(R.layout.activity_
     }
 
     private fun showMessageDialog() {
-        val customDialog = CustomDialog(finishApp = { finish() })
+        val customDialog = CustomDialog { finish() }
         customDialog.show(supportFragmentManager, "CustomDialog")
         customDialog.isCancelable = false
     }

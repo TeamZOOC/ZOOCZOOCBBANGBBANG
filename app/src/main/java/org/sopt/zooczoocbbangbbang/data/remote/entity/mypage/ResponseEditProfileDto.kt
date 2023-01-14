@@ -1,14 +1,17 @@
 package org.sopt.zooczoocbbangbbang.data.remote.entity.mypage
 
+import com.google.gson.annotations.SerializedName
+
 data class ResponseEditProfileDto(
-    val data: Profile,
+    val data: Data,
     val message: String,
     val status: Int,
     val success: Boolean
 ) {
-    data class Profile(
+    data class Data(
         val id: Int,
-        val nick_name: String,
+        @SerializedName("nick_name")
+        val nickName: String,
         val photo: String
     )
 }

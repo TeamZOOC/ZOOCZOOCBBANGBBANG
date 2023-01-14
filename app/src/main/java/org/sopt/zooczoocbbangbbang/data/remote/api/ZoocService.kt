@@ -11,6 +11,7 @@ import org.sopt.zooczoocbbangbbang.data.remote.entity.detail.response.ResponseRe
 import org.sopt.zooczoocbbangbbang.data.remote.entity.home.response.ResponseFamilyInfoDto
 import org.sopt.zooczoocbbangbbang.data.remote.entity.home.response.ResponsePetDto
 import org.sopt.zooczoocbbangbbang.data.remote.entity.home.response.ResponseTotalRecordsDto
+import org.sopt.zooczoocbbangbbang.data.remote.entity.mypage.ResponseEditProfileDto
 import org.sopt.zooczoocbbangbbang.data.remote.entity.mypage.ResponseMembersDto
 import org.sopt.zooczoocbbangbbang.data.remote.entity.record.RequestRecordDto
 import org.sopt.zooczoocbbangbbang.data.remote.entity.record.ResponseMissionDto
@@ -18,12 +19,24 @@ import retrofit2.Call
 import retrofit2.http.Body
 import retrofit2.http.GET
 import retrofit2.http.Multipart
+import retrofit2.http.PATCH
 import retrofit2.http.POST
 import retrofit2.http.Part
 import retrofit2.http.Path
 import retrofit2.http.Query
 
 interface ZoocService {
+    @GET("family/mypage")
+    fun getUser(): Call<ResponseMembersDto>
+
+    @Multipart
+    @PATCH("user/profile")
+    fun editProfile(
+        @Query("photo") photo: Boolean,
+        @Part("nickName") body: RequestBody,
+        @Part file: MultipartBody.Part? = null
+    ): Call<ResponseEditProfileDto>
+
     @GET("family/mypage")
     fun getMemberList(): Call<ResponseMembersDto>
 

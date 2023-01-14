@@ -17,7 +17,7 @@ class SplashActivity : BindingActivity<ActivitySplashBinding>(R.layout.activity_
         super.onCreate(savedInstanceState)
         ZoocStorage.clear()
         var keyHash = Utility.getKeyHash(this)
-        Log.d("가나다라마바샂", "keyhash : $keyHash")
+        Log.d("TOKEN", "keyhash : $keyHash")
         setDelay()
     }
 

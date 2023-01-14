@@ -36,13 +36,13 @@ class OnboardingViewModel : ViewModel() {
         _onboardingStream.value = Onboarding.INPUT_CODE
     }
 
-    fun moveInvitationBeforeStep() {
+    /*fun moveInvitationBeforeStep() {
         _onboardingStream.value = Onboarding.INVITATION_BEFORE
     }
 
     fun moveInvitationAfterStep() {
         _onboardingStream.value = Onboarding.INVITATION_AFTER
-    }
+    }*/
 
     fun moveEndStep() {
         _onboardingStream.value = Onboarding.END
