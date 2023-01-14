@@ -21,6 +21,9 @@
             android:name=".presentation.main.mypage.PetRegisterActivity"
             android:exported="false"/>
         <activity
+            android:name=".presentation.auth.AgreementActivity"
+            android:exported="false" />
+        <activity
             android:name=".presentation.auth.SignUpCompleteActivity"
             android:exported="false">
             <meta-data
@@ -63,7 +66,7 @@
             android:exported="true" />
         <activity
             android:name=".presentation.alarm.AlarmActivity"
-            android:exported="false"/>
+            android:exported="false" />
         <activity
             android:name=".presentation.main.record.RecordDoneActivity"
             android:exported="false" />
