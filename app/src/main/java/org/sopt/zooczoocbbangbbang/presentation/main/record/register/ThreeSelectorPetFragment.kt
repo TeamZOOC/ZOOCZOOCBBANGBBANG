@@ -1,4 +1,4 @@
-
+import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
 import android.util.Log
@@ -6,9 +6,11 @@ import android.view.View
 import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import coil.load
+import coil.transform.CircleCropTransformation
 import org.sopt.zooczoocbbangbbang.R
 import org.sopt.zooczoocbbangbbang.databinding.FragmentThreeSelectorPetBinding
 import org.sopt.zooczoocbbangbbang.presentation.base.BindingFragment
+import org.sopt.zooczoocbbangbbang.presentation.main.record.RecordDoneActivity
 import org.sopt.zooczoocbbangbbang.presentation.main.record.ThreeSelectorPetViewModel
 import org.sopt.zooczoocbbangbbang.presentation.main.record.daily.RecordViewModel
 import org.sopt.zooczoocbbangbbang.presentation.main.record.mission.MissionViewModel
@@ -26,6 +28,8 @@ class ThreeSelectorPetFragment :
         fetchPetImage()
         checkIsSelected()
         clickRecordBtn()
+        observeSelectComplete()
+        observePostCoompleted()
     }
 
     private fun clickFirstSelectorItem() {
@@ -104,9 +108,57 @@ class ThreeSelectorPetFragment :
     }
 
     private fun fetchPetImage() {
-        binding.ivThreeSelectorPetFirst.load(threeSelectorViewModel.petImageList.value?.get(0))
-        binding.ivThreeSelectorPetSecond.load(threeSelectorViewModel.petImageList.value?.get(1))
-        binding.ivThreeSelectorPetThird.load(threeSelectorViewModel.petImageList.value?.get(2))
+        threeSelectorViewModel.petImageList.observe(viewLifecycleOwner) {
+            binding.ivThreeSelectorPetFirst.load(threeSelectorViewModel.petImageList.value?.get(0)) {
+                transformations(
+                    CircleCropTransformation()
+                )
+            }
+            binding.ivThreeSelectorPetSecond.load(threeSelectorViewModel.petImageList.value?.get(1)) {
+                transformations(
+                    CircleCropTransformation()
+                )
+            }
+            binding.ivThreeSelectorPetThird.load(threeSelectorViewModel.petImageList.value?.get(2)) {
+                transformations(
+                    CircleCropTransformation()
+                )
+            }
+        }
+    }
+
+    private fun observeSelectComplete() {
+        missionViewModel.selectedPets.observe(viewLifecycleOwner) {
+            Log.d("qwer", "list1: $it")
+            if (!it.isNullOrEmpty()) {
+                Log.d("qwer", "list2: $it")
+                missionViewModel.onSubmit()
+            }
+        }
+        recordViewModel.selectedPets.observe(viewLifecycleOwner) {
+            Log.d("qwer", "list1: $it")
+            if (!it.isNullOrEmpty()) {
+                Log.d("qwer", "list2: $it")
+                recordViewModel.onSubmit()
+            }
+        }
+    }
+
+    private fun observePostCoompleted() {
+        missionViewModel.isSuccess.observe(viewLifecycleOwner) {
+            if (it) {
+                Log.d("qwer", "여기 온거 맞지?")
+                val intent = Intent(requireContext(), RecordDoneActivity::class.java)
+                startActivity(intent)
+            }
+        }
+        recordViewModel.isSuccess.observe(viewLifecycleOwner) {
+            if (it) {
+                Log.d("qwer", "여기 온거 맞지?")
+                val intent = Intent(requireContext(), RecordDoneActivity::class.java)
+                startActivity(intent)
+            }
+        }
     }
 
     companion object {

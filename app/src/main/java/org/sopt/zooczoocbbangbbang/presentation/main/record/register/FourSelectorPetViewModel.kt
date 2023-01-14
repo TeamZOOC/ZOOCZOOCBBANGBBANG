@@ -78,7 +78,8 @@ class FourSelectorPetViewModel : ViewModel() {
                 for (i in 0 until len) {
                     petNameList.value?.add(it.data[i].name)
                     petImageList.value?.add(it.data[i].photo)
-                    petIdList.add(it.data[i].id)
+                    // petIdList.add(it.data[i].id)
+                    petIdList.addAll(it.data.map { it.id })
                     Log.d("Four", "${it.data[i].name}")
                     Log.d("Four", "${it.data[i].photo}")
                 }

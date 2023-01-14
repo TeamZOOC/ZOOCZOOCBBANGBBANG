@@ -75,7 +75,7 @@ interface ZoocService {
 
     // 기록/미션 작성하기 (POST)
     @Multipart
-    @POST("record/1")
+    @POST("record/{familyId}")
     fun postMission(
         @Query("missionId") missionId: Int,
         @Part file: MultipartBody.Part? = null,
@@ -87,8 +87,9 @@ interface ZoocService {
     ): Call<RequestRecordDto>
 
     @Multipart
-    @POST("record/1")
+    @POST("record/{familyId}")
     fun postRecord(
+        @Path("familyId") familyId: Int,
         @Part file: MultipartBody.Part? = null,
         @Part("content") content: RequestBody,
         @Part("pet") pet: RequestBody

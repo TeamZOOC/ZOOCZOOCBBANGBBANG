@@ -7,6 +7,7 @@ import android.view.View
 import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import coil.load
+import coil.transform.CircleCropTransformation
 import org.sopt.zooczoocbbangbbang.R
 import org.sopt.zooczoocbbangbbang.databinding.FragmentFourSelectorPetBinding
 import org.sopt.zooczoocbbangbbang.presentation.base.BindingFragment
@@ -102,6 +103,7 @@ class FourSelectorPetFragment :
         binding.btnFourSelectorPetBottom.setOnClickListener {
             Log.d("qwer", "0차 진입점")
             gatherPets()
+            // requireActivity().finish()
         }
     }
 
@@ -135,9 +137,25 @@ class FourSelectorPetFragment :
     // }
 
     private fun fetchPetImage() {
-        binding.ivFourSelectorPetFirst.load(fourSelectorViewModel.petImageList.value?.get(0))
-        binding.ivFourSelectorPetSecond.load(fourSelectorViewModel.petImageList.value?.get(1))
-        binding.ivFourSelectorPetThird.load(fourSelectorViewModel.petImageList.value?.get(2))
-        binding.ivFourSelectorPetFourth.load(fourSelectorViewModel.petImageList.value?.get(3))
+        binding.ivFourSelectorPetFirst.load(fourSelectorViewModel.petImageList.value?.get(0)) {
+            transformations(
+                CircleCropTransformation()
+            )
+        }
+        binding.ivFourSelectorPetSecond.load(fourSelectorViewModel.petImageList.value?.get(1)) {
+            transformations(
+                CircleCropTransformation()
+            )
+        }
+        binding.ivFourSelectorPetThird.load(fourSelectorViewModel.petImageList.value?.get(2)) {
+            transformations(
+                CircleCropTransformation()
+            )
+        }
+        binding.ivFourSelectorPetFourth.load(fourSelectorViewModel.petImageList.value?.get(3)) {
+            transformations(
+                CircleCropTransformation()
+            )
+        }
     }
 }
