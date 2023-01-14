@@ -10,6 +10,7 @@ import coil.load
 import org.sopt.zooczoocbbangbbang.R
 import org.sopt.zooczoocbbangbbang.databinding.FragmentFourSelectorPetBinding
 import org.sopt.zooczoocbbangbbang.presentation.base.BindingFragment
+import org.sopt.zooczoocbbangbbang.presentation.main.record.daily.RecordViewModel
 import org.sopt.zooczoocbbangbbang.presentation.main.record.mission.MissionViewModel
 import timber.log.Timber
 
@@ -17,6 +18,7 @@ class FourSelectorPetFragment :
     BindingFragment<FragmentFourSelectorPetBinding>(R.layout.fragment_four_selector_pet) {
     private val fourSelectorViewModel: FourSelectorPetViewModel by viewModels()
     private val missionViewModel: MissionViewModel by activityViewModels()
+    private val recordViewModel: RecordViewModel by activityViewModels()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         binding.lifecycleOwner = viewLifecycleOwner
@@ -121,6 +123,7 @@ class FourSelectorPetFragment :
 
         Log.d("qwer", "1차 진입점")
         missionViewModel.selectedPets.value = selectedPets
+        recordViewModel.selectedPets.value = selectedPets
     }
 
     // 근데 이게 일상탭인지 미션탭인지 어떻게 알지?

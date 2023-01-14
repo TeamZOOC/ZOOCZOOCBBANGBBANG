@@ -16,6 +16,7 @@ class ThreeSelectorPetViewModel : ViewModel() {
     val isSelectedThird = MutableLiveData(false)
     var petNameList = MutableLiveData<List<String>>()
     var petImageList = MutableLiveData<List<String>>()
+    val petIdList = mutableListOf<Int>()
 
     fun switchFirstBooleanValue() {
         isSelectedFirst.value = !isSelectedFirst.value!!

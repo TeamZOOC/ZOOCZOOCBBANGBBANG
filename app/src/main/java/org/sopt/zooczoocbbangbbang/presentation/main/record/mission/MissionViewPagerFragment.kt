@@ -26,7 +26,7 @@ class MissionViewPagerFragment :
         observeImage()
         missionViewModel.position.observe(viewLifecycleOwner) {
             Log.d("Mission", "missionList:::: ${missionViewModel.missionList.value}")
-            binding.tvMissionQuestion.text = missionViewModel.missionList.value?.get(it)
+            binding.tvMissionQuestion.text = missionViewModel.missionList.value?.get(it)?.missionContent
         }
     }
 

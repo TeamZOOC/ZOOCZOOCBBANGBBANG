@@ -13,6 +13,7 @@ import org.sopt.zooczoocbbangbbang.R
 import org.sopt.zooczoocbbangbbang.databinding.FragmentTwoSelectorPetBinding
 import org.sopt.zooczoocbbangbbang.presentation.base.BindingFragment
 import org.sopt.zooczoocbbangbbang.presentation.main.record.RecordDoneActivity
+import org.sopt.zooczoocbbangbbang.presentation.main.record.daily.RecordViewModel
 import org.sopt.zooczoocbbangbbang.presentation.main.record.mission.MissionViewModel
 import timber.log.Timber
 
@@ -20,6 +21,7 @@ open class TwoSelectorPetFragment :
     BindingFragment<FragmentTwoSelectorPetBinding>(R.layout.fragment_two_selector_pet) {
     private val twoSelectorViewModel: TwoSelectorPetViewModel by viewModels()
     private val missionViewModel: MissionViewModel by activityViewModels()
+    private val recordViewModel: RecordViewModel by activityViewModels()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         binding.lifecycleOwner = viewLifecycleOwner
@@ -105,6 +107,7 @@ open class TwoSelectorPetFragment :
 
         Log.d("qwer", "1차 진입점")
         missionViewModel.selectedPets.value = tempPets.toList()
+        recordViewModel.selectedPets.value = tempPets.toList()
     }
 
     private fun observeSelectComplete() {
@@ -115,10 +118,24 @@ open class TwoSelectorPetFragment :
                 missionViewModel.onSubmit()
             }
         }
+        recordViewModel.selectedPets.observe(viewLifecycleOwner) {
+            Log.d("qwer", "list1: $it")
+            if (!it.isNullOrEmpty()) {
+                Log.d("qwer", "list2: $it")
+                recordViewModel.onSubmit()
+            }
+        }
     }
 
     private fun observePostCoompleted() {
-        missionViewModel.isSuccess.observe(this) {
+        missionViewModel.isSuccess.observe(viewLifecycleOwner) {
+            if (it) {
+                Log.d("qwer", "여기 온거 맞지?")
+                val intent = Intent(requireContext(), RecordDoneActivity::class.java)
+                startActivity(intent)
+            }
+        }
+        recordViewModel.isSuccess.observe(viewLifecycleOwner) {
             if (it) {
                 Log.d("qwer", "여기 온거 맞지?")
                 val intent = Intent(requireContext(), RecordDoneActivity::class.java)
