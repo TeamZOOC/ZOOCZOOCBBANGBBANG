@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:background="#F0F2EF"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:text="앱 정보"
+            style="@style/Zooc20SemiBold"
+            android:textColor="#333333"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/textView4"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="34dp" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:srcCompat="@drawable/ic_mypage_edit_profile_back"
+            android:id="@+id/imageView"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="25dp"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginStart="16dp" />
+
+        <TextView
+            android:text="현재 버전"
+            android:textColor="#333333"
+            style="@style/Zooc16SemiBold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/textView5"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginStart="40dp"
+            android:layout_marginTop="37dp"
+            app:layout_constraintTop_toBottomOf="@+id/textView4" />
+
+        <View
+            android:layout_width="325dp"
+            android:layout_height="1dp"
+            android:background="#DAE0D6"
+            android:layout_marginTop="20dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView5"
+            android:id="@+id/view" />
+
+        <TextView
+            android:text="서비스 이용약관"
+            android:textColor="#333333"
+            style="@style/Zooc16SemiBold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/textView6"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/view"
+            android:layout_marginStart="40dp"
+            android:layout_marginTop="20dp" />
+
+        <View
+            android:layout_width="325dp"
+            android:layout_height="1dp"
+            android:background="#DAE0D6"
+            android:layout_marginTop="20dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView6"
+            android:id="@+id/view2" />
+
+        <TextView
+            android:text="개인정보 처리방침"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/textView7"
+            android:textColor="#333333"
+            style="@style/Zooc16SemiBold"
+            app:layout_constraintTop_toBottomOf="@+id/view2"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginStart="40dp"
+            android:layout_marginTop="20dp" />
+
+        <View
+            android:layout_width="325dp"
+            android:layout_height="1dp"
+            android:background="#DAE0D6"
+            android:layout_marginTop="20dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView7"
+            android:id="@+id/view3" />
+
+        <TextView
+            android:text="마케팅 정보 수신 동의"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/textView8"
+            android:textColor="#333333"
+            style="@style/Zooc16SemiBold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/view3"
+            android:layout_marginStart="40dp"
+            android:layout_marginTop="20dp" />
+
+        <TextView
+            android:text="v.1.0.0"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/Zooc12Medium"
+            android:textColor="#888C86"
+            android:id="@+id/textView9"
+            app:layout_constraintBottom_toBottomOf="@+id/textView5"
+            app:layout_constraintTop_toTopOf="@+id/textView5"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginEnd="30dp" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

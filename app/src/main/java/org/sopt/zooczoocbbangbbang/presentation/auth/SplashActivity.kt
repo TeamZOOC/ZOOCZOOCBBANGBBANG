@@ -4,6 +4,8 @@ import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
+import android.util.Log
+import com.kakao.sdk.common.util.Utility
 import org.sopt.zooczoocbbangbbang.R
 import org.sopt.zooczoocbbangbbang.data.local.ZoocStorage
 import org.sopt.zooczoocbbangbbang.databinding.ActivitySplashBinding
@@ -14,6 +16,8 @@ class SplashActivity : BindingActivity<ActivitySplashBinding>(R.layout.activity_
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         ZoocStorage.clear()
+        var keyHash = Utility.getKeyHash(this)
+        Log.d("TOKEN", "keyhash : $keyHash")
         setDelay()
     }
 
