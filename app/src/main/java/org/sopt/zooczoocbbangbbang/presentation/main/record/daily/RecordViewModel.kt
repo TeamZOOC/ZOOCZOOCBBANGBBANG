@@ -90,7 +90,7 @@ class RecordViewModel : ViewModel() {
         viewModelScope.launch {
             runCatching {
                 service.postRecord(
-                    1,
+                    10,
                     image.value?.toFormData(),
                     content,
                     pets
@@ -112,7 +112,7 @@ class RecordViewModel : ViewModel() {
     fun getPetNum() {
         viewModelScope.launch {
             kotlin.runCatching {
-                ServiceFactory.zoocService.getAllPets(1).await()
+                ServiceFactory.zoocService.getAllPets(10).await()
             }.onSuccess {
                 Timber.tag("RecordViewModel").d("펫 데이터 length::: %s", it.data.size)
                 Timber.tag("RecordViewModel").d(it.data[0].name)

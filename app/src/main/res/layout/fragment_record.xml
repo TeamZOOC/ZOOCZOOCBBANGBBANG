@@ -101,7 +101,7 @@
                 android:layout_marginTop="69dp"
                 android:layout_marginBottom="44dp"
                 android:clickable="@{viewmodel.buttonValidation}"
-                android:background="@{viewmodel.buttonValidation ? @drawable/shape_green_radius_47 : @drawable/shape_grey_radius_47}"
+                android:background="@{viewmodel.buttonValidation ? @drawable/shape_green_radius_47 : @drawable/shape_grey_radius_47_border_33ff}"
                 android:elevation="10dp"
                 android:padding="10dp"
                 android:text="@string/record_button_text"

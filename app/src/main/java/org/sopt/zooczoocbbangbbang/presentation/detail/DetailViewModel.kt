@@ -55,7 +55,7 @@ class DetailViewModel : ViewModel() {
     fun getDetailData(recordId: Int) {
         viewModelScope.launch {
             kotlin.runCatching {
-                zoocService.getRecordDetail(1, petId, recordId).await()
+                zoocService.getRecordDetail(10, petId, recordId).await()
             }.onSuccess {
                 recordDetail.value = it.data
                 comments.value = it.data.comments

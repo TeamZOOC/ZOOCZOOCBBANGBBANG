@@ -21,7 +21,7 @@ class PetRegisterViewModel : ViewModel() {
     fun getPets() {
         viewModelScope.launch {
             kotlin.runCatching {
-                zoocService.getAllPets(1).await()
+                zoocService.getAllPets(10).await()
             }.onSuccess {
                 _pets.value = it.data
             }.onFailure {

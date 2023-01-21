@@ -25,7 +25,7 @@ class HomeViewModel : ViewModel() {
     fun getRecords(petId: Int) {
         viewModelScope.launch {
             kotlin.runCatching {
-                zoocService.getAllRecords(1, petId).await()
+                zoocService.getAllRecords(10, petId).await()
             }.onSuccess {
                 _records.value = mappingRecord(it)
             }.onFailure {
@@ -41,7 +41,7 @@ class HomeViewModel : ViewModel() {
     fun getPets() {
         viewModelScope.launch {
             kotlin.runCatching {
-                zoocService.getAllPets(1).await()
+                zoocService.getAllPets(10).await()
             }.onSuccess {
                 _pets.value = mappingPet(it)
                 currentPetId = it.data[0].id

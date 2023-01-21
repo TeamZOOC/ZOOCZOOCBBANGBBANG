@@ -12,10 +12,17 @@ class RecordDoneActivity :
         super.onCreate(savedInstanceState)
         recordDoneBinding = ActivityRecordDoneBinding.inflate(layoutInflater)
         clickArchiveBtn()
+        clickCloseButton()
     }
 
     private fun clickArchiveBtn() {
         binding.btnRecordDoneBottom.setOnClickListener {
+            finish()
+        }
+    }
+
+    private fun clickCloseButton() {
+        binding.imgbtnRecordBack.setOnClickListener {
             finish()
         }
     }

@@ -2,12 +2,14 @@ package org.sopt.zooczoocbbangbbang.presentation.main
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import org.sopt.zooczoocbbangbbang.R
+import org.sopt.zooczoocbbangbbang.data.local.ZoocStorage
 import org.sopt.zooczoocbbangbbang.databinding.ActivityMainBinding
 import org.sopt.zooczoocbbangbbang.presentation.base.BindingActivity
 import org.sopt.zooczoocbbangbbang.presentation.main.home.HomeFragment
 import org.sopt.zooczoocbbangbbang.presentation.main.mypage.MyPageFragment
-import org.sopt.zooczoocbbangbbang.presentation.main.record.RecordActivity
+import org.sopt.zooczoocbbangbbang.presentation.main.ymrecord.YmRecordActivity
 
 class MainActivity : BindingActivity<ActivityMainBinding>(R.layout.activity_main) {
     private val fragments = listOf(HomeFragment(), MyPageFragment())
@@ -16,6 +18,7 @@ class MainActivity : BindingActivity<ActivityMainBinding>(R.layout.activity_main
         super.onCreate(savedInstanceState)
         initBottomNavigation()
         clickRecording()
+        Log.d("my token", "${ZoocStorage.token}")
     }
 
     private fun initBottomNavigation() {
@@ -32,7 +35,7 @@ class MainActivity : BindingActivity<ActivityMainBinding>(R.layout.activity_main
 
     private fun clickRecording() {
         binding.fabMain.setOnClickListener {
-            val intent = Intent(this, RecordActivity::class.java)
+            val intent = Intent(this, YmRecordActivity::class.java)
             startActivity(intent)
         }
     }

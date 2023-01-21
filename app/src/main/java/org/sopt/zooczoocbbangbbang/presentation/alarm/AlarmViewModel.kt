@@ -19,7 +19,7 @@ class AlarmViewModel : ViewModel() {
     fun getAlarms() {
         viewModelScope.launch {
             kotlin.runCatching {
-                zoocService.getAlarms(familyId = 1).await()
+                zoocService.getAlarms(familyId = 10).await()
             }.onSuccess {
                 Log.d("AlarmActivity", "알람 가져오기 서버 통신 성공")
                 _alarms.value = it.data

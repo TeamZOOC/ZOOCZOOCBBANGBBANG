@@ -43,7 +43,7 @@ class TwoSelectorPetViewModel : ViewModel() {
     fun getPetInfo() {
         viewModelScope.launch {
             kotlin.runCatching {
-                ServiceFactory.zoocService.getAllPets(1).await()
+                ServiceFactory.zoocService.getAllPets(10).await()
             }.onSuccess { it ->
                 Timber.tag("TwoSelector").d("펫 데이터 length::: %s", it.data.size)
                 Timber.tag("TwoSelector").d(it.data[0].photo)

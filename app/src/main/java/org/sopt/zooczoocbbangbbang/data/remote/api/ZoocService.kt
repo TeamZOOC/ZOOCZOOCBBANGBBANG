@@ -15,6 +15,7 @@ import org.sopt.zooczoocbbangbbang.data.remote.entity.mypage.ResponseEditProfile
 import org.sopt.zooczoocbbangbbang.data.remote.entity.mypage.ResponseMembersDto
 import org.sopt.zooczoocbbangbbang.data.remote.entity.record.RequestRecordDto
 import org.sopt.zooczoocbbangbbang.data.remote.entity.record.ResponseMissionDto
+import org.sopt.zooczoocbbangbbang.presentation.main.ymrecord.ResponseYmRecordDto
 import retrofit2.Call
 import retrofit2.http.Body
 import retrofit2.http.GET
@@ -111,4 +112,13 @@ interface ZoocService {
         /*@Part file: MultipartBody.Part? = null,
         @Part requestBody: RequestBody*/
     ): Call<RequestRecordDto>
+
+    @Multipart
+    @POST("record/{familyId}")
+    fun postYmRecord(
+        @Path("familyId") familyId: Int,
+        @Part("content") contentBody: RequestBody,
+        @Part file: MultipartBody.Part? = null,
+        @Part pet: List<MultipartBody.Part>
+    ): Call<ResponseYmRecordDto>
 }
