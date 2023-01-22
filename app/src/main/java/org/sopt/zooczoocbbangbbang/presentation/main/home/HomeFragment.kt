@@ -168,7 +168,7 @@ class HomeFragment : BindingFragment<FragmentHomeBinding>(R.layout.fragment_home
         homeViewModel.selectItem(position)
         archivePostingAdapter.notifyItemChanged(homeViewModel.currentRecordId)
         archivePostingAdapter.notifyItemChanged(homeViewModel.previousRecordId)
-        //archivePostingAdapter.submitList(homeViewModel.records.value?.toList())
+        // archivePostingAdapter.submitList(homeViewModel.records.value?.toList())
     }
 
     private fun removeRecyclerViewAnimator(rv: RecyclerView) {
@@ -201,7 +201,7 @@ class HomeFragment : BindingFragment<FragmentHomeBinding>(R.layout.fragment_home
             homeViewModel.foldItem()
             archivePostingAdapter.notifyItemChanged(homeViewModel.currentRecordId)
             homeViewModel.clearItemPosition()
-            //archivePostingAdapter.submitList(homeViewModel.records.value?.toList())
+            // archivePostingAdapter.submitList(homeViewModel.records.value?.toList())
         }
     }
 
