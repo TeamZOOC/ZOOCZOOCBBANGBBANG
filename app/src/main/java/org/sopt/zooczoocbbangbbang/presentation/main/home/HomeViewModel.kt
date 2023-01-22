@@ -33,7 +33,6 @@ class HomeViewModel : ViewModel() {
 
     fun foldItem() {
         (_records.value ?: return)[currentRecordId].isSelected = false
-        clearItemPosition()
     }
 
     fun clearItemPosition() {

@@ -153,6 +153,7 @@ class HomeFragment : BindingFragment<FragmentHomeBinding>(R.layout.fragment_home
         gridLayoutManager =
             GridLayoutManager(requireContext(), 3, GridLayoutManager.VERTICAL, false)
 
+        binding.rvArchivePosting.itemAnimator = null
         binding.rvArchivePosting.layoutManager = linearLayoutManager
         archivePostingAdapter = ArchivePostingListAdapter(
             { clickFoldedItem(it) },
@@ -165,7 +166,9 @@ class HomeFragment : BindingFragment<FragmentHomeBinding>(R.layout.fragment_home
 
     private fun clickFoldedItem(position: Int) {
         homeViewModel.selectItem(position)
-        archivePostingAdapter.submitList(homeViewModel.records.value?.toList())
+        archivePostingAdapter.notifyItemChanged(homeViewModel.currentRecordId)
+        archivePostingAdapter.notifyItemChanged(homeViewModel.previousRecordId)
+        //archivePostingAdapter.submitList(homeViewModel.records.value?.toList())
     }
 
     private fun removeRecyclerViewAnimator(rv: RecyclerView) {
@@ -196,7 +199,9 @@ class HomeFragment : BindingFragment<FragmentHomeBinding>(R.layout.fragment_home
     private fun clickOutside() {
         binding.clHome.setOnClickListener {
             homeViewModel.foldItem()
-            archivePostingAdapter.submitList(homeViewModel.records.value?.toList())
+            archivePostingAdapter.notifyItemChanged(homeViewModel.currentRecordId)
+            homeViewModel.clearItemPosition()
+            //archivePostingAdapter.submitList(homeViewModel.records.value?.toList())
         }
     }
 
