@@ -21,6 +21,25 @@ class HomeViewModel : ViewModel() {
     private val _records = MutableLiveData<List<ArchivePostingData>>()
     val records: LiveData<List<ArchivePostingData>> get() = _records
     var currentPetId: Int = -1
+    var currentRecordId: Int = 0
+    var previousRecordId: Int = -1
+
+    fun selectItem(position: Int) {
+        previousRecordId = currentRecordId
+        currentRecordId = position
+        (_records.value ?: return)[previousRecordId].isSelected = false
+        (_records.value ?: return)[currentRecordId].isSelected = true
+    }
+
+    fun foldItem() {
+        (_records.value ?: return)[currentRecordId].isSelected = false
+        clearItemPosition()
+    }
+
+    fun clearItemPosition() {
+        currentRecordId = 0
+        previousRecordId = -1
+    }
 
     fun getRecords(petId: Int) {
         viewModelScope.launch {

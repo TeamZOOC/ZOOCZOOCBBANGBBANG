@@ -12,7 +12,6 @@ import org.sopt.zooczoocbbangbbang.presentation.main.mypage.MyPageFragment
 import org.sopt.zooczoocbbangbbang.presentation.main.ymrecord.YmRecordActivity
 
 class MainActivity : BindingActivity<ActivityMainBinding>(R.layout.activity_main) {
-    private val fragments = listOf(HomeFragment(), MyPageFragment())
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -25,8 +24,8 @@ class MainActivity : BindingActivity<ActivityMainBinding>(R.layout.activity_main
         binding.bnvMain.setOnItemSelectedListener {
             val transaction = supportFragmentManager.beginTransaction()
             when (it.itemId) {
-                R.id.menu_home -> transaction.replace(R.id.fcv_main, fragments[0])
-                R.id.menu_mypage -> transaction.replace(R.id.fcv_main, fragments[1])
+                R.id.menu_home -> transaction.replace(R.id.fcv_main, HomeFragment())
+                R.id.menu_mypage -> transaction.replace(R.id.fcv_main, MyPageFragment())
             }
             transaction.commit()
             true

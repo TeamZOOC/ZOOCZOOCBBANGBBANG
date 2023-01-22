@@ -3,7 +3,6 @@ package org.sopt.zooczoocbbangbbang.presentation.main.home
 import android.app.ActivityOptions
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import android.view.ViewGroup.LayoutParams.WRAP_CONTENT
 import androidx.constraintlayout.widget.ConstraintSet
@@ -25,7 +24,7 @@ import org.sopt.zooczoocbbangbbang.presentation.detail.DetailActivity.Companion.
 import org.sopt.zooczoocbbangbbang.presentation.detail.DetailActivity.Companion.WRITER_IMAGE
 import org.sopt.zooczoocbbangbbang.presentation.detail.DetailActivity.Companion.WRITER_NAME
 import org.sopt.zooczoocbbangbbang.presentation.main.home.adapter.ArchiveItemDecorator
-import org.sopt.zooczoocbbangbbang.presentation.main.home.adapter.ArchivePostingAdapter
+import org.sopt.zooczoocbbangbbang.presentation.main.home.adapter.ArchivePostingListAdapter
 import org.sopt.zooczoocbbangbbang.presentation.main.home.adapter.PetAdapter
 import org.sopt.zooczoocbbangbbang.presentation.main.home.data.RecordTransportData
 import org.sopt.zooczoocbbangbbang.presentation.main.home.state.LayoutManagerType
@@ -34,7 +33,7 @@ import android.util.Pair as UtilPair
 
 class HomeFragment : BindingFragment<FragmentHomeBinding>(R.layout.fragment_home) {
     private lateinit var petAdapter: PetAdapter
-    private lateinit var archivePostingAdapter: ArchivePostingAdapter
+    private lateinit var archivePostingAdapter: ArchivePostingListAdapter
     private lateinit var linearLayoutManager: LinearLayoutManager
     private lateinit var gridLayoutManager: GridLayoutManager
     private val homeViewModel: HomeViewModel by viewModels()
@@ -79,7 +78,7 @@ class HomeFragment : BindingFragment<FragmentHomeBinding>(R.layout.fragment_home
 
     private fun initRecordsData() {
         homeViewModel.records.observe(viewLifecycleOwner) {
-            archivePostingAdapter.initArchives(it)
+            archivePostingAdapter.submitList(it.toList())
         }
     }
 
@@ -143,10 +142,9 @@ class HomeFragment : BindingFragment<FragmentHomeBinding>(R.layout.fragment_home
     }
 
     private fun clickPet(petId: Int) {
-        Log.d("asdf", "펫 클릭됨 id: $petId")
         homeViewModel.getRecords(petId)
         homeViewModel.currentPetId = petId
-        archivePostingAdapter.clearItemPosition()
+        homeViewModel.clearItemPosition()
     }
 
     private fun initArchiveAdapter() {
@@ -156,12 +154,18 @@ class HomeFragment : BindingFragment<FragmentHomeBinding>(R.layout.fragment_home
             GridLayoutManager(requireContext(), 3, GridLayoutManager.VERTICAL, false)
 
         binding.rvArchivePosting.layoutManager = linearLayoutManager
-        archivePostingAdapter = ArchivePostingAdapter { options, bundle ->
-            clickItem(options, bundle)
-        }
+        archivePostingAdapter = ArchivePostingListAdapter(
+            { clickFoldedItem(it) },
+            { options, bundle -> clickItem(options, bundle) }
+        )
         binding.rvArchivePosting.adapter = archivePostingAdapter
         binding.rvArchivePosting.addItemDecoration(ArchiveItemDecorator(requireContext(), 10, 0))
         removeRecyclerViewAnimator(binding.rvArchivePosting)
+    }
+
+    private fun clickFoldedItem(position: Int) {
+        homeViewModel.selectItem(position)
+        archivePostingAdapter.submitList(homeViewModel.records.value?.toList())
     }
 
     private fun removeRecyclerViewAnimator(rv: RecyclerView) {
@@ -191,7 +195,8 @@ class HomeFragment : BindingFragment<FragmentHomeBinding>(R.layout.fragment_home
 
     private fun clickOutside() {
         binding.clHome.setOnClickListener {
-            archivePostingAdapter.foldItem()
+            homeViewModel.foldItem()
+            archivePostingAdapter.submitList(homeViewModel.records.value?.toList())
         }
     }
 
