@@ -11,6 +11,7 @@ import org.sopt.zooczoocbbangbbang.databinding.ActivityDetailBinding
 import org.sopt.zooczoocbbangbbang.presentation.base.BindingActivity
 import org.sopt.zooczoocbbangbbang.presentation.main.home.EmojiBottomSheetDialog
 import org.sopt.zooczoocbbangbbang.util.ContextExt.shortToast
+import org.sopt.zooczoocbbangbbang.util.DetailMoreCustomDialog
 
 const val DETAIL_ERROR = "[ERROR] Detail Activity - 필요한 정보가 넘어오지 않았습니다."
 const val IS_FIRST_RECORD = "첫 번째 게시물입니다"
@@ -49,6 +50,14 @@ class DetailActivity : BindingActivity<ActivityDetailBinding>(R.layout.activity_
         clickEmojiSelection()
         clickUploadButton()
         clickCloseButton()
+        clickDeleteRecord()
+    }
+
+    private fun clickDeleteRecord() {
+        binding.ivDetailMore.setOnClickListener {
+            val dialog = DetailMoreCustomDialog(binding.ivDetailMore)
+            dialog.show(supportFragmentManager, null)
+        }
     }
 
     private fun clickLeftArrow() {
