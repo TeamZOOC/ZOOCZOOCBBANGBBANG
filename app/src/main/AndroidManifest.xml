@@ -16,10 +16,12 @@
         android:theme="@style/Theme.ZOOCZOOCBBANGBBANG"
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
-
+        <activity
+            android:name=".presentation.main.ymrecord.YmRecordActivity"
+            android:exported="false" />
         <activity
             android:name=".presentation.main.mypage.PetRegisterActivity"
-            android:exported="false"/>
+            android:exported="false" />
         <activity
             android:name=".presentation.auth.AgreementActivity"
             android:exported="false" />
@@ -53,7 +55,6 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
         </activity>
         <activity
             android:name=".presentation.auth.SignInActivity"
@@ -86,9 +87,7 @@
             android:windowSoftInputMode="adjustResize" />
         <activity
             android:name=".presentation.main.MainActivity"
-            android:exported="true">
-
-        </activity>
+            android:exported="true" />
     </application>
 
 </manifest>

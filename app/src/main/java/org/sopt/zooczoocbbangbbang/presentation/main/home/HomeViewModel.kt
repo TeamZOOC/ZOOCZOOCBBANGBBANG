@@ -21,11 +21,29 @@ class HomeViewModel : ViewModel() {
     private val _records = MutableLiveData<List<ArchivePostingData>>()
     val records: LiveData<List<ArchivePostingData>> get() = _records
     var currentPetId: Int = -1
+    var currentRecordId: Int = 0
+    var previousRecordId: Int = -1
+
+    fun selectItem(position: Int) {
+        previousRecordId = currentRecordId
+        currentRecordId = position
+        (_records.value ?: return)[previousRecordId].isSelected = false
+        (_records.value ?: return)[currentRecordId].isSelected = true
+    }
+
+    fun foldItem() {
+        (_records.value ?: return)[currentRecordId].isSelected = false
+    }
+
+    fun clearItemPosition() {
+        currentRecordId = 0
+        previousRecordId = -1
+    }
 
     fun getRecords(petId: Int) {
         viewModelScope.launch {
             kotlin.runCatching {
-                zoocService.getAllRecords(1, petId).await()
+                zoocService.getAllRecords(10, petId).await()
             }.onSuccess {
                 _records.value = mappingRecord(it)
             }.onFailure {
@@ -41,7 +59,7 @@ class HomeViewModel : ViewModel() {
     fun getPets() {
         viewModelScope.launch {
             kotlin.runCatching {
-                zoocService.getAllPets(1).await()
+                zoocService.getAllPets(10).await()
             }.onSuccess {
                 _pets.value = mappingPet(it)
                 currentPetId = it.data[0].id

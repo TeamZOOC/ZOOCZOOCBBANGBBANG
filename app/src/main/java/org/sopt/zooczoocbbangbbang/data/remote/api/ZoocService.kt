@@ -7,6 +7,7 @@ import org.sopt.zooczoocbbangbbang.data.remote.entity.auth.ResponseSignUpDto
 import org.sopt.zooczoocbbangbbang.data.remote.entity.detail.request.RequestCommentDto
 import org.sopt.zooczoocbbangbbang.data.remote.entity.detail.request.RequestEmojiDto
 import org.sopt.zooczoocbbangbbang.data.remote.entity.detail.response.ResponseCommentsDto
+import org.sopt.zooczoocbbangbbang.data.remote.entity.detail.response.ResponseDeleteDto
 import org.sopt.zooczoocbbangbbang.data.remote.entity.detail.response.ResponseRecordDetailDto
 import org.sopt.zooczoocbbangbbang.data.remote.entity.home.response.ResponseFamilyInfoDto
 import org.sopt.zooczoocbbangbbang.data.remote.entity.home.response.ResponsePetDto
@@ -15,8 +16,10 @@ import org.sopt.zooczoocbbangbbang.data.remote.entity.mypage.ResponseEditProfile
 import org.sopt.zooczoocbbangbbang.data.remote.entity.mypage.ResponseMembersDto
 import org.sopt.zooczoocbbangbbang.data.remote.entity.record.RequestRecordDto
 import org.sopt.zooczoocbbangbbang.data.remote.entity.record.ResponseMissionDto
+import org.sopt.zooczoocbbangbbang.presentation.main.ymrecord.ResponseYmRecordDto
 import retrofit2.Call
 import retrofit2.http.Body
+import retrofit2.http.DELETE
 import retrofit2.http.GET
 import retrofit2.http.Multipart
 import retrofit2.http.PATCH
@@ -111,4 +114,18 @@ interface ZoocService {
         /*@Part file: MultipartBody.Part? = null,
         @Part requestBody: RequestBody*/
     ): Call<RequestRecordDto>
+
+    @Multipart
+    @POST("record/{familyId}")
+    fun postYmRecord(
+        @Path("familyId") familyId: Int,
+        @Part("content") contentBody: RequestBody,
+        @Part file: MultipartBody.Part? = null,
+        @Part pet: List<MultipartBody.Part>
+    ): Call<ResponseYmRecordDto>
+
+    @DELETE("record/{recordId}")
+    fun deleteRecord(
+        @Path("recordId") recordId: Int
+    ): Call<ResponseDeleteDto>
 }

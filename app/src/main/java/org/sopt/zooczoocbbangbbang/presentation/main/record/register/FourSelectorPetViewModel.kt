@@ -69,7 +69,7 @@ class FourSelectorPetViewModel : ViewModel() {
     fun getPetInfo() {
         viewModelScope.launch {
             kotlin.runCatching {
-                ServiceFactory.zoocService.getAllPets(1).await()
+                ServiceFactory.zoocService.getAllPets(10).await()
             }.onSuccess {
                 Timber.tag("Four").d("펫 데이터 length::: %s", it.data.size)
                 Timber.tag("Four").d(it.data[0].name)

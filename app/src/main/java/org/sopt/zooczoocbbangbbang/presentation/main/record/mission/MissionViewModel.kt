@@ -102,7 +102,7 @@ class MissionViewModel : ViewModel() {
     fun getPetNum() {
         viewModelScope.launch {
             kotlin.runCatching {
-                zoocService.getAllPets(1).await()
+                zoocService.getAllPets(10).await()
             }.onSuccess {
                 Timber.tag("MissionViewModel").d("펫 데이터 length::: %s", it.data.size)
                 Timber.tag("MissionViewModel").d(it.data[0].name)
@@ -121,7 +121,7 @@ class MissionViewModel : ViewModel() {
     fun getMission() {
         viewModelScope.launch {
             kotlin.runCatching {
-                zoocService.getMissionList(1).await()
+                zoocService.getMissionList(10).await()
             }.onSuccess {
                 Timber.tag("Mission").d("미션 데이터 length::: %s", it.data.size)
                 missionNum.value = it.data.size

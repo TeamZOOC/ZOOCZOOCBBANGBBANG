@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="org.sopt.zooczoocbbangbbang.presentation.main.ymrecord.daily.DailyViewModel" />
+
+        <import type="android.view.View" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/shape_record_white_radius_24"
+        android:padding="18dp"
+        tools:context=".presentation.main.ymrecord.daily.DailyFragment">
+
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:scaleType="centerCrop"
+            app:layout_constraintHeight_percent="0.56"
+            android:background="@drawable/shape_record_grey_radius_18"
+            android:clipToOutline="true"
+            android:id="@+id/iv_ym_daily_posting"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="18dp"
+            app:layout_constraintWidth_percent="0.35"
+            app:layout_constraintHeight_percent="0.3"
+            app:srcCompat="@drawable/ic_record_add_photo"
+            android:id="@+id/iv_ym_daily_add_photo"
+            android:visibility="@{viewModel.isImageEmpty() ? View.VISIBLE : View.INVISIBLE}"
+            app:layout_constraintEnd_toEndOf="@+id/iv_ym_daily_posting"
+            app:layout_constraintStart_toStartOf="@+id/iv_ym_daily_posting"
+            app:layout_constraintTop_toTopOf="@+id/iv_ym_daily_posting"
+            app:layout_constraintBottom_toBottomOf="@+id/iv_ym_daily_posting" />
+
+        <EditText
+            android:hint="오늘 어떤 일이 있었는지 공유해보세요"
+            style="@style/Typography.M14"
+            android:textColorHint="@color/grey_bd"
+            android:gravity="top"
+            android:paddingVertical="23dp"
+            android:paddingHorizontal="18dp"
+            android:background="@drawable/shape_record_white2_radius_12"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:id="@+id/et_ym_daily_record"
+            android:text="@={viewModel.textContent}"
+            app:layout_constraintTop_toBottomOf="@+id/iv_ym_daily_posting"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="12dp"
+            app:layout_constraintBottom_toBottomOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

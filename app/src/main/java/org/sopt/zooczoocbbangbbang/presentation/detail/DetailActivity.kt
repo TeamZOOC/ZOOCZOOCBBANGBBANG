@@ -3,6 +3,7 @@ package org.sopt.zooczoocbbangbbang.presentation.detail
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
+import android.view.View
 import androidx.activity.viewModels
 import coil.load
 import org.sopt.zooczoocbbangbbang.R
@@ -11,6 +12,9 @@ import org.sopt.zooczoocbbangbbang.databinding.ActivityDetailBinding
 import org.sopt.zooczoocbbangbbang.presentation.base.BindingActivity
 import org.sopt.zooczoocbbangbbang.presentation.main.home.EmojiBottomSheetDialog
 import org.sopt.zooczoocbbangbbang.util.ContextExt.shortToast
+import org.sopt.zooczoocbbangbbang.util.DetailMoreCustomDialog
+import org.sopt.zooczoocbbangbbang.util.DisplayUtil
+import org.sopt.zooczoocbbangbbang.util.ViewAssociatedPositionCalculator
 
 const val DETAIL_ERROR = "[ERROR] Detail Activity - 필요한 정보가 넘어오지 않았습니다."
 const val IS_FIRST_RECORD = "첫 번째 게시물입니다"
@@ -49,6 +53,23 @@ class DetailActivity : BindingActivity<ActivityDetailBinding>(R.layout.activity_
         clickEmojiSelection()
         clickUploadButton()
         clickCloseButton()
+        clickDeleteRecord()
+    }
+
+    private fun clickDeleteRecord() {
+        binding.ivDetailMore.setOnClickListener {
+            val dialog = DetailMoreCustomDialog(object :
+                    ViewAssociatedPositionCalculator(this, binding.ivDetailMore) {
+                    override fun calculatePosX(): Int {
+                        return sourceX + DisplayUtil.dpToPx(myContext, 42) - DisplayUtil.dpToPx(myContext, 143)
+                    }
+
+                    override fun calculatePosY(): Int {
+                        return sourceY + (source.height / 2)
+                    }
+                })
+            dialog.show(supportFragmentManager, null)
+        }
     }
 
     private fun clickLeftArrow() {
