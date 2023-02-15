@@ -19,6 +19,7 @@ class DetailViewModel : ViewModel() {
     val comments = MutableLiveData<List<Comment>>()
     val emojiId = MutableLiveData<Int>()
     var petId: Int = -1
+    val deleteSuccess = MutableLiveData<Boolean>()
 
     fun uploadComment(recordId: Int, comment: String) {
         viewModelScope.launch {
@@ -65,6 +66,18 @@ class DetailViewModel : ViewModel() {
                 } else {
                     Log.e("DetailFragment", "상세 보기 서버 통신 onFailure")
                 }
+            }
+        }
+    }
+
+    fun deleteRecord(recordId: Int) {
+        viewModelScope.launch {
+            runCatching {
+                zoocService.deleteRecord(recordId).await()
+            }.onSuccess {
+                deleteSuccess.value = true
+            }.onFailure {
+                deleteSuccess.value = false
             }
         }
     }

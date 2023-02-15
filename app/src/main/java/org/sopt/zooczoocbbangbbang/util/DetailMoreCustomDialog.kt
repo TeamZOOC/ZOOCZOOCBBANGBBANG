@@ -14,7 +14,8 @@ import org.sopt.zooczoocbbangbbang.R
 import org.sopt.zooczoocbbangbbang.databinding.CustomdialogDetailMoreBinding
 
 class DetailMoreCustomDialog(
-    private val viewAssociatedPositionCalculator: ViewAssociatedPositionCalculator
+    private val viewAssociatedPositionCalculator: ViewAssociatedPositionCalculator,
+    private val deleteRecord: () -> Unit
 ) : DialogFragment() {
     private lateinit var binding: CustomdialogDetailMoreBinding
 
@@ -51,11 +52,8 @@ class DetailMoreCustomDialog(
 
     private fun clickView() {
         binding.root.setOnClickListener {
-            delete()
+            deleteRecord()
             dismiss()
         }
-    }
-
-    private fun delete() {
     }
 }
