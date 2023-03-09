@@ -11,7 +11,7 @@ import org.sopt.zooczoocbbangbbang.presentation.main.home.state.FoldableUiState
 
 class PetAdapter(private val clickItem: (Int) -> Unit) :
     RecyclerView.Adapter<PetAdapter.PetViewHolder>() {
-    private val pets = mutableListOf<PetData>()
+    private var pets: List<PetData> = emptyList()
     private var currentIndex = 0
     private var previousIndex = -1
 
@@ -71,7 +71,7 @@ class PetAdapter(private val clickItem: (Int) -> Unit) :
     override fun getItemCount(): Int = pets.size
 
     fun initPets(items: List<PetData>) {
-        pets.addAll(items)
+        pets = items
         notifyDataSetChanged()
     }
 }
