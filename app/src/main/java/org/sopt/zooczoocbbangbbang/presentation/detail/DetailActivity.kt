@@ -3,7 +3,6 @@ package org.sopt.zooczoocbbangbbang.presentation.detail
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
-import android.view.View
 import androidx.activity.viewModels
 import coil.load
 import org.sopt.zooczoocbbangbbang.R
@@ -31,6 +30,7 @@ class DetailActivity : BindingActivity<ActivityDetailBinding>(R.layout.activity_
         initAdapter()
         uploadEmoji()
         gatherClickEvents()
+        observeDeleteSuccess()
     }
 
     override fun onResume() {
@@ -67,8 +67,18 @@ class DetailActivity : BindingActivity<ActivityDetailBinding>(R.layout.activity_
                     override fun calculatePosY(): Int {
                         return sourceY + (source.height / 2)
                     }
-                })
+                }) { detailViewModel.deleteRecord(recordId) }
             dialog.show(supportFragmentManager, null)
+        }
+    }
+
+    private fun observeDeleteSuccess() {
+        detailViewModel.deleteSuccess.observe(this) {
+            if (it) {
+                finish()
+            } else {
+                shortToast("삭제에 실패했습니다.")
+            }
         }
     }
 
@@ -150,6 +160,7 @@ class DetailActivity : BindingActivity<ActivityDetailBinding>(R.layout.activity_
 
     private fun getRecordDetail(recordId: Int) {
         detailViewModel.getDetailData(recordId)
+        this.recordId = (detailViewModel.recordDetail.value ?: return).record.id
     }
 
     private fun initAdapter() {
