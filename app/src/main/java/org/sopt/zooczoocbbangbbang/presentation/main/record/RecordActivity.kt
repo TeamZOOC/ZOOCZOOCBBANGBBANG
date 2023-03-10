@@ -6,7 +6,7 @@ import androidx.fragment.app.Fragment
 import org.sopt.zooczoocbbangbbang.R
 import org.sopt.zooczoocbbangbbang.databinding.ActivityRecordBinding
 import org.sopt.zooczoocbbangbbang.presentation.base.BindingActivity
-import org.sopt.zooczoocbbangbbang.presentation.main.record.daily.RecordFragment
+import org.sopt.zooczoocbbangbbang.presentation.main.record.daily.DailyFragment
 import org.sopt.zooczoocbbangbbang.presentation.main.record.mission.MissionFragment
 import timber.log.Timber
 
@@ -17,7 +17,7 @@ class RecordActivity : BindingActivity<ActivityRecordBinding>(R.layout.activity_
         recordBinding = ActivityRecordBinding.inflate(layoutInflater)
         setContentView(binding.root)
         supportFragmentManager.beginTransaction()
-            .replace(R.id.fcv_record_view, RecordFragment())
+            .replace(R.id.fcv_record_view, DailyFragment())
             .commit()
         displayFragment()
         clickCloseBtn()
@@ -26,7 +26,7 @@ class RecordActivity : BindingActivity<ActivityRecordBinding>(R.layout.activity_
     private fun displayFragment() {
         binding.tvRecordWrite.setOnClickListener {
             displayFragment(
-                RecordFragment()
+                DailyFragment()
             )
             binding.tvRecordWrite.setTextColor(Color.parseColor("#4F4F4F"))
             binding.tvRecordMission.setTextColor(Color.parseColor("#BDBDBD"))

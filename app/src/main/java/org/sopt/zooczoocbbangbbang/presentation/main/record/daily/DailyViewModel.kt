@@ -21,7 +21,7 @@ import retrofit2.await
 import timber.log.Timber
 
 // recordviewmodel을 반려동물 선택 fragment와 데이터를 공유해서 서버통신을 해야할듯...
-class RecordViewModel : ViewModel() {
+class DailyViewModel : ViewModel() {
     private val service = ServiceFactory.zoocService
     val recordText = MutableLiveData("")
     private var isTextNotNull: LiveData<Boolean> = Transformations.map(recordText) { checkText() }
@@ -59,51 +59,37 @@ class RecordViewModel : ViewModel() {
     }
 
     private fun isButtonActive(): Boolean {
+        // val content = (recordText.value ?: "").toRequestBody("text/plain".toMediaType())
+        // Log.d("Record", content.toString())
+        Timber.tag("Record").d("image:::%s", image.value)
+        Timber.tag("Record").d("Recordtext:::%s", recordText.value)
         return (isTextNotNull.value == true) and (isShowImage.value == true)
     }
 
-    // private fun onSubmit() {
-    //     val requestBody = json.encodeToString(PetInfo(recordText.value!!, petInfo.value!!))
-    //         .toRequestBody("application/body".toMediaType())
-    //
-    //     viewModelScope.launch {
-    //         runCatching {
-    //             /*service.postRecord(
-    //                 image.value?.toFormData(),
-    //                 requestBody
-    //             )*/
-    //         }.onSuccess {
-    //             isRecordPostSuccess.value = true
-    //         }.onFailure {
-    //             isRecordPostSuccess.value = false
-    //             _errorMessage.value = "네트워크 상태가 좋지 않습니다"
-    //             Timber.tag("RecordViewModel").d(errorMessage.toString())
-    //         }
-    //     }
-    // }
-
     fun onSubmit() {
-        val content = recordText.value!!.toRequestBody("text/plain".toMediaType())
-        val pets = json.encodeToString(selectedPets.value!!)
+        val content = (recordText.value ?: "").toRequestBody("text/plain".toMediaType())
+        val pets = json.encodeToString(selectedPets.value ?: "")
             .toRequestBody("text/plain".toMediaType())
 
         viewModelScope.launch {
             runCatching {
                 service.postRecord(
-                    1,
+                    10,
                     image.value?.toFormData(),
                     content,
                     pets
                 )
             }.onSuccess {
-                Log.d("qwer", "jjj서버통신 성공")
+                Log.d("Record", "일상 서버통신 성공")
                 isSuccess.value = true
+                Log.d("Record", "Uploaded photo URL: ${image.value}")
+                Log.d("Record", "Article content: ${recordText.value}")
             }.onFailure {
                 isSuccess.value = false
                 if (it is HttpException) {
-                    Log.e("qwer", "jjjjjj미션 등록하기 서버 통신 onResponse but not successful")
+                    Log.e("Record", "일상 등록하기 서버 통신 onResponse but not successful")
                 } else {
-                    Log.e("qwer", it.stackTraceToString())
+                    Log.e("Record", it.stackTraceToString())
                 }
             }
         }
@@ -112,25 +98,19 @@ class RecordViewModel : ViewModel() {
     fun getPetNum() {
         viewModelScope.launch {
             kotlin.runCatching {
-                ServiceFactory.zoocService.getAllPets(1).await()
+                ServiceFactory.zoocService.getAllPets(10).await()
             }.onSuccess {
-                Timber.tag("RecordViewModel").d("펫 데이터 length::: %s", it.data.size)
-                Timber.tag("RecordViewModel").d(it.data[0].name)
-                Timber.tag("RecordViewModel").d(it.data[1].name)
+                Timber.tag("Record").d("펫 데이터 length::: %s", it.data.size)
+                Timber.tag("Record").d(it.data[0].name)
+                Timber.tag("Record").d(it.data[1].name)
                 petNum.value = it.data.size
             }.onFailure {
                 if (it is HttpException) {
-                    Timber.tag("RecordViewModel").e("모든 펫 가져오기 서버 통신 onResponse but not successful")
+                    Timber.tag("Record").e("모든 펫 가져오기 서버 통신 onResponse but not successful")
                 } else {
-                    Timber.tag("RecordViewModel").e("모든 펫 가져오기 서버 통신 onFailure")
+                    Timber.tag("Record").e("모든 펫 가져오기 서버 통신 onFailure")
                 }
             }
         }
     }
-
-    @kotlinx.serialization.Serializable
-    data class PetInfo(
-        val content: String,
-        val pet: List<String>
-    )
 }

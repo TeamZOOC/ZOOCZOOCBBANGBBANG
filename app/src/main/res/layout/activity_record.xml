@@ -77,12 +77,12 @@
 
             <androidx.fragment.app.FragmentContainerView
                 android:id="@+id/fcv_record_view"
-                android:name="org.sopt.zooczoocbbangbbang.presentation.main.record.daily.RecordFragment"
+                android:name="org.sopt.zooczoocbbangbbang.presentation.main.record.daily.DailyFragment"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginTop="101dp"
                 app:layout_constraintTop_toTopOf="parent"
-                tools:layout="@layout/fragment_record" />
+                tools:layout="@layout/fragment_daily" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.core.widget.NestedScrollView>

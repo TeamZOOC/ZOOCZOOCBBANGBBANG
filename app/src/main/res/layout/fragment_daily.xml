@@ -10,7 +10,7 @@
 
         <variable
             name="viewmodel"
-            type="org.sopt.zooczoocbbangbbang.presentation.main.record.daily.RecordViewModel" />
+            type="org.sopt.zooczoocbbangbbang.presentation.main.record.daily.DailyViewModel" />
     </data>
 
 
@@ -103,6 +103,7 @@
                 android:clickable="@{viewmodel.buttonValidation}"
                 android:background="@{viewmodel.buttonValidation ? @drawable/shape_green_radius_47 : @drawable/shape_grey_radius_47}"
                 android:elevation="10dp"
+                android:onClick="clickNextBtn"
                 android:padding="10dp"
                 android:text="@string/record_button_text"
                 android:textColor="@color/white"
